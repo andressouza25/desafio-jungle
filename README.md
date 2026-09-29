@@ -49,7 +49,7 @@ The [original challenge specification](./docs/CHALLENGE.md) is preserved for ref
 
 - Playwright
 
-Additional development tooling will be documented as the project setup evolves.
+Vite provides the development and production build tooling. ESLint checks the source, and Playwright runs browser tests.
 
 ---
 
@@ -318,18 +318,25 @@ Coding agents must follow the repository instructions defined in [`AGENTS.md`](.
 
 ## Setup
 
-Project setup instructions will be added after the initial project bootstrap is completed.
+Requires Node.js 22.12 or newer and npm.
 
-The final documentation will include commands for:
-
-```text
-development
-build
-preview
-lint
-typecheck
-Playwright
+```sh
+npm ci
+npx playwright install chromium
+npm run dev
 ```
+
+The development server prints its local URL. Available validation and production commands:
+
+```sh
+npm run typecheck
+npm run lint
+npm test
+npm run build
+npm run preview
+```
+
+`npm test` runs the current smoke test in desktop and mobile Chromium. After `npm run build`, `npm run preview` serves the production build locally. Gameplay and API features are not part of this bootstrap yet.
 
 ---
 
@@ -361,7 +368,7 @@ Deployment instructions and the production URL will be added once the applicatio
 
 ## Status
 
-**Current phase:** Specification and architecture planning.
+**Current phase:** Project bootstrap complete; application foundation is next.
 
 Current documentation:
 
@@ -369,7 +376,7 @@ Current documentation:
 - [x] Design System
 - [x] Agent Instructions
 - [x] Implementation Tasks
-- [ ] Project Bootstrap
+- [x] Project Bootstrap
 - [ ] Gameplay
 - [ ] Ranking and Match History
 - [ ] E2E Tests

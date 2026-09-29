@@ -5,7 +5,7 @@ Implement one task at a time, in order. Before each task, follow `AGENTS.md`, re
 ## Roadmap
 
 - [x] [TASK-00 — Project Analysis](./tasks/TASK-00-project-analysis.md)
-- [ ] [TASK-01 — Project Bootstrap](./tasks/TASK-01-project-bootstrap.md)
+- [x] [TASK-01 — Project Bootstrap](./tasks/TASK-01-project-bootstrap.md)
 - [ ] [TASK-02 — Application Foundation](./tasks/TASK-02-application-foundation.md)
 - [ ] [TASK-03 — UI Foundation](./tasks/TASK-03-ui-foundation.md)
 - [ ] [TASK-04 — PixiJS and Asset Foundation](./tasks/TASK-04-pixi-asset-foundation.md)
