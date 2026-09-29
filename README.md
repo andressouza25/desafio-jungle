@@ -338,7 +338,7 @@ npm run build
 npm run preview
 ```
 
-`npm test` runs the bootstrap, navigation and Options UI tests in desktop and mobile Chromium. After `npm run build`, `npm run preview` serves the production build locally. Gameplay and API behavior are not implemented yet.
+`npm test` runs the bootstrap, navigation, Options UI and Pixi asset/lifecycle tests in desktop and mobile Chromium. After `npm run build`, `npm run preview` serves the production build locally. Game currently shows a static water arena with loading progress and retry; gameplay and API behavior are not implemented yet.
 
 ---
 
@@ -370,7 +370,7 @@ Deployment instructions and the production URL will be added once the applicatio
 
 ## Status
 
-**Current phase:** Application foundation complete; UI foundation is next.
+**Current phase:** UI and Pixi asset foundations complete. Game simulation has not started.
 
 Current documentation:
 

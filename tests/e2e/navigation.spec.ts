@@ -60,6 +60,8 @@ test('supports keyboard navigation and moves focus to the active screen', async 
   await page.keyboard.press('Enter');
   await expect(page.getByRole('heading', { name: 'Game' })).toBeVisible();
   await page.keyboard.press('Tab');
+  await expect(page.getByRole('button', { name: 'Main Menu' })).toBeFocused();
+  await page.keyboard.press('Tab');
   await expect(page.getByRole('button', { name: 'View Result Placeholder' })).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page.getByRole('heading', { name: 'Result' })).toBeVisible();
