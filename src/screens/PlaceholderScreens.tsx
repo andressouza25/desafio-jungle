@@ -1,22 +1,5 @@
-import type { Screen } from '../app/navigation';
-
-export function MainMenuScreen({ onNavigate }: { onNavigate: (screen: Screen) => void }) {
-  return (
-    <>
-      <h1>Pirate Battle</h1>
-      <p>Main Menu placeholder.</p>
-      <nav aria-label="Main menu">
-        <button type="button" onClick={() => onNavigate('game')}>Play</button>{' '}
-        <button type="button" onClick={() => onNavigate('options')}>Options</button>{' '}
-        <button type="button" onClick={() => onNavigate('ranking')}>Ranking</button>{' '}
-        <button type="button" onClick={() => onNavigate('match-history')}>Match History</button>
-      </nav>
-    </>
-  );
-}
-
 interface PlaceholderScreenProps {
-  title: 'Options' | 'Ranking' | 'Match History';
+  title: 'Ranking' | 'Match History';
   onBack: () => void;
 }
 

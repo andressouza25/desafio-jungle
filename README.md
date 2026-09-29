@@ -244,6 +244,8 @@ This includes values such as:
 
 Each match receives a configuration snapshot when it starts.
 
+The Options screen currently saves two settings in browser storage: **Game session time** (60–180 seconds, default 120) and **Enemy spawn time** (1–30 seconds, default 3). Changes require **Save Changes** and are read afresh for future match snapshots; an active match must not change. The gameplay-side snapshot is scheduled for the later simulation task.
+
 ---
 
 ## Ranking and Match History
@@ -336,7 +338,7 @@ npm run build
 npm run preview
 ```
 
-`npm test` runs the current bootstrap and placeholder-navigation tests in desktop and mobile Chromium. After `npm run build`, `npm run preview` serves the production build locally. Gameplay and API behavior are not implemented yet.
+`npm test` runs the bootstrap, navigation and Options UI tests in desktop and mobile Chromium. After `npm run build`, `npm run preview` serves the production build locally. Gameplay and API behavior are not implemented yet.
 
 ---
 

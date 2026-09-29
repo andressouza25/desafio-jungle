@@ -13,6 +13,7 @@ test('loads the bootstrap entry without browser errors', async ({ page }) => {
   await page.goto('/');
 
   await expect(page.getByRole('heading', { name: 'Pirate Battle' })).toBeVisible();
-  await expect(page.getByText('Main Menu placeholder.')).toBeVisible();
+  await expect(page.getByText('Set sail. Take command.')).toBeVisible();
+  await expect(page.getByRole('button', { name: 'Play', exact: true })).toBeVisible();
   expect(browserErrors).toEqual([]);
 });

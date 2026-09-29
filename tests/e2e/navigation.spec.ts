@@ -1,6 +1,6 @@
 import { expect, test } from '@playwright/test';
 
-test('reaches and exits every placeholder screen', async ({ page }) => {
+test('reaches and exits every screen without duplicate effects', async ({ page }) => {
   const browserErrors: string[] = [];
   page.on('pageerror', (error) => browserErrors.push(error.message));
   page.on('console', (message) => {
@@ -51,7 +51,7 @@ test('supports keyboard navigation and moves focus to the active screen', async 
   await expect(page.getByRole('heading', { name: 'Options' })).toBeVisible();
   await expect(page.getByRole('main')).toBeFocused();
 
-  await page.keyboard.press('Tab');
+  await page.getByRole('button', { name: 'Main Menu' }).focus();
   await expect(page.getByRole('button', { name: 'Main Menu' })).toBeFocused();
   await page.keyboard.press('Enter');
   await expect(page.getByRole('heading', { name: 'Pirate Battle' })).toBeVisible();

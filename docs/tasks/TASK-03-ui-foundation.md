@@ -6,10 +6,13 @@ Create the shared pirate-themed UI foundation and usable Main Menu and Options s
 
 ## References
 
-- `MASTER_SPEC.md`: SCREEN-001–002, CONFIG-002–005, PERSIST-001, A11Y-001–006
-- `DESIGN_SYSTEM.md`: sections 2–14, 19–20, 24–25 and 27–32
+- `docs/CHALLENGE.md` — official challenge requirements
+- `README.md` — project overview
+- `MASTER_SPEC.md` — global implementation rules
+- `ARCHITECTURE.md` — architectural boundaries
+- `DESIGN_SYSTEM.md` — visual and interaction rules
 - Supplied `sample_menu.png`, `sample_options.png` and matching UI assets
-- `AGENTS.md`: sections 13–14 and 17
+- `AGENTS.md` — agent execution rules
 
 ## Skills
 

@@ -1,11 +1,9 @@
 import { useEffect, useRef, useState } from 'react';
 import type { Screen } from './navigation';
 import { GameScreen } from '../screens/GameScreen';
-import {
-  MainMenuScreen,
-  PlaceholderScreen,
-  ResultScreen,
-} from '../screens/PlaceholderScreens';
+import { MainMenuScreen } from '../screens/MainMenuScreen';
+import { OptionsScreen } from '../screens/OptionsScreen';
+import { PlaceholderScreen, ResultScreen } from '../screens/PlaceholderScreens';
 
 export function App() {
   const [screen, setScreen] = useState<Screen>('main-menu');
@@ -20,7 +18,7 @@ export function App() {
       case 'main-menu':
         return <MainMenuScreen onNavigate={setScreen} />;
       case 'options':
-        return <PlaceholderScreen title="Options" onBack={() => setScreen('main-menu')} />;
+        return <OptionsScreen onBack={() => setScreen('main-menu')} />;
       case 'game':
         return (
           <GameScreen
