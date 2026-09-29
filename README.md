@@ -336,7 +336,7 @@ npm run build
 npm run preview
 ```
 
-`npm test` runs the current smoke test in desktop and mobile Chromium. After `npm run build`, `npm run preview` serves the production build locally. Gameplay and API features are not part of this bootstrap yet.
+`npm test` runs the current bootstrap and placeholder-navigation tests in desktop and mobile Chromium. After `npm run build`, `npm run preview` serves the production build locally. Gameplay and API behavior are not implemented yet.
 
 ---
 
@@ -368,7 +368,7 @@ Deployment instructions and the production URL will be added once the applicatio
 
 ## Status
 
-**Current phase:** Project bootstrap complete; application foundation is next.
+**Current phase:** Application foundation complete; UI foundation is next.
 
 Current documentation:
 

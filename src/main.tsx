@@ -1,14 +1,7 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
-
-function App() {
-  return (
-    <main>
-      <h1>Pirate Battle</h1>
-      <p>Project bootstrap is ready.</p>
-    </main>
-  );
-}
+import { App } from './app/App';
+import { AppProviders } from './app/AppProviders';
 
 const root = document.getElementById('root');
 
@@ -18,6 +11,8 @@ if (!root) {
 
 createRoot(root).render(
   <StrictMode>
-    <App />
+    <AppProviders>
+      <App />
+    </AppProviders>
   </StrictMode>,
 );

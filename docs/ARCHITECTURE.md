@@ -354,3 +354,7 @@ This plan records the repository state before bootstrap. It does not change the 
 - Keyboard mapping, supported mobile orientation, deployment host and profiling environment remain decisions for their respective tasks.
 - The installed `pixijs` skill routes Application, Assets and Ticker guidance to specialized sibling skills, but those files are not installed locally. Validate concrete PixiJS API choices from available authoritative documentation when implementing TASK-04/05; this analysis makes no API-specific assumption.
 - **Final repository source of truth:** `docs/CHALLENGE.md` preserves the official README from commit `3158914`, with only a source note added. Root `assets/` was verified against the upstream commit. The nested clone was for TASK-00 inspection only and is excluded from the final repository.
+
+## 12. TASK-02 Application Foundation
+
+Navigation uses a typed, in-memory screen identifier in React; no URL routing requirement currently justifies a router. A single TanStack Query client is provided at the application root, with no requests yet. The Game screen owns the future session attachment point: leaving for Main Menu abandons and destroys an attached session, while its unmount cleanup destroys any remaining session. The Result route is only a reachable placeholder, not a completed match. Mock API and storage modules will be added when they have behavior, rather than creating empty directories now.
