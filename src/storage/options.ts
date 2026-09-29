@@ -1,17 +1,7 @@
-export interface GameOptions {
-  sessionDurationSeconds: number;
-  enemySpawnIntervalSeconds: number;
-}
-
-export const OPTION_LIMITS = {
-  sessionDurationSeconds: { min: 60, max: 180 },
-  enemySpawnIntervalSeconds: { min: 1, max: 30 },
-} as const;
-
-export const DEFAULT_OPTIONS: GameOptions = {
-  sessionDurationSeconds: 120,
-  enemySpawnIntervalSeconds: 3,
-};
+import { DEFAULT_OPTIONS, OPTION_LIMITS } from '../game/config/GameConfig';
+import type { GameOptions } from '../game/config/GameConfig';
+export { DEFAULT_OPTIONS, OPTION_LIMITS } from '../game/config/GameConfig';
+export type { GameOptions } from '../game/config/GameConfig';
 
 const STORAGE_KEY = 'pirate-battle:options:v1';
 

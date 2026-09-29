@@ -1,7 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import type { GameSession } from '../game/GameSession';
-import { ArenaRenderer } from '../game/rendering/ArenaRenderer';
+import { GameInstance } from '../game/GameInstance';
 import type { ArenaLoadState } from '../game/rendering/ArenaRenderer';
+import type { LifecycleState } from '../game/GameSession';
+import { DEFAULT_GAME_CONFIG } from '../game/config/GameConfig';
+import { loadOptions } from '../storage/options';
 import { ArtButton } from '../components/ui/ArtButton';
 
 interface GameScreenProps {
@@ -14,20 +17,26 @@ export function GameScreen({ onLeave, onViewResult }: GameScreenProps) {
   const hostRef = useRef<HTMLDivElement>(null);
   const [attempt, setAttempt] = useState(0);
   const [loadState, setLoadState] = useState<ArenaLoadState>({ kind: 'loading', phase: 'assets', progress: 0 });
+  const [lifecycle, setLifecycle] = useState<LifecycleState>('loading');
 
   useEffect(() => {
     const host = hostRef.current;
     if (!host) return;
-    const renderer = new ArenaRenderer(host, setLoadState);
-    return () => renderer.destroy();
-  }, [attempt]);
-
-  useEffect(() => {
+    const instance = new GameInstance(host, {
+      readConfig: () => {
+        const options = loadOptions();
+        return { ...DEFAULT_GAME_CONFIG, session: { durationSeconds: options.sessionDurationSeconds },
+          spawn: { ...DEFAULT_GAME_CONFIG.spawn, intervalSeconds: options.enemySpawnIntervalSeconds } };
+      },
+      onLoad: setLoadState,
+      onSnapshot: (snapshot) => setLifecycle(snapshot.state),
+    });
+    sessionRef.current = instance;
     return () => {
-      sessionRef.current?.destroy();
-      sessionRef.current = null;
+      instance.destroy();
+      if (sessionRef.current === instance) sessionRef.current = null;
     };
-  }, []);
+  }, [attempt]);
 
   function leaveGame() {
     sessionRef.current?.abandon();
@@ -67,9 +76,17 @@ export function GameScreen({ onLeave, onViewResult }: GameScreenProps) {
       </div>
       <footer className="game-screen__footer">
         <p role={loadState.kind === 'ready' ? 'status' : undefined}>
-          {loadState.kind === 'ready' ? 'Arena ready. No match is running.' : 'No match is running.'}
+          {loadState.kind !== 'ready' ? 'No match is running.' : lifecycle === 'ready'
+            ? 'Arena ready. No match is running.' : `Match ${lifecycle}.`}
         </p>
         <button type="button" onClick={viewResult}>View Result Placeholder</button>
+        {lifecycle === 'ready' && <button type="button" onClick={() => sessionRef.current?.start()}>Start Match</button>}
+        {lifecycle === 'running' && <button type="button" onClick={() => sessionRef.current?.pause()}>Pause</button>}
+        {lifecycle === 'paused' && <button type="button" onClick={() => sessionRef.current?.resume()}>Resume</button>}
+        {(lifecycle === 'running' || lifecycle === 'paused') && <button type="button" onClick={() => sessionRef.current?.end()}>End Match</button>}
+        {(lifecycle === 'running' || lifecycle === 'paused' || lifecycle === 'ended') && (
+          <button type="button" onClick={() => sessionRef.current?.restart()}>Restart Match</button>
+        )}
       </footer>
     </section>
   );

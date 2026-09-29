@@ -37,7 +37,8 @@ test.beforeEach(async ({ page }) => {
     const add = EventTarget.prototype.addEventListener;
     const remove = EventTarget.prototype.removeEventListener;
     EventTarget.prototype.addEventListener = function (type, listener, options) {
-      if (listener && ((this instanceof MediaQueryList && type === 'change') || (this === window && type === 'resize'))) {
+      if (listener && ((this instanceof MediaQueryList && type === 'change')
+        || (this === window && (type === 'resize' || type === 'blur')) || (this === document && type === 'visibilitychange'))) {
         const listeners = probe.listeners.get(this) ?? new Set<EventListenerOrEventListenerObject>();
         listeners.add(listener);
         probe.listeners.set(this, listeners);
@@ -45,7 +46,7 @@ test.beforeEach(async ({ page }) => {
       add.call(this, type, listener, options);
     };
     EventTarget.prototype.removeEventListener = function (type, listener, options) {
-      if (listener && (type === 'change' || type === 'resize')) probe.listeners.get(this)?.delete(listener);
+      if (listener && (type === 'change' || type === 'resize' || type === 'blur' || type === 'visibilitychange')) probe.listeners.get(this)?.delete(listener);
       remove.call(this, type, listener, options);
     };
   });
@@ -120,7 +121,7 @@ test('loads reusable water and cleans up five mount cycles, resizing and DPR cha
     await expect(page.getByRole('status')).toHaveText('Arena ready. No match is running.');
     await expect(page.getByRole('img', { name: 'Water arena' })).toHaveCount(1);
     // One host observer belongs to ArenaRenderer; Pixi's DOM pipe owns a canvas observer.
-    expect(await resources(page)).toEqual({ applications: 1, observers: 2, listeners: 1, tickerCallbacks: 1, runningTickers: 0 });
+    expect(await resources(page)).toEqual({ applications: 1, observers: 2, listeners: 3, tickerCallbacks: 2, runningTickers: 0 });
     await expectCanvasSizing(page);
 
     if (cycle === 0) {
@@ -138,7 +139,7 @@ test('loads reusable water and cleans up five mount cycles, resizing and DPR cha
         await cdp.send('Emulation.setDeviceMetricsOverride', { width: 800, height: 600, deviceScaleFactor: 2, mobile: false });
         await expect.poll(() => page.evaluate(() => devicePixelRatio)).toBe(2);
         await expectCanvasSizing(page);
-        expect((await resources(page)).listeners).toBe(1);
+        expect((await resources(page)).listeners).toBe(3);
         await cdp.send('Emulation.clearDeviceMetricsOverride');
         await cdp.detach();
         await expectCanvasSizing(page);

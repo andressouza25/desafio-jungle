@@ -1,4 +1,5 @@
-import { Application, Container, TilingSprite } from 'pixi.js';
+import { Application, Container, TilingSprite, UPDATE_PRIORITY } from 'pixi.js';
+import type { Ticker } from 'pixi.js';
 import { loadWaterTexture } from './foundationAssets';
 
 export const LOGICAL_ARENA = Object.freeze({ width: 1280, height: 720 });
@@ -17,7 +18,8 @@ export class ArenaRenderer {
   private resizeFrame: number | null = null;
   private destroyed = false;
 
-  constructor(private readonly host: HTMLDivElement, private readonly onState: (state: ArenaLoadState) => void) {
+  constructor(private readonly host: HTMLDivElement, private readonly onState: (state: ArenaLoadState) => void,
+    private readonly onElapsed?: (elapsedMs: number) => void) {
     void this.initialize();
   }
 
@@ -56,6 +58,7 @@ export class ArenaRenderer {
       }
 
       this.application = application;
+      if (this.onElapsed) application.ticker.add(this.onTick, this, UPDATE_PRIORITY.HIGH);
       this.world = new Container();
       const water = new TilingSprite({ texture, ...LOGICAL_ARENA });
       water.tileScale.set(2);
@@ -96,6 +99,16 @@ export class ArenaRenderer {
     this.resize();
   };
 
+  private readonly onTick = (ticker: Ticker) => {
+    if (!this.destroyed) this.onElapsed?.(ticker.elapsedMS);
+  };
+
+  setRunning(running: boolean) {
+    if (this.destroyed || !this.application) return;
+    if (running) this.application.ticker.start();
+    else this.application.ticker.stop();
+  }
+
   private watchDensity() {
     this.densityQuery?.removeEventListener('change', this.onDensityChange);
     this.densityQuery = window.matchMedia(`(resolution: ${window.devicePixelRatio || 1}dppx)`);
@@ -123,6 +136,8 @@ export class ArenaRenderer {
   }
 
   private releaseResources() {
+    this.application?.ticker.stop();
+    this.application?.ticker.remove(this.onTick, this);
     this.observer?.disconnect();
     this.observer = null;
     if (this.resizeFrame !== null) window.cancelAnimationFrame(this.resizeFrame);

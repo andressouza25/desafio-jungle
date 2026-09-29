@@ -244,7 +244,7 @@ This includes values such as:
 
 Each match receives a configuration snapshot when it starts.
 
-The Options screen currently saves two settings in browser storage: **Game session time** (60–180 seconds, default 120) and **Enemy spawn time** (1–30 seconds, default 3). Changes require **Save Changes** and are read afresh for future match snapshots; an active match must not change. The gameplay-side snapshot is scheduled for the later simulation task.
+The Options screen saves two settings in browser storage: **Game session time** (60–180 seconds, default 120) and **Enemy spawn time** (1–30 seconds, default 3). Changes require **Save Changes**. Start and restart read current Options and create an immutable `GameConfig` snapshot; subsequent changes cannot alter an active match. Balance defaults live in `src/game/config/GameConfig.ts`; their movement/combat systems are not implemented yet.
 
 ---
 
@@ -334,11 +334,12 @@ The development server prints its local URL. Available validation and production
 npm run typecheck
 npm run lint
 npm test
+npm run test:unit
 npm run build
 npm run preview
 ```
 
-`npm test` runs the bootstrap, navigation, Options UI and Pixi asset/lifecycle tests in desktop and mobile Chromium. After `npm run build`, `npm run preview` serves the production build locally. Game currently shows a static water arena with loading progress and retry; gameplay and API behavior are not implemented yet.
+`npm test` runs bootstrap, navigation, Options, asset-loading and simulation-integration tests in desktop and mobile Chromium. `npm run test:unit` runs deterministic clock, lifecycle, immutable-configuration and randomness tests in Node, without a browser or server. After `npm run build`, `npm run preview` serves the production build locally. Game shows the static water arena with loading/retry and minimal Start Match, Pause/Resume, End Match and Restart Match controls. Blur/hidden-tab pause requires explicit Resume. These controls validate the lifecycle foundation; movement, combat, automatic timeout/death rules, final HUD/Result and API behavior are not implemented yet.
 
 ---
 
@@ -370,7 +371,7 @@ Deployment instructions and the production URL will be added once the applicatio
 
 ## Status
 
-**Current phase:** UI and Pixi asset foundations complete. Game simulation has not started.
+**Current phase:** Fixed-timestep simulation and lifecycle foundation complete. Player/input implementation has not started.
 
 Current documentation:
 
