@@ -1,8 +1,8 @@
-import { Application, Container, TilingSprite, UPDATE_PRIORITY } from 'pixi.js';
+import { Application, Container, Sprite, TilingSprite, UPDATE_PRIORITY } from 'pixi.js';
 import type { Ticker } from 'pixi.js';
-import { loadWaterTexture } from './foundationAssets';
-
-export const LOGICAL_ARENA = Object.freeze({ width: 1280, height: 720 });
+import { loadFoundationTextures } from './foundationAssets';
+import { LOGICAL_ARENA } from '../config/arena';
+import type { PlayerState } from '../entities/Player';
 
 export type ArenaLoadState =
   | { kind: 'loading'; progress: number; phase: 'assets' | 'renderer' }
@@ -13,6 +13,7 @@ export class ArenaRenderer {
   private readonly abort = new AbortController();
   private application: Application | null = null;
   private world: Container | null = null;
+  private player: Sprite | null = null;
   private observer: ResizeObserver | null = null;
   private densityQuery: MediaQueryList | null = null;
   private resizeFrame: number | null = null;
@@ -29,7 +30,7 @@ export class ArenaRenderer {
     let phase: 'assets' | 'renderer' = 'assets';
 
     try {
-      const texture = await loadWaterTexture((progress) => {
+      const textures = await loadFoundationTextures((progress) => {
         if (!this.destroyed) this.onState({ kind: 'loading', phase: 'assets', progress });
       }, this.abort.signal);
       if (this.destroyed) return;
@@ -60,10 +61,15 @@ export class ArenaRenderer {
       this.application = application;
       if (this.onElapsed) application.ticker.add(this.onTick, this, UPDATE_PRIORITY.HIGH);
       this.world = new Container();
-      const water = new TilingSprite({ texture, ...LOGICAL_ARENA });
+      const water = new TilingSprite({ texture: textures.water, ...LOGICAL_ARENA });
       water.tileScale.set(2);
       water.eventMode = 'none';
       this.world.addChild(water);
+      this.player = new Sprite({ texture: textures.player, anchor: 0.5 });
+      this.player.label = 'player';
+      this.player.eventMode = 'none';
+      this.player.visible = false;
+      this.world.addChild(this.player);
       application.stage.eventMode = 'none';
       application.stage.addChild(this.world);
       application.canvas.setAttribute('role', 'img');
@@ -86,7 +92,7 @@ export class ArenaRenderer {
         this.onState({
           kind: 'error',
           message: phase === 'assets'
-            ? 'The water texture could not be loaded. Please try again.'
+            ? 'The game assets could not be loaded. Please try again.'
             : 'The arena could not be prepared. Please try again.',
         });
       }
@@ -107,6 +113,17 @@ export class ArenaRenderer {
     if (this.destroyed || !this.application) return;
     if (running) this.application.ticker.start();
     else this.application.ticker.stop();
+  }
+
+  syncPlayer(state: Readonly<PlayerState> | null) {
+    if (this.destroyed || !this.player || !this.application) return;
+    this.player.visible = state !== null;
+    if (state) {
+      this.player.position.set(state.x, state.y);
+      // Supplied ship_2 points down. Domain heading zero points up.
+      this.player.rotation = state.rotation + Math.PI;
+    }
+    if (!this.application.ticker.started) this.application.render();
   }
 
   private watchDensity() {
@@ -147,6 +164,7 @@ export class ArenaRenderer {
     this.application?.destroy({ removeView: true }, { children: true, texture: false, textureSource: false });
     this.application = null;
     this.world = null;
+    this.player = null;
   }
 
   destroy() {

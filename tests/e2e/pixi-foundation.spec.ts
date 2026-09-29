@@ -152,35 +152,37 @@ test('loads reusable water and cleans up five mount cycles, resizing and DPR cha
   expect(errors).toEqual([]);
 });
 
-test('shows asset failure and recovers through the visible retry control', async ({ page }) => {
-  const errors = trackBrowserErrors(page);
-  await page.goto('/');
-  let shouldFail = true;
-  let requests = 0;
-  await page.route('**/*tile_73*.png*', async (route) => {
-    requests += 1;
-    if (shouldFail) await route.fulfill({ status: 200, contentType: 'image/png', body: 'invalid image data' });
-    else await route.continue();
+for (const asset of ['tile_73', 'ship_2']) {
+  test(`shows ${asset} failure and recovers through the visible retry control`, async ({ page }) => {
+    const errors = trackBrowserErrors(page);
+    await page.goto('/');
+    let shouldFail = true;
+    let requests = 0;
+    await page.route(`**/*${asset}*.png*`, async (route) => {
+      requests += 1;
+      if (shouldFail) await route.fulfill({ status: 200, contentType: 'image/png', body: 'invalid image data' });
+      else await route.continue();
+    });
+    await page.getByRole('button', { name: 'Play', exact: true }).click();
+    await expect(page.getByRole('alert')).toHaveText('The game assets could not be loaded. Please try again.');
+    await expect(page.locator('canvas')).toHaveCount(0);
+    expect((await resources(page)).applications).toBe(0);
+    await page.keyboard.press('Tab');
+    await expect(page.getByRole('button', { name: 'Main Menu', exact: true })).toBeFocused();
+    await page.keyboard.press('Tab');
+    const retry = page.getByRole('button', { name: 'Retry Loading' });
+    await expect(retry).toBeFocused();
+    expect(await retry.evaluate((button) => getComputedStyle(button).outlineStyle)).not.toBe('none');
+    shouldFail = false;
+    await page.keyboard.press('Enter');
+    await expect(page.getByRole('status')).toHaveText('Arena ready. No match is running.');
+    await expect(page.getByRole('img', { name: 'Water arena' })).toBeVisible();
+    expect(requests).toBe(2);
+    await page.getByRole('button', { name: 'Main Menu', exact: true }).click();
+    await expectClean(page);
+    expect(errors).toEqual([]);
   });
-  await page.getByRole('button', { name: 'Play', exact: true }).click();
-  await expect(page.getByRole('alert')).toHaveText('The water texture could not be loaded. Please try again.');
-  await expect(page.locator('canvas')).toHaveCount(0);
-  expect((await resources(page)).applications).toBe(0);
-  await page.keyboard.press('Tab');
-  await expect(page.getByRole('button', { name: 'Main Menu', exact: true })).toBeFocused();
-  await page.keyboard.press('Tab');
-  const retry = page.getByRole('button', { name: 'Retry Loading' });
-  await expect(retry).toBeFocused();
-  expect(await retry.evaluate((button) => getComputedStyle(button).outlineStyle)).not.toBe('none');
-  shouldFail = false;
-  await page.keyboard.press('Enter');
-  await expect(page.getByRole('status')).toHaveText('Arena ready. No match is running.');
-  await expect(page.getByRole('img', { name: 'Water arena' })).toBeVisible();
-  expect(requests).toBe(2);
-  await page.getByRole('button', { name: 'Main Menu', exact: true }).click();
-  await expectClean(page);
-  expect(errors).toEqual([]);
-});
+}
 
 test('leaving during asset loading prevents late canvases and shares the in-flight request', async ({ page }) => {
   const errors = trackBrowserErrors(page);
@@ -194,8 +196,10 @@ test('leaving during asset loading prevents late canvases and shares the in-flig
     await route.continue();
   });
   await page.getByRole('button', { name: 'Play', exact: true }).click();
-  await expect(page.getByRole('status')).toHaveText('Loading water texture… 0%');
-  await expect(page.getByRole('progressbar', { name: 'Game assets' })).toHaveAttribute('value', '0');
+  await expect(page.getByRole('status')).toContainText('Loading game assets…');
+  await expect(page.getByRole('progressbar', { name: 'Game assets' })).toBeVisible();
+  // Player completes while the water request is deliberately held: partial progress is meaningful.
+  await expect(page.getByRole('progressbar', { name: 'Game assets' })).toHaveAttribute('value', '0.5');
   await page.getByRole('button', { name: 'Main Menu', exact: true }).click();
   await expectClean(page);
   await page.getByRole('button', { name: 'Play', exact: true }).click();

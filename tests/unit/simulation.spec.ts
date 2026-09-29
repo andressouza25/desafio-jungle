@@ -196,7 +196,7 @@ test('clock and random source can be injected without browser or Pixi dependenci
   const deliveries: number[] = [];
   const clock: SimulationClock = {
     get elapsedSeconds() { return delegate.elapsedSeconds; },
-    advance(ms) { deliveries.push(ms); return delegate.advance(ms); },
+    advance(ms, onStep) { deliveries.push(ms); return delegate.advance(ms, onStep); },
     rebase() { delegate.rebase(); }, reset() { delegate.reset(); },
   };
   const seeds: number[] = [];

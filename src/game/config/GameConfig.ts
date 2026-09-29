@@ -55,8 +55,8 @@ export function snapshotGameConfig(config: GameConfig): GameConfig {
   });
 }
 
-// Speeds use logical units/second; rotations use radians/second. These are initial,
-// inactive balance defaults, not implemented movement, weapons or enemy behavior.
+// Speeds use logical units/second; rotations use radians/second. These are
+// initial balance defaults; weapons and enemy behavior remain inactive.
 export const DEFAULT_GAME_CONFIG: GameConfig = snapshotGameConfig({
   session: { durationSeconds: DEFAULT_OPTIONS.sessionDurationSeconds },
   player: { health: 100, movementSpeed: 180, rotationSpeed: 2.5 },

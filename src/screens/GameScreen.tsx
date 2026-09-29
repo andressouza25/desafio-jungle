@@ -58,11 +58,12 @@ export function GameScreen({ onLeave, onViewResult }: GameScreenProps) {
         <ArtButton type="button" variant="secondary" onClick={leaveGame}>Main Menu</ArtButton>
       </header>
       <div className="game-screen__arena" aria-busy={loadState.kind === 'loading'}>
-        <div className="game-screen__viewport" ref={hostRef} data-testid="arena-viewport" />
+        <div className="game-screen__viewport" ref={hostRef} data-testid="arena-viewport"
+          tabIndex={lifecycle === 'running' ? 0 : -1} role="group" aria-label="Gameplay keyboard controls" aria-describedby="game-controls" />
         {loadState.kind === 'loading' && (
           <div className="game-screen__loading">
             <p role="status">{loadState.phase === 'assets'
-              ? `Loading water texture… ${Math.round(loadState.progress * 100)}%`
+              ? `Loading game assets… ${Math.round(loadState.progress * 100)}%`
               : 'Preparing arena…'}</p>
             <progress aria-label="Game assets" value={loadState.progress} max={1} />
           </div>
@@ -75,6 +76,8 @@ export function GameScreen({ onLeave, onViewResult }: GameScreenProps) {
         )}
       </div>
       <footer className="game-screen__footer">
+        <p id="game-controls">W/↑: forward · A/← and D/→: turn · Space/Q/E: attacks (not firing yet) · Esc: pause.
+          Keyboard controls require arena focus. Tab returns to page controls.</p>
         <p role={loadState.kind === 'ready' ? 'status' : undefined}>
           {loadState.kind !== 'ready' ? 'No match is running.' : lifecycle === 'ready'
             ? 'Arena ready. No match is running.' : `Match ${lifecycle}.`}

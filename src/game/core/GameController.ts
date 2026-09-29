@@ -5,6 +5,10 @@ import { FixedStepClock } from './FixedStepClock';
 import type { SimulationClock } from './FixedStepClock';
 import { createSeededRandom } from './random';
 import type { RandomSource } from './random';
+import { InputState } from '../input/InputState';
+import { createPlayer } from '../entities/Player';
+import type { PlayerState } from '../entities/Player';
+import { movePlayer } from '../systems/movePlayer';
 
 interface ControllerOptions {
   readConfig: () => GameConfig;
@@ -14,6 +18,8 @@ interface ControllerOptions {
 }
 
 export class GameController implements GameSession {
+  readonly input = new InputState();
+  private player: PlayerState | null = null;
   private state: LifecycleState = 'loading';
   private config: GameConfig | null = null;
   private endReason: EndReason | null = null;
@@ -30,6 +36,7 @@ export class GameController implements GameSession {
   }
 
   get random(): RandomSource | null { return this.randomSource; }
+  getPlayerState(): Readonly<PlayerState> | null { return this.player ? Object.freeze({ ...this.player }) : null; }
 
   getSnapshot(): GameSnapshot {
     return Object.freeze({ state: this.state, elapsedSeconds: this.clock.elapsedSeconds,
@@ -63,6 +70,8 @@ export class GameController implements GameSession {
     const config = snapshotGameConfig(this.options.readConfig());
     const random = (this.options.createRandom ?? createSeededRandom)(this.seed);
     this.clock.reset();
+    this.input.clear();
+    this.player = createPlayer(config);
     this.config = config;
     this.randomSource = random;
     this.endReason = null;
@@ -71,13 +80,18 @@ export class GameController implements GameSession {
   }
 
   advance(elapsedMs: number) {
-    if (!this.destroyed && this.state === 'running') this.clock.advance(elapsedMs);
+    if (this.destroyed || this.state !== 'running') return;
+    if (this.input.takePauseRequest()) { this.pause(); return; }
+    this.clock.advance(elapsedMs, (deltaSeconds) => {
+      if (this.player && this.config) movePlayer(this.player, this.input, this.config, deltaSeconds);
+    });
     // Per-step time stays here. UI receives lifecycle transitions, never this loop.
   }
 
   pause() {
     if (this.destroyed || this.state !== 'running') return;
     this.clock.rebase();
+    this.input.clear();
     this.state = 'paused';
     this.publish();
   }
@@ -85,6 +99,7 @@ export class GameController implements GameSession {
   resume() {
     if (this.destroyed || this.state !== 'paused') return;
     this.clock.rebase();
+    this.input.clear();
     this.state = 'running';
     this.publish();
   }
@@ -92,6 +107,7 @@ export class GameController implements GameSession {
   end(reason: EndReason = 'manual') {
     if (this.destroyed || (this.state !== 'running' && this.state !== 'paused')) return;
     this.clock.rebase();
+    this.input.clear();
     this.state = 'ended';
     this.endReason = reason;
     this.publish();
@@ -111,6 +127,7 @@ export class GameController implements GameSession {
       this.endReason = 'abandoned';
     }
     this.destroyed = true;
+    this.input.clear();
     this.clock.rebase();
     this.randomSource = null;
     this.publish();

@@ -244,7 +244,7 @@ This includes values such as:
 
 Each match receives a configuration snapshot when it starts.
 
-The Options screen saves two settings in browser storage: **Game session time** (60–180 seconds, default 120) and **Enemy spawn time** (1–30 seconds, default 3). Changes require **Save Changes**. Start and restart read current Options and create an immutable `GameConfig` snapshot; subsequent changes cannot alter an active match. Balance defaults live in `src/game/config/GameConfig.ts`; their movement/combat systems are not implemented yet.
+The Options screen saves two settings in browser storage: **Game session time** (60–180 seconds, default 120) and **Enemy spawn time** (1–30 seconds, default 3). Changes require **Save Changes**. Start and restart read current Options and create an immutable `GameConfig` snapshot; subsequent changes cannot alter an active match. Balance defaults live in `src/game/config/GameConfig.ts`. Player movement uses its snapshotted speeds; combat systems are not implemented yet.
 
 ---
 
@@ -339,25 +339,25 @@ npm run build
 npm run preview
 ```
 
-`npm test` runs bootstrap, navigation, Options, asset-loading and simulation-integration tests in desktop and mobile Chromium. `npm run test:unit` runs deterministic clock, lifecycle, immutable-configuration and randomness tests in Node, without a browser or server. After `npm run build`, `npm run preview` serves the production build locally. Game shows the static water arena with loading/retry and minimal Start Match, Pause/Resume, End Match and Restart Match controls. Blur/hidden-tab pause requires explicit Resume. These controls validate the lifecycle foundation; movement, combat, automatic timeout/death rules, final HUD/Result and API behavior are not implemented yet.
+`npm test` runs bootstrap, navigation, Options, asset-loading, lifecycle and keyboard-to-player tests in desktop and mobile Chromium. `npm run test:unit` runs deterministic clock, lifecycle, immutable-configuration, randomness, input and player-motion tests in Node, without a browser or server. After `npm run build`, `npm run preview` serves the production build locally. Game shows the water arena and keyboard-controlled player with loading/retry and minimal Start Match, Pause/Resume, End Match and Restart Match controls. Blur/hidden-tab pause requires explicit Resume. Combat, collision/arena bounds, touch input, automatic timeout/death rules, final HUD/Result and API behavior are not implemented yet.
 
 ---
 
 ## Controls
 
-Final keyboard and touch mappings will be documented after the input system is implemented.
+Start/resume/restart focuses the arena. Keyboard input is captured only while a match is running and the arena has focus; **Tab** returns to page controls. Moving focus out of the arena clears held input. Pause, focus loss, end and restart also clear input: release and press a held key again after resuming. Browser shortcuts and editable controls are not captured.
 
-Required gameplay actions include:
+Physical letter bindings use `KeyboardEvent.code` (the W/A/D/Q/E positions on a QWERTY keyboard). Opposing left/right turns cancel; movement and attacks can be held together. Attack bindings currently only update input actions, with no firing behavior. Touch controls are deferred.
 
 | Action          | Keyboard | Touch     |
 | --------------- | -------- | --------- |
-| Move forward    | TBD      | Supported |
-| Turn left       | TBD      | Supported |
-| Turn right      | TBD      | Supported |
-| Front fire      | TBD      | Supported |
-| Left broadside  | TBD      | Supported |
-| Right broadside | TBD      | Supported |
-| Pause           | TBD      | Supported |
+| Move forward    | W / ↑    | Deferred |
+| Turn left       | A / ←    | Deferred |
+| Turn right      | D / →    | Deferred |
+| Front fire      | Space    | Deferred |
+| Left broadside  | Q        | Deferred |
+| Right broadside | E        | Deferred |
+| Pause           | Esc      | Deferred |
 
 ---
 
@@ -371,7 +371,7 @@ Deployment instructions and the production URL will be added once the applicatio
 
 ## Status
 
-**Current phase:** Fixed-timestep simulation and lifecycle foundation complete. Player/input implementation has not started.
+**Current phase:** Fixed-timestep simulation, lifecycle, player movement and keyboard input implemented. Arena collision has not started.
 
 Current documentation:
 

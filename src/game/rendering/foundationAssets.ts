@@ -1,5 +1,6 @@
 import { Assets, Texture } from 'pixi.js';
 import waterUrl from '../../../assets/png/retina/tiles/tile_73.png?url';
+import playerUrl from '../../../assets/png/default/ships/ship_2.png?url';
 
 interface FoundationAsset {
   src: string;
@@ -8,10 +9,14 @@ interface FoundationAsset {
 
 export const FOUNDATION_ASSETS = {
   water: { src: waterUrl, data: { resolution: 2 } },
-} satisfies Record<'water', FoundationAsset>;
+  // Default/retina ship_2 are identical 66×113 files, not separate density variants.
+  player: { src: playerUrl, data: { resolution: 1 } },
+} satisfies Record<'water' | 'player', FoundationAsset>;
 
-let texture: Texture | null = null;
-let pending: Promise<Texture> | null = null;
+interface FoundationTextures { water: Texture; player: Texture }
+
+let textures: FoundationTextures | null = null;
+let pending: Promise<FoundationTextures> | null = null;
 let progress = 0;
 const subscribers = new Set<(progress: number) => void>();
 
@@ -21,10 +26,10 @@ function publishProgress(value: number) {
 }
 
 // The small, shared asset cache outlives a renderer. Unmount only removes its subscription.
-export async function loadWaterTexture(onProgress: (progress: number) => void, signal: AbortSignal): Promise<Texture> {
-  if (texture) {
+export async function loadFoundationTextures(onProgress: (progress: number) => void, signal: AbortSignal): Promise<FoundationTextures> {
+  if (textures) {
     if (!signal.aborted) onProgress(1);
-    return texture;
+    return textures;
   }
 
   function unsubscribe() {
@@ -40,16 +45,29 @@ export async function loadWaterTexture(onProgress: (progress: number) => void, s
 
   if (!pending) {
     publishProgress(0);
-    pending = Assets.load<Texture>(FOUNDATION_ASSETS.water, {
-      onProgress: publishProgress,
-      strategy: 'throw',
-    }).then((loaded) => {
-      if (!(loaded instanceof Texture)) throw new Error('The water asset is not a texture.');
-      texture = loaded;
+    const assetProgress = { water: 0, player: 0 };
+    function load(name: keyof FoundationTextures) {
+      return Assets.load<Texture>(FOUNDATION_ASSETS[name], {
+        onProgress: (value) => {
+          assetProgress[name] = value;
+          publishProgress((assetProgress.water + assetProgress.player) / 2);
+        },
+        strategy: 'throw',
+      }).then((texture) => {
+        if (!(texture instanceof Texture)) throw new Error(`The ${name} asset is not a texture.`);
+        return texture;
+      });
+    }
+    // Wait for both requests to settle before retrying, even if one fails first.
+    pending = Promise.allSettled([load('water'), load('player')]).then(([water, player]) => {
+      if (water.status === 'rejected') throw water.reason;
+      if (player.status === 'rejected') throw player.reason;
+      const loaded = { water: water.value, player: player.value };
+      textures = loaded;
       return loaded;
     }).finally(() => {
       pending = null;
-      if (!texture) progress = 0;
+      if (!textures) progress = 0;
     });
   }
 

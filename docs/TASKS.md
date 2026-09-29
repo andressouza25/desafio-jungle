@@ -10,7 +10,7 @@ Implement one task at a time, in order. Before each task, follow `AGENTS.md`, re
 - [x] [TASK-03 — UI Foundation](./tasks/TASK-03-ui-foundation.md)
 - [x] [TASK-04 — PixiJS and Asset Foundation](./tasks/TASK-04-pixi-asset-foundation.md)
 - [x] [TASK-05 — Game Simulation and Lifecycle](./tasks/TASK-05-game-simulation-lifecycle.md)
-- [ ] [TASK-06 — Player and Input](./tasks/TASK-06-player-input.md)
+- [x] [TASK-06 — Player and Input](./tasks/TASK-06-player-input.md)
 - [ ] [TASK-07 — Arena and Collision](./tasks/TASK-07-arena-collision.md)
 - [ ] [TASK-08 — Weapons and Projectiles](./tasks/TASK-08-weapons-projectiles.md)
 - [ ] [TASK-09 — Enemies and Spawning](./tasks/TASK-09-enemies-spawning.md)
