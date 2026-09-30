@@ -412,3 +412,52 @@ main:focus { outline: none; }
   .pause-dialog__actions { grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; align-items: center; }
   .pause-dialog .art-button { min-height: 52px; padding-inline: 8px; font-size: 18px; }
 }
+
+/* Captain's log keeps the supplied wide wood panel and navy data rows. */
+.sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
+.menu-panel--log { width: min(1400px, 100%); min-height: 640px; padding: 12px 24px 24px; gap: 16px; }
+.log-heading { margin: 0; font-size: clamp(26px, 4vw, 38px); font-weight: 900; }
+.log-tabs { display: flex; justify-content: center; gap: 16px; width: 100%; }
+.log-tabs .art-button { width: min(260px, 48%); min-height: 60px; font-size: 18px; }
+.log-context { font-size: 14px; width: 100%; }
+.log-context p { margin: 0 0 8px; }
+.log-status { min-height: 24px; width: 100%; }
+.log-status p { margin: 0; }
+.log-refresh { min-height: 44px; padding: 8px 16px; border: 0; background: transparent; color: var(--parchment); text-decoration: underline; text-underline-offset: 4px; }
+.log-table { border-collapse: separate; border-spacing: 0 8px; width: 100%; text-align: left; font-size: 16px; }
+.log-table th, .log-table td { padding: 12px 16px; overflow-wrap: anywhere; }
+.log-table thead th { font-size: 13px; color: var(--parchment); }
+.log-table tbody tr { background: rgba(8, 24, 35, .65); }
+.log-table tbody tr[data-local='true'] { background: rgba(229, 166, 74, .22); }
+.log-table tbody th { font-weight: 700; }
+.log-table tbody small { display: block; margin-top: 4px; font-size: 12px; font-weight: 400; }
+.log-score { color: var(--gold); font-weight: 800; }
+.log-you { font-size: 12px; padding: 2px 4px; border: 1px solid var(--gold); margin-left: 4px; }
+.log-table time { font-size: 14px; }
+.log-details { text-align: left; font-size: 13px; font-weight: 400; }
+.log-context > .log-details { max-width: 560px; margin: auto; }
+.log-details summary { cursor: pointer; min-height: 44px; padding: 12px 0; }
+.log-details dl { margin: 0; }
+.log-details dl > div { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; padding: 4px 0; }
+.log-details dd { margin: 0; overflow-wrap: anywhere; }
+.log-pagination { display: flex; justify-content: center; align-items: center; gap: 16px; width: 100%; }
+.log-page-button--previous::after { background-image: url('../assets/png/default/ui/controls/icon_turn_left.png'); }
+.log-page-button--next::after { background-image: url('../assets/png/default/ui/controls/icon_turn_right.png'); }
+.log-pagination .log-page-button { width: 48px; height: 48px; flex-basis: 48px; }
+.log-pagination p { min-width: 110px; font-size: 13px; }
+.log-empty { min-height: 160px; display: grid; align-items: center; }
+@media (max-width: 767px) {
+  .menu-panel--log { padding: 12px 8px; gap: 12px; min-height: calc(100dvh - 44px); }
+  .log-tabs { gap: 4px; }
+  .log-tabs .art-button { font-size: 13px; padding-inline: 0; min-height: 52px; border-width: 12px; border-image-width: 12px; }
+  .log-tabs .art-button span { white-space: normal; line-height: 1.25; }
+  .log-table thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+  .log-table tbody tr { display: block; padding: 8px; margin-bottom: 12px; }
+  .log-table tbody td, .log-table tbody th { display: grid; grid-template-columns: 72px minmax(0, 1fr); gap: 8px; padding: 8px 0; }
+  .log-table tbody td::before, .log-table tbody th::before { content: attr(data-label); font-size: 13px; font-weight: 400; color: var(--parchment); }
+  .log-table tbody th small, .log-table tbody th .log-details, .log-table tbody th .log-you { grid-column: 2; }
+  .log-table tbody th small { margin: 0; }
+  .log-table tbody th .log-you { justify-self: start; }
+  .log-pagination { gap: 4px; }
+  .log-pagination p { min-width: 85px; font-size: 12px; }
+}

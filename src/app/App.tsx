@@ -3,7 +3,7 @@ import type { Screen } from './navigation';
 import { GameScreen } from '../screens/GameScreen';
 import { MainMenuScreen } from '../screens/MainMenuScreen';
 import { OptionsScreen } from '../screens/OptionsScreen';
-import { PlaceholderScreen } from '../screens/PlaceholderScreens';
+import { RankingScreen, HistoryScreen } from '../screens/CaptainsLog';
 import { ResultScreen } from '../screens/ResultScreen';
 import { loadLastResult, saveLastResult } from '../storage/lastResult';
 import type { MatchResult } from '../game/GameSession';
@@ -40,9 +40,9 @@ export function App() {
         return result ? <ResultScreen result={result} saved={saved}
           onPlayAgain={() => { setAutoStart(true); setScreen('game'); }} onBack={() => { setAutoStart(false); setScreen('main-menu'); }} /> : null;
       case 'ranking':
-        return <PlaceholderScreen title="Ranking" onBack={() => setScreen('main-menu')} />;
+        return <RankingScreen onBack={() => setScreen('main-menu')} onSwitch={() => setScreen('match-history')} />;
       case 'match-history':
-        return <PlaceholderScreen title="Match History" onBack={() => setScreen('main-menu')} />;
+        return <HistoryScreen onBack={() => setScreen('main-menu')} onSwitch={() => setScreen('ranking')} />;
     }
   }
 
