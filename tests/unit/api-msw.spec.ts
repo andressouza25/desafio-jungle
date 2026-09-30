@@ -37,6 +37,18 @@ test('contracts reject incomplete/invalid records and canonicalize every configu
   expect(configurationKey({ ...DEFAULT_GAME_CONFIG, player: { ...DEFAULT_GAME_CONFIG.player, health: 101 } })).not.toBe(configurationKey(DEFAULT_GAME_CONFIG));
   expect(configurationKey({ ...DEFAULT_GAME_CONFIG, spawn: { ...DEFAULT_GAME_CONFIG.spawn, distribution: { shooter: 0.5, chaser: 0.5 } } })).toBe(configurationKey(DEFAULT_GAME_CONFIG));
 });
+test('HTML fallback and malformed list responses reject before UI rendering; valid retry recovers', async () => {
+  for (const resource of ['ranking', 'history'] as const) {
+    const query = () => resource === 'ranking' ? getRanking(ranking)
+      : getHistory({ playerId: 'captain-0', page: 1, pageSize: 2 });
+    server.use(http.get(`*/api/${resource}`, () => HttpResponse.html('<html>Static fallback</html>')));
+    await expect(query()).rejects.toThrow('Invalid match list response.');
+    server.use(http.get(`*/api/${resource}`, () => HttpResponse.json({ page: 1, pageSize: 2, total: 1, totalPages: 1, items: [{}] })));
+    await expect(query()).rejects.toThrow('Invalid match list record.');
+    server.resetHandlers();
+    expect((await query()).items.length).toBeGreaterThan(0);
+  }
+});
 test('ranking equivalent configurations, ties, global positions and pagination', async () => {
   const first = await getRanking(ranking);
   expect(first.total).toBe(24); expect(first.totalPages).toBe(5);

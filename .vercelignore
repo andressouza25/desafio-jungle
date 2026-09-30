@@ -1,0 +1,9 @@
+.task18-clean.local/
+.task18-source.local.zip
+output/
+playwright-report/
+test-results/
+node_modules/
+.git/
+.agents/
+.playwright-cli/
