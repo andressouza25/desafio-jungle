@@ -158,7 +158,7 @@ test('loads reusable water and environment and cleans up five mount cycles, resi
   expect(errors).toEqual([]);
 });
 
-for (const asset of ['tile_73', 'ship_2', 'tiles_sheet', 'cannon_ball']) {
+for (const asset of ['tile_73', 'ship_2', 'tiles_sheet', 'cannon_ball', 'ship_1', 'ship_3']) {
   test(`shows ${asset} failure and recovers through the visible retry control`, async ({ page }) => {
     const errors = trackBrowserErrors(page);
     await page.goto('/');
@@ -204,8 +204,8 @@ test('leaving during asset loading prevents late canvases and shares the in-flig
   await page.getByRole('button', { name: 'Play', exact: true }).click();
   await expect(page.getByRole('status')).toContainText('Loading game assets…');
   await expect(page.getByRole('progressbar', { name: 'Game assets' })).toBeVisible();
-  // Player, environment and projectile complete while water is held.
-  await expect(page.getByRole('progressbar', { name: 'Game assets' })).toHaveAttribute('value', '0.75');
+  // Player, both enemies, environment and projectile complete while water is held.
+  await expect(page.getByRole('progressbar', { name: 'Game assets' })).toHaveAttribute('value', String(5 / 6));
   await page.getByRole('button', { name: 'Main Menu', exact: true }).click();
   await expectClean(page);
   await page.getByRole('button', { name: 'Play', exact: true }).click();

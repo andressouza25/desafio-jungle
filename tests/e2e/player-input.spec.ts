@@ -69,7 +69,7 @@ async function player(page: Page) {
     const ship = world?.children.find((child) => child.label === 'player');
     if (!world || !ship) throw new Error('Expected the rendered player.');
     return { x: ship.x, y: ship.y, rotation: ((ship.rotation - Math.PI) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2),
-      visible: ship.visible, entities: world.children.filter((child) => !child.label.startsWith('projectile:')).length };
+      visible: ship.visible, entities: world.children.filter((child) => !child.label.startsWith('projectile:') && !child.label.startsWith('enemy:')).length };
   });
 }
 

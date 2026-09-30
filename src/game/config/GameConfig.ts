@@ -22,7 +22,7 @@ export interface GameConfig {
   readonly projectiles: Readonly<{ speed: number; damage: number; lifetimeSeconds: number }>;
   readonly chaser: Readonly<{ health: number; movementSpeed: number; rotationSpeed: number; impactDamage: number }>;
   readonly shooter: Readonly<{ health: number; movementSpeed: number; rotationSpeed: number; attackRange: number; cooldownSeconds: number }>;
-  readonly spawn: Readonly<{ intervalSeconds: number; distribution: Readonly<{ chaser: number; shooter: number }> }>;
+  readonly spawn: Readonly<{ intervalSeconds: number; minimumPlayerDistance: number; maxPositionAttempts: number; distribution: Readonly<{ chaser: number; shooter: number }> }>;
 }
 
 export type WeaponId = keyof GameConfig['weapons'];
@@ -31,10 +31,11 @@ export function snapshotGameConfig(config: GameConfig): GameConfig {
   const positiveValues = [
     config.session.durationSeconds, ...Object.values(config.player),
     config.weapons.front.cooldownSeconds, config.weapons.leftBroadside.cooldownSeconds, config.weapons.rightBroadside.cooldownSeconds,
-    ...Object.values(config.projectiles), ...Object.values(config.chaser), ...Object.values(config.shooter), config.spawn.intervalSeconds,
+    ...Object.values(config.projectiles), ...Object.values(config.chaser), ...Object.values(config.shooter), config.spawn.intervalSeconds, config.spawn.minimumPlayerDistance, config.spawn.maxPositionAttempts,
   ];
   const { chaser, shooter } = config.spawn.distribution;
   if (positiveValues.some((value) => !Number.isFinite(value) || value <= 0)
+    || !Number.isInteger(config.spawn.maxPositionAttempts)
     || !Number.isFinite(chaser) || !Number.isFinite(shooter) || chaser < 0 || shooter < 0 || Math.abs(chaser + shooter - 1) > 1e-9
     || config.session.durationSeconds < OPTION_LIMITS.sessionDurationSeconds.min
     || config.session.durationSeconds > OPTION_LIMITS.sessionDurationSeconds.max
@@ -58,7 +59,7 @@ export function snapshotGameConfig(config: GameConfig): GameConfig {
 }
 
 // Speeds use logical units/second; rotations use radians/second. These are
-// initial balance defaults; enemy behavior remains inactive.
+// initial balance defaults.
 export const DEFAULT_GAME_CONFIG: GameConfig = snapshotGameConfig({
   session: { durationSeconds: DEFAULT_OPTIONS.sessionDurationSeconds },
   player: { health: 100, movementSpeed: 180, rotationSpeed: 2.5 },
@@ -66,5 +67,5 @@ export const DEFAULT_GAME_CONFIG: GameConfig = snapshotGameConfig({
   projectiles: { speed: 400, damage: 25, lifetimeSeconds: 2 },
   chaser: { health: 50, movementSpeed: 110, rotationSpeed: 2, impactDamage: 25 },
   shooter: { health: 75, movementSpeed: 80, rotationSpeed: 2, attackRange: 400, cooldownSeconds: 2 },
-  spawn: { intervalSeconds: DEFAULT_OPTIONS.enemySpawnIntervalSeconds, distribution: { chaser: 0.5, shooter: 0.5 } },
+  spawn: { intervalSeconds: DEFAULT_OPTIONS.enemySpawnIntervalSeconds, minimumPlayerDistance: 450, maxPositionAttempts: 32, distribution: { chaser: 0.5, shooter: 0.5 } },
 });

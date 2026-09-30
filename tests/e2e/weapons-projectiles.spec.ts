@@ -40,7 +40,7 @@ async function shots(page: Page) {
   return page.evaluate(() => {
     const probe = window.__weaponProbe;
     const children = probe.application?.stage.children[0]?.children ?? [];
-    return children.filter((child) => child.label.startsWith('projectile:')).map((child) => {
+    return children.filter((child) => child.label.startsWith('projectile:') && !child.label.endsWith(':enemy')).map((child) => {
       if (!probe.observed.includes(child)) probe.observed.push(child);
       return { label: child.label, x: child.x, y: child.y, width: child.width, height: child.height };
     });

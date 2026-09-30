@@ -1,0 +1,2 @@
+export const ENEMY_COLLIDER_HALF_SIZE = 66;
+export const ENEMY_MUZZLE_DISTANCE = 60;

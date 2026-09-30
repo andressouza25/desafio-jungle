@@ -159,7 +159,7 @@ test('invalid configuration is reported before a match can run', () => {
   for (const durationSeconds of [0, 59, 181, NaN]) {
     expect(() => snapshotGameConfig({ ...DEFAULT_GAME_CONFIG, session: { durationSeconds } })).toThrow(RangeError);
   }
-  expect(() => snapshotGameConfig({ ...DEFAULT_GAME_CONFIG, spawn: { intervalSeconds: 0, distribution: { chaser: 0.5, shooter: 0.5 } } })).toThrow(RangeError);
+  expect(() => snapshotGameConfig({ ...DEFAULT_GAME_CONFIG, spawn: { ...DEFAULT_GAME_CONFIG.spawn, intervalSeconds: 0, distribution: { chaser: 0.5, shooter: 0.5 } } })).toThrow(RangeError);
   const game = new GameController({ readConfig: () => ({ ...DEFAULT_GAME_CONFIG, player: { ...DEFAULT_GAME_CONFIG.player, health: 0 } }) });
   game.markReady();
   expect(() => game.start()).toThrow(RangeError);

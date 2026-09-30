@@ -1,10 +1,10 @@
 import type { WeaponId } from '../config/GameConfig';
 
-export type ProjectileResolution = 'island' | 'expired' | 'arena-exit' | 'cleared';
+export type ProjectileResolution = 'island' | 'expired' | 'arena-exit' | 'cleared' | 'target';
 
 export interface ProjectileState {
   readonly id: number;
-  readonly weapon: WeaponId;
+  readonly weapon: WeaponId | 'enemy';
   x: number;
   y: number;
   readonly directionX: number;

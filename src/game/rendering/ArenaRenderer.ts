@@ -1,3 +1,4 @@
+import type { EnemyKind, EnemyState } from '../entities/Enemy';
 import { Application, Container, Rectangle, Sprite, Texture, TilingSprite, UPDATE_PRIORITY } from 'pixi.js';
 import type { Ticker } from 'pixi.js';
 import { loadFoundationTextures } from './foundationAssets';
@@ -17,6 +18,8 @@ export class ArenaRenderer {
   private player: Sprite | null = null;
   private islandTexture: Texture | null = null;
   private projectileTexture: Texture | null = null;
+  private enemyTextures: Record<EnemyKind, Texture> | null = null;
+  private readonly enemies = new Map<number, Sprite>();
   private readonly projectiles = new Map<number, Sprite>();
   private observer: ResizeObserver | null = null;
   private densityQuery: MediaQueryList | null = null;
@@ -64,6 +67,7 @@ export class ArenaRenderer {
 
       this.application = application;
       this.projectileTexture = textures.projectile;
+      this.enemyTextures = { chaser: textures.chaser, shooter: textures.shooter };
       if (this.onElapsed) application.ticker.add(this.onTick, this, UPDATE_PRIORITY.HIGH);
       this.world = new Container();
       const water = new TilingSprite({ texture: textures.water, ...LOGICAL_ARENA });
@@ -132,13 +136,34 @@ export class ArenaRenderer {
     else this.application.ticker.stop();
   }
 
-  syncState(state: Readonly<PlayerState> | null, projectiles: readonly Readonly<ProjectileState>[]) {
+  syncState(state: Readonly<PlayerState> | null, projectiles: readonly Readonly<ProjectileState>[], enemies: readonly Readonly<EnemyState>[] = []) {
     if (this.destroyed || !this.player || !this.application || !this.world || !this.projectileTexture) return;
     this.player.visible = state !== null;
     if (state) {
       this.player.position.set(state.x, state.y);
       // Supplied ship_2 points down. Domain heading zero points up.
       this.player.rotation = state.rotation + Math.PI;
+    }
+    const enemyIds = new Set<number>();
+    for (const enemy of enemies) {
+      if (enemy.destroyed || !this.enemyTextures) continue;
+      enemyIds.add(enemy.id);
+      let sprite = this.enemies.get(enemy.id);
+      if (!sprite) {
+        sprite = new Sprite({ texture: this.enemyTextures[enemy.kind], anchor: 0.5 });
+        sprite.label = `enemy:${enemy.id}:${enemy.kind}`;
+        sprite.eventMode = 'none';
+        this.enemies.set(enemy.id, sprite);
+        this.world.addChild(sprite);
+      }
+      sprite.position.set(enemy.x, enemy.y);
+      sprite.rotation = enemy.rotation + Math.PI;
+    }
+    for (const [id, sprite] of this.enemies) {
+      if (enemyIds.has(id)) continue;
+      this.world.removeChild(sprite);
+      sprite.destroy({ texture: false, textureSource: false });
+      this.enemies.delete(id);
     }
     const activeIds = new Set<number>();
     for (const projectile of projectiles) {
@@ -202,6 +227,8 @@ export class ArenaRenderer {
     this.densityQuery = null;
     this.application?.destroy({ removeView: true }, { children: true, texture: false, textureSource: false });
     this.projectiles.clear();
+    this.enemies.clear();
+    this.enemyTextures = null;
     this.projectileTexture = null;
     this.islandTexture?.destroy(false); // Release the frame wrapper, not the shared atlas source.
     this.islandTexture = null;
