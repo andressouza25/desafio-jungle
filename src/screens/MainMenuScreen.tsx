@@ -1,10 +1,13 @@
 import type { Screen } from '../app/navigation';
+import type { ReactNode } from 'react';
 import { ArtButton } from '../components/ui/ArtButton';
 import { ScreenShell } from '../components/ui/ScreenShell';
 import pirateTitle from '../../assets/png/default/ui/menu/title_pirate_battle.png';
 import pirateShip from '../../assets/png/default/ships/ship_2.png';
 
-export function MainMenuScreen({ onNavigate }: { onNavigate: (screen: Screen) => void }) {
+export function MainMenuScreen({ onNavigate, pendingRegistrations }: {
+  onNavigate: (screen: Screen) => void; pendingRegistrations?: ReactNode;
+}) {
   return (
     <ScreenShell className="menu-panel--home">
       <h1 className="menu-title"><img src={pirateTitle} alt="Pirate Battle" /></h1>
@@ -29,6 +32,7 @@ export function MainMenuScreen({ onNavigate }: { onNavigate: (screen: Screen) =>
           <ArtButton type="button" variant="secondary" onClick={() => onNavigate('match-history')}>Match History</ArtButton>
         </div>
       </nav>
+      {pendingRegistrations}
     </ScreenShell>
   );
 }

@@ -431,7 +431,7 @@ Console probes `ranking(request)`, `history(request)` and `submit(record)` follo
 
 Run `npm run test:unit -- tests/unit/api-msw.spec.ts` for contracts, all 14 scenarios, ordering, cancellation, out-of-order completion, idempotency and persistence isolation. Delays are injected in unit tests; only the native Axios timeout integration checks wait for real adapter deadlines. Run `npm test -- tests/e2e/api-msw.spec.ts` for browser interception and refresh persistence in desktop/mobile Chromium. To check the production worker, run `npm run build`, serve `npm run preview -- --host 127.0.0.1 --port 4173`, and set `E2E_BASE_URL=http://127.0.0.1:4173` before running that test. On PowerShell use `$env:E2E_BASE_URL='http://127.0.0.1:4173'`.
 
-Ranking/History screens are implemented in TASK-14. Gameplay submission wiring and pending recovery remain assigned to TASK-15.
+Ranking/History screens are implemented in TASK-14. TASK-15 connects completed gameplay matches to submission and pending recovery.
 
 ## Captain’s log (TASK-14)
 
@@ -442,3 +442,15 @@ History displays date/time in UTC, points, effective duration and termination re
 Queries retain the TASK-13 policy: immediately stale, five-minute unused cache retention, refresh on return/focus and two retries for transient failures. Cached content remains visible during background refresh and refresh errors. **Retry** recovers an error; **Refresh** requests fresh data. Page changes have their own query identity and no previous-page placeholder. The same control remains mounted through retry so keyboard focus is preserved.
 
 Run `npm test -- tests/e2e/ranking-history.spec.ts tests/e2e/navigation.spec.ts` for success, empty, server pagination, initial/background latency, cache return, error/retry, delayed page cancellation, configuration isolation, keyboard focus and responsive field coverage. Tests capture desktop/mobile reference screenshots in their Playwright output directories. Expected HTTP 503 browser resource diagnostics are distinguished from unhandled application/console errors.
+
+## Match submission and recovery (TASK-15)
+
+Completed timeout/death results automatically register as `captain-0` (Captain 1), using the same identity as Match History. Each completion creates one UUID, completion date and full match configuration record. That record is saved as the last result and queued before the first request. Active, manually ended and abandoned matches are never registered. Older saved summaries without an ID/configuration remain viewable without inventing a submission.
+
+Result displays **Submitting**, **Pending** or **Confirmed** registration status. Pending registrations appear on Result and Main Menu with a separate **Retry Registration** action for each battle. You can navigate and play again while registration is pending or submitting. Refresh restores the queue and requires manual retry; it does not resume gameplay or silently resend pending matches.
+
+The separate `pirate-battle:pending-submissions:v1` queue retains the original complete records until registration is confirmed. Retry preserves IDs and coalesces overlapping attempts for a match. The MSW endpoint independently returns the original record for an existing ID. Confirmation refreshes Ranking/History through their existing Query keys. Multiple pending battles recover independently. If device storage cannot be written, a warning explains that pending recovery cannot survive closing the page; in-memory retry and gameplay remain available.
+
+To reproduce ambiguous recovery, select `NETWORK-013` using the console controls above and finish a battle. The mock saves it, but Axios times out and Result stays pending. Run `window.pirateBattleNetwork.recover()` and click **Retry Registration**; the existing server record confirms without duplication. For unavailability, select `NETWORK-014`, finish a battle, optionally refresh, recover the scenario and retry. `NETWORK-008` reproduces connection failure. Mock reset clears confirmed server records/query cache but intentionally leaves the client pending queue available for retry.
+
+Run `npm run test:unit -- tests/unit/submission-recovery.spec.ts tests/unit/api-msw.spec.ts tests/unit/match-rules.spec.ts` and `npm test -- tests/e2e/submission-recovery.spec.ts` for identity, persistence, concurrent requests, cache refresh, actual completion/abandonment and recovery scenarios in desktop/mobile Chromium.

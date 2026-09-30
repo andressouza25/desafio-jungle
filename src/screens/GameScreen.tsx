@@ -7,12 +7,14 @@ import type { ArenaLoadState } from '../game/rendering/ArenaRenderer';
 import type { GameSnapshot, MatchResult } from '../game/GameSession';
 import { MatchHud } from './MatchHud';
 import { DEFAULT_GAME_CONFIG } from '../game/config/GameConfig';
+import type { MatchRecord } from '../api/contracts';
+import { LOCAL_CAPTAIN_ID, LOCAL_CAPTAIN_NAME } from '../api/localCaptain';
 import { loadOptions } from '../storage/options';
 import { ArtButton } from '../components/ui/ArtButton';
 
 interface GameScreenProps {
   onLeave: () => void;
-  onViewResult: (result: MatchResult) => void;
+  onViewResult: (result: MatchRecord) => void;
   autoStart?: boolean;
 }
 
@@ -23,6 +25,7 @@ export function GameScreen({ onLeave, onViewResult, autoStart = false }: GameScr
   const [loadState, setLoadState] = useState<ArenaLoadState>({ kind: 'loading', phase: 'assets', progress: 0 });
   const [snapshot, setSnapshot] = useState<GameSnapshot | null>(null);
   const lifecycle = snapshot?.state ?? 'loading';
+  const completedRef = useRef<{ result: MatchResult; record: MatchRecord } | null>(null);
 
   useEffect(() => {
     const host = hostRef.current;
@@ -52,7 +55,14 @@ export function GameScreen({ onLeave, onViewResult, autoStart = false }: GameScr
 
   useEffect(() => {
     if (autoStart && lifecycle === 'ready') sessionRef.current?.start();
-    if (snapshot?.result) onViewResult(snapshot.result);
+    if (snapshot?.result && snapshot.config) {
+      if (completedRef.current?.result !== snapshot.result) {
+        completedRef.current = { result: snapshot.result, record: Object.freeze({ ...snapshot.result,
+          matchId: crypto.randomUUID(), date: new Date().toISOString(), config: snapshot.config,
+          playerId: LOCAL_CAPTAIN_ID, playerName: LOCAL_CAPTAIN_NAME }) };
+      }
+      onViewResult(completedRef.current.record);
+    }
   }, [autoStart, lifecycle, snapshot, onViewResult]);
 
   return (

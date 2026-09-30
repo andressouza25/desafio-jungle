@@ -7,8 +7,8 @@ import { loadOptions } from '../storage/options';
 import { ArtButton } from '../components/ui/ArtButton';
 import { ScreenShell } from '../components/ui/ScreenShell';
 
-// A local fixture captain until TASK-15 connects completed matches to this identity.
-export const LOCAL_CAPTAIN_ID = 'captain-0';
+import { LOCAL_CAPTAIN_ID } from '../api/localCaptain';
+export { LOCAL_CAPTAIN_ID } from '../api/localCaptain';
 
 function currentConfig() {
   const options = loadOptions();

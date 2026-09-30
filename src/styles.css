@@ -342,6 +342,11 @@ main:focus { outline: none; }
 .result-details dt { font-size: 13px; }
 .result-details dd { margin: 8px 0 0; font-size: 18px; font-weight: 700; }
 .result-status { margin: 0; font-size: 13px; }
+.pending-submissions { width: 100%; margin: 24px auto 0; padding-top: 16px; border-top: 1px solid var(--gold); color: var(--parchment); text-align: left; font-size: 14px; }
+.pending-submissions h2 { font-size: 20px; }
+.pending-submissions ul { padding-left: 24px; }
+.pending-submissions li { margin-bottom: 24px; overflow-wrap: anywhere; }
+.pending-submissions small { display: block; }
 .result-actions { display: grid; justify-items: center; gap: 12px; width: 100%; }
 .result-actions .art-button--secondary { width: min(330px, 100%); }
 @media (max-width: 600px) {

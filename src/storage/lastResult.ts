@@ -1,6 +1,9 @@
 import type { MatchResult } from '../game/GameSession';
+import { parseMatch, type MatchRecord } from '../api/contracts';
 const STORAGE_KEY = 'pirate-battle:last-result:v1';
-export function parseResult(value: unknown): MatchResult | null {
+export function parseResult(value: unknown): MatchResult | MatchRecord | null {
+  const record = parseMatch(value);
+  if (record) return Object.freeze(record);
   if (!value || typeof value !== 'object' || !('score' in value) || !('durationSeconds' in value) || !('reason' in value)) return null;
   if (typeof value.score !== 'number' || !Number.isSafeInteger(value.score) || value.score < 0
     || typeof value.durationSeconds !== 'number' || !Number.isFinite(value.durationSeconds)
@@ -8,7 +11,7 @@ export function parseResult(value: unknown): MatchResult | null {
     || (value.reason !== 'timeout' && value.reason !== 'player-death')) return null;
   return Object.freeze({ score: value.score, durationSeconds: value.durationSeconds, reason: value.reason });
 }
-export function loadLastResult(): MatchResult | null {
+export function loadLastResult(): MatchResult | MatchRecord | null {
   try {
     const stored = localStorage.getItem(STORAGE_KEY);
     return stored ? parseResult(JSON.parse(stored)) : null;
