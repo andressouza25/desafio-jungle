@@ -1,326 +1,20 @@
 # Pirate Battle
 
-A 2D top-down naval shooter developed for the **Jungle Gaming Frontend Game Developer Challenge**.
+A 2D top-down naval shooter developed for the **Jungle Gaming Frontend Game Developer Challenge**. React, strict TypeScript and PixiJS run entirely in the browser. Players navigate islands, fight Chasers and Shooters, and score one point per enemy destroyed by player attacks. The match ends at timeout or zero health.
 
-The game is built with React, TypeScript and PixiJS and runs entirely in the browser.
+The [original challenge](./docs/CHALLENGE.md) and supplied [assets](./assets/) are preserved. Menus, Options, gameplay/HUD/pause, Result, Ranking, Match History and pending registration recovery are implemented. **Play the [public production build](https://desafio-jungle.vercel.app)**. See [deployment evidence and procedure](./docs/DEPLOYMENT.md).
 
-Players navigate a naval arena, avoid islands, fight enemy ships and accumulate points until the match ends.
+## Stack and architecture
 
-> This project is currently under development.
+React owns application UI; PixiJS renders the arena, ships, projectiles, health indicators and effects. Continuous gameplay stays outside React. Ranking, History and registration follow TanStack Query → typed API functions → Axios → REST → MSW. Vite builds the application, ESLint checks source, and Playwright runs Node unit tests, browser tests and visual comparisons.
 
----
+Read [ARCHITECTURE.md](./ARCHITECTURE.md) for the implemented boundaries, simulation, collisions, ownership, persistence, cache, recovery and tradeoffs. [MASTER_SPEC.md](./MASTER_SPEC.md), [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md) and [AGENTS.md](./AGENTS.md) contain requirements and development guidance; [docs/TASKS.md](./docs/TASKS.md) records the incremental roadmap.
 
-## Challenge
+## Setup and runtime
 
-The objective is to build a complete browser-based naval shooter demonstrating:
+Use **Node.js 22.x, at least 22.12.0**, as declared in package.json. Validation uses **Node 22.22.0 and npm 10.9.4 on Windows**; Vercel builds use Node 22.x. Dependencies are pinned by package-lock.json. Browser operation requires JavaScript, service workers (HTTPS or localhost) and browser storage for refresh durability. No environment variables, credentials or private backend are required to run the game.
 
-- gameplay architecture;
-- PixiJS rendering;
-- React integration;
-- TypeScript;
-- responsive controls;
-- remote state management;
-- API mocking;
-- automated testing;
-- accessibility;
-- performance awareness.
-
-The implementation follows the requirements provided by Jungle Gaming in the original challenge specification.
-
-The [original challenge specification](./docs/CHALLENGE.md) is preserved for reference. Its supplied assets are available under [`assets/`](./assets/).
-
----
-
-## Tech Stack
-
-### Core
-
-- React
-- TypeScript
-- PixiJS
-
-### Data
-
-- TanStack Query
-- Axios
-- MSW
-
-### Testing
-
-- Playwright
-
-Vite provides the development and production build tooling. ESLint checks the source, and Playwright runs browser tests.
-
----
-
-## Game Overview
-
-Pirate Battle is a single-player naval combat game viewed from a top-down perspective.
-
-The player controls a ship capable of:
-
-- moving forward;
-- rotating left and right;
-- firing a frontal cannon;
-- firing left and right broadsides.
-
-The arena contains islands and enemy ships.
-
-Two enemy types are required:
-
-### Chaser
-
-Pursues the player and causes damage by colliding with the player's ship.
-
-### Shooter
-
-Approaches the player and attacks from range.
-
-Destroying enemies through player attacks awards points.
-
-A match ends when:
-
-- the configured match timer reaches zero; or
-- the player's health reaches zero.
-
----
-
-## Application
-
-The project contains the following main experiences:
-
-```text
-Main Menu
-├── Play
-├── Options
-├── Ranking
-└── Match History
-
-Game
-├── Arena
-├── HUD
-├── Controls
-└── Pause
-
-Result
-├── Match summary
-├── Registration status
-├── Play Again
-└── Main Menu
-```
-
----
-
-## Architecture
-
-The application separates web UI from the continuous game simulation.
-
-```text
-React
-│
-├── Menus
-├── Options
-├── Ranking
-├── Match History
-├── Result
-└── Application UI
-
-Game
-│
-├── Simulation
-├── Input
-├── Entities
-├── Movement
-├── Combat
-├── Collision
-├── Spawning
-└── PixiJS Rendering
-
-Data
-│
-├── TanStack Query
-├── Axios
-└── Persistence
-
-Mock API
-│
-├── MSW
-├── Fixtures
-└── Network Scenarios
-```
-
-React is not used as the per-frame game engine.
-
-Continuous gameplay state remains inside the game simulation, while PixiJS handles gameplay rendering.
-
-See [`MASTER_SPEC.md`](./MASTER_SPEC.md) for the complete architectural rules.
-
----
-
-## Project Documentation
-
-Project decisions are separated across focused documents.
-
-### `README.md`
-
-Project overview, setup and usage documentation.
-
-### `MASTER_SPEC.md`
-
-Global architecture and implementation decisions.
-
-### `DESIGN_SYSTEM.md`
-
-Visual language, UI rules, responsive behavior and accessibility guidelines.
-
-### `AGENTS.md`
-
-Development rules and instructions for coding agents.
-
-### `ARCHITECTURE.md`
-
-Final documentation of the implemented architecture.
-
-This file will evolve alongside the implementation.
-
-### [`docs/TASKS.md`](./docs/TASKS.md)
-
-Incremental implementation plan used during development.
-
----
-
-## Assets
-
-The challenge provides the visual and audio assets used as the foundation of the game.
-
-Available assets include:
-
-- ships;
-- ship parts;
-- islands and environment tiles;
-- projectiles;
-- explosions;
-- fire effects;
-- HUD elements;
-- menu components;
-- touch controls;
-- spritesheets;
-- sound effects;
-- ambient audio.
-
-Reference screens are also provided for:
-
-- Main Menu;
-- Options;
-- Pause;
-- Ranking;
-- Match History;
-- Result.
-
-The project should preserve and extend the visual language of these supplied assets.
-
-See [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md).
-
----
-
-## Gameplay Configuration
-
-Gameplay balance is centralized in typed configuration.
-
-This includes values such as:
-
-- match duration;
-- player health;
-- movement speed;
-- rotation speed;
-- weapon cooldowns;
-- projectile speed;
-- projectile damage;
-- enemy health;
-- enemy speed;
-- Shooter attack range;
-- spawn interval;
-- enemy distribution.
-
-Each match receives a configuration snapshot when it starts.
-
-The Options screen saves two settings in browser storage: **Game session time** (60–180 seconds, default 120) and **Enemy spawn time** (1–30 seconds, default 3). Changes require **Save Changes**. Start and restart read current Options and create an immutable `GameConfig` snapshot; subsequent changes cannot alter an active match. Balance defaults live in `src/game/config/GameConfig.ts`. Movement and player weapons use their snapshotted values; enemies and damage application are not implemented yet.
-
----
-
-## Ranking and Match History
-
-Ranking and Match History are implemented through simulated REST APIs.
-
-The data flow is:
-
-```text
-React
-  ↓
-TanStack Query
-  ↓
-Axios
-  ↓
-REST API
-  ↓
-MSW
-```
-
-The implementation supports the network and recovery scenarios required by the challenge, including idempotent match submission and pending submission recovery.
-
----
-
-## Testing
-
-Playwright is used for:
-
-- end-to-end testing;
-- gameplay flows;
-- desktop testing;
-- mobile testing;
-- network failure scenarios;
-- visual regression.
-
-Gameplay testing is designed around deterministic simulation behavior where required.
-
----
-
-## Performance
-
-The game targets **60 FPS** in the documented reference environment.
-
-Performance evaluation includes:
-
-- frame rate;
-- frame-time measurements;
-- entity count;
-- memory behavior;
-- repeated game lifecycle testing.
-
-Production measurements, lifecycle investigation, accessibility checks and reproduction steps are documented in [TASK-17 evidence](./docs/PERFORMANCE_ACCESSIBILITY.md).
-
----
-
-## Development
-
-The project is being implemented incrementally through small, isolated tasks.
-
-Each task defines:
-
-- objective;
-- scope;
-- relevant challenge requirements;
-- acceptance criteria;
-- validation;
-- explicit out-of-scope work.
-
-Coding agents must follow the repository instructions defined in [`AGENTS.md`](./AGENTS.md).
-
----
-
-## Setup
-
-Requires Node.js 22.12 or newer and npm.
+From the repository root:
 
 ```sh
 npm ci
@@ -328,141 +22,134 @@ npx playwright install chromium
 npm run dev
 ```
 
-The development server prints its local URL. Available validation and production commands:
+Open the development URL printed by Vite (normally http://localhost:5173). Start a match through **Play → Start Match**. MSW initializes before React in development and production.
+
+Build and preview in one terminal:
+
+```sh
+npm run build
+npm run preview -- --host 127.0.0.1 --port 4173 --strictPort
+```
+
+Open http://127.0.0.1:4173. Preview serves the generated dist directory and is a local verification server, not public production hosting.
+
+## Controls and mobile
+
+Start/resume focuses the arena. Gameplay keys are captured only while running with arena focus. **Tab** returns to page controls. Blur/hidden tabs and leaving gameplay focus pause; resume requires explicit action. Held input is cleared on pause/end/restart/leave: release and press again after resume. Opposing turns cancel. Movement, rotation and attacks can be held together; attacks repeat at their independent cooldowns. Physical letter bindings use KeyboardEvent.code (QWERTY positions).
+
+| Action | Keyboard | Touch |
+| --- | --- | --- |
+| Forward | W / ↑ | Forward |
+| Turn left | A / ← | Turn left |
+| Turn right | D / → | Turn right |
+| Front cannon | Space | Front fire |
+| Left broadside (three parallel shots) | Q | Left broadside |
+| Right broadside (three parallel shots) | E | Right broadside |
+| Pause | Escape | Pause |
+
+**Landscape is the supported mobile combat orientation.** Portrait supports menus and displays a rotate-device message. Hold multiple 48×48 CSS-pixel action buttons simultaneously; releasing/cancelling one finger clears its ownership. Buttons sit below the arena and HUD above it, respecting safe-area insets. Resize/DPR changes uniformly fit the complete 1280×720 logical world, using letterboxing without changing collision or input rules. Menus can scroll vertically.
+
+## Gameplay configuration
+
+Options exposes integer **Game session time: 60–180 seconds (default 120)** and **Enemy spawn time: 1–30 seconds (default 3)**. Use **Save Changes** to persist. Each start/restart copies and freezes the current configuration; changes apply to subsequent matches.
+
+Balance lives in src/game/config/GameConfig.ts; arena geometry, enemy sizes and weapon offsets have focused configuration files. Defaults include player health 100, speed 180 units/s, front cooldown 0.5 s, broadside cooldown 1.5 s each, projectile speed 400 units/s, damage 25 and lifetime 2 s. Chaser health is 50 and Shooter health 75; distribution is 50/50. See architecture for the complete balance/tradeoffs.
+
+Refresh or leaving combat abandons the active match without registering it. Options, last completed Result, confirmed mock records and pending submissions persist locally. A saved Result opens after refresh; use Main Menu to navigate. Storage and records are specific to the browser origin; this is a simulated leaderboard with local Captain 1 identity, not a shared online service.
+
+## Ranking, History and registration
+
+Ranking compares the full current configuration, orders score descending, date ascending and match ID ascending, with five rows per page. History is for captain-0 (Captain 1), shows UTC dates, duration/end reason and expandable full configuration, with two rows per page. Fixtures supply 24 records across six captains. Queries refresh on return/focus; cached rows remain during background refresh errors. Retry and Refresh are explicit controls.
+
+Timeout/death creates a UUID and saves/queues the record before submission. Result shows Submitting, Pending or Confirmed. Retry Registration is available on Result/Main Menu; starting another match remains possible. Refresh restores pending records for manual retry. Duplicate attempts use the original ID and recover the existing server record. Active/abandoned/manual-end matches do not register. Storage failures limit durability and show warnings where applicable.
+
+## Network scenarios and failure reproduction
+
+These console controls exist after the UI loads in both development and production:
+
+```js
+window.pirateBattleNetwork.scenarios
+window.pirateBattleNetwork.select('NETWORK-005', [100, 600, 250])
+window.pirateBattleNetwork.recover() // success; retain confirmed records
+window.pirateBattleNetwork.reset() // reset scenario/sequence, confirmed records and query cache
+```
+
+Selection affects subsequent requests, not already running ones. Scenarios are in-memory and return to success on refresh; confirmed records/pending submissions persist. Reset leaves Options, last Result and pending submissions intact. For a completely fresh demonstration, clear this site's storage in browser developer tools and reload (this also removes saved preferences/results).
+
+| ID | Behavior |
+| --- | --- |
+| NETWORK-001 | Success |
+| NETWORK-002 | Empty fixture lists; confirmed records remain (reset first for fully empty lists) |
+| NETWORK-003 | Multiple pages of 24 fixtures |
+| NETWORK-004 | 1000 ms slow responses |
+| NETWORK-005 | Repeating 100/600/250 ms latency |
+| NETWORK-006 | Alternating 800/100 ms for overlapping requests |
+| NETWORK-007 | Timeout (3000 ms response, Axios timeout 2000 ms) |
+| NETWORK-008 | Connection failure |
+| NETWORK-009 | HTTP 400 |
+| NETWORK-010 | HTTP 503 |
+| NETWORK-011 | Ranking-only failure |
+| NETWORK-012 | History-only failure |
+| NETWORK-013 | Commit match, then timeout response |
+| NETWORK-014 | HTTP 503 until recovery |
+
+The optional latency array repeats deterministically. Transient query failures retry twice; 4xx does not retry. Query keys isolate configuration/player/page and cancellation protects against obsolete responses.
+
+**Query failure/recovery:** select NETWORK-011, open Ranking (or click Refresh if already there), wait for the error, run recover(), then click Retry/Refresh. History, Options and Play remain usable. Repeat with NETWORK-012 for History. Expected HTTP error diagnostics may appear in the browser console; unhandled application exceptions are not expected.
+
+**Unavailable registration:** select NETWORK-014, start and finish a match through timeout/death. Result becomes Pending. Refresh if desired (the queue persists and the scenario returns to success), or run recover(), then click Retry Registration. Check Confirmed and the corresponding History/Ranking entry.
+
+**Ambiguous timeout:** select NETWORK-013 before completing a match. The mock commits the record but Axios times out. Recover, then Retry Registration. The same ID confirms without a duplicate. Do not reset confirmed records during this check. For out-of-order responses, select NETWORK-006 and rapidly change pages or issue overlapping console probes; ordinary sequential requests do not demonstrate out-of-order completion.
+
+The console ranking(request), history(request) and submit(record) probes use the same TanStack Query/Axios functions as UI. API contracts and persistence ownership are documented in architecture. public/apiServiceWorker.js intercepts only /api/ and imports the unchanged generated public/mockServiceWorker.js; static images/audio bypass it. Both worker files must ship in dist at the hosting root. No production environment switch disables mocks.
+
+## Validation and visual tests
 
 ```sh
 npm run typecheck
 npm run lint
-npm test
 npm run test:unit
+npm test -- --workers=2
 npm run build
-npm run preview
 ```
 
-`npm test` runs bootstrap, navigation, Options, asset-loading, lifecycle, keyboard-to-player, weapons/projectiles and arena/island collision tests in desktop and mobile Chromium. `npm run test:unit` runs deterministic clock, lifecycle, immutable-configuration, randomness, input, player-motion, weapon and projectile/collision tests in Node, without a browser or server. After `npm run build`, `npm run preview` serves the production build locally. Game shows the water arena, one solid island and keyboard-controlled player with three weapons, loading/retry and minimal Start Match, Pause/Resume, End Match and Restart Match controls. Blur/hidden-tab pause requires explicit Resume. Enemies, damage application, automatic timeout/death rules, final HUD/Result and API behavior are not implemented yet.
+Unit tests use the Playwright runner in Node without a browser/server. npm test runs Chromium desktop/mobile E2E with an automatically started Vite server; its default port 5173 must be free. Tests cover actual movement, rotation, collision, weapons/damage/score, both enemies, match endings, pause/restart/abandonment, touch, Options, assets, lifecycle, API pagination/errors/cancellation and registration recovery. See [test coverage](./docs/TEST_COVERAGE.md).
 
-The arena uses fixed 1280×720 logical coordinates; resizing only scales rendering. Geometry lives in `src/game/config/arena.ts`. The player uses a conservative square footprint containing its artwork at any heading. Movement stops at the first arena/island contact; rotation remains available to steer away. Collision does not cause damage. See [the collision strategy](./docs/ARCHITECTURE.md#16-task-07-arena-and-collision).
+```sh
+npm test -- tests/e2e/visual-regression.spec.ts --workers=2
+npm test -- tests/e2e/visual-regression.spec.ts --update-snapshots --workers=2
+```
 
-Front fire creates one cannonball; each broadside creates three parallel cannonballs. Independent cooldown defaults are **0.5s front** and **1.5s per broadside**. Projectile defaults are **400 logical units/s**, **25 damage** (not applied yet) and **2s lifetime**, giving an unobstructed range of **800 units**. Island contact, arena exit or lifetime expiration removes a projectile; end/restart/leave clears all projectiles. Pause freezes both projectile travel and cooldowns. See [weapon ownership and timing](./docs/ARCHITECTURE.md#17-task-08-weapons-and-projectiles).
+Use the second command only for intentional visual changes and manually review every changed image against supplied art. Six versioned PNGs cover Main Menu, stable gameplay and confirmed Result in desktop/mobile; mobile combat uses 740×360. Baselines were reviewed on Windows Chromium. Screenshot comparisons allow zero differing pixels with Playwright's default perceptual threshold; other rendering environments may need explicitly reviewed baselines.
 
----
+HTML report: playwright-report/index.html (`npx playwright show-report`). Failures retain traces, screenshots and videos under test-results; inspect a trace with `npx playwright show-trace <trace.zip>`.
 
-## Controls
+For production API/media verification, leave preview running and use a second PowerShell terminal:
 
-Start/resume/restart focuses the arena. Keyboard input is captured only while a match is running and the arena has focus; **Tab** returns to page controls. Moving focus out of the arena clears held input. Pause, focus loss, end and restart also clear input: release and press a held key again after resuming. Browser shortcuts and editable controls are not captured.
+```powershell
+$env:E2E_BASE_URL='http://127.0.0.1:4173'
+npm test -- tests/e2e/api-msw.spec.ts tests/e2e/media-api-routing.spec.ts --workers=2
+Remove-Item Env:E2E_BASE_URL
+```
 
-Physical letter bindings use `KeyboardEvent.code` (the W/A/D/Q/E positions on a QWERTY keyboard). Opposing left/right turns cancel; movement, rotation and attacks can be held together. Hold an attack to repeat when its weapon cooldown completes. Touch controls share these actions; landscape is the supported mobile gameplay orientation.
+E2E_BASE_URL is a test-runner override, not an application variable. On POSIX shells prefix the test command with `E2E_BASE_URL=http://127.0.0.1:4173`. Production gameplay validation must use real inputs and completion; development observer tests are not a substitute for validating a public build.
 
-| Action          | Keyboard | Touch     |
-| --------------- | -------- | --------- |
-| Move forward    | W / ↑    | On-screen button |
-| Turn left       | A / ←    | On-screen button |
-| Turn right      | D / →    | On-screen button |
-| Front fire      | Space    | On-screen button |
-| Left broadside  | Q        | On-screen button |
-| Right broadside | E        | On-screen button |
-| Pause           | Esc      | On-screen button |
+The production-compatible flow verifies Options refresh, a real wall-time match, touch/keyboard, pending registration/recovery, Result refresh, Ranking/History, query failure and reset. To repeat the public checks:
 
----
+```powershell
+$env:E2E_BASE_URL='https://desafio-jungle.vercel.app'
+npm test -- tests/e2e/production-flow.spec.ts tests/e2e/api-msw.spec.ts tests/e2e/media-api-routing.spec.ts tests/e2e/ranking-history.spec.ts --workers=2
+Remove-Item Env:E2E_BASE_URL
+```
+
+## Performance and known limitations
+
+Target: **60 FPS**, not a universal guarantee. [TASK-17 evidence](./docs/PERFORMANCE_ACCESSIBILITY.md) records an actual 180-second production match: **60.0014 mean FPS**, **17.80 ms p95 inter-frame time**, sampled entity count **2–67 (mean 35.08)**. Environment: Intel Core i7-12700H, 16,890,978,304 bytes RAM, Windows x64 10.0.26200, headless Chromium 153.0.8010.12, SwiftShader software WebGL, 1280×720/DPR 1, duration 180 s, spawn 3 s and seed 1.
+
+Five lifecycle cycles plus ten investigation cycles checked heap/resource ownership and resolved static-asset stream retention through the API-only worker. The evidence includes precise measurements, raw JSON, reproduction commands, accessibility/responsive checks and limits. p95 measures frame intervals, not CPU work; sampled counts are not exact per-frame peaks. Physical GPUs/mobile devices, screen-reader speech and unlimited-session memory stability were not measured. Large-chunk build advisory remains. Enemies respect island collision but do not pathfind around cover; conservative square hulls favor deterministic collision simplicity.
 
 ## Deployment
 
-A public production deployment is required for the challenge.
+Hosting platform: **Vercel**, selected for TASK-18. Configuration builds with npm ci / npm run build and serves dist. All screens use the root URL, so no screen-route rewrite is required. HTTPS is required for the production worker. No private backend or application secrets are needed.
 
-Deployment instructions and the production URL will be added once the application reaches the deployment stage.
-
----
-
-## Status
-
-**Current phase:** Fixed-timestep simulation, lifecycle, keyboard/player movement, arena bounds, island collision and player weapons/projectiles implemented. Enemies and damage application have not started.
-
-Current documentation:
-
-- [x] Master Specification
-- [x] Design System
-- [x] Agent Instructions
-- [x] Implementation Tasks
-- [x] Project Bootstrap
-- [ ] Gameplay
-- [ ] Ranking and Match History
-- [x] E2E Tests
-- [ ] Performance Validation
-- [ ] Deployment
-
----
-
-## Development Principle
-
-Prefer the simplest implementation that is correct, testable, maintainable and easy to explain.
-
-The goal is not to maximize architectural complexity.
-
-The goal is to deliver a complete game while demonstrating clear engineering decisions.
-
-## Mobile gameplay (TASK-12)
-
-**Landscape is the supported mobile gameplay orientation**, evaluated against the supplied `assets/sample.png` reference, the 1280×720 arena and seven required actions. Portrait remains navigable and displays a rotate-device message; it is not the supported combat layout. Rotating or resizing does not change world geometry or combat rules.
-
-On touch devices, hold the forward/turn buttons and any cannon buttons together. The supplied round wood-and-gold controls sit below the arena, with health, score and time above it. All touch targets are 48×48 CSS pixels. Pause uses the same latched action as Escape. Releasing one finger affects only its action ownership; cancellation, pause, end and leaving the game clear active touches. Resume requires a fresh press. Keyboard bindings remain available.
-
-The gameplay frame respects browser safe-area insets (`viewport-fit=cover`). Browser gestures are suppressed only on action buttons; normal page interaction remains available elsewhere. The renderer fits the complete logical arena, with letterboxing when necessary, and follows viewport/DPR changes. Touch buttons select actions rather than aim at world positions, so they never convert raw device coordinates into gameplay coordinates.
-
-Run `npm test -- --project=mobile-chromium tests/e2e/touch-responsive.spec.ts` for mobile pointer ownership, real Chromium multi-touch, cancellation, lifecycle, viewport, orientation and DPR checks.
-
-## Mock REST API (TASK-13)
-
-MSW starts before React in development and production. No environment variables or private service are required. `public/apiServiceWorker.js` limits interception to `/api/` before loading `public/mockServiceWorker.js`, copied unchanged from the installed MSW package. Local images and audio bypass MSW to avoid retaining transferred static-asset response streams. Update the generated worker when upgrading MSW; preserve the small API entry worker. See [the measured resource investigation](./docs/PERFORMANCE_ACCESSIBILITY.md#lifecycle-procedure-and-investigation).
-
-The API provides `GET /api/ranking` (complete configuration JSON, one-based `page`, `pageSize`), `GET /api/history` (`playerId`, `page`, `pageSize`) and `POST /api/matches` (completed match record). Page sizes are 1–100; the default is 10. Responses include items, total, totalPages, page and pageSize. Beyond the last page returns an empty items array. Empty results have zero totalPages. Ranking compares the entire GameConfig, orders score descending, then date ascending, then match ID ascending; positions are global across pages. History orders date descending, then match ID ascending. Fixtures contain 24 matches across six captains; use `captain-0` for a multi-page history with pageSize 2.
-
-Use the browser console after the menu appears:
-
-```js
-window.pirateBattleNetwork.scenarios // All NETWORK-001–014 descriptions
-window.pirateBattleNetwork.select('NETWORK-005', [100, 600, 250])
-window.pirateBattleNetwork.recover() // Success again; retain confirmed records
-window.pirateBattleNetwork.reset() // Reset handlers, scenario sequence, records and query cache
-```
-
-`select` accepts an optional repeating latency sequence in milliseconds. Default slow latency is 1000ms; variable latency repeats 100/600/250ms; out-of-order latency alternates 800/100ms (issue overlapping requests). Other requests have zero added latency. Axios times out at 2000ms; timeout scenarios delay 3000ms. NETWORK-013 commits before delaying the submission response. NETWORK-014 returns 503 until `recover()`, after which the same match ID can be retried. NETWORK-011 fails only Ranking, NETWORK-012 only History. NETWORK-002 removes fixtures from queries while retaining any confirmed records; reset first to reproduce completely empty lists. NETWORK-003 exposes all 24 deterministic fixtures with pagination, as does normal success.
-
-Console probes `ranking(request)`, `history(request)` and `submit(record)` follow TanStack Query → typed API function → shared Axios → HTTP → MSW. The Ranking/History screens use the same query options; the console probes remain available for infrastructure demonstration. Scenario selection affects subsequent HTTP requests; queries retry transient failures up to twice. Configuration/page/player contexts have separate query keys. `reset()` clears cached state too. Confirmed records use `pirate-battle:mock-records:v1`; Options and last result are unaffected.
-
-Run `npm run test:unit -- tests/unit/api-msw.spec.ts` for contracts, all 14 scenarios, ordering, cancellation, out-of-order completion, idempotency and persistence isolation. Delays are injected in unit tests; only the native Axios timeout integration checks wait for real adapter deadlines. Run `npm test -- tests/e2e/api-msw.spec.ts` for browser interception and refresh persistence in desktop/mobile Chromium. To check the production worker, run `npm run build`, serve `npm run preview -- --host 127.0.0.1 --port 4173`, and set `E2E_BASE_URL=http://127.0.0.1:4173` before running that test. On PowerShell use `$env:E2E_BASE_URL='http://127.0.0.1:4173'`.
-
-Ranking/History screens are implemented in TASK-14. TASK-15 connects completed gameplay matches to submission and pending recovery.
-
-## Captain’s log (TASK-14)
-
-Ranking and Match History are accessible from the main menu and from each other. Ranking uses the currently saved Options combined with the complete default balance configuration; only equivalent configurations are compared. The server controls ordering, global rank and pagination. Ranking shows five battles per page. History currently uses the local fixture identity `captain-0` (Captain 1) and two battles per page so the four supplied captain records demonstrate pagination. TASK-15 will connect completed gameplay matches to the player identity and submission flow.
-
-History displays date/time in UTC, points, effective duration and termination reason. Expand **Match details** for match/player IDs and the full gameplay configuration. Ranking also exposes its complete comparison configuration. All fields remain available in portrait and landscape menus; landscape remains the supported combat orientation.
-
-Queries retain the TASK-13 policy: immediately stale, five-minute unused cache retention, refresh on return/focus and two retries for transient failures. Cached content remains visible during background refresh and refresh errors. **Retry** recovers an error; **Refresh** requests fresh data. Page changes have their own query identity and no previous-page placeholder. The same control remains mounted through retry so keyboard focus is preserved.
-
-Run `npm test -- tests/e2e/ranking-history.spec.ts tests/e2e/navigation.spec.ts` for success, empty, server pagination, initial/background latency, cache return, error/retry, delayed page cancellation, configuration isolation, keyboard focus and responsive field coverage. Tests capture desktop/mobile reference screenshots in their Playwright output directories. Expected HTTP 503 browser resource diagnostics are distinguished from unhandled application/console errors.
-
-## Match submission and recovery (TASK-15)
-
-Completed timeout/death results automatically register as `captain-0` (Captain 1), using the same identity as Match History. Each completion creates one UUID, completion date and full match configuration record. That record is saved as the last result and queued before the first request. Active, manually ended and abandoned matches are never registered. Older saved summaries without an ID/configuration remain viewable without inventing a submission.
-
-Result displays **Submitting**, **Pending** or **Confirmed** registration status. Pending registrations appear on Result and Main Menu with a separate **Retry Registration** action for each battle. You can navigate and play again while registration is pending or submitting. Refresh restores the queue and requires manual retry; it does not resume gameplay or silently resend pending matches.
-
-The separate `pirate-battle:pending-submissions:v1` queue retains the original complete records until registration is confirmed. Retry preserves IDs and coalesces overlapping attempts for a match. The MSW endpoint independently returns the original record for an existing ID. Confirmation refreshes Ranking/History through their existing Query keys. Multiple pending battles recover independently. If device storage cannot be written, a warning explains that pending recovery cannot survive closing the page; in-memory retry and gameplay remain available.
-
-To reproduce ambiguous recovery, select `NETWORK-013` using the console controls above and finish a battle. The mock saves it, but Axios times out and Result stays pending. Run `window.pirateBattleNetwork.recover()` and click **Retry Registration**; the existing server record confirms without duplication. For unavailability, select `NETWORK-014`, finish a battle, optionally refresh, recover the scenario and retry. `NETWORK-008` reproduces connection failure. Mock reset clears confirmed server records/query cache but intentionally leaves the client pending queue available for retry.
-
-Run `npm run test:unit -- tests/unit/submission-recovery.spec.ts tests/unit/api-msw.spec.ts tests/unit/match-rules.spec.ts` and `npm test -- tests/e2e/submission-recovery.spec.ts` for identity, persistence, concurrent requests, cache refresh, actual completion/abandonment and recovery scenarios in desktop/mobile Chromium.
-
-## E2E and visual regression (TASK-16)
-
-Run `npm test -- --workers=2` for the complete Chromium suite. Desktop uses 1280×720; mobile uses Pixel 5 at 393×727, with explicit landscape combat checks. Touch-only tests belong to the mobile project. Tests have zero retries and reject `.only`. Every test receives a fresh browser context, storage, MSW worker and application instance; network tests use the real Query → Axios → HTTP → MSW flow.
-
-The requirement-by-requirement audit is in [TEST_COVERAGE.md](docs/TEST_COVERAGE.md). Gameplay tests control browser/simulation time and use actual input and production combat. A development-only `__pirateBattleTestSeed` input selects a validated uint32 seed before constructing the game; production builds remove this input. Test-runner observers read existing controller/Pixi owners and cannot replace gameplay outcomes.
-
-Run `npm test -- tests/e2e/visual-regression.spec.ts --workers=2` to compare all six versioned PNGs under `tests/e2e/visual-baselines/{desktop-chromium,mobile-chromium}/`. Menu/Result use each project's portrait or desktop viewport; mobile gameplay uses 740×360. Browser time, locale (`en-US`), timezone (`UTC`), seed and screenshot state are fixed. Screenshot comparisons allow zero differing pixels under Playwright's default perceptual color threshold. After an intentional UI change, use `--update-snapshots` and manually inspect every changed image against the supplied artwork before accepting it. Baselines were reviewed on Windows Chromium; regenerate and review explicitly when changing the rendering environment.
-
-The HTML report is `playwright-report/index.html`; inspect it with `npx playwright show-report`. A failed test retains its trace, screenshot and video in `test-results/`; use `npx playwright show-trace <trace.zip>` for the failed action, DOM, console and network timeline. Temporary diagnostic runs may use ignored `output/playwright/` directories. Asset failure tests intercept only asset HTTP requests at browser-context level while leaving MSW and API requests active. Expected network failures are checked separately from unexpected runtime/console errors.
-
-Vite ignores generated Playwright report/trace directories while watching application files, so saving a diagnostic artifact cannot reload another test's active page.
+**Public URL: https://desafio-jungle.vercel.app**. Deployment `dpl_3ZKPAuHpeRoY2J4Ww6vvyskV5ihF` uses base commit `ac42d0149ca71d389297ed42b63c8b246240cc65` plus the TASK-18 API validation/runtime/hosting changes. No deployment commit was created. [Deployment evidence](./docs/DEPLOYMENT.md) records the exact source hash manifest and public build comparisons. Later README/evidence changes do not affect the deployed bundle.
