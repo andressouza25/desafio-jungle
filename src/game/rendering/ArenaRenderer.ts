@@ -1,3 +1,6 @@
+import type { GameConfig } from '../config/GameConfig';
+import { HealthIndicator, loadHealthTextures } from './HealthIndicator';
+import type { HealthTextures } from './HealthIndicator';
 import type { EnemyKind, EnemyState } from '../entities/Enemy';
 import { Application, Container, Rectangle, Sprite, Texture, TilingSprite, UPDATE_PRIORITY } from 'pixi.js';
 import type { Ticker } from 'pixi.js';
@@ -21,6 +24,9 @@ export class ArenaRenderer {
   private enemyTextures: Record<EnemyKind, Texture> | null = null;
   private readonly enemies = new Map<number, Sprite>();
   private readonly projectiles = new Map<number, Sprite>();
+  private healthTextures: HealthTextures | null = null;
+  private readonly healthLayer = new Container();
+  private readonly health = new Map<number, HealthIndicator>();
   private observer: ResizeObserver | null = null;
   private densityQuery: MediaQueryList | null = null;
   private resizeFrame: number | null = null;
@@ -42,6 +48,8 @@ export class ArenaRenderer {
       }, this.abort.signal);
       if (this.destroyed) return;
 
+      this.healthTextures = await loadHealthTextures();
+      if (this.destroyed) return;
       phase = 'renderer';
       this.onState({ kind: 'loading', phase, progress: 1 });
       application = new Application();
@@ -87,6 +95,8 @@ export class ArenaRenderer {
         this.world.addChild(island);
       }
       this.player = new Sprite({ texture: textures.player, anchor: 0.5 });
+      this.healthLayer.label = 'health-layer';
+      this.world.addChild(this.healthLayer);
       this.player.label = 'player';
       this.player.eventMode = 'none';
       this.player.visible = false;
@@ -136,7 +146,7 @@ export class ArenaRenderer {
     else this.application.ticker.stop();
   }
 
-  syncState(state: Readonly<PlayerState> | null, projectiles: readonly Readonly<ProjectileState>[], enemies: readonly Readonly<EnemyState>[] = []) {
+  syncState(state: Readonly<PlayerState> | null, projectiles: readonly Readonly<ProjectileState>[], enemies: readonly Readonly<EnemyState>[] = [], config: GameConfig | null = null) {
     if (this.destroyed || !this.player || !this.application || !this.world || !this.projectileTexture) return;
     this.player.visible = state !== null;
     if (state) {
@@ -144,10 +154,25 @@ export class ArenaRenderer {
       // Supplied ship_2 points down. Domain heading zero points up.
       this.player.rotation = state.rotation + Math.PI;
     }
+    const healthIds = new Set<number>();
+    const syncHealth = (id: number, x: number, y: number, value: number, max: number) => {
+      if (!this.healthTextures) return;
+      healthIds.add(id);
+      let indicator = this.health.get(id);
+      if (!indicator) {
+        indicator = new HealthIndicator(this.healthTextures, id !== -1);
+        indicator.label = id === -1 ? 'health:player' : `health:enemy:${id}`;
+        this.health.set(id, indicator);
+        this.healthLayer.addChild(indicator);
+      }
+      indicator.sync(x, y, value, max);
+    };
+    if (state && config) syncHealth(-1, state.x, state.y, state.health, config.player.health);
     const enemyIds = new Set<number>();
     for (const enemy of enemies) {
       if (enemy.destroyed || !this.enemyTextures) continue;
       enemyIds.add(enemy.id);
+      if (config) syncHealth(enemy.id, enemy.x, enemy.y, enemy.health, config[enemy.kind].health);
       let sprite = this.enemies.get(enemy.id);
       if (!sprite) {
         sprite = new Sprite({ texture: this.enemyTextures[enemy.kind], anchor: 0.5 });
@@ -164,6 +189,11 @@ export class ArenaRenderer {
       this.world.removeChild(sprite);
       sprite.destroy({ texture: false, textureSource: false });
       this.enemies.delete(id);
+    }
+    for (const [id, indicator] of this.health) {
+      if (healthIds.has(id)) continue;
+      indicator.destroy();
+      this.health.delete(id);
     }
     const activeIds = new Set<number>();
     for (const projectile of projectiles) {
@@ -185,6 +215,8 @@ export class ArenaRenderer {
       sprite.destroy({ texture: false, textureSource: false });
       this.projectiles.delete(id);
     }
+    // Keep indicators above ships and cannonballs without inheriting ship rotation.
+    this.world.addChild(this.healthLayer);
     if (!this.application.ticker.started) this.application.render();
   }
 
@@ -225,6 +257,10 @@ export class ArenaRenderer {
     this.resizeFrame = null;
     this.densityQuery?.removeEventListener('change', this.onDensityChange);
     this.densityQuery = null;
+    for (const indicator of this.health.values()) indicator.destroy();
+    this.health.clear();
+    this.healthTextures = null;
+    this.healthLayer.destroy({ children: true });
     this.application?.destroy({ removeView: true }, { children: true, texture: false, textureSource: false });
     this.projectiles.clear();
     this.enemies.clear();

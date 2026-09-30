@@ -328,3 +328,27 @@ main:focus { outline: none; }
   color: var(--parchment);
   text-decoration: underline;
 }
+
+.match-hud { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 8px 0; }
+.match-hud > div { display: flex; align-items: center; gap: 8px; min-height: 44px; padding: 8px 16px; background: center / 100% 100% no-repeat url('../assets/png/default/ui/hud/counter_panel.png'); }
+.match-hud dt { display: flex; align-items: center; gap: 6px; font-size: 12px; }
+.match-hud dt img { width: 24px; height: 24px; object-fit: contain; }
+.match-hud dd { margin: 0; font-size: 18px; font-weight: 800; font-variant-numeric: tabular-nums; }
+.menu-panel--result { justify-content: center; gap: 24px; padding: 32px 16px; }
+.menu-panel--result .screen-title { margin: 0; }
+.result-score { margin: 0; font-size: 18px; }
+.result-score span { display: block; color: var(--gold); font-size: 76px; font-weight: 900; }
+.result-details { display: flex; flex-wrap: wrap; justify-content: center; gap: 16px 32px; margin: 0; }
+.result-details dt { font-size: 13px; }
+.result-details dd { margin: 8px 0 0; font-size: 18px; font-weight: 700; }
+.result-status { margin: 0; font-size: 13px; }
+.result-actions { display: grid; justify-items: center; gap: 12px; width: 100%; }
+.result-actions .art-button--secondary { width: min(330px, 100%); }
+@media (max-width: 600px) {
+  .match-hud { gap: 4px; }
+  .match-hud > div { padding: 8px; flex: 1; gap: 4px; }
+  .match-hud dt { font-size: 11px; }
+  .match-hud dt img { width: 18px; height: 18px; }
+  .match-hud dd { font-size: 15px; white-space: nowrap; }
+  .menu-panel--result { padding: 24px 8px; }
+}

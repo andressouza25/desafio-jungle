@@ -50,6 +50,11 @@ test.beforeEach(async ({ page }) => {
   await page.clock.install({ time: '2026-01-01T00:00:00Z' });
   await page.goto('/');
   await page.clock.pauseAt('2026-01-01T00:01:00Z');
+  // Isolate movement/collision checks from lethal enemy combat through real Options.
+  await page.getByRole('button', { name: 'Options', exact: true }).click();
+  await page.getByRole('textbox', { name: 'Enemy spawn time' }).fill('30');
+  await page.getByRole('button', { name: 'Save Changes' }).click();
+  await page.getByRole('button', { name: 'Main Menu', exact: true }).click();
 });
 
 test.afterEach(async ({ page }) => {
@@ -69,7 +74,7 @@ async function player(page: Page) {
     const ship = world?.children.find((child) => child.label === 'player');
     if (!world || !ship) throw new Error('Expected the rendered player.');
     return { x: ship.x, y: ship.y, rotation: ((ship.rotation - Math.PI) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2),
-      visible: ship.visible, entities: world.children.filter((child) => !child.label.startsWith('projectile:') && !child.label.startsWith('enemy:')).length };
+      visible: ship.visible, entities: world.children.filter((child) => child.label !== 'health-layer' && !child.label.startsWith('projectile:') && !child.label.startsWith('enemy:')).length };
   });
 }
 
@@ -267,7 +272,7 @@ for (const side of ['right', 'top', 'bottom', 'left'] as const) {
     }
     await page.keyboard.up('w'); await page.keyboard.up('d');
     expect((await player(page)).rotation).not.toBe(stopped.rotation);
-    expect(await page.evaluate(() => window.__playerProbe.commits)).toBe(commits);
+    expect(await page.evaluate(() => window.__playerProbe.commits)).toBeLessThanOrEqual(commits + 3); // Only timer/health HUD changes during this movement interval.
   });
 }
 

@@ -3,7 +3,7 @@ import { updateEnemies } from '../systems/updateEnemies';
 import { spawnEnemies } from '../systems/spawnEnemies';
 import type { GameConfig } from '../config/GameConfig';
 import { snapshotGameConfig } from '../config/GameConfig';
-import type { EndReason, GameSession, GameSnapshot, LifecycleState } from '../GameSession';
+import type { EndReason, GameSession, GameSnapshot, LifecycleState, MatchResult } from '../GameSession';
 import { FixedStepClock } from './FixedStepClock';
 import type { SimulationClock } from './FixedStepClock';
 import { createSeededRandom } from './random';
@@ -36,6 +36,8 @@ export class GameController implements GameSession {
   private config: GameConfig | null = null;
   private endReason: EndReason | null = null;
   private destroyed = false;
+  private score = 0;
+  private result: MatchResult | null = null;
   private randomSource: RandomSource | null = null;
   private readonly clock: SimulationClock;
   private readonly seed: number;
@@ -66,8 +68,15 @@ export class GameController implements GameSession {
   }
 
   getSnapshot(): GameSnapshot {
-    return Object.freeze({ state: this.state, elapsedSeconds: this.clock.elapsedSeconds,
+    return Object.freeze({ state: this.state, elapsedSeconds: this.matchSeconds,
+      score: this.score, playerHealth: this.player?.health ?? 0, playerMaxHealth: this.config?.player.health ?? 0,
+      remainingSeconds: this.config ? Math.ceil(Math.max(0, this.config.session.durationSeconds - this.matchSeconds - 1e-9)) : 0,
+      result: this.result,
       config: this.config, seed: this.seed, endReason: this.endReason, destroyed: this.destroyed });
+  }
+
+  private get matchSeconds() {
+    return Math.min(this.clock.elapsedSeconds, this.config?.session.durationSeconds ?? 0);
   }
 
   subscribe(listener: (snapshot: GameSnapshot) => void): () => void {
@@ -106,6 +115,8 @@ export class GameController implements GameSession {
     this.config = config;
     this.randomSource = random;
     this.endReason = null;
+    this.score = 0;
+    this.result = null;
     this.state = 'running';
     this.publish();
   }
@@ -113,19 +124,27 @@ export class GameController implements GameSession {
   advance(elapsedMs: number) {
     if (this.destroyed || this.state !== 'running') return;
     if (this.input.takePauseRequest()) { this.pause(); return; }
+    const before = this.getSnapshot();
     this.clock.advance(elapsedMs, (deltaSeconds) => {
+      if (this.state !== 'running') return false;
       if (this.player && this.config) {
         movePlayer(this.player, this.input, this.config, deltaSeconds);
         this.projectiles = updateProjectiles(this.projectiles, deltaSeconds, ARENA_LAYOUT, this.enemies, this.player);
         const enemyShots = updateEnemies(this.enemies, this.player, this.config, deltaSeconds, this.clock.elapsedSeconds, this.weapons, ARENA_LAYOUT);
+        this.score += this.enemies.filter((enemy) => enemy.destroyed && enemy.destructionSource === 'player-attack').length;
         this.enemies = this.enemies.filter((enemy) => !enemy.destroyed);
+        // Death wins when both conditions resolve in the same fixed step.
+        if (this.player.health === 0) { this.end('player-death'); return false; }
+        if (this.clock.elapsedSeconds + 1e-9 >= this.config.session.durationSeconds) { this.end('timeout'); return false; }
         if (this.randomSource && this.player.health > 0) this.enemies.push(...spawnEnemies(this.spawn, this.clock.elapsedSeconds, this.player, this.config, this.randomSource, ARENA_LAYOUT));
         this.projectiles.push(...enemyShots);
         // Fire at this step's end from the resolved player transform. New shots move next step.
         if (this.player.health > 0) this.projectiles.push(...fireWeapons(this.player, this.input, this.config, this.weapons, this.clock.elapsedSeconds));
       }
     });
-    // Per-step time stays here. UI receives lifecycle transitions, never this loop.
+    const after = this.getSnapshot();
+    if (after.state === 'running' && (before.playerHealth !== after.playerHealth || before.score !== after.score
+      || before.remainingSeconds !== after.remainingSeconds)) this.publish();
   }
 
   pause() {
@@ -150,6 +169,9 @@ export class GameController implements GameSession {
     this.input.clear();
     this.state = 'ended';
     this.endReason = reason;
+    if (reason === 'timeout' || reason === 'player-death') {
+      this.result = Object.freeze({ score: this.score, durationSeconds: this.matchSeconds, reason });
+    }
     this.clearProjectiles();
     this.clearEnemies();
     this.publish();

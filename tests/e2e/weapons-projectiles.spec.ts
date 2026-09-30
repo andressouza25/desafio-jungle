@@ -175,8 +175,6 @@ test('pause freezes shots and remount/end/restart release every owned projectile
     await page.getByRole('button', { name: 'End Match' }).click();
     await expect(page.getByRole('status')).toHaveText('Match ended.');
     await expectDestroyed(page);
-    await page.getByRole('button', { name: 'View Result Placeholder' }).click();
-    await expect(page.getByRole('heading', { name: 'Result', exact: true })).toBeVisible();
     await page.getByRole('button', { name: 'Main Menu', exact: true }).click();
     await enter(page);
     for (const key of ['w', 'd', 'Space', 'q', 'e']) await page.keyboard.down(key);

@@ -36,7 +36,7 @@ export function updateProjectiles(projectiles: readonly ProjectileState[], delta
       if (hit !== null && (hit < fraction || (hit === fraction && reason === null))) {
         fraction = hit; reason = 'target'; applyDamage = () => {
           const enemy = enemies.find((enemy) => enemy === candidate);
-          if (enemy) damageEnemy(enemy, projectile.damage);
+          if (enemy) damageEnemy(enemy, projectile.damage, 'player-attack');
           else candidate.health = Math.max(0, candidate.health - projectile.damage);
         };
       }

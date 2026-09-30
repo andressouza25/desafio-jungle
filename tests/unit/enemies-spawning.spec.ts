@@ -101,7 +101,7 @@ test('controller pauses all enemy/combat/spawn state, resumes without debt and c
   const game = new GameController({ readConfig: () => config }); game.markReady(); game.start(); game.advance(0);
   let events = 0; game.subscribe(() => events++);
   const steps = (count: number) => { for (let i = 0; i < count; i++) game.advance(1000 / 60); };
-  steps(720); expect(game.getEnemyStates().some(enemy => enemy.readyAtSeconds > game.getSnapshot().elapsedSeconds)).toBe(true); expect(game.getEnemyStates().length).toBeGreaterThan(0); expect(events).toBe(1);
+  steps(720); expect(game.getEnemyStates().some(enemy => enemy.readyAtSeconds > game.getSnapshot().elapsedSeconds)).toBe(true); expect(game.getEnemyStates().length).toBeGreaterThan(0); expect(events).toBeGreaterThanOrEqual(13); expect(events).toBeLessThan(25);
   game.input.set('fireRight', true); steps(1);
   const state = () => ({ enemies: game.getEnemyStates(), projectiles: game.getProjectileStates(), player: game.getPlayerState(), seconds: game.getSnapshot().elapsedSeconds });
   const before = state(); game.pause(); game.advance(60000); expect(state()).toEqual(before);

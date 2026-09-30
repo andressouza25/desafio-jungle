@@ -2,22 +2,25 @@ import { useEffect, useRef, useState } from 'react';
 import type { GameSession } from '../game/GameSession';
 import { GameInstance } from '../game/GameInstance';
 import type { ArenaLoadState } from '../game/rendering/ArenaRenderer';
-import type { LifecycleState } from '../game/GameSession';
+import type { GameSnapshot, MatchResult } from '../game/GameSession';
+import { MatchHud } from './MatchHud';
 import { DEFAULT_GAME_CONFIG } from '../game/config/GameConfig';
 import { loadOptions } from '../storage/options';
 import { ArtButton } from '../components/ui/ArtButton';
 
 interface GameScreenProps {
   onLeave: () => void;
-  onViewResult: () => void;
+  onViewResult: (result: MatchResult) => void;
+  autoStart?: boolean;
 }
 
-export function GameScreen({ onLeave, onViewResult }: GameScreenProps) {
+export function GameScreen({ onLeave, onViewResult, autoStart = false }: GameScreenProps) {
   const sessionRef = useRef<GameSession | null>(null);
   const hostRef = useRef<HTMLDivElement>(null);
   const [attempt, setAttempt] = useState(0);
   const [loadState, setLoadState] = useState<ArenaLoadState>({ kind: 'loading', phase: 'assets', progress: 0 });
-  const [lifecycle, setLifecycle] = useState<LifecycleState>('loading');
+  const [snapshot, setSnapshot] = useState<GameSnapshot | null>(null);
+  const lifecycle = snapshot?.state ?? 'loading';
 
   useEffect(() => {
     const host = hostRef.current;
@@ -29,7 +32,7 @@ export function GameScreen({ onLeave, onViewResult }: GameScreenProps) {
           spawn: { ...DEFAULT_GAME_CONFIG.spawn, intervalSeconds: options.enemySpawnIntervalSeconds } };
       },
       onLoad: setLoadState,
-      onSnapshot: (snapshot) => setLifecycle(snapshot.state),
+      onSnapshot: setSnapshot,
     });
     sessionRef.current = instance;
     return () => {
@@ -45,11 +48,10 @@ export function GameScreen({ onLeave, onViewResult }: GameScreenProps) {
     onLeave();
   }
 
-  function viewResult() {
-    sessionRef.current?.destroy();
-    sessionRef.current = null;
-    onViewResult();
-  }
+  useEffect(() => {
+    if (autoStart && lifecycle === 'ready') sessionRef.current?.start();
+    if (snapshot?.result) onViewResult(snapshot.result);
+  }, [autoStart, lifecycle, snapshot, onViewResult]);
 
   return (
     <section className="game-screen" aria-labelledby="game-title">
@@ -57,6 +59,7 @@ export function GameScreen({ onLeave, onViewResult }: GameScreenProps) {
         <h1 id="game-title">Game</h1>
         <ArtButton type="button" variant="secondary" onClick={leaveGame}>Main Menu</ArtButton>
       </header>
+      <MatchHud snapshot={snapshot} />
       <div className="game-screen__arena" aria-busy={loadState.kind === 'loading'}>
         <div className="game-screen__viewport" ref={hostRef} data-testid="arena-viewport"
           tabIndex={lifecycle === 'running' ? 0 : -1} role="group" aria-label="Gameplay keyboard controls" aria-describedby="game-controls" />
@@ -83,7 +86,6 @@ export function GameScreen({ onLeave, onViewResult }: GameScreenProps) {
           {loadState.kind !== 'ready' ? 'No match is running.' : lifecycle === 'ready'
             ? 'Arena ready. No match is running.' : `Match ${lifecycle}.`}
         </p>
-        <button type="button" onClick={viewResult}>View Result Placeholder</button>
         {lifecycle === 'ready' && <button type="button" onClick={() => sessionRef.current?.start()}>Start Match</button>}
         {lifecycle === 'running' && <button type="button" onClick={() => sessionRef.current?.pause()}>Pause</button>}
         {lifecycle === 'paused' && <button type="button" onClick={() => sessionRef.current?.resume()}>Resume</button>}

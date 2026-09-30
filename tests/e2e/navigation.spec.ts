@@ -19,16 +19,11 @@ test('reaches and exits every screen without duplicate effects', async ({ page }
   for (let cycle = 0; cycle < 3; cycle += 1) {
     await page.getByRole('button', { name: 'Play', exact: true }).click();
     await expect(page.getByRole('heading', { name: 'Game' })).toBeVisible();
-    await page.getByRole('button', { name: 'View Result Placeholder' }).click();
-    await expect(page.getByRole('heading', { name: 'Result' })).toBeVisible();
-    await page.getByRole('button', { name: 'Play Again' }).click();
-    await expect(page.getByRole('heading', { name: 'Game' })).toBeVisible();
     await page.getByRole('button', { name: 'Main Menu' }).click();
     await expect(page.getByRole('heading', { name: 'Pirate Battle' })).toBeVisible();
   }
 
   await page.getByRole('button', { name: 'Play', exact: true }).click();
-  await page.getByRole('button', { name: 'View Result Placeholder' }).click();
   await page.getByRole('button', { name: 'Main Menu' }).click();
   await expect(page.getByRole('heading', { name: 'Pirate Battle' })).toBeVisible();
 
@@ -61,8 +56,6 @@ test('supports keyboard navigation and moves focus to the active screen', async 
   await expect(page.getByRole('heading', { name: 'Game' })).toBeVisible();
   await page.keyboard.press('Tab');
   await expect(page.getByRole('button', { name: 'Main Menu' })).toBeFocused();
-  await page.keyboard.press('Tab');
-  await expect(page.getByRole('button', { name: 'View Result Placeholder' })).toBeFocused();
   await page.keyboard.press('Enter');
-  await expect(page.getByRole('heading', { name: 'Result' })).toBeVisible();
+  await expect(page.getByRole('heading', { name: 'Pirate Battle' })).toBeVisible();
 });

@@ -53,8 +53,27 @@ test('real combat, seeded enemies, pause and cleanup do not cause per-step React
     for (const child of probe.app?.stage.children[0]?.children ?? []) {
       if ((child.label.startsWith('enemy:') || child.label.startsWith('projectile:')) && !probe.observed.includes(child)) probe.observed.push(child);
     }
-    return { seconds: controller.getSnapshot().elapsedSeconds, enemies: controller.getEnemyStates(), shots: controller.getProjectileStates(), player: controller.getPlayerState(), commits: probe.commits };
+    const layer = probe.app?.stage.children[0]?.children.find(child => child.label === 'health-layer');
+    const states = controller.getEnemyStates(); const player = controller.getPlayerState();
+    for (const indicator of layer?.children ?? []) {
+      if (indicator.label.startsWith('health:enemy:') && !probe.observed.includes(indicator)) probe.observed.push(indicator);
+    }
+    const health = (layer?.children ?? []).map(indicator => {
+      const id = indicator.label === 'health:player' ? -1 : Number(indicator.label.split(':')[2]);
+      const entity = id === -1 ? player : states.find(enemy => enemy.id === id);
+      const max = id === -1 ? controller.getSnapshot().config?.player.health
+        : states.find(enemy => enemy.id === id)?.kind === 'chaser' ? controller.getSnapshot().config?.chaser.health : controller.getSnapshot().config?.shooter.health;
+      return { x: indicator.x, expectedX: entity?.x, y: indicator.y, expectedY: Math.max(id === -1 ? 21 : 24, (entity?.y ?? 0) - 76),
+        fill: indicator.children[1]?.width, expectedFill: (id === -1 ? 196 : 112) * (entity?.health ?? 0) / (max ?? 1) };
+    });
+    return { health, seconds: controller.getSnapshot().elapsedSeconds, enemies: controller.getEnemyStates(), shots: controller.getProjectileStates(), player: controller.getPlayerState(), commits: probe.commits };
   });
+  const verifyHealth = async () => {
+    const current = await read();
+    expect(current.health).toHaveLength(current.enemies.length + 1);
+    for (const bar of current.health) { expect(bar.x).toBe(bar.expectedX); expect(bar.y).toBe(bar.expectedY); expect(bar.fill).toBeCloseTo(bar.expectedFill, 8); }
+  };
+  await verifyHealth();
   const commits = (await read()).commits;
   const positionForCombat = async () => {
     await page.keyboard.down('d'); await page.clock.runFor(Math.PI / 2.5 * 1000); await page.keyboard.up('d');
@@ -93,7 +112,7 @@ test('real combat, seeded enemies, pause and cleanup do not cause per-step React
   }
   await page.keyboard.up('Space');
   expect({ damaged, destroyed, enemyShot, playerDamaged }, JSON.stringify({ first, final: await read() })).toEqual({ damaged: true, destroyed: true, enemyShot: true, playerDamaged: true });
-  expect(kinds).toEqual(new Set(['chaser', 'shooter'])); expect((await read()).commits).toBe(commits);
+  expect(kinds).toEqual(new Set(['chaser', 'shooter'])); expect((await read()).commits - commits).toBeGreaterThan(0); expect((await read()).commits - commits).toBeLessThan(40);
   await page.screenshot({ path: testInfo.outputPath('enemy-combat.png'), fullPage: true });
   await page.getByRole('button', { name: 'Pause', exact: true }).click();
   const paused = await read(); await page.clock.fastForward(60000); expect(await read()).toEqual(paused);

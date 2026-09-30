@@ -24,7 +24,7 @@ export function updateEnemies(enemies: readonly EnemyState[], player: PlayerStat
     const impact = containsPoint(contact, enemy) ? 0 : sweepPointAgainstRectangle(enemy, proposed, contact, true);
     enemy.x = proposed.x; enemy.y = proposed.y;
     if (enemy.kind === 'chaser' && impact !== null) {
-      enemy.destroyed = true; enemy.health = 0;
+      enemy.destroyed = true; enemy.health = 0; enemy.destructionSource = 'contact';
       player.health = Math.max(0, player.health - config.chaser.impactDamage);
     } else if (enemy.kind === 'shooter' && distance <= config.shooter.attackRange && seconds + 1e-9 >= enemy.readyAtSeconds) {
       const directionX = distance === 0 ? 0 : dx / distance;

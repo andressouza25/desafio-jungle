@@ -12,19 +12,3 @@ export function PlaceholderScreen({ title, onBack }: PlaceholderScreenProps) {
     </>
   );
 }
-
-interface ResultScreenProps {
-  onPlayAgain: () => void;
-  onBack: () => void;
-}
-
-export function ResultScreen({ onPlayAgain, onBack }: ResultScreenProps) {
-  return (
-    <>
-      <h1>Result</h1>
-      <p>Result screen placeholder. No match summary is available.</p>
-      <button type="button" onClick={onPlayAgain}>Play Again</button>{' '}
-      <button type="button" onClick={onBack}>Main Menu</button>
-    </>
-  );
-}

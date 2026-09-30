@@ -161,5 +161,5 @@ test('movement consumes bounded fixed deltas, config snapshots and never publish
   expect(game.getPlayerState()?.y).toBeCloseTo(360 - 60 * SIMULATION_TIMING.maxStepsPerFrame / 60, 9);
   expect(game.getPlayerState()?.health).toBe(77);
   advance(game, 1000);
-  expect(events).toBe(3);
+  expect(events).toBe(4); // One displayed-second HUD update, no movement updates.
 });

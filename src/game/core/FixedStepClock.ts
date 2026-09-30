@@ -2,7 +2,7 @@ export const SIMULATION_TIMING = Object.freeze({ stepMs: 1000 / 60, maxFrameMs: 
 
 export interface SimulationClock {
   readonly elapsedSeconds: number;
-  advance(elapsedMs: number, onStep?: (deltaSeconds: number) => void): number;
+  advance(elapsedMs: number, onStep?: (deltaSeconds: number) => void | boolean): number;
   rebase(): void;
   reset(): void;
 }
@@ -14,7 +14,7 @@ export class FixedStepClock implements SimulationClock {
 
   get elapsedSeconds() { return this.elapsedMs / 1000; }
 
-  advance(elapsedMs: number, onStep?: (deltaSeconds: number) => void): number {
+  advance(elapsedMs: number, onStep?: (deltaSeconds: number) => void | boolean): number {
     if (!Number.isFinite(elapsedMs) || elapsedMs < 0) return 0;
     if (this.skipNextDelivery) {
       this.skipNextDelivery = false;
@@ -28,7 +28,7 @@ export class FixedStepClock implements SimulationClock {
       this.accumulatorMs = Math.max(0, this.accumulatorMs - stepMs);
       this.elapsedMs += stepMs;
       steps += 1;
-      onStep?.(stepMs / 1000);
+      if (onStep?.(stepMs / 1000) === false) break;
     }
     // Drop excess whole steps rather than carrying an unbounded catch-up debt.
     if (this.accumulatorMs + epsilon >= stepMs) this.accumulatorMs %= stepMs;

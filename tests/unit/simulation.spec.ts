@@ -210,7 +210,7 @@ test('clock and random source can be injected without browser or Pixi dependenci
   expect(game.getSnapshot().elapsedSeconds).toBe(0);
 });
 
-test('simulation steps do not publish React-facing snapshots; unsubscription releases listeners', () => {
+test('simulation publishes semantic HUD changes; unsubscription releases listeners', () => {
   const game = controller();
   let events = 0;
   const unsubscribe = game.subscribe(() => { events += 1; });
@@ -218,9 +218,11 @@ test('simulation steps do not publish React-facing snapshots; unsubscription rel
   expect(events).toBe(3);
   for (let update = 0; update < 1000; update += 1) game.advance(10);
   expect(game.getSnapshot().elapsedSeconds).toBeCloseTo(10, 9);
-  expect(events).toBe(3);
+  expect(events).toBeGreaterThanOrEqual(13);
+  expect(events).toBeLessThan(20);
+  const published = events;
   unsubscribe(); game.pause(); game.end(); game.destroy();
-  expect(events).toBe(3);
+  expect(events).toBe(published);
 });
 
 test('the same configuration and seed produce identical snapshots across update frequencies', () => {

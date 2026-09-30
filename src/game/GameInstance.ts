@@ -18,6 +18,8 @@ export class GameInstance implements GameSession {
   private readonly keyboard: KeyboardInput;
   private readonly unsubscribe: () => void;
   private destroyed = false;
+  private previousState: GameSnapshot['state'] | null = null;
+  private previousConfig: GameConfig | null = null;
 
   constructor(host: HTMLDivElement, options: InstanceOptions) {
     this.controller = new GameController({ readConfig: options.readConfig });
@@ -29,12 +31,15 @@ export class GameInstance implements GameSession {
     }, (elapsedMs) => {
       if (document.hidden) this.controller.pause();
       else this.controller.advance(elapsedMs);
-      this.renderer.syncState(this.controller.getPlayerState(), this.controller.getProjectileStates(), this.controller.getEnemyStates());
+      this.renderer.syncState(this.controller.getPlayerState(), this.controller.getProjectileStates(), this.controller.getEnemyStates(), this.controller.getSnapshot().config);
     });
     this.unsubscribe = this.controller.subscribe((snapshot) => {
+      if (snapshot.state === this.previousState && snapshot.config === this.previousConfig) { options.onSnapshot(snapshot); return; }
+      this.previousState = snapshot.state;
+      this.previousConfig = snapshot.config;
       this.renderer.setRunning(false);
       this.keyboard.setActive(snapshot.state === 'running' && !snapshot.destroyed);
-      this.renderer.syncState(this.controller.getPlayerState(), this.controller.getProjectileStates(), this.controller.getEnemyStates());
+      this.renderer.syncState(this.controller.getPlayerState(), this.controller.getProjectileStates(), this.controller.getEnemyStates(), this.controller.getSnapshot().config);
       if (snapshot.state === 'running') {
         // Establish a zero delivery baseline, then let ticker.start() reset its wall-time
         // baseline. This preserves the first active interval even on an in-place restart.
