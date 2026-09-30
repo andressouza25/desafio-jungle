@@ -75,7 +75,7 @@ test('real combat, seeded enemies, pause and cleanup do not cause per-step React
       return { x: indicator.x, expectedX: entity?.x, y: indicator.y, expectedY: Math.max(id === -1 ? 21 : 24, (entity?.y ?? 0) - 76),
         fill: indicator.children[1]?.width, expectedFill: (id === -1 ? 196 : 112) * (entity?.health ?? 0) / (max ?? 1) };
     });
-    return { health, seconds: controller.getSnapshot().elapsedSeconds, enemies: controller.getEnemyStates(), shots: controller.getProjectileStates(), player: controller.getPlayerState(), commits: probe.commits };
+    return { health, score: controller.getSnapshot().score, seconds: controller.getSnapshot().elapsedSeconds, enemies: controller.getEnemyStates(), shots: controller.getProjectileStates(), player: controller.getPlayerState(), commits: probe.commits };
   });
   const verifyHealth = async () => {
     const current = await read();
@@ -114,6 +114,7 @@ test('real combat, seeded enemies, pause and cleanup do not cause per-step React
     for (const enemy of state.enemies) kinds.add(enemy.kind);
     const original = state.enemies.find(enemy => enemy.id === target.id);
     damaged ||= Boolean(original && original.health < 75); destroyed ||= !original;
+    if (destroyed) expect(state.score).toBe(1); // Later simulation steps cannot count the removed target again.
     if (!original) await page.keyboard.up('Space');
     enemyShot ||= state.shots.some(shot => shot.weapon === 'enemy');
     playerDamaged ||= Boolean(state.player && state.player.health < 100);
@@ -121,6 +122,9 @@ test('real combat, seeded enemies, pause and cleanup do not cause per-step React
   }
   await page.keyboard.up('Space');
   expect({ damaged, destroyed, enemyShot, playerDamaged }, JSON.stringify({ first, final: await read() })).toEqual({ damaged: true, destroyed: true, enemyShot: true, playerDamaged: true });
+  await expect(page.getByRole('definition').nth(1)).toHaveText('1');
+  expect((await read()).score).toBe(1);
+  await verifyHealth();
   const feedback = await page.evaluate(() => [...(window.__enemyProbe.feedback ?? [])]);
   for (const kind of ['fire', 'impact', 'damage', 'destruction']) expect(feedback).toContain('feedback:' + kind);
   expect(feedback.some(label => label.startsWith('deterioration:'))).toBe(true);

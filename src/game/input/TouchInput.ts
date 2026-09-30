@@ -11,10 +11,20 @@ export class TouchInput {
     private readonly onPauseRequested: () => void) {
     surface.addEventListener('pointerdown', this.down);
     surface.addEventListener('lostpointercapture', this.up);
+    surface.addEventListener('click', this.activatePause);
     window.addEventListener('pointerup', this.up);
     window.addEventListener('pointercancel', this.up);
   }
   setActive(active: boolean) { this.clear(); this.active = active; }
+  private readonly activatePause = (event: MouseEvent) => {
+    // Keyboard/assistive activation emits click with detail 0; pointerdown already pauses.
+    if (!this.active || event.detail !== 0 || !(event.target instanceof Element)) return;
+    const button = event.target.closest<HTMLElement>('[data-game-action="pause"]');
+    if (!button || !this.surface.contains(button)) return;
+    this.input.set('pause', true, 'touch-keyboard');
+    this.onPauseRequested();
+    this.input.set('pause', false, 'touch-keyboard');
+  };
   private readonly down = (event: PointerEvent) => {
     if (!this.active || event.button !== 0 || !(event.target instanceof Element)) return;
     const button = event.target.closest<HTMLElement>('[data-game-action]');
@@ -42,6 +52,7 @@ export class TouchInput {
     this.setActive(false);
     this.surface.removeEventListener('pointerdown', this.down);
     this.surface.removeEventListener('lostpointercapture', this.up);
+    this.surface.removeEventListener('click', this.activatePause);
     window.removeEventListener('pointerup', this.up);
     window.removeEventListener('pointercancel', this.up);
   }

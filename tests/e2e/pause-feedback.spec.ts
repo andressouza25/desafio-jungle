@@ -4,11 +4,11 @@ test('pause dialog contains keyboard focus, restores gameplay focus, and freezes
   const errors: string[] = [];
   page.on('pageerror', error => errors.push(error.message));
   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
-  await page.clock.install();
+  await page.clock.install({ time: '2026-01-01T00:00:00Z' });
   await page.goto('/');
   await page.getByRole('button', { name: 'Play', exact: true }).click();
   await page.getByRole('button', { name: 'Start Match' }).click();
-  await page.clock.pauseAt(new Date(Date.now() + 1000));
+  await page.clock.pauseAt('2026-01-01T00:01:00Z');
   await page.keyboard.down('w'); await page.keyboard.down('Space'); await page.clock.runFor(100);
   await page.keyboard.press('Escape'); await page.clock.runFor(32);
   const dialog = page.getByRole('dialog', { name: 'Paused' });

@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test';
 import type { Page } from '@playwright/test';
+import { observeGame, completeBattle } from './helpers/game';
 import type { Application } from 'pixi.js';
 
 declare global { interface Window { __touchApp: Application; } }
@@ -20,14 +21,14 @@ async function enter(page: Page) {
   await page.getByRole('button', { name: 'Play', exact: true }).click();
   await page.getByRole('button', { name: 'Start Match' }).click();
 }
-test.beforeEach(async ({ page }, info) => {
-  test.skip(info.project.name !== 'mobile-chromium', 'Touch layout uses the existing mobile project.');
+test.beforeEach(async ({ page }) => {
+  await observeGame(page, 1, false); // This file retains its own Pixi observation hook.
   const errors: string[] = []; browserErrors.set(page, errors);
   page.on('pageerror', (error) => errors.push(error.message));
   page.on('console', (message) => { if (message.type() === 'error') errors.push(message.text()); });
   await page.setViewportSize({ width: 740, height: 360 });
   await page.addInitScript(() => Reflect.set(window, '__PIXI_APP_INIT__', (app: Application) => { window.__touchApp = app; }));
-  await page.clock.install(); await page.clock.pauseAt(new Date());
+  await page.clock.install({ time: '2026-01-01T00:00:00Z' }); await page.clock.pauseAt('2026-01-01T00:01:00Z');
   await page.goto('/');
   await page.getByRole('button', { name: 'Options', exact: true }).click();
   await page.getByRole('textbox', { name: 'Enemy spawn time' }).fill('30');
@@ -154,7 +155,6 @@ test('real simultaneous Chromium touch, viewport fitting, targets and orientatio
 });
 
 test('blur and hidden interruptions clear touches, and automatic match end releases active controls', async ({ page }) => {
-  test.setTimeout(90000);
   for (const interruption of ['blur', 'hidden']) {
     await pointer(page, 'moveForward', 1); await pointer(page, 'fireFront', 2);
     await page.evaluate((kind) => {
@@ -172,9 +172,12 @@ test('blur and hidden interruptions clear touches, and automatic match end relea
     expect((await state(page)).y).toBe(paused.y);
   }
   await pointer(page, 'turnRight', 3); await pointer(page, 'fireFront', 4);
-  await page.clock.runFor(61000);
-  await expect(page.getByRole('heading', { name: /Battle Complete|Ship Sunk/ })).toBeVisible();
+  await expect(page.locator('[data-pressed]')).toHaveCount(2);
+  // Advance the same production clock with the real touch actions still held.
+  // Terminal ownership cleanup does not need 3,600 intermediate rendered frames.
+  await completeBattle(page);
   await page.getByRole('button', { name: 'Play Again', exact: true }).click(); await page.clock.runFor(100);
   await expect(page.locator('[data-pressed]')).toHaveCount(0);
   expect((await state(page)).rotation).toBe(Math.PI);
+  expect((await state(page)).weapons).toEqual([]);
 });

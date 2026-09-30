@@ -55,6 +55,7 @@ test('validates settings and persists only valid saves after reload', async ({ p
 
 test('menu and options remain keyboard-usable with visible focus and no horizontal overflow', async ({ page }) => {
   await page.goto('/');
+  await expect(page.getByRole('main')).toBeFocused();
   await page.keyboard.press('Tab');
   await expect(page.getByRole('button', { name: 'Play', exact: true })).toBeFocused();
   await page.keyboard.press('Tab');

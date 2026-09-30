@@ -27,7 +27,11 @@ export class GameInstance implements GameSession {
   private previousConfig: GameConfig | null = null;
 
   constructor(private readonly host: HTMLDivElement, options: InstanceOptions) {
-    this.controller = new GameController({ readConfig: options.readConfig });
+    // Narrow E2E input: Vite removes this development-only branch from production.
+    const testSeed: unknown = import.meta.env.DEV ? Reflect.get(window, '__pirateBattleTestSeed') : undefined;
+    const seed = typeof testSeed === 'number' && Number.isInteger(testSeed) && testSeed >= 0 && testSeed <= 0xffffffff
+      ? testSeed : undefined;
+    this.controller = new GameController({ readConfig: options.readConfig, seed });
     this.keyboard = new KeyboardInput(host, this.controller.input);
     this.touch = new TouchInput(host.closest('.game-screen') ?? host, this.controller.input,
       () => this.controller.advance(0));

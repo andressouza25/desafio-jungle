@@ -111,12 +111,13 @@ async function expectCanvasSizing(page: Page) {
 test('loads reusable water and environment and cleans up five mount cycles, resizing and DPR changes', async ({ page, context, isMobile }, testInfo) => {
   const errors = trackBrowserErrors(page);
   await page.goto('/');
+  await expect(page.getByRole('button', { name: 'Play', exact: true })).toBeVisible();
   let waterRequests = 0;
   let environmentRequests = 0;
   let projectileRequests = 0;
   page.on('request', (request) => {
-    if (/tile_73.*\.png/.test(request.url())) waterRequests += 1;
-    if (/tiles_sheet.*\.png/.test(request.url())) environmentRequests += 1;
+    if (/\/retina\/tiles\/tile_73\.png$/.test(request.url())) waterRequests += 1;
+    if (/\/tilesheet\/tiles_sheet\.png$/.test(request.url())) environmentRequests += 1;
     if (/cannon_ball.*\.png/.test(request.url()) && !request.url().includes('?import')) projectileRequests += 1;
   });
 
@@ -162,9 +163,16 @@ for (const asset of ['tile_73', 'ship_2', 'tiles_sheet', 'cannon_ball', 'ship_1'
   test(`shows ${asset} failure and recovers through the visible retry control`, async ({ page }) => {
     const errors = trackBrowserErrors(page);
     await page.goto('/');
+    await expect(page.getByRole('button', { name: 'Play', exact: true })).toBeVisible();
     let shouldFail = true;
     let requests = 0;
-    await page.route(`**/*${asset}*.png*`, async (route) => {
+    // MSW's fetch handler owns the page request; intercept its external asset fetch.
+    // Do not route /api or block service workers: API tests must retain MSW.
+    await page.context().route(`**/*${asset}*.png*`, async (route) => {
+      const url = new URL(route.request().url());
+      if (url.searchParams.has('import') || (asset === 'tile_73' && !url.pathname.includes('/retina/tiles/'))) {
+        await route.continue(); return;
+      }
       requests += 1;
       if (shouldFail) await route.fulfill({ status: 200, contentType: 'image/png', body: 'invalid image data' });
       else await route.continue();
@@ -193,10 +201,11 @@ for (const asset of ['tile_73', 'ship_2', 'tiles_sheet', 'cannon_ball', 'ship_1'
 test('leaving during asset loading prevents late canvases and shares the in-flight request', async ({ page }) => {
   const errors = trackBrowserErrors(page);
   await page.goto('/');
+  await expect(page.getByRole('button', { name: 'Play', exact: true })).toBeVisible();
   let release = () => {};
   const gate = new Promise<void>((resolve) => { release = resolve; });
   let requests = 0;
-  await page.route('**/*tile_73*.png*', async (route) => {
+  await page.context().route('**/retina/tiles/tile_73.png', async (route) => {
     requests += 1;
     await gate;
     await route.continue();

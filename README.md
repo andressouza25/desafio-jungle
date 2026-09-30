@@ -386,7 +386,7 @@ Current documentation:
 - [x] Project Bootstrap
 - [ ] Gameplay
 - [ ] Ranking and Match History
-- [ ] E2E Tests
+- [x] E2E Tests
 - [ ] Performance Validation
 - [ ] Deployment
 
@@ -454,3 +454,15 @@ The separate `pirate-battle:pending-submissions:v1` queue retains the original c
 To reproduce ambiguous recovery, select `NETWORK-013` using the console controls above and finish a battle. The mock saves it, but Axios times out and Result stays pending. Run `window.pirateBattleNetwork.recover()` and click **Retry Registration**; the existing server record confirms without duplication. For unavailability, select `NETWORK-014`, finish a battle, optionally refresh, recover the scenario and retry. `NETWORK-008` reproduces connection failure. Mock reset clears confirmed server records/query cache but intentionally leaves the client pending queue available for retry.
 
 Run `npm run test:unit -- tests/unit/submission-recovery.spec.ts tests/unit/api-msw.spec.ts tests/unit/match-rules.spec.ts` and `npm test -- tests/e2e/submission-recovery.spec.ts` for identity, persistence, concurrent requests, cache refresh, actual completion/abandonment and recovery scenarios in desktop/mobile Chromium.
+
+## E2E and visual regression (TASK-16)
+
+Run `npm test -- --workers=2` for the complete Chromium suite. Desktop uses 1280×720; mobile uses Pixel 5 at 393×727, with explicit landscape combat checks. Touch-only tests belong to the mobile project. Tests have zero retries and reject `.only`. Every test receives a fresh browser context, storage, MSW worker and application instance; network tests use the real Query → Axios → HTTP → MSW flow.
+
+The requirement-by-requirement audit is in [TEST_COVERAGE.md](docs/TEST_COVERAGE.md). Gameplay tests control browser/simulation time and use actual input and production combat. A development-only `__pirateBattleTestSeed` input selects a validated uint32 seed before constructing the game; production builds remove this input. Test-runner observers read existing controller/Pixi owners and cannot replace gameplay outcomes.
+
+Run `npm test -- tests/e2e/visual-regression.spec.ts --workers=2` to compare all six versioned PNGs under `tests/e2e/visual-baselines/{desktop-chromium,mobile-chromium}/`. Menu/Result use each project's portrait or desktop viewport; mobile gameplay uses 740×360. Browser time, locale (`en-US`), timezone (`UTC`), seed and screenshot state are fixed. Screenshot comparisons allow zero differing pixels under Playwright's default perceptual color threshold. After an intentional UI change, use `--update-snapshots` and manually inspect every changed image against the supplied artwork before accepting it. Baselines were reviewed on Windows Chromium; regenerate and review explicitly when changing the rendering environment.
+
+The HTML report is `playwright-report/index.html`; inspect it with `npx playwright show-report`. A failed test retains its trace, screenshot and video in `test-results/`; use `npx playwright show-trace <trace.zip>` for the failed action, DOM, console and network timeline. Temporary diagnostic runs may use ignored `output/playwright/` directories. Asset failure tests intercept only asset HTTP requests at browser-context level while leaving MSW and API requests active. Expected network failures are checked separately from unexpected runtime/console errors.
+
+Vite ignores generated Playwright report/trace directories while watching application files, so saving a diagnostic artifact cannot reload another test's active page.
