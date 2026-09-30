@@ -76,7 +76,8 @@ export function GameScreen({ onLeave, onViewResult }: GameScreenProps) {
         )}
       </div>
       <footer className="game-screen__footer">
-        <p id="game-controls">W/↑: forward · A/← and D/→: turn · Space/Q/E: attacks (not firing yet) · Esc: pause.
+        <p id="game-controls">W/↑: forward · A/← and D/→: turn · Space: front fire · Q/E: left/right broadside · Esc: pause.
+          Hold an attack to repeat after its cooldown.
           Keyboard controls require arena focus. Tab returns to page controls.</p>
         <p role={loadState.kind === 'ready' ? 'status' : undefined}>
           {loadState.kind !== 'ready' ? 'No match is running.' : lifecycle === 'ready'

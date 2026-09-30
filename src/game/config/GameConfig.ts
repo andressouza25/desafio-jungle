@@ -25,6 +25,8 @@ export interface GameConfig {
   readonly spawn: Readonly<{ intervalSeconds: number; distribution: Readonly<{ chaser: number; shooter: number }> }>;
 }
 
+export type WeaponId = keyof GameConfig['weapons'];
+
 export function snapshotGameConfig(config: GameConfig): GameConfig {
   const positiveValues = [
     config.session.durationSeconds, ...Object.values(config.player),
@@ -56,7 +58,7 @@ export function snapshotGameConfig(config: GameConfig): GameConfig {
 }
 
 // Speeds use logical units/second; rotations use radians/second. These are
-// initial balance defaults; weapons and enemy behavior remain inactive.
+// initial balance defaults; enemy behavior remains inactive.
 export const DEFAULT_GAME_CONFIG: GameConfig = snapshotGameConfig({
   session: { durationSeconds: DEFAULT_OPTIONS.sessionDurationSeconds },
   player: { health: 100, movementSpeed: 180, rotationSpeed: 2.5 },

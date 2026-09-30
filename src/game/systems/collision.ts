@@ -13,7 +13,8 @@ export function containsPoint(rectangle: WorldRectangle, point: WorldPoint): boo
 
 // Slab intersection over the complete proposed segment, not just its endpoint.
 // Returns entry fraction or null; tangent travel and movement away from contact are free.
-export function sweepPointAgainstRectangle(from: WorldPoint, to: WorldPoint, rectangle: WorldRectangle): number | null {
+export function sweepPointAgainstRectangle(from: WorldPoint, to: WorldPoint, rectangle: WorldRectangle,
+  includeEndContact = false): number | null {
   let entry = -Infinity;
   let exit = Infinity;
   for (const axis of ['x', 'y'] as const) {
@@ -29,8 +30,25 @@ export function sweepPointAgainstRectangle(from: WorldPoint, to: WorldPoint, rec
     entry = Math.max(entry, Math.min(first, second));
     exit = Math.min(exit, Math.max(first, second));
   }
-  if (exit <= 0 || entry >= 1 || entry >= exit) return null;
+  if (exit <= 0 || (includeEndContact ? entry > 1 : entry >= 1) || entry >= exit) return null;
   return Math.max(0, entry);
+}
+
+// Inclusive bounds: returns the first exit, including invalid starting positions.
+export function sweepPointOutOfRectangle(from: WorldPoint, to: WorldPoint, rectangle: WorldRectangle): number | null {
+  let exit = 1;
+  let leaves = false;
+  for (const axis of ['x', 'y'] as const) {
+    const low = rectangle[axis];
+    const high = low + (axis === 'x' ? rectangle.width : rectangle.height);
+    if (from[axis] < low || from[axis] > high) return 0;
+    if (to[axis] < low || to[axis] > high) {
+      leaves = true;
+      const boundary = to[axis] < low ? low : high;
+      exit = Math.min(exit, (boundary - from[axis]) / (to[axis] - from[axis]));
+    }
+  }
+  return leaves ? exit : null;
 }
 
 // Precondition: the starting body is inside the arena and outside all islands.

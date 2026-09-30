@@ -29,12 +29,12 @@ export class GameInstance implements GameSession {
     }, (elapsedMs) => {
       if (document.hidden) this.controller.pause();
       else this.controller.advance(elapsedMs);
-      this.renderer.syncPlayer(this.controller.getPlayerState());
+      this.renderer.syncState(this.controller.getPlayerState(), this.controller.getProjectileStates());
     });
     this.unsubscribe = this.controller.subscribe((snapshot) => {
       this.renderer.setRunning(false);
       this.keyboard.setActive(snapshot.state === 'running' && !snapshot.destroyed);
-      this.renderer.syncPlayer(this.controller.getPlayerState());
+      this.renderer.syncState(this.controller.getPlayerState(), this.controller.getProjectileStates());
       if (snapshot.state === 'running') {
         // Establish a zero delivery baseline, then let ticker.start() reset its wall-time
         // baseline. This preserves the first active interval even on an in-place restart.

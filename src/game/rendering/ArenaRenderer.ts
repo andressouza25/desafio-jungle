@@ -3,6 +3,7 @@ import type { Ticker } from 'pixi.js';
 import { loadFoundationTextures } from './foundationAssets';
 import { ARENA_LAYOUT, LOGICAL_ARENA } from '../config/arena';
 import type { PlayerState } from '../entities/Player';
+import type { ProjectileState } from '../entities/Projectile';
 
 export type ArenaLoadState =
   | { kind: 'loading'; progress: number; phase: 'assets' | 'renderer' }
@@ -15,6 +16,8 @@ export class ArenaRenderer {
   private world: Container | null = null;
   private player: Sprite | null = null;
   private islandTexture: Texture | null = null;
+  private projectileTexture: Texture | null = null;
+  private readonly projectiles = new Map<number, Sprite>();
   private observer: ResizeObserver | null = null;
   private densityQuery: MediaQueryList | null = null;
   private resizeFrame: number | null = null;
@@ -60,6 +63,7 @@ export class ArenaRenderer {
       }
 
       this.application = application;
+      this.projectileTexture = textures.projectile;
       if (this.onElapsed) application.ticker.add(this.onTick, this, UPDATE_PRIORITY.HIGH);
       this.world = new Container();
       const water = new TilingSprite({ texture: textures.water, ...LOGICAL_ARENA });
@@ -128,13 +132,33 @@ export class ArenaRenderer {
     else this.application.ticker.stop();
   }
 
-  syncPlayer(state: Readonly<PlayerState> | null) {
-    if (this.destroyed || !this.player || !this.application) return;
+  syncState(state: Readonly<PlayerState> | null, projectiles: readonly Readonly<ProjectileState>[]) {
+    if (this.destroyed || !this.player || !this.application || !this.world || !this.projectileTexture) return;
     this.player.visible = state !== null;
     if (state) {
       this.player.position.set(state.x, state.y);
       // Supplied ship_2 points down. Domain heading zero points up.
       this.player.rotation = state.rotation + Math.PI;
+    }
+    const activeIds = new Set<number>();
+    for (const projectile of projectiles) {
+      if (projectile.resolution !== null) continue;
+      activeIds.add(projectile.id);
+      let sprite = this.projectiles.get(projectile.id);
+      if (!sprite) {
+        sprite = new Sprite({ texture: this.projectileTexture, anchor: 0.5 });
+        sprite.label = `projectile:${projectile.id}:${projectile.weapon}`;
+        sprite.eventMode = 'none';
+        this.projectiles.set(projectile.id, sprite);
+        this.world.addChild(sprite);
+      }
+      sprite.position.set(projectile.x, projectile.y);
+    }
+    for (const [id, sprite] of this.projectiles) {
+      if (activeIds.has(id)) continue;
+      this.world.removeChild(sprite);
+      sprite.destroy({ texture: false, textureSource: false });
+      this.projectiles.delete(id);
     }
     if (!this.application.ticker.started) this.application.render();
   }
@@ -161,7 +185,9 @@ export class ArenaRenderer {
     const scale = Math.min(width / LOGICAL_ARENA.width, height / LOGICAL_ARENA.height);
     this.application.renderer.resize(width, height, window.devicePixelRatio || 1);
     this.world.scale.set(scale);
-    this.world.position.set((width - LOGICAL_ARENA.width * scale) / 2, (height - LOGICAL_ARENA.height * scale) / 2);
+    // Floating-point multiplication can put an exactly fitted edge infinitesimally below zero.
+    this.world.position.set(Math.max(0, (width - LOGICAL_ARENA.width * scale) / 2),
+      Math.max(0, (height - LOGICAL_ARENA.height * scale) / 2));
     this.application.render();
   }
 
@@ -175,6 +201,8 @@ export class ArenaRenderer {
     this.densityQuery?.removeEventListener('change', this.onDensityChange);
     this.densityQuery = null;
     this.application?.destroy({ removeView: true }, { children: true, texture: false, textureSource: false });
+    this.projectiles.clear();
+    this.projectileTexture = null;
     this.islandTexture?.destroy(false); // Release the frame wrapper, not the shared atlas source.
     this.islandTexture = null;
     this.application = null;

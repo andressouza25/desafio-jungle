@@ -69,7 +69,7 @@ async function player(page: Page) {
     const ship = world?.children.find((child) => child.label === 'player');
     if (!world || !ship) throw new Error('Expected the rendered player.');
     return { x: ship.x, y: ship.y, rotation: ((ship.rotation - Math.PI) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2),
-      visible: ship.visible, entities: world.children.length };
+      visible: ship.visible, entities: world.children.filter((child) => !child.label.startsWith('projectile:')).length };
   });
 }
 
@@ -102,7 +102,7 @@ function expectInArena(state: { x: number; y: number }) {
   expect(state.x > 190 && state.x < 514 && state.y > 158 && state.y < 482).toBe(false);
 }
 
-test('real keyboard moves and turns the supplied ship without per-step React commits or firing', async ({ page }, testInfo) => {
+test('real keyboard moves, turns and fires without per-step React commits', async ({ page }, testInfo) => {
   await enter(page);
   expect(await player(page)).toEqual({ x: 640, y: 360, rotation: 0, visible: true, entities: 3 });
   expect(await page.evaluate(() => {
@@ -118,6 +118,8 @@ test('real keyboard moves and turns the supplied ship without per-step React com
   const moved = await player(page);
   expect(moved.y).toBeLessThan(280); expect(moved.y).toBeGreaterThanOrEqual(267);
   expect(moved.x).toBe(640); expect(moved.entities).toBe(3);
+  expect(await page.evaluate(() => window.__playerProbe.application?.stage.children[0]?.children
+    .filter((child) => child.label.startsWith('projectile:')).length)).toBeGreaterThan(0);
   await page.keyboard.down('a'); await page.clock.runFor(400); await page.keyboard.up('a');
   expect((await player(page)).rotation).toBeGreaterThan(5.2);
   expect(await page.evaluate(() => window.__playerProbe.commits)).toBe(commits);

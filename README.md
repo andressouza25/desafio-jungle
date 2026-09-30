@@ -244,7 +244,7 @@ This includes values such as:
 
 Each match receives a configuration snapshot when it starts.
 
-The Options screen saves two settings in browser storage: **Game session time** (60–180 seconds, default 120) and **Enemy spawn time** (1–30 seconds, default 3). Changes require **Save Changes**. Start and restart read current Options and create an immutable `GameConfig` snapshot; subsequent changes cannot alter an active match. Balance defaults live in `src/game/config/GameConfig.ts`. Player movement uses its snapshotted speeds; combat systems are not implemented yet.
+The Options screen saves two settings in browser storage: **Game session time** (60–180 seconds, default 120) and **Enemy spawn time** (1–30 seconds, default 3). Changes require **Save Changes**. Start and restart read current Options and create an immutable `GameConfig` snapshot; subsequent changes cannot alter an active match. Balance defaults live in `src/game/config/GameConfig.ts`. Movement and player weapons use their snapshotted values; enemies and damage application are not implemented yet.
 
 ---
 
@@ -339,9 +339,11 @@ npm run build
 npm run preview
 ```
 
-`npm test` runs bootstrap, navigation, Options, asset-loading, lifecycle, keyboard-to-player and arena/island collision tests in desktop and mobile Chromium. `npm run test:unit` runs deterministic clock, lifecycle, immutable-configuration, randomness, input, player-motion and collision tests in Node, without a browser or server. After `npm run build`, `npm run preview` serves the production build locally. Game shows the water arena, one solid island and keyboard-controlled player with loading/retry and minimal Start Match, Pause/Resume, End Match and Restart Match controls. Blur/hidden-tab pause requires explicit Resume. Combat, touch input, automatic timeout/death rules, final HUD/Result and API behavior are not implemented yet.
+`npm test` runs bootstrap, navigation, Options, asset-loading, lifecycle, keyboard-to-player, weapons/projectiles and arena/island collision tests in desktop and mobile Chromium. `npm run test:unit` runs deterministic clock, lifecycle, immutable-configuration, randomness, input, player-motion, weapon and projectile/collision tests in Node, without a browser or server. After `npm run build`, `npm run preview` serves the production build locally. Game shows the water arena, one solid island and keyboard-controlled player with three weapons, loading/retry and minimal Start Match, Pause/Resume, End Match and Restart Match controls. Blur/hidden-tab pause requires explicit Resume. Enemies, damage application, touch input, automatic timeout/death rules, final HUD/Result and API behavior are not implemented yet.
 
 The arena uses fixed 1280×720 logical coordinates; resizing only scales rendering. Geometry lives in `src/game/config/arena.ts`. The player uses a conservative square footprint containing its artwork at any heading. Movement stops at the first arena/island contact; rotation remains available to steer away. Collision does not cause damage. See [the collision strategy](./docs/ARCHITECTURE.md#16-task-07-arena-and-collision).
+
+Front fire creates one cannonball; each broadside creates three parallel cannonballs. Independent cooldown defaults are **0.5s front** and **1.5s per broadside**. Projectile defaults are **400 logical units/s**, **25 damage** (not applied yet) and **2s lifetime**, giving an unobstructed range of **800 units**. Island contact, arena exit or lifetime expiration removes a projectile; end/restart/leave clears all projectiles. Pause freezes both projectile travel and cooldowns. See [weapon ownership and timing](./docs/ARCHITECTURE.md#17-task-08-weapons-and-projectiles).
 
 ---
 
@@ -349,7 +351,7 @@ The arena uses fixed 1280×720 logical coordinates; resizing only scales renderi
 
 Start/resume/restart focuses the arena. Keyboard input is captured only while a match is running and the arena has focus; **Tab** returns to page controls. Moving focus out of the arena clears held input. Pause, focus loss, end and restart also clear input: release and press a held key again after resuming. Browser shortcuts and editable controls are not captured.
 
-Physical letter bindings use `KeyboardEvent.code` (the W/A/D/Q/E positions on a QWERTY keyboard). Opposing left/right turns cancel; movement and attacks can be held together. Attack bindings currently only update input actions, with no firing behavior. Touch controls are deferred.
+Physical letter bindings use `KeyboardEvent.code` (the W/A/D/Q/E positions on a QWERTY keyboard). Opposing left/right turns cancel; movement, rotation and attacks can be held together. Hold an attack to repeat when its weapon cooldown completes. Touch controls are deferred.
 
 | Action          | Keyboard | Touch     |
 | --------------- | -------- | --------- |
@@ -373,7 +375,7 @@ Deployment instructions and the production URL will be added once the applicatio
 
 ## Status
 
-**Current phase:** Fixed-timestep simulation, lifecycle, keyboard/player movement, arena bounds and island collision implemented. Combat has not started.
+**Current phase:** Fixed-timestep simulation, lifecycle, keyboard/player movement, arena bounds, island collision and player weapons/projectiles implemented. Enemies and damage application have not started.
 
 Current documentation:
 

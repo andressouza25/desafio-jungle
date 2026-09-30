@@ -21,7 +21,7 @@ export function MainMenuScreen({ onNavigate }: { onNavigate: (screen: Screen) =>
             <summary>How to play</summary>
             <p>Sail forward, turn your ship, and fire cannons to defeat enemy ships. Avoid islands and survive until the match ends.</p>
             <p>W/↑: forward. A/← and D/→: turn. Space: front attack. Q/E: left/right broadside. Esc: pause.
-              Attacks and touch controls are not implemented yet.</p>
+              Hold an attack to repeat after its cooldown. Touch controls are not implemented yet.</p>
           </details>
         </div>
         <div className="menu-nav__secondary">

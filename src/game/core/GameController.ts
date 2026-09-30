@@ -9,6 +9,11 @@ import { InputState } from '../input/InputState';
 import { createPlayer } from '../entities/Player';
 import type { PlayerState } from '../entities/Player';
 import { movePlayer } from '../systems/movePlayer';
+import { createWeaponState, fireWeapons } from '../systems/fireWeapons';
+import { updateProjectiles } from '../systems/updateProjectiles';
+import type { ProjectileState } from '../entities/Projectile';
+import { resolveProjectile } from '../entities/Projectile';
+import { ARENA_LAYOUT } from '../config/arena';
 
 interface ControllerOptions {
   readConfig: () => GameConfig;
@@ -20,6 +25,8 @@ interface ControllerOptions {
 export class GameController implements GameSession {
   readonly input = new InputState();
   private player: PlayerState | null = null;
+  private projectiles: ProjectileState[] = [];
+  private weapons = createWeaponState();
   private state: LifecycleState = 'loading';
   private config: GameConfig | null = null;
   private endReason: EndReason | null = null;
@@ -37,6 +44,14 @@ export class GameController implements GameSession {
 
   get random(): RandomSource | null { return this.randomSource; }
   getPlayerState(): Readonly<PlayerState> | null { return this.player ? Object.freeze({ ...this.player }) : null; }
+  getProjectileStates(): readonly Readonly<ProjectileState>[] {
+    return Object.freeze(this.projectiles.map((projectile) => Object.freeze({ ...projectile })));
+  }
+
+  private clearProjectiles() {
+    for (const projectile of this.projectiles) resolveProjectile(projectile, 'cleared');
+    this.projectiles = [];
+  }
 
   getSnapshot(): GameSnapshot {
     return Object.freeze({ state: this.state, elapsedSeconds: this.clock.elapsedSeconds,
@@ -71,6 +86,8 @@ export class GameController implements GameSession {
     const random = (this.options.createRandom ?? createSeededRandom)(this.seed);
     this.clock.reset();
     this.input.clear();
+    this.clearProjectiles();
+    this.weapons = createWeaponState();
     this.player = createPlayer(config);
     this.config = config;
     this.randomSource = random;
@@ -83,7 +100,12 @@ export class GameController implements GameSession {
     if (this.destroyed || this.state !== 'running') return;
     if (this.input.takePauseRequest()) { this.pause(); return; }
     this.clock.advance(elapsedMs, (deltaSeconds) => {
-      if (this.player && this.config) movePlayer(this.player, this.input, this.config, deltaSeconds);
+      if (this.player && this.config) {
+        movePlayer(this.player, this.input, this.config, deltaSeconds);
+        this.projectiles = updateProjectiles(this.projectiles, deltaSeconds, ARENA_LAYOUT);
+        // Fire at this step's end from the resolved player transform. New shots move next step.
+        this.projectiles.push(...fireWeapons(this.player, this.input, this.config, this.weapons, this.clock.elapsedSeconds));
+      }
     });
     // Per-step time stays here. UI receives lifecycle transitions, never this loop.
   }
@@ -110,6 +132,7 @@ export class GameController implements GameSession {
     this.input.clear();
     this.state = 'ended';
     this.endReason = reason;
+    this.clearProjectiles();
     this.publish();
   }
 
@@ -130,6 +153,7 @@ export class GameController implements GameSession {
     this.input.clear();
     this.clock.rebase();
     this.randomSource = null;
+    this.clearProjectiles();
     this.publish();
     this.listeners.clear();
   }

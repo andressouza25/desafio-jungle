@@ -112,7 +112,7 @@ test('equivalent active simulation time produces identical motion at 10–144 Hz
   for (const result of results) expect(result).toEqual(results[0]);
 });
 
-test('attack actions reach InputState without introducing firing or altering player movement', () => {
+test('attack actions reach the weapon system without altering simultaneous player movement', () => {
   const game = start();
   const keys = new KeyboardActions(game.input);
   for (const code of ['Space', 'KeyQ', 'KeyE', 'KeyW']) keys.press(code, false);
@@ -120,6 +120,7 @@ test('attack actions reach InputState without introducing firing or altering pla
   advance(game, 100);
   expect(game.getPlayerState()).toEqual({ x: 640, y: 342, rotation: 0, health: 100 });
   expect(Object.keys(game.getPlayerState() ?? {})).toEqual(['x', 'y', 'rotation', 'health']);
+  expect(game.getProjectileStates()).toHaveLength(7);
 });
 
 test('pause action, explicit pause/resume, end, restart and destroy clear held input and motion', () => {
