@@ -339,7 +339,9 @@ npm run build
 npm run preview
 ```
 
-`npm test` runs bootstrap, navigation, Options, asset-loading, lifecycle and keyboard-to-player tests in desktop and mobile Chromium. `npm run test:unit` runs deterministic clock, lifecycle, immutable-configuration, randomness, input and player-motion tests in Node, without a browser or server. After `npm run build`, `npm run preview` serves the production build locally. Game shows the water arena and keyboard-controlled player with loading/retry and minimal Start Match, Pause/Resume, End Match and Restart Match controls. Blur/hidden-tab pause requires explicit Resume. Combat, collision/arena bounds, touch input, automatic timeout/death rules, final HUD/Result and API behavior are not implemented yet.
+`npm test` runs bootstrap, navigation, Options, asset-loading, lifecycle, keyboard-to-player and arena/island collision tests in desktop and mobile Chromium. `npm run test:unit` runs deterministic clock, lifecycle, immutable-configuration, randomness, input, player-motion and collision tests in Node, without a browser or server. After `npm run build`, `npm run preview` serves the production build locally. Game shows the water arena, one solid island and keyboard-controlled player with loading/retry and minimal Start Match, Pause/Resume, End Match and Restart Match controls. Blur/hidden-tab pause requires explicit Resume. Combat, touch input, automatic timeout/death rules, final HUD/Result and API behavior are not implemented yet.
+
+The arena uses fixed 1280×720 logical coordinates; resizing only scales rendering. Geometry lives in `src/game/config/arena.ts`. The player uses a conservative square footprint containing its artwork at any heading. Movement stops at the first arena/island contact; rotation remains available to steer away. Collision does not cause damage. See [the collision strategy](./docs/ARCHITECTURE.md#16-task-07-arena-and-collision).
 
 ---
 
@@ -371,7 +373,7 @@ Deployment instructions and the production URL will be added once the applicatio
 
 ## Status
 
-**Current phase:** Fixed-timestep simulation, lifecycle, player movement and keyboard input implemented. Arena collision has not started.
+**Current phase:** Fixed-timestep simulation, lifecycle, keyboard/player movement, arena bounds and island collision implemented. Combat has not started.
 
 Current documentation:
 

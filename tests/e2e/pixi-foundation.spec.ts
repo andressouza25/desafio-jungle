@@ -108,12 +108,14 @@ async function expectCanvasSizing(page: Page) {
   })).toEqual({ screenWidth: true, screenHeight: true, pixelWidth: true, pixelHeight: true, scale: true, bounds: true, noOverflow: true });
 }
 
-test('loads reusable water and cleans up five mount cycles, resizing and DPR changes', async ({ page, context, isMobile }, testInfo) => {
+test('loads reusable water and environment and cleans up five mount cycles, resizing and DPR changes', async ({ page, context, isMobile }, testInfo) => {
   const errors = trackBrowserErrors(page);
   await page.goto('/');
   let waterRequests = 0;
+  let environmentRequests = 0;
   page.on('request', (request) => {
     if (/tile_73.*\.png/.test(request.url())) waterRequests += 1;
+    if (/tiles_sheet.*\.png/.test(request.url())) environmentRequests += 1;
   });
 
   for (let cycle = 0; cycle < 5; cycle += 1) {
@@ -149,10 +151,11 @@ test('loads reusable water and cleans up five mount cycles, resizing and DPR cha
     await expectClean(page);
   }
   expect(waterRequests).toBe(1);
+  expect(environmentRequests).toBe(1);
   expect(errors).toEqual([]);
 });
 
-for (const asset of ['tile_73', 'ship_2']) {
+for (const asset of ['tile_73', 'ship_2', 'tiles_sheet']) {
   test(`shows ${asset} failure and recovers through the visible retry control`, async ({ page }) => {
     const errors = trackBrowserErrors(page);
     await page.goto('/');
@@ -198,8 +201,8 @@ test('leaving during asset loading prevents late canvases and shares the in-flig
   await page.getByRole('button', { name: 'Play', exact: true }).click();
   await expect(page.getByRole('status')).toContainText('Loading game assets…');
   await expect(page.getByRole('progressbar', { name: 'Game assets' })).toBeVisible();
-  // Player completes while the water request is deliberately held: partial progress is meaningful.
-  await expect(page.getByRole('progressbar', { name: 'Game assets' })).toHaveAttribute('value', '0.5');
+  // Player and environment complete while water is held: partial progress is meaningful.
+  await expect(page.getByRole('progressbar', { name: 'Game assets' })).toHaveAttribute('value', String(2 / 3));
   await page.getByRole('button', { name: 'Main Menu', exact: true }).click();
   await expectClean(page);
   await page.getByRole('button', { name: 'Play', exact: true }).click();

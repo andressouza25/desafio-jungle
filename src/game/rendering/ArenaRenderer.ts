@@ -1,7 +1,7 @@
-import { Application, Container, Sprite, TilingSprite, UPDATE_PRIORITY } from 'pixi.js';
+import { Application, Container, Rectangle, Sprite, Texture, TilingSprite, UPDATE_PRIORITY } from 'pixi.js';
 import type { Ticker } from 'pixi.js';
 import { loadFoundationTextures } from './foundationAssets';
-import { LOGICAL_ARENA } from '../config/arena';
+import { ARENA_LAYOUT, LOGICAL_ARENA } from '../config/arena';
 import type { PlayerState } from '../entities/Player';
 
 export type ArenaLoadState =
@@ -14,6 +14,7 @@ export class ArenaRenderer {
   private application: Application | null = null;
   private world: Container | null = null;
   private player: Sprite | null = null;
+  private islandTexture: Texture | null = null;
   private observer: ResizeObserver | null = null;
   private densityQuery: MediaQueryList | null = null;
   private resizeFrame: number | null = null;
@@ -65,6 +66,18 @@ export class ArenaRenderer {
       water.tileScale.set(2);
       water.eventMode = 'none';
       this.world.addChild(water);
+      // Inspected 1× atlas: 64px tiles, grass/sand island at column 5, row 0 (4×4).
+      // This is artwork selection only; collision geometry comes from ARENA_LAYOUT.
+      this.islandTexture = new Texture({ source: textures.environment.source, frame: new Rectangle(320, 0, 256, 256) });
+      for (const obstacle of ARENA_LAYOUT.islands) {
+        const island = new Sprite({ texture: this.islandTexture });
+        island.label = 'island';
+        island.eventMode = 'none';
+        island.position.set(obstacle.x, obstacle.y);
+        island.width = obstacle.width;
+        island.height = obstacle.height;
+        this.world.addChild(island);
+      }
       this.player = new Sprite({ texture: textures.player, anchor: 0.5 });
       this.player.label = 'player';
       this.player.eventMode = 'none';
@@ -162,6 +175,8 @@ export class ArenaRenderer {
     this.densityQuery?.removeEventListener('change', this.onDensityChange);
     this.densityQuery = null;
     this.application?.destroy({ removeView: true }, { children: true, texture: false, textureSource: false });
+    this.islandTexture?.destroy(false); // Release the frame wrapper, not the shared atlas source.
+    this.islandTexture = null;
     this.application = null;
     this.world = null;
     this.player = null;

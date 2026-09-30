@@ -1,6 +1,7 @@
 import { Assets, Texture } from 'pixi.js';
 import waterUrl from '../../../assets/png/retina/tiles/tile_73.png?url';
 import playerUrl from '../../../assets/png/default/ships/ship_2.png?url';
+import environmentUrl from '../../../assets/tilesheet/tiles_sheet.png?url';
 
 interface FoundationAsset {
   src: string;
@@ -11,9 +12,10 @@ export const FOUNDATION_ASSETS = {
   water: { src: waterUrl, data: { resolution: 2 } },
   // Default/retina ship_2 are identical 66×113 files, not separate density variants.
   player: { src: playerUrl, data: { resolution: 1 } },
-} satisfies Record<'water' | 'player', FoundationAsset>;
+  environment: { src: environmentUrl, data: { resolution: 1 } },
+} satisfies Record<'water' | 'player' | 'environment', FoundationAsset>;
 
-interface FoundationTextures { water: Texture; player: Texture }
+interface FoundationTextures { water: Texture; player: Texture; environment: Texture }
 
 let textures: FoundationTextures | null = null;
 let pending: Promise<FoundationTextures> | null = null;
@@ -45,12 +47,12 @@ export async function loadFoundationTextures(onProgress: (progress: number) => v
 
   if (!pending) {
     publishProgress(0);
-    const assetProgress = { water: 0, player: 0 };
+    const assetProgress = { water: 0, player: 0, environment: 0 };
     function load(name: keyof FoundationTextures) {
       return Assets.load<Texture>(FOUNDATION_ASSETS[name], {
         onProgress: (value) => {
           assetProgress[name] = value;
-          publishProgress((assetProgress.water + assetProgress.player) / 2);
+          publishProgress((assetProgress.water + assetProgress.player + assetProgress.environment) / 3);
         },
         strategy: 'throw',
       }).then((texture) => {
@@ -58,11 +60,12 @@ export async function loadFoundationTextures(onProgress: (progress: number) => v
         return texture;
       });
     }
-    // Wait for both requests to settle before retrying, even if one fails first.
-    pending = Promise.allSettled([load('water'), load('player')]).then(([water, player]) => {
+    // Wait for all requests to settle before retrying, even if one fails first.
+    pending = Promise.allSettled([load('water'), load('player'), load('environment')]).then(([water, player, environment]) => {
       if (water.status === 'rejected') throw water.reason;
       if (player.status === 'rejected') throw player.reason;
-      const loaded = { water: water.value, player: player.value };
+      if (environment.status === 'rejected') throw environment.reason;
+      const loaded = { water: water.value, player: player.value, environment: environment.value };
       textures = loaded;
       return loaded;
     }).finally(() => {
