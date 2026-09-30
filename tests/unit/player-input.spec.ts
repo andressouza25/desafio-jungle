@@ -163,3 +163,12 @@ test('movement consumes bounded fixed deltas, config snapshots and never publish
   advance(game, 1000);
   expect(events).toBe(4); // One displayed-second HUD update, no movement updates.
 });
+
+test('keyboard owners and touch owners cannot release each other', () => {
+  const input = new InputState(); const keys = new KeyboardActions(input);
+  keys.press('KeyW', false); input.set('moveForward', true, 'pointer:1'); input.set('moveForward', true, 'pointer:2');
+  keys.clear(); expect(input.isHeld('moveForward')).toBe(true);
+  input.set('moveForward', false, 'pointer:1'); expect(input.isHeld('moveForward')).toBe(true);
+  keys.press('KeyW', false); input.set('moveForward', false, 'pointer:2'); expect(input.isHeld('moveForward')).toBe(true);
+  keys.release('KeyW'); expect(input.isHeld('moveForward')).toBe(false);
+});

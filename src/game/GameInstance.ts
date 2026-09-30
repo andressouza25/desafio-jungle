@@ -5,6 +5,7 @@ import type { GameSession, GameSnapshot } from './GameSession';
 import { ArenaRenderer } from './rendering/ArenaRenderer';
 import type { ArenaLoadState } from './rendering/ArenaRenderer';
 import { KeyboardInput } from './input/KeyboardInput';
+import { TouchInput } from './input/TouchInput';
 
 interface InstanceOptions {
   readConfig: () => GameConfig;
@@ -19,6 +20,7 @@ export class GameInstance implements GameSession {
   private readonly controller: GameController;
   private readonly renderer: ArenaRenderer;
   private readonly keyboard: KeyboardInput;
+  private readonly touch: TouchInput;
   private readonly unsubscribe: () => void;
   private destroyed = false;
   private previousState: GameSnapshot['state'] | null = null;
@@ -27,6 +29,8 @@ export class GameInstance implements GameSession {
   constructor(private readonly host: HTMLDivElement, options: InstanceOptions) {
     this.controller = new GameController({ readConfig: options.readConfig });
     this.keyboard = new KeyboardInput(host, this.controller.input);
+    this.touch = new TouchInput(host.closest('.game-screen') ?? host, this.controller.input,
+      () => this.controller.advance(0));
     this.renderer = new ArenaRenderer(host, (state) => {
       if (this.destroyed) return;
       options.onLoad(state);
@@ -54,6 +58,7 @@ export class GameInstance implements GameSession {
       this.renderer.setRunning(false);
 
       this.keyboard.setActive(snapshot.state === 'running' && !snapshot.destroyed);
+      this.touch.setActive(snapshot.state === 'running' && !snapshot.destroyed);
       this.renderer.syncState(this.controller.getPlayerState(), this.controller.getProjectileStates(), this.controller.getEnemyStates(), this.controller.getSnapshot().config);
       if (snapshot.state === 'running') {
         // Establish a zero delivery baseline, then let ticker.start() reset its wall-time
@@ -110,6 +115,7 @@ export class GameInstance implements GameSession {
     this.audio.destroy();
     this.unsubscribe();
     this.keyboard.destroy();
+    this.touch.destroy();
     this.controller.destroy();
     this.renderer.destroy();
   }

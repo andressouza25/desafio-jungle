@@ -16,7 +16,7 @@ Implement one task at a time, in order. Before each task, follow `AGENTS.md`, re
 - [ ] [TASK-09 — Enemies and Spawning](./tasks/TASK-09-enemies-spawning.md)
 - [ ] [TASK-10 — Match Rules and HUD](./tasks/TASK-10-match-rules-hud.md)
 - [ ] [TASK-11 — Pause, Feedback and Audio](./tasks/TASK-11-pause-feedback-audio.md)
-- [ ] [TASK-12 — Mobile and Responsive Gameplay](./tasks/TASK-12-mobile-responsive.md)
+- [x] [TASK-12 — Mobile and Responsive Gameplay](./tasks/TASK-12-mobile-responsive.md)
 - [ ] [TASK-13 — API, MSW and Remote Data](./tasks/TASK-13-api-msw-data.md)
 - [ ] [TASK-14 — Ranking and Match History](./tasks/TASK-14-ranking-history.md)
 - [ ] [TASK-15 — Match Submission and Recovery](./tasks/TASK-15-submission-recovery.md)

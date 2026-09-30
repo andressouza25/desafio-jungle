@@ -339,7 +339,7 @@ npm run build
 npm run preview
 ```
 
-`npm test` runs bootstrap, navigation, Options, asset-loading, lifecycle, keyboard-to-player, weapons/projectiles and arena/island collision tests in desktop and mobile Chromium. `npm run test:unit` runs deterministic clock, lifecycle, immutable-configuration, randomness, input, player-motion, weapon and projectile/collision tests in Node, without a browser or server. After `npm run build`, `npm run preview` serves the production build locally. Game shows the water arena, one solid island and keyboard-controlled player with three weapons, loading/retry and minimal Start Match, Pause/Resume, End Match and Restart Match controls. Blur/hidden-tab pause requires explicit Resume. Enemies, damage application, touch input, automatic timeout/death rules, final HUD/Result and API behavior are not implemented yet.
+`npm test` runs bootstrap, navigation, Options, asset-loading, lifecycle, keyboard-to-player, weapons/projectiles and arena/island collision tests in desktop and mobile Chromium. `npm run test:unit` runs deterministic clock, lifecycle, immutable-configuration, randomness, input, player-motion, weapon and projectile/collision tests in Node, without a browser or server. After `npm run build`, `npm run preview` serves the production build locally. Game shows the water arena, one solid island and keyboard-controlled player with three weapons, loading/retry and minimal Start Match, Pause/Resume, End Match and Restart Match controls. Blur/hidden-tab pause requires explicit Resume. Enemies, damage application, automatic timeout/death rules, final HUD/Result and API behavior are not implemented yet.
 
 The arena uses fixed 1280×720 logical coordinates; resizing only scales rendering. Geometry lives in `src/game/config/arena.ts`. The player uses a conservative square footprint containing its artwork at any heading. Movement stops at the first arena/island contact; rotation remains available to steer away. Collision does not cause damage. See [the collision strategy](./docs/ARCHITECTURE.md#16-task-07-arena-and-collision).
 
@@ -351,17 +351,17 @@ Front fire creates one cannonball; each broadside creates three parallel cannonb
 
 Start/resume/restart focuses the arena. Keyboard input is captured only while a match is running and the arena has focus; **Tab** returns to page controls. Moving focus out of the arena clears held input. Pause, focus loss, end and restart also clear input: release and press a held key again after resuming. Browser shortcuts and editable controls are not captured.
 
-Physical letter bindings use `KeyboardEvent.code` (the W/A/D/Q/E positions on a QWERTY keyboard). Opposing left/right turns cancel; movement, rotation and attacks can be held together. Hold an attack to repeat when its weapon cooldown completes. Touch controls are deferred.
+Physical letter bindings use `KeyboardEvent.code` (the W/A/D/Q/E positions on a QWERTY keyboard). Opposing left/right turns cancel; movement, rotation and attacks can be held together. Hold an attack to repeat when its weapon cooldown completes. Touch controls share these actions; landscape is the supported mobile gameplay orientation.
 
 | Action          | Keyboard | Touch     |
 | --------------- | -------- | --------- |
-| Move forward    | W / ↑    | Deferred |
-| Turn left       | A / ←    | Deferred |
-| Turn right      | D / →    | Deferred |
-| Front fire      | Space    | Deferred |
-| Left broadside  | Q        | Deferred |
-| Right broadside | E        | Deferred |
-| Pause           | Esc      | Deferred |
+| Move forward    | W / ↑    | On-screen button |
+| Turn left       | A / ←    | On-screen button |
+| Turn right      | D / →    | On-screen button |
+| Front fire      | Space    | On-screen button |
+| Left broadside  | Q        | On-screen button |
+| Right broadside | E        | On-screen button |
+| Pause           | Esc      | On-screen button |
 
 ---
 
@@ -399,3 +399,13 @@ Prefer the simplest implementation that is correct, testable, maintainable and e
 The goal is not to maximize architectural complexity.
 
 The goal is to deliver a complete game while demonstrating clear engineering decisions.
+
+## Mobile gameplay (TASK-12)
+
+**Landscape is the supported mobile gameplay orientation**, evaluated against the supplied `assets/sample.png` reference, the 1280×720 arena and seven required actions. Portrait remains navigable and displays a rotate-device message; it is not the supported combat layout. Rotating or resizing does not change world geometry or combat rules.
+
+On touch devices, hold the forward/turn buttons and any cannon buttons together. The supplied round wood-and-gold controls sit below the arena, with health, score and time above it. All touch targets are 48×48 CSS pixels. Pause uses the same latched action as Escape. Releasing one finger affects only its action ownership; cancellation, pause, end and leaving the game clear active touches. Resume requires a fresh press. Keyboard bindings remain available.
+
+The gameplay frame respects browser safe-area insets (`viewport-fit=cover`). Browser gestures are suppressed only on action buttons; normal page interaction remains available elsewhere. The renderer fits the complete logical arena, with letterboxing when necessary, and follows viewport/DPR changes. Touch buttons select actions rather than aim at world positions, so they never convert raw device coordinates into gameplay coordinates.
+
+Run `npm test -- --project=mobile-chromium tests/e2e/touch-responsive.spec.ts` for mobile pointer ownership, real Chromium multi-touch, cancellation, lifecycle, viewport, orientation and DPR checks.

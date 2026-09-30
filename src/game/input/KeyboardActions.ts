@@ -21,15 +21,15 @@ export class KeyboardActions {
     // Repeats must not re-arm keys held across pause/resume or focus changes.
     if (!action || repeat) return;
     this.keys.set(code, action);
-    this.input.set(action, true);
+    this.input.set(action, true, `keyboard:${code}`);
   }
 
   release(code: string) {
     const action = this.keys.get(code);
     if (!action) return;
     this.keys.delete(code);
-    this.input.set(action, [...this.keys.values()].includes(action));
+    this.input.set(action, false, `keyboard:${code}`);
   }
 
-  clear() { this.keys.clear(); this.input.clear(); }
+  clear() { this.keys.clear(); this.input.clearOwners('keyboard:'); }
 }

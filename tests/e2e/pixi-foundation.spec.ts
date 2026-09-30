@@ -125,7 +125,7 @@ test('loads reusable water and environment and cleans up five mount cycles, resi
     await expect(page.getByRole('status')).toHaveText('Arena ready. No match is running.');
     await expect(page.getByRole('img', { name: 'Water arena' })).toHaveCount(1);
     // One host observer belongs to ArenaRenderer; Pixi's DOM pipe owns a canvas observer.
-    expect(await resources(page)).toEqual({ applications: 1, observers: 2, listeners: 3, tickerCallbacks: 2, runningTickers: 0 });
+    expect(await resources(page)).toEqual({ applications: 1, observers: 2, listeners: 4, tickerCallbacks: 2, runningTickers: 0 });
     await expectCanvasSizing(page);
 
     if (cycle === 0) {
@@ -143,7 +143,7 @@ test('loads reusable water and environment and cleans up five mount cycles, resi
         await cdp.send('Emulation.setDeviceMetricsOverride', { width: 800, height: 600, deviceScaleFactor: 2, mobile: false });
         await expect.poll(() => page.evaluate(() => devicePixelRatio)).toBe(2);
         await expectCanvasSizing(page);
-        expect((await resources(page)).listeners).toBe(3);
+        expect((await resources(page)).listeners).toBe(4);
         await cdp.send('Emulation.clearDeviceMetricsOverride');
         await cdp.detach();
         await expectCanvasSizing(page);

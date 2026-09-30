@@ -111,11 +111,15 @@ export class ArenaRenderer {
       application.stage.eventMode = 'none';
       application.stage.addChild(this.world);
       application.canvas.setAttribute('role', 'img');
+      // Gameplay gestures belong to the action buttons, not this non-interactive canvas.
+      application.canvas.style.touchAction = 'auto';
       application.canvas.setAttribute('aria-label', 'Water arena');
       this.host.appendChild(application.canvas);
 
       this.observer = new ResizeObserver(() => this.scheduleResize());
       this.observer.observe(this.host);
+      window.addEventListener('resize', this.onDensityChange);
+      window.visualViewport?.addEventListener('resize', this.onDensityChange);
       this.watchDensity();
       this.resize();
       this.onState({ kind: 'ready' });
@@ -271,6 +275,8 @@ export class ArenaRenderer {
     this.resizeFrame = null;
     this.densityQuery?.removeEventListener('change', this.onDensityChange);
     this.densityQuery = null;
+    window.removeEventListener('resize', this.onDensityChange);
+    window.visualViewport?.removeEventListener('resize', this.onDensityChange);
     for (const indicator of this.health.values()) indicator.destroy();
     this.health.clear();
     this.healthTextures = null;
