@@ -13,9 +13,9 @@ Implement one task at a time, in order. Before each task, follow `AGENTS.md`, re
 - [x] [TASK-06 — Player and Input](./tasks/TASK-06-player-input.md)
 - [x] [TASK-07 — Arena and Collision](./tasks/TASK-07-arena-collision.md)
 - [x] [TASK-08 — Weapons and Projectiles](./tasks/TASK-08-weapons-projectiles.md)
-- [ ] [TASK-09 — Enemies and Spawning](./tasks/TASK-09-enemies-spawning.md)
-- [ ] [TASK-10 — Match Rules and HUD](./tasks/TASK-10-match-rules-hud.md)
-- [ ] [TASK-11 — Pause, Feedback and Audio](./tasks/TASK-11-pause-feedback-audio.md)
+- [x] [TASK-09 — Enemies and Spawning](./tasks/TASK-09-enemies-spawning.md)
+- [x] [TASK-10 — Match Rules and HUD](./tasks/TASK-10-match-rules-hud.md)
+- [x] [TASK-11 — Pause, Feedback and Audio](./tasks/TASK-11-pause-feedback-audio.md)
 - [x] [TASK-12 — Mobile and Responsive Gameplay](./tasks/TASK-12-mobile-responsive.md)
 - [x] [TASK-13 — API, MSW and Remote Data](./tasks/TASK-13-api-msw-data.md)
 - [x] [TASK-14 — Ranking and Match History](./tasks/TASK-14-ranking-history.md)
@@ -23,7 +23,9 @@ Implement one task at a time, in order. Before each task, follow `AGENTS.md`, re
 - [x] [TASK-16 — E2E and Visual Tests](./tasks/TASK-16-e2e-visual-tests.md)
 - [x] [TASK-17 — Performance and Accessibility](./tasks/TASK-17-performance-accessibility.md)
 - [x] [TASK-18 — Documentation and Deployment](./tasks/TASK-18-documentation-deployment.md)
-- [ ] [TASK-19 — Final Audit](./tasks/TASK-19-final-audit.md)
+- [x] [TASK-19 — Final Audit](./tasks/TASK-19-final-audit.md)
+
+TASK-19 verified the implemented TASK-09/10/11 acceptance behavior and corrected their stale checkboxes. [Final release report](./FINAL_AUDIT.md): READY; the [complete matrix](./REQUIREMENT_TRACEABILITY.md) records every mandatory requirement and Definition of Done check.
 
 ## Execution Rule
 

@@ -1,0 +1,2320 @@
+{
+  "phase": "Final release audit",
+  "rows": [
+    {
+      "id": "PRODUCT-001",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts; src/game/rendering/ArenaRenderer.ts; src/screens/GameScreen.tsx",
+      "evidence": "tests/e2e/production-flow.spec.ts; tests/e2e/match-rules.spec.ts; desktop/mobile complete suite",
+      "status": "PASS"
+    },
+    {
+      "id": "PRODUCT-002",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts; src/game/rendering/ArenaRenderer.ts; src/screens/GameScreen.tsx",
+      "evidence": "tests/e2e/production-flow.spec.ts; tests/e2e/match-rules.spec.ts; desktop/mobile complete suite",
+      "status": "PASS"
+    },
+    {
+      "id": "PRODUCT-003",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts; src/game/rendering/ArenaRenderer.ts; src/screens/GameScreen.tsx",
+      "evidence": "tests/e2e/production-flow.spec.ts; tests/e2e/match-rules.spec.ts; desktop/mobile complete suite",
+      "status": "PASS"
+    },
+    {
+      "id": "PRODUCT-004",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts; src/game/rendering/ArenaRenderer.ts; src/screens/GameScreen.tsx",
+      "evidence": "tests/e2e/production-flow.spec.ts; tests/e2e/match-rules.spec.ts; desktop/mobile complete suite",
+      "status": "PASS"
+    },
+    {
+      "id": "PRODUCT-005",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts; src/game/rendering/ArenaRenderer.ts; src/screens/GameScreen.tsx",
+      "evidence": "tests/e2e/production-flow.spec.ts; tests/e2e/match-rules.spec.ts; desktop/mobile complete suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TECH-001",
+      "description": "",
+      "implementation": "package.json; tsconfig.json; src/main.tsx; src/api/client.ts; src/api/queryClient.ts; src/mocks/browser.ts; playwright.config.ts",
+      "evidence": "clean typecheck/build; tests/e2e/api-msw.spec.ts; tests/e2e/visual-regression.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "TECH-002",
+      "description": "",
+      "implementation": "package.json; tsconfig.json; src/main.tsx; src/api/client.ts; src/api/queryClient.ts; src/mocks/browser.ts; playwright.config.ts",
+      "evidence": "clean typecheck/build; tests/e2e/api-msw.spec.ts; tests/e2e/visual-regression.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "TECH-003",
+      "description": "",
+      "implementation": "package.json; tsconfig.json; src/main.tsx; src/api/client.ts; src/api/queryClient.ts; src/mocks/browser.ts; playwright.config.ts",
+      "evidence": "clean typecheck/build; tests/e2e/api-msw.spec.ts; tests/e2e/visual-regression.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "TECH-004",
+      "description": "",
+      "implementation": "package.json; tsconfig.json; src/main.tsx; src/api/client.ts; src/api/queryClient.ts; src/mocks/browser.ts; playwright.config.ts",
+      "evidence": "clean typecheck/build; tests/e2e/api-msw.spec.ts; tests/e2e/visual-regression.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "TECH-005",
+      "description": "",
+      "implementation": "package.json; tsconfig.json; src/main.tsx; src/api/client.ts; src/api/queryClient.ts; src/mocks/browser.ts; playwright.config.ts",
+      "evidence": "clean typecheck/build; tests/e2e/api-msw.spec.ts; tests/e2e/visual-regression.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "TECH-006",
+      "description": "",
+      "implementation": "package.json; tsconfig.json; src/main.tsx; src/api/client.ts; src/api/queryClient.ts; src/mocks/browser.ts; playwright.config.ts",
+      "evidence": "clean typecheck/build; tests/e2e/api-msw.spec.ts; tests/e2e/visual-regression.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "TECH-007",
+      "description": "",
+      "implementation": "package.json; tsconfig.json; src/main.tsx; src/api/client.ts; src/api/queryClient.ts; src/mocks/browser.ts; playwright.config.ts",
+      "evidence": "clean typecheck/build; tests/e2e/api-msw.spec.ts; tests/e2e/visual-regression.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "ARCH-001",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts; src/game/GameInstance.ts; src/screens/GameScreen.tsx; src/game/config/GameConfig.ts",
+      "evidence": "tests/e2e/simulation-lifecycle.spec.ts (owned ticker/React commit limit); tests/e2e/pixi-foundation.spec.ts; source boundary review",
+      "status": "PASS"
+    },
+    {
+      "id": "ARCH-002",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts; src/game/GameInstance.ts; src/screens/GameScreen.tsx; src/game/config/GameConfig.ts",
+      "evidence": "tests/e2e/simulation-lifecycle.spec.ts (owned ticker/React commit limit); tests/e2e/pixi-foundation.spec.ts; source boundary review",
+      "status": "PASS"
+    },
+    {
+      "id": "ARCH-003",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts; src/game/GameInstance.ts; src/screens/GameScreen.tsx; src/game/config/GameConfig.ts",
+      "evidence": "tests/e2e/simulation-lifecycle.spec.ts (owned ticker/React commit limit); tests/e2e/pixi-foundation.spec.ts; source boundary review",
+      "status": "PASS"
+    },
+    {
+      "id": "ARCH-004",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts; src/game/GameInstance.ts; src/screens/GameScreen.tsx; src/game/config/GameConfig.ts",
+      "evidence": "tests/e2e/simulation-lifecycle.spec.ts (owned ticker/React commit limit); tests/e2e/pixi-foundation.spec.ts; source boundary review",
+      "status": "PASS"
+    },
+    {
+      "id": "ARCH-005",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts; src/game/GameInstance.ts; src/screens/GameScreen.tsx; src/game/config/GameConfig.ts",
+      "evidence": "tests/e2e/simulation-lifecycle.spec.ts (owned ticker/React commit limit); tests/e2e/pixi-foundation.spec.ts; source boundary review",
+      "status": "PASS"
+    },
+    {
+      "id": "ARCH-006",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts; src/game/GameInstance.ts; src/screens/GameScreen.tsx; src/game/config/GameConfig.ts",
+      "evidence": "tests/e2e/simulation-lifecycle.spec.ts (owned ticker/React commit limit); tests/e2e/pixi-foundation.spec.ts; source boundary review",
+      "status": "PASS"
+    },
+    {
+      "id": "SCREEN-001",
+      "description": "",
+      "implementation": "src/screens/MainMenuScreen.tsx; src/screens/OptionsScreen.tsx; src/screens/GameScreen.tsx; src/screens/ResultScreen.tsx; src/screens/CaptainsLog.tsx",
+      "evidence": "tests/e2e/navigation.spec.ts; tests/e2e/options.spec.ts; tests/e2e/production-flow.spec.ts; tests/e2e/ranking-history.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "SCREEN-002",
+      "description": "",
+      "implementation": "src/screens/MainMenuScreen.tsx; src/screens/OptionsScreen.tsx; src/screens/GameScreen.tsx; src/screens/ResultScreen.tsx; src/screens/CaptainsLog.tsx",
+      "evidence": "tests/e2e/navigation.spec.ts; tests/e2e/options.spec.ts; tests/e2e/production-flow.spec.ts; tests/e2e/ranking-history.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "SCREEN-003",
+      "description": "",
+      "implementation": "src/screens/MainMenuScreen.tsx; src/screens/OptionsScreen.tsx; src/screens/GameScreen.tsx; src/screens/ResultScreen.tsx; src/screens/CaptainsLog.tsx",
+      "evidence": "tests/e2e/navigation.spec.ts; tests/e2e/options.spec.ts; tests/e2e/production-flow.spec.ts; tests/e2e/ranking-history.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "SCREEN-004",
+      "description": "",
+      "implementation": "src/screens/MainMenuScreen.tsx; src/screens/OptionsScreen.tsx; src/screens/GameScreen.tsx; src/screens/ResultScreen.tsx; src/screens/CaptainsLog.tsx",
+      "evidence": "tests/e2e/navigation.spec.ts; tests/e2e/options.spec.ts; tests/e2e/production-flow.spec.ts; tests/e2e/ranking-history.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "SCREEN-005",
+      "description": "",
+      "implementation": "src/screens/MainMenuScreen.tsx; src/screens/OptionsScreen.tsx; src/screens/GameScreen.tsx; src/screens/ResultScreen.tsx; src/screens/CaptainsLog.tsx",
+      "evidence": "tests/e2e/navigation.spec.ts; tests/e2e/options.spec.ts; tests/e2e/production-flow.spec.ts; tests/e2e/ranking-history.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "SCREEN-006",
+      "description": "",
+      "implementation": "src/screens/MainMenuScreen.tsx; src/screens/OptionsScreen.tsx; src/screens/GameScreen.tsx; src/screens/ResultScreen.tsx; src/screens/CaptainsLog.tsx",
+      "evidence": "tests/e2e/navigation.spec.ts; tests/e2e/options.spec.ts; tests/e2e/production-flow.spec.ts; tests/e2e/ranking-history.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "MATCH-001",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts beginMatch/advance/end/restart/destroy; src/screens/GameScreen.tsx; src/app/App.tsx",
+      "evidence": "tests/unit/match-rules.spec.ts; tests/e2e/match-rules.spec.ts; tests/e2e/registration-refresh.spec.ts; tests/e2e/submission-recovery.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "MATCH-002",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts beginMatch/advance/end/restart/destroy; src/screens/GameScreen.tsx; src/app/App.tsx",
+      "evidence": "tests/unit/match-rules.spec.ts; tests/e2e/match-rules.spec.ts; tests/e2e/registration-refresh.spec.ts; tests/e2e/submission-recovery.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "MATCH-003",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts beginMatch/advance/end/restart/destroy; src/screens/GameScreen.tsx; src/app/App.tsx",
+      "evidence": "tests/unit/match-rules.spec.ts; tests/e2e/match-rules.spec.ts; tests/e2e/registration-refresh.spec.ts; tests/e2e/submission-recovery.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "MATCH-004",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts beginMatch/advance/end/restart/destroy; src/screens/GameScreen.tsx; src/app/App.tsx",
+      "evidence": "tests/unit/match-rules.spec.ts; tests/e2e/match-rules.spec.ts; tests/e2e/registration-refresh.spec.ts; tests/e2e/submission-recovery.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "MATCH-005",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts beginMatch/advance/end/restart/destroy; src/screens/GameScreen.tsx; src/app/App.tsx",
+      "evidence": "tests/unit/match-rules.spec.ts; tests/e2e/match-rules.spec.ts; tests/e2e/registration-refresh.spec.ts; tests/e2e/submission-recovery.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "MATCH-006",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts beginMatch/advance/end/restart/destroy; src/screens/GameScreen.tsx; src/app/App.tsx",
+      "evidence": "tests/unit/match-rules.spec.ts; tests/e2e/match-rules.spec.ts; tests/e2e/registration-refresh.spec.ts; tests/e2e/submission-recovery.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "MATCH-007",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts beginMatch/advance/end/restart/destroy; src/screens/GameScreen.tsx; src/app/App.tsx",
+      "evidence": "tests/unit/match-rules.spec.ts; tests/e2e/match-rules.spec.ts; tests/e2e/registration-refresh.spec.ts; tests/e2e/submission-recovery.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "MATCH-008",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts beginMatch/advance/end/restart/destroy; src/screens/GameScreen.tsx; src/app/App.tsx",
+      "evidence": "tests/unit/match-rules.spec.ts; tests/e2e/match-rules.spec.ts; tests/e2e/registration-refresh.spec.ts; tests/e2e/submission-recovery.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-PLAYER-001",
+      "description": "",
+      "implementation": "src/game/systems/movePlayer.ts; src/game/entities/Player.ts; src/game/systems/updateProjectiles.ts; src/game/systems/updateEnemies.ts",
+      "evidence": "tests/unit/player-input.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/combat-behavior.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-PLAYER-002",
+      "description": "",
+      "implementation": "src/game/systems/movePlayer.ts; src/game/entities/Player.ts; src/game/systems/updateProjectiles.ts; src/game/systems/updateEnemies.ts",
+      "evidence": "tests/unit/player-input.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/combat-behavior.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-PLAYER-003",
+      "description": "",
+      "implementation": "src/game/systems/movePlayer.ts; src/game/entities/Player.ts; src/game/systems/updateProjectiles.ts; src/game/systems/updateEnemies.ts",
+      "evidence": "tests/unit/player-input.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/combat-behavior.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-PLAYER-004",
+      "description": "",
+      "implementation": "src/game/systems/movePlayer.ts; src/game/entities/Player.ts; src/game/systems/updateProjectiles.ts; src/game/systems/updateEnemies.ts",
+      "evidence": "tests/unit/player-input.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/combat-behavior.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-PLAYER-005",
+      "description": "",
+      "implementation": "src/game/systems/movePlayer.ts; src/game/entities/Player.ts; src/game/systems/updateProjectiles.ts; src/game/systems/updateEnemies.ts",
+      "evidence": "tests/unit/player-input.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/combat-behavior.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-PLAYER-006",
+      "description": "",
+      "implementation": "src/game/systems/movePlayer.ts; src/game/entities/Player.ts; src/game/systems/updateProjectiles.ts; src/game/systems/updateEnemies.ts",
+      "evidence": "tests/unit/player-input.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/combat-behavior.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-PLAYER-007",
+      "description": "",
+      "implementation": "src/game/systems/movePlayer.ts; src/game/entities/Player.ts; src/game/systems/updateProjectiles.ts; src/game/systems/updateEnemies.ts",
+      "evidence": "tests/unit/player-input.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/combat-behavior.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-PLAYER-008",
+      "description": "",
+      "implementation": "src/game/systems/movePlayer.ts; src/game/entities/Player.ts; src/game/systems/updateProjectiles.ts; src/game/systems/updateEnemies.ts",
+      "evidence": "tests/unit/player-input.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/combat-behavior.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-PLAYER-009",
+      "description": "",
+      "implementation": "src/game/systems/movePlayer.ts; src/game/entities/Player.ts; src/game/systems/updateProjectiles.ts; src/game/systems/updateEnemies.ts",
+      "evidence": "tests/unit/player-input.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/combat-behavior.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-WEAPON-001",
+      "description": "",
+      "implementation": "src/game/config/weapons.ts; src/game/systems/fireWeapons.ts; src/game/config/GameConfig.ts",
+      "evidence": "tests/unit/weapons-projectiles.spec.ts; tests/e2e/weapons-projectiles.spec.ts (1/3/3, trajectories, cooldowns)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-WEAPON-002",
+      "description": "",
+      "implementation": "src/game/config/weapons.ts; src/game/systems/fireWeapons.ts; src/game/config/GameConfig.ts",
+      "evidence": "tests/unit/weapons-projectiles.spec.ts; tests/e2e/weapons-projectiles.spec.ts (1/3/3, trajectories, cooldowns)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-WEAPON-003",
+      "description": "",
+      "implementation": "src/game/config/weapons.ts; src/game/systems/fireWeapons.ts; src/game/config/GameConfig.ts",
+      "evidence": "tests/unit/weapons-projectiles.spec.ts; tests/e2e/weapons-projectiles.spec.ts (1/3/3, trajectories, cooldowns)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-WEAPON-004",
+      "description": "",
+      "implementation": "src/game/config/weapons.ts; src/game/systems/fireWeapons.ts; src/game/config/GameConfig.ts",
+      "evidence": "tests/unit/weapons-projectiles.spec.ts; tests/e2e/weapons-projectiles.spec.ts (1/3/3, trajectories, cooldowns)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-WEAPON-005",
+      "description": "",
+      "implementation": "src/game/config/weapons.ts; src/game/systems/fireWeapons.ts; src/game/config/GameConfig.ts",
+      "evidence": "tests/unit/weapons-projectiles.spec.ts; tests/e2e/weapons-projectiles.spec.ts (1/3/3, trajectories, cooldowns)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-PROJECTILE-001",
+      "description": "",
+      "implementation": "src/game/entities/Projectile.ts resolveProjectile; src/game/systems/updateProjectiles.ts; src/game/config/GameConfig.ts",
+      "evidence": "tests/unit/weapons-projectiles.spec.ts (sweeps/terminal gates/lifetime/targets); tests/e2e/weapons-projectiles.spec.ts; tests/e2e/enemies-spawning.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-PROJECTILE-002",
+      "description": "",
+      "implementation": "src/game/entities/Projectile.ts resolveProjectile; src/game/systems/updateProjectiles.ts; src/game/config/GameConfig.ts",
+      "evidence": "tests/unit/weapons-projectiles.spec.ts (sweeps/terminal gates/lifetime/targets); tests/e2e/weapons-projectiles.spec.ts; tests/e2e/enemies-spawning.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-PROJECTILE-003",
+      "description": "",
+      "implementation": "src/game/entities/Projectile.ts resolveProjectile; src/game/systems/updateProjectiles.ts; src/game/config/GameConfig.ts",
+      "evidence": "tests/unit/weapons-projectiles.spec.ts (sweeps/terminal gates/lifetime/targets); tests/e2e/weapons-projectiles.spec.ts; tests/e2e/enemies-spawning.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-PROJECTILE-004",
+      "description": "",
+      "implementation": "src/game/entities/Projectile.ts resolveProjectile; src/game/systems/updateProjectiles.ts; src/game/config/GameConfig.ts",
+      "evidence": "tests/unit/weapons-projectiles.spec.ts (sweeps/terminal gates/lifetime/targets); tests/e2e/weapons-projectiles.spec.ts; tests/e2e/enemies-spawning.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-PROJECTILE-005",
+      "description": "",
+      "implementation": "src/game/entities/Projectile.ts resolveProjectile; src/game/systems/updateProjectiles.ts; src/game/config/GameConfig.ts",
+      "evidence": "tests/unit/weapons-projectiles.spec.ts (sweeps/terminal gates/lifetime/targets); tests/e2e/weapons-projectiles.spec.ts; tests/e2e/enemies-spawning.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-ENEMY-001",
+      "description": "",
+      "implementation": "src/game/systems/updateEnemies.ts; src/game/entities/Enemy.ts; src/game/systems/spawnEnemies.ts",
+      "evidence": "tests/unit/enemies-spawning.spec.ts; tests/e2e/combat-behavior.spec.ts; tests/e2e/enemies-spawning.spec.ts (both kinds, real damage and destruction)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-ENEMY-002",
+      "description": "",
+      "implementation": "src/game/systems/updateEnemies.ts; src/game/entities/Enemy.ts; src/game/systems/spawnEnemies.ts",
+      "evidence": "tests/unit/enemies-spawning.spec.ts; tests/e2e/combat-behavior.spec.ts; tests/e2e/enemies-spawning.spec.ts (both kinds, real damage and destruction)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-ENEMY-003",
+      "description": "",
+      "implementation": "src/game/systems/updateEnemies.ts; src/game/entities/Enemy.ts; src/game/systems/spawnEnemies.ts",
+      "evidence": "tests/unit/enemies-spawning.spec.ts; tests/e2e/combat-behavior.spec.ts; tests/e2e/enemies-spawning.spec.ts (both kinds, real damage and destruction)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-ENEMY-004",
+      "description": "",
+      "implementation": "src/game/systems/updateEnemies.ts; src/game/entities/Enemy.ts; src/game/systems/spawnEnemies.ts",
+      "evidence": "tests/unit/enemies-spawning.spec.ts; tests/e2e/combat-behavior.spec.ts; tests/e2e/enemies-spawning.spec.ts (both kinds, real damage and destruction)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-ENEMY-005",
+      "description": "",
+      "implementation": "src/game/systems/updateEnemies.ts; src/game/entities/Enemy.ts; src/game/systems/spawnEnemies.ts",
+      "evidence": "tests/unit/enemies-spawning.spec.ts; tests/e2e/combat-behavior.spec.ts; tests/e2e/enemies-spawning.spec.ts (both kinds, real damage and destruction)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-ENEMY-006",
+      "description": "",
+      "implementation": "src/game/systems/updateEnemies.ts; src/game/entities/Enemy.ts; src/game/systems/spawnEnemies.ts",
+      "evidence": "tests/unit/enemies-spawning.spec.ts; tests/e2e/combat-behavior.spec.ts; tests/e2e/enemies-spawning.spec.ts (both kinds, real damage and destruction)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-ENEMY-007",
+      "description": "",
+      "implementation": "src/game/systems/updateEnemies.ts; src/game/entities/Enemy.ts; src/game/systems/spawnEnemies.ts",
+      "evidence": "tests/unit/enemies-spawning.spec.ts; tests/e2e/combat-behavior.spec.ts; tests/e2e/enemies-spawning.spec.ts (both kinds, real damage and destruction)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-ENEMY-008",
+      "description": "",
+      "implementation": "src/game/systems/updateEnemies.ts; src/game/entities/Enemy.ts; src/game/systems/spawnEnemies.ts",
+      "evidence": "tests/unit/enemies-spawning.spec.ts; tests/e2e/combat-behavior.spec.ts; tests/e2e/enemies-spawning.spec.ts (both kinds, real damage and destruction)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-ARENA-001",
+      "description": "",
+      "implementation": "src/game/config/arena.ts; src/game/systems/collision.ts; src/game/rendering/ArenaRenderer.ts",
+      "evidence": "tests/unit/arena-collision.spec.ts; tests/e2e/player-input.spec.ts (all edges/island sides); tests/e2e/weapons-projectiles.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-ARENA-002",
+      "description": "",
+      "implementation": "src/game/config/arena.ts; src/game/systems/collision.ts; src/game/rendering/ArenaRenderer.ts",
+      "evidence": "tests/unit/arena-collision.spec.ts; tests/e2e/player-input.spec.ts (all edges/island sides); tests/e2e/weapons-projectiles.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-ARENA-003",
+      "description": "",
+      "implementation": "src/game/config/arena.ts; src/game/systems/collision.ts; src/game/rendering/ArenaRenderer.ts",
+      "evidence": "tests/unit/arena-collision.spec.ts; tests/e2e/player-input.spec.ts (all edges/island sides); tests/e2e/weapons-projectiles.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-ARENA-004",
+      "description": "",
+      "implementation": "src/game/config/arena.ts; src/game/systems/collision.ts; src/game/rendering/ArenaRenderer.ts",
+      "evidence": "tests/unit/arena-collision.spec.ts; tests/e2e/player-input.spec.ts (all edges/island sides); tests/e2e/weapons-projectiles.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-COLLISION-001",
+      "description": "",
+      "implementation": "src/game/systems/updateProjectiles.ts; src/game/entities/Projectile.ts; src/game/entities/Enemy.ts; src/game/systems/updateEnemies.ts",
+      "evidence": "tests/unit/weapons-projectiles.spec.ts; tests/unit/enemies-spawning.spec.ts; tests/e2e/enemies-spawning.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-COLLISION-002",
+      "description": "",
+      "implementation": "src/game/systems/updateProjectiles.ts; src/game/entities/Projectile.ts; src/game/entities/Enemy.ts; src/game/systems/updateEnemies.ts",
+      "evidence": "tests/unit/weapons-projectiles.spec.ts; tests/unit/enemies-spawning.spec.ts; tests/e2e/enemies-spawning.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-SPAWN-001",
+      "description": "",
+      "implementation": "src/game/systems/spawnEnemies.ts validSpawn/spawnEnemies; src/game/config/GameConfig.ts",
+      "evidence": "tests/unit/enemies-spawning.spec.ts (safe positions/distance/distribution); tests/e2e/combat-behavior.spec.ts (Options cadence/pause/restart)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-SPAWN-002",
+      "description": "",
+      "implementation": "src/game/systems/spawnEnemies.ts validSpawn/spawnEnemies; src/game/config/GameConfig.ts",
+      "evidence": "tests/unit/enemies-spawning.spec.ts (safe positions/distance/distribution); tests/e2e/combat-behavior.spec.ts (Options cadence/pause/restart)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-SPAWN-003",
+      "description": "",
+      "implementation": "src/game/systems/spawnEnemies.ts validSpawn/spawnEnemies; src/game/config/GameConfig.ts",
+      "evidence": "tests/unit/enemies-spawning.spec.ts (safe positions/distance/distribution); tests/e2e/combat-behavior.spec.ts (Options cadence/pause/restart)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-SPAWN-004",
+      "description": "",
+      "implementation": "src/game/systems/spawnEnemies.ts validSpawn/spawnEnemies; src/game/config/GameConfig.ts",
+      "evidence": "tests/unit/enemies-spawning.spec.ts (safe positions/distance/distribution); tests/e2e/combat-behavior.spec.ts (Options cadence/pause/restart)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-SPAWN-005",
+      "description": "",
+      "implementation": "src/game/systems/spawnEnemies.ts validSpawn/spawnEnemies; src/game/config/GameConfig.ts",
+      "evidence": "tests/unit/enemies-spawning.spec.ts (safe positions/distance/distribution); tests/e2e/combat-behavior.spec.ts (Options cadence/pause/restart)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-SCORE-001",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts advance; src/game/entities/Enemy.ts destructionSource",
+      "evidence": "tests/unit/match-rules.spec.ts; tests/e2e/enemies-spawning.spec.ts (score remains 1); tests/e2e/combat-behavior.spec.ts (contact score 0)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-SCORE-002",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts advance; src/game/entities/Enemy.ts destructionSource",
+      "evidence": "tests/unit/match-rules.spec.ts; tests/e2e/enemies-spawning.spec.ts (score remains 1); tests/e2e/combat-behavior.spec.ts (contact score 0)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-SCORE-003",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts advance; src/game/entities/Enemy.ts destructionSource",
+      "evidence": "tests/unit/match-rules.spec.ts; tests/e2e/enemies-spawning.spec.ts (score remains 1); tests/e2e/combat-behavior.spec.ts (contact score 0)",
+      "status": "PASS"
+    },
+    {
+      "id": "GAME-SCORE-004",
+      "description": "",
+      "implementation": "src/game/core/GameController.ts advance; src/game/entities/Enemy.ts destructionSource",
+      "evidence": "tests/unit/match-rules.spec.ts; tests/e2e/enemies-spawning.spec.ts (score remains 1); tests/e2e/combat-behavior.spec.ts (contact score 0)",
+      "status": "PASS"
+    },
+    {
+      "id": "SIM-001",
+      "description": "",
+      "implementation": "src/game/core/FixedStepClock.ts; src/game/core/GameController.ts; src/game/systems; src/game/feedback/VisualFeedback.ts",
+      "evidence": "tests/unit/simulation.spec.ts (10–144 Hz, debt cap, pause rebase); tests/e2e/simulation-lifecycle.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "SIM-002",
+      "description": "",
+      "implementation": "src/game/core/FixedStepClock.ts; src/game/core/GameController.ts; src/game/systems; src/game/feedback/VisualFeedback.ts",
+      "evidence": "tests/unit/simulation.spec.ts (10–144 Hz, debt cap, pause rebase); tests/e2e/simulation-lifecycle.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "SIM-003",
+      "description": "",
+      "implementation": "src/game/core/FixedStepClock.ts; src/game/core/GameController.ts; src/game/systems; src/game/feedback/VisualFeedback.ts",
+      "evidence": "tests/unit/simulation.spec.ts (10–144 Hz, debt cap, pause rebase); tests/e2e/simulation-lifecycle.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "SIM-004",
+      "description": "",
+      "implementation": "src/game/core/FixedStepClock.ts; src/game/core/GameController.ts; src/game/systems; src/game/feedback/VisualFeedback.ts",
+      "evidence": "tests/unit/simulation.spec.ts (10–144 Hz, debt cap, pause rebase); tests/e2e/simulation-lifecycle.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "SIM-005",
+      "description": "",
+      "implementation": "src/game/core/FixedStepClock.ts; src/game/core/GameController.ts; src/game/systems; src/game/feedback/VisualFeedback.ts",
+      "evidence": "tests/unit/simulation.spec.ts (10–144 Hz, debt cap, pause rebase); tests/e2e/simulation-lifecycle.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CONFIG-001",
+      "description": "",
+      "implementation": "src/game/config/GameConfig.ts snapshotGameConfig/OPTION_LIMITS; src/storage/options.ts; src/screens/OptionsScreen.tsx",
+      "evidence": "tests/unit/simulation.spec.ts (copy/freeze/config validation); tests/e2e/options.spec.ts; README documented 60–180/1–30 limits",
+      "status": "PASS"
+    },
+    {
+      "id": "CONFIG-002",
+      "description": "",
+      "implementation": "src/game/config/GameConfig.ts snapshotGameConfig/OPTION_LIMITS; src/storage/options.ts; src/screens/OptionsScreen.tsx",
+      "evidence": "tests/unit/simulation.spec.ts (copy/freeze/config validation); tests/e2e/options.spec.ts; README documented 60–180/1–30 limits",
+      "status": "PASS"
+    },
+    {
+      "id": "CONFIG-003",
+      "description": "",
+      "implementation": "src/game/config/GameConfig.ts snapshotGameConfig/OPTION_LIMITS; src/storage/options.ts; src/screens/OptionsScreen.tsx",
+      "evidence": "tests/unit/simulation.spec.ts (copy/freeze/config validation); tests/e2e/options.spec.ts; README documented 60–180/1–30 limits",
+      "status": "PASS"
+    },
+    {
+      "id": "CONFIG-004",
+      "description": "",
+      "implementation": "src/game/config/GameConfig.ts snapshotGameConfig/OPTION_LIMITS; src/storage/options.ts; src/screens/OptionsScreen.tsx",
+      "evidence": "tests/unit/simulation.spec.ts (copy/freeze/config validation); tests/e2e/options.spec.ts; README documented 60–180/1–30 limits",
+      "status": "PASS"
+    },
+    {
+      "id": "CONFIG-005",
+      "description": "",
+      "implementation": "src/game/config/GameConfig.ts snapshotGameConfig/OPTION_LIMITS; src/storage/options.ts; src/screens/OptionsScreen.tsx",
+      "evidence": "tests/unit/simulation.spec.ts (copy/freeze/config validation); tests/e2e/options.spec.ts; README documented 60–180/1–30 limits",
+      "status": "PASS"
+    },
+    {
+      "id": "INPUT-001",
+      "description": "",
+      "implementation": "src/game/input/InputState.ts; src/game/input/KeyboardInput.ts; src/game/input/TouchInput.ts; src/screens/TouchControls.tsx",
+      "evidence": "tests/unit/player-input.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/touch-responsive.spec.ts (native simultaneous touch)",
+      "status": "PASS"
+    },
+    {
+      "id": "INPUT-002",
+      "description": "",
+      "implementation": "src/game/input/InputState.ts; src/game/input/KeyboardInput.ts; src/game/input/TouchInput.ts; src/screens/TouchControls.tsx",
+      "evidence": "tests/unit/player-input.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/touch-responsive.spec.ts (native simultaneous touch)",
+      "status": "PASS"
+    },
+    {
+      "id": "INPUT-003",
+      "description": "",
+      "implementation": "src/game/input/InputState.ts; src/game/input/KeyboardInput.ts; src/game/input/TouchInput.ts; src/screens/TouchControls.tsx",
+      "evidence": "tests/unit/player-input.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/touch-responsive.spec.ts (native simultaneous touch)",
+      "status": "PASS"
+    },
+    {
+      "id": "INPUT-004",
+      "description": "",
+      "implementation": "src/game/input/InputState.ts; src/game/input/KeyboardInput.ts; src/game/input/TouchInput.ts; src/screens/TouchControls.tsx",
+      "evidence": "tests/unit/player-input.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/touch-responsive.spec.ts (native simultaneous touch)",
+      "status": "PASS"
+    },
+    {
+      "id": "INPUT-005",
+      "description": "",
+      "implementation": "src/game/input/InputState.ts; src/game/input/KeyboardInput.ts; src/game/input/TouchInput.ts; src/screens/TouchControls.tsx",
+      "evidence": "tests/unit/player-input.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/touch-responsive.spec.ts (native simultaneous touch)",
+      "status": "PASS"
+    },
+    {
+      "id": "PAUSE-001",
+      "description": "",
+      "implementation": "src/game/GameInstance.ts onBlur/onVisibility; src/game/core/GameController.ts pause/resume; src/screens/PauseDialog.tsx",
+      "evidence": "tests/e2e/simulation-lifecycle.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/weapons-projectiles.spec.ts; tests/e2e/touch-responsive.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "PAUSE-002",
+      "description": "",
+      "implementation": "src/game/GameInstance.ts onBlur/onVisibility; src/game/core/GameController.ts pause/resume; src/screens/PauseDialog.tsx",
+      "evidence": "tests/e2e/simulation-lifecycle.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/weapons-projectiles.spec.ts; tests/e2e/touch-responsive.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "PAUSE-003",
+      "description": "",
+      "implementation": "src/game/GameInstance.ts onBlur/onVisibility; src/game/core/GameController.ts pause/resume; src/screens/PauseDialog.tsx",
+      "evidence": "tests/e2e/simulation-lifecycle.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/weapons-projectiles.spec.ts; tests/e2e/touch-responsive.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "PAUSE-004",
+      "description": "",
+      "implementation": "src/game/GameInstance.ts onBlur/onVisibility; src/game/core/GameController.ts pause/resume; src/screens/PauseDialog.tsx",
+      "evidence": "tests/e2e/simulation-lifecycle.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/weapons-projectiles.spec.ts; tests/e2e/touch-responsive.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "PAUSE-005",
+      "description": "",
+      "implementation": "src/game/GameInstance.ts onBlur/onVisibility; src/game/core/GameController.ts pause/resume; src/screens/PauseDialog.tsx",
+      "evidence": "tests/e2e/simulation-lifecycle.spec.ts; tests/e2e/player-input.spec.ts; tests/e2e/weapons-projectiles.spec.ts; tests/e2e/touch-responsive.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "ASSET-001",
+      "description": "",
+      "implementation": "assets/; src/game/rendering/foundationAssets.ts; src/game/rendering/ArenaRenderer.ts; src/game/rendering/HealthIndicator.ts; src/game/feedback/effectAssets.ts; src/screens/GameScreen.tsx",
+      "evidence": "tests/e2e/pixi-foundation.spec.ts (6 asset retries/cache/late init/cleanup); supplied references and six baseline images reviewed; source cache ownership",
+      "status": "PASS"
+    },
+    {
+      "id": "ASSET-002",
+      "description": "",
+      "implementation": "assets/; src/game/rendering/foundationAssets.ts; src/game/rendering/ArenaRenderer.ts; src/game/rendering/HealthIndicator.ts; src/game/feedback/effectAssets.ts; src/screens/GameScreen.tsx",
+      "evidence": "tests/e2e/pixi-foundation.spec.ts (6 asset retries/cache/late init/cleanup); supplied references and six baseline images reviewed; source cache ownership",
+      "status": "PASS"
+    },
+    {
+      "id": "ASSET-003",
+      "description": "",
+      "implementation": "assets/; src/game/rendering/foundationAssets.ts; src/game/rendering/ArenaRenderer.ts; src/game/rendering/HealthIndicator.ts; src/game/feedback/effectAssets.ts; src/screens/GameScreen.tsx",
+      "evidence": "tests/e2e/pixi-foundation.spec.ts (6 asset retries/cache/late init/cleanup); supplied references and six baseline images reviewed; source cache ownership",
+      "status": "PASS"
+    },
+    {
+      "id": "ASSET-004",
+      "description": "",
+      "implementation": "assets/; src/game/rendering/foundationAssets.ts; src/game/rendering/ArenaRenderer.ts; src/game/rendering/HealthIndicator.ts; src/game/feedback/effectAssets.ts; src/screens/GameScreen.tsx",
+      "evidence": "tests/e2e/pixi-foundation.spec.ts (6 asset retries/cache/late init/cleanup); supplied references and six baseline images reviewed; source cache ownership",
+      "status": "PASS"
+    },
+    {
+      "id": "ASSET-005",
+      "description": "",
+      "implementation": "assets/; src/game/rendering/foundationAssets.ts; src/game/rendering/ArenaRenderer.ts; src/game/rendering/HealthIndicator.ts; src/game/feedback/effectAssets.ts; src/screens/GameScreen.tsx",
+      "evidence": "tests/e2e/pixi-foundation.spec.ts (6 asset retries/cache/late init/cleanup); supplied references and six baseline images reviewed; source cache ownership",
+      "status": "PASS"
+    },
+    {
+      "id": "ASSET-006",
+      "description": "",
+      "implementation": "assets/; src/game/rendering/foundationAssets.ts; src/game/rendering/ArenaRenderer.ts; src/game/rendering/HealthIndicator.ts; src/game/feedback/effectAssets.ts; src/screens/GameScreen.tsx",
+      "evidence": "tests/e2e/pixi-foundation.spec.ts (6 asset retries/cache/late init/cleanup); supplied references and six baseline images reviewed; source cache ownership",
+      "status": "PASS"
+    },
+    {
+      "id": "ASSET-007",
+      "description": "",
+      "implementation": "assets/; src/game/rendering/foundationAssets.ts; src/game/rendering/ArenaRenderer.ts; src/game/rendering/HealthIndicator.ts; src/game/feedback/effectAssets.ts; src/screens/GameScreen.tsx",
+      "evidence": "tests/e2e/pixi-foundation.spec.ts (6 asset retries/cache/late init/cleanup); supplied references and six baseline images reviewed; source cache ownership",
+      "status": "PASS"
+    },
+    {
+      "id": "HUD-001",
+      "description": "",
+      "implementation": "src/screens/MatchHud.tsx; src/game/rendering/HealthIndicator.ts; src/game/rendering/ArenaRenderer.ts syncHealth",
+      "evidence": "tests/e2e/enemies-spawning.spec.ts (follow positions/health fill); tests/e2e/match-rules.spec.ts; tests/e2e/visual-regression.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "HUD-002",
+      "description": "",
+      "implementation": "src/screens/MatchHud.tsx; src/game/rendering/HealthIndicator.ts; src/game/rendering/ArenaRenderer.ts syncHealth",
+      "evidence": "tests/e2e/enemies-spawning.spec.ts (follow positions/health fill); tests/e2e/match-rules.spec.ts; tests/e2e/visual-regression.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "HUD-003",
+      "description": "",
+      "implementation": "src/screens/MatchHud.tsx; src/game/rendering/HealthIndicator.ts; src/game/rendering/ArenaRenderer.ts syncHealth",
+      "evidence": "tests/e2e/enemies-spawning.spec.ts (follow positions/health fill); tests/e2e/match-rules.spec.ts; tests/e2e/visual-regression.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "FEEDBACK-001",
+      "description": "",
+      "implementation": "src/game/feedback/VisualFeedback.ts; src/game/feedback/GameAudio.ts; src/game/core/GameController.ts feedback",
+      "evidence": "tests/e2e/enemies-spawning.spec.ts (fire/impact/damage/destruction/deterioration); tests/unit/pause-feedback.spec.ts; visual baseline review",
+      "status": "PASS"
+    },
+    {
+      "id": "FEEDBACK-002",
+      "description": "",
+      "implementation": "src/game/feedback/VisualFeedback.ts; src/game/feedback/GameAudio.ts; src/game/core/GameController.ts feedback",
+      "evidence": "tests/e2e/enemies-spawning.spec.ts (fire/impact/damage/destruction/deterioration); tests/unit/pause-feedback.spec.ts; visual baseline review",
+      "status": "PASS"
+    },
+    {
+      "id": "FEEDBACK-003",
+      "description": "",
+      "implementation": "src/game/feedback/VisualFeedback.ts; src/game/feedback/GameAudio.ts; src/game/core/GameController.ts feedback",
+      "evidence": "tests/e2e/enemies-spawning.spec.ts (fire/impact/damage/destruction/deterioration); tests/unit/pause-feedback.spec.ts; visual baseline review",
+      "status": "PASS"
+    },
+    {
+      "id": "FEEDBACK-004",
+      "description": "",
+      "implementation": "src/game/feedback/VisualFeedback.ts; src/game/feedback/GameAudio.ts; src/game/core/GameController.ts feedback",
+      "evidence": "tests/e2e/enemies-spawning.spec.ts (fire/impact/damage/destruction/deterioration); tests/unit/pause-feedback.spec.ts; visual baseline review",
+      "status": "PASS"
+    },
+    {
+      "id": "RANKING-001",
+      "description": "",
+      "implementation": "src/screens/CaptainsLog.tsx RankingScreen; src/api/matches.ts getRanking; src/mocks/handlers.ts; src/mocks/database.ts compareRanking/equivalent; src/mocks/fixtures.ts",
+      "evidence": "tests/unit/api-msw.spec.ts (full config identity/date-ID ties/24 fixtures); tests/e2e/ranking-history.spec.ts; public data suite",
+      "status": "PASS"
+    },
+    {
+      "id": "RANKING-002",
+      "description": "",
+      "implementation": "src/screens/CaptainsLog.tsx RankingScreen; src/api/matches.ts getRanking; src/mocks/handlers.ts; src/mocks/database.ts compareRanking/equivalent; src/mocks/fixtures.ts",
+      "evidence": "tests/unit/api-msw.spec.ts (full config identity/date-ID ties/24 fixtures); tests/e2e/ranking-history.spec.ts; public data suite",
+      "status": "PASS"
+    },
+    {
+      "id": "RANKING-003",
+      "description": "",
+      "implementation": "src/screens/CaptainsLog.tsx RankingScreen; src/api/matches.ts getRanking; src/mocks/handlers.ts; src/mocks/database.ts compareRanking/equivalent; src/mocks/fixtures.ts",
+      "evidence": "tests/unit/api-msw.spec.ts (full config identity/date-ID ties/24 fixtures); tests/e2e/ranking-history.spec.ts; public data suite",
+      "status": "PASS"
+    },
+    {
+      "id": "RANKING-004",
+      "description": "",
+      "implementation": "src/screens/CaptainsLog.tsx RankingScreen; src/api/matches.ts getRanking; src/mocks/handlers.ts; src/mocks/database.ts compareRanking/equivalent; src/mocks/fixtures.ts",
+      "evidence": "tests/unit/api-msw.spec.ts (full config identity/date-ID ties/24 fixtures); tests/e2e/ranking-history.spec.ts; public data suite",
+      "status": "PASS"
+    },
+    {
+      "id": "RANKING-005",
+      "description": "",
+      "implementation": "src/screens/CaptainsLog.tsx RankingScreen; src/api/matches.ts getRanking; src/mocks/handlers.ts; src/mocks/database.ts compareRanking/equivalent; src/mocks/fixtures.ts",
+      "evidence": "tests/unit/api-msw.spec.ts (full config identity/date-ID ties/24 fixtures); tests/e2e/ranking-history.spec.ts; public data suite",
+      "status": "PASS"
+    },
+    {
+      "id": "RANKING-006",
+      "description": "",
+      "implementation": "src/screens/CaptainsLog.tsx RankingScreen; src/api/matches.ts getRanking; src/mocks/handlers.ts; src/mocks/database.ts compareRanking/equivalent; src/mocks/fixtures.ts",
+      "evidence": "tests/unit/api-msw.spec.ts (full config identity/date-ID ties/24 fixtures); tests/e2e/ranking-history.spec.ts; public data suite",
+      "status": "PASS"
+    },
+    {
+      "id": "HISTORY-001",
+      "description": "",
+      "implementation": "src/screens/CaptainsLog.tsx HistoryScreen/RecordDetails; src/api/contracts.ts; src/api/matches.ts getHistory/submitMatch; src/mocks/handlers.ts",
+      "evidence": "tests/unit/api-msw.spec.ts; tests/e2e/api-msw.spec.ts; tests/e2e/ranking-history.spec.ts; public data suite",
+      "status": "PASS"
+    },
+    {
+      "id": "HISTORY-002",
+      "description": "",
+      "implementation": "src/screens/CaptainsLog.tsx HistoryScreen/RecordDetails; src/api/contracts.ts; src/api/matches.ts getHistory/submitMatch; src/mocks/handlers.ts",
+      "evidence": "tests/unit/api-msw.spec.ts; tests/e2e/api-msw.spec.ts; tests/e2e/ranking-history.spec.ts; public data suite",
+      "status": "PASS"
+    },
+    {
+      "id": "HISTORY-003",
+      "description": "",
+      "implementation": "src/screens/CaptainsLog.tsx HistoryScreen/RecordDetails; src/api/contracts.ts; src/api/matches.ts getHistory/submitMatch; src/mocks/handlers.ts",
+      "evidence": "tests/unit/api-msw.spec.ts; tests/e2e/api-msw.spec.ts; tests/e2e/ranking-history.spec.ts; public data suite",
+      "status": "PASS"
+    },
+    {
+      "id": "DATA-001",
+      "description": "",
+      "implementation": "src/api/client.ts; src/api/matches.ts; src/api/queryClient.ts; src/api/useMatchQueries.ts; src/api/SubmissionRecovery.ts",
+      "evidence": "tests/e2e/ranking-history.spec.ts (states/cache/errors/pages/cancellation); tests/e2e/registration-refresh.spec.ts (warmed lists update); tests/unit/api-msw.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "DATA-002",
+      "description": "",
+      "implementation": "src/api/client.ts; src/api/matches.ts; src/api/queryClient.ts; src/api/useMatchQueries.ts; src/api/SubmissionRecovery.ts",
+      "evidence": "tests/e2e/ranking-history.spec.ts (states/cache/errors/pages/cancellation); tests/e2e/registration-refresh.spec.ts (warmed lists update); tests/unit/api-msw.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "DATA-003",
+      "description": "",
+      "implementation": "src/api/client.ts; src/api/matches.ts; src/api/queryClient.ts; src/api/useMatchQueries.ts; src/api/SubmissionRecovery.ts",
+      "evidence": "tests/e2e/ranking-history.spec.ts (states/cache/errors/pages/cancellation); tests/e2e/registration-refresh.spec.ts (warmed lists update); tests/unit/api-msw.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "DATA-004",
+      "description": "",
+      "implementation": "src/api/client.ts; src/api/matches.ts; src/api/queryClient.ts; src/api/useMatchQueries.ts; src/api/SubmissionRecovery.ts",
+      "evidence": "tests/e2e/ranking-history.spec.ts (states/cache/errors/pages/cancellation); tests/e2e/registration-refresh.spec.ts (warmed lists update); tests/unit/api-msw.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "DATA-005",
+      "description": "",
+      "implementation": "src/api/client.ts; src/api/matches.ts; src/api/queryClient.ts; src/api/useMatchQueries.ts; src/api/SubmissionRecovery.ts",
+      "evidence": "tests/e2e/ranking-history.spec.ts (states/cache/errors/pages/cancellation); tests/e2e/registration-refresh.spec.ts (warmed lists update); tests/unit/api-msw.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "SUBMIT-001",
+      "description": "",
+      "implementation": "src/screens/GameScreen.tsx completedRef/UUID; src/api/SubmissionRecovery.ts retry; src/mocks/database.ts register",
+      "evidence": "tests/unit/submission-recovery.spec.ts; tests/e2e/submission-recovery.spec.ts (repeated clicks and NETWORK-013); public production-flow.spec.ts exact one persisted record",
+      "status": "PASS"
+    },
+    {
+      "id": "SUBMIT-002",
+      "description": "",
+      "implementation": "src/screens/GameScreen.tsx completedRef/UUID; src/api/SubmissionRecovery.ts retry; src/mocks/database.ts register",
+      "evidence": "tests/unit/submission-recovery.spec.ts; tests/e2e/submission-recovery.spec.ts (repeated clicks and NETWORK-013); public production-flow.spec.ts exact one persisted record",
+      "status": "PASS"
+    },
+    {
+      "id": "SUBMIT-003",
+      "description": "",
+      "implementation": "src/screens/GameScreen.tsx completedRef/UUID; src/api/SubmissionRecovery.ts retry; src/mocks/database.ts register",
+      "evidence": "tests/unit/submission-recovery.spec.ts; tests/e2e/submission-recovery.spec.ts (repeated clicks and NETWORK-013); public production-flow.spec.ts exact one persisted record",
+      "status": "PASS"
+    },
+    {
+      "id": "SUBMIT-004",
+      "description": "",
+      "implementation": "src/screens/GameScreen.tsx completedRef/UUID; src/api/SubmissionRecovery.ts retry; src/mocks/database.ts register",
+      "evidence": "tests/unit/submission-recovery.spec.ts; tests/e2e/submission-recovery.spec.ts (repeated clicks and NETWORK-013); public production-flow.spec.ts exact one persisted record",
+      "status": "PASS"
+    },
+    {
+      "id": "SUBMIT-005",
+      "description": "",
+      "implementation": "src/screens/GameScreen.tsx completedRef/UUID; src/api/SubmissionRecovery.ts retry; src/mocks/database.ts register",
+      "evidence": "tests/unit/submission-recovery.spec.ts; tests/e2e/submission-recovery.spec.ts (repeated clicks and NETWORK-013); public production-flow.spec.ts exact one persisted record",
+      "status": "PASS"
+    },
+    {
+      "id": "SUBMIT-006",
+      "description": "",
+      "implementation": "src/screens/GameScreen.tsx completedRef/UUID; src/api/SubmissionRecovery.ts retry; src/mocks/database.ts register",
+      "evidence": "tests/unit/submission-recovery.spec.ts; tests/e2e/submission-recovery.spec.ts (repeated clicks and NETWORK-013); public production-flow.spec.ts exact one persisted record",
+      "status": "PASS"
+    },
+    {
+      "id": "RECOVERY-001",
+      "description": "",
+      "implementation": "src/storage/pendingSubmissions.ts; src/api/SubmissionRecovery.ts; src/screens/PendingSubmissions.tsx; src/app/App.tsx",
+      "evidence": "tests/e2e/submission-recovery.spec.ts (NETWORK-008/013/014, refresh, two independent matches); tests/unit/submission-recovery.spec.ts (remove only confirmed); public production-flow.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "RECOVERY-002",
+      "description": "",
+      "implementation": "src/storage/pendingSubmissions.ts; src/api/SubmissionRecovery.ts; src/screens/PendingSubmissions.tsx; src/app/App.tsx",
+      "evidence": "tests/e2e/submission-recovery.spec.ts (NETWORK-008/013/014, refresh, two independent matches); tests/unit/submission-recovery.spec.ts (remove only confirmed); public production-flow.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "RECOVERY-003",
+      "description": "",
+      "implementation": "src/storage/pendingSubmissions.ts; src/api/SubmissionRecovery.ts; src/screens/PendingSubmissions.tsx; src/app/App.tsx",
+      "evidence": "tests/e2e/submission-recovery.spec.ts (NETWORK-008/013/014, refresh, two independent matches); tests/unit/submission-recovery.spec.ts (remove only confirmed); public production-flow.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "RECOVERY-004",
+      "description": "",
+      "implementation": "src/storage/pendingSubmissions.ts; src/api/SubmissionRecovery.ts; src/screens/PendingSubmissions.tsx; src/app/App.tsx",
+      "evidence": "tests/e2e/submission-recovery.spec.ts (NETWORK-008/013/014, refresh, two independent matches); tests/unit/submission-recovery.spec.ts (remove only confirmed); public production-flow.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "RECOVERY-005",
+      "description": "",
+      "implementation": "src/storage/pendingSubmissions.ts; src/api/SubmissionRecovery.ts; src/screens/PendingSubmissions.tsx; src/app/App.tsx",
+      "evidence": "tests/e2e/submission-recovery.spec.ts (NETWORK-008/013/014, refresh, two independent matches); tests/unit/submission-recovery.spec.ts (remove only confirmed); public production-flow.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "NETWORK-001",
+      "description": "",
+      "implementation": "src/mocks/scenarios.ts NetworkScenarios; src/mocks/handlers.ts createMockApi; src/mocks/browser.ts console facade",
+      "evidence": "tests/unit/api-msw.spec.ts individual scenario selection/reset and wait sequences; browser Query/Axios/MSW tests; individual scenario records/counts/page assertions; browser list states/pagination",
+      "status": "PASS"
+    },
+    {
+      "id": "NETWORK-002",
+      "description": "",
+      "implementation": "src/mocks/scenarios.ts NetworkScenarios; src/mocks/handlers.ts createMockApi; src/mocks/browser.ts console facade",
+      "evidence": "tests/unit/api-msw.spec.ts individual scenario selection/reset and wait sequences; browser Query/Axios/MSW tests; individual scenario records/counts/page assertions; browser list states/pagination",
+      "status": "PASS"
+    },
+    {
+      "id": "NETWORK-003",
+      "description": "",
+      "implementation": "src/mocks/scenarios.ts NetworkScenarios; src/mocks/handlers.ts createMockApi; src/mocks/browser.ts console facade",
+      "evidence": "tests/unit/api-msw.spec.ts individual scenario selection/reset and wait sequences; browser Query/Axios/MSW tests; individual scenario records/counts/page assertions; browser list states/pagination",
+      "status": "PASS"
+    },
+    {
+      "id": "NETWORK-004",
+      "description": "",
+      "implementation": "src/mocks/scenarios.ts NetworkScenarios; src/mocks/handlers.ts createMockApi; src/mocks/browser.ts console facade",
+      "evidence": "tests/unit/api-msw.spec.ts individual scenario selection/reset and wait sequences; browser Query/Axios/MSW tests; individual slow response wait [1000]; browser loading/background state assertions",
+      "status": "PASS"
+    },
+    {
+      "id": "NETWORK-005",
+      "description": "",
+      "implementation": "src/mocks/scenarios.ts NetworkScenarios; src/mocks/handlers.ts createMockApi; src/mocks/browser.ts console facade",
+      "evidence": "tests/unit/api-msw.spec.ts individual scenario selection/reset and wait sequences; browser Query/Axios/MSW tests; individual latency waits [100,600], deterministic repeating sequence",
+      "status": "PASS"
+    },
+    {
+      "id": "NETWORK-006",
+      "description": "",
+      "implementation": "src/mocks/scenarios.ts NetworkScenarios; src/mocks/handlers.ts createMockApi; src/mocks/browser.ts console facade",
+      "evidence": "tests/unit/api-msw.spec.ts individual scenario selection/reset and wait sequences; browser Query/Axios/MSW tests; tests/e2e/ranking-history.spec.ts old page responses; unit overlapping response and cancellation assertions",
+      "status": "PASS"
+    },
+    {
+      "id": "NETWORK-007",
+      "description": "",
+      "implementation": "src/mocks/scenarios.ts NetworkScenarios; src/mocks/handlers.ts createMockApi; src/mocks/browser.ts console facade",
+      "evidence": "tests/unit/api-msw.spec.ts individual scenario selection/reset and wait sequences; browser Query/Axios/MSW tests; tests/unit/api-msw.spec.ts actual Axios timeout; handler wait [0,3000]",
+      "status": "PASS"
+    },
+    {
+      "id": "NETWORK-008",
+      "description": "",
+      "implementation": "src/mocks/scenarios.ts NetworkScenarios; src/mocks/handlers.ts createMockApi; src/mocks/browser.ts console facade",
+      "evidence": "tests/unit/api-msw.spec.ts individual scenario selection/reset and wait sequences; browser Query/Axios/MSW tests; individual NETWORK-008 failure/status test; browser list/error/retry or registration failure",
+      "status": "PASS"
+    },
+    {
+      "id": "NETWORK-009",
+      "description": "",
+      "implementation": "src/mocks/scenarios.ts NetworkScenarios; src/mocks/handlers.ts createMockApi; src/mocks/browser.ts console facade",
+      "evidence": "tests/unit/api-msw.spec.ts individual scenario selection/reset and wait sequences; browser Query/Axios/MSW tests; individual NETWORK-009 failure/status test; browser list/error/retry or registration failure",
+      "status": "PASS"
+    },
+    {
+      "id": "NETWORK-010",
+      "description": "",
+      "implementation": "src/mocks/scenarios.ts NetworkScenarios; src/mocks/handlers.ts createMockApi; src/mocks/browser.ts console facade",
+      "evidence": "tests/unit/api-msw.spec.ts individual scenario selection/reset and wait sequences; browser Query/Axios/MSW tests; individual NETWORK-010 failure/status test; browser list/error/retry or registration failure",
+      "status": "PASS"
+    },
+    {
+      "id": "NETWORK-011",
+      "description": "",
+      "implementation": "src/mocks/scenarios.ts NetworkScenarios; src/mocks/handlers.ts createMockApi; src/mocks/browser.ts console facade",
+      "evidence": "tests/unit/api-msw.spec.ts individual scenario selection/reset and wait sequences; browser Query/Axios/MSW tests; individual NETWORK-011 failure/status test; browser list/error/retry or registration failure",
+      "status": "PASS"
+    },
+    {
+      "id": "NETWORK-012",
+      "description": "",
+      "implementation": "src/mocks/scenarios.ts NetworkScenarios; src/mocks/handlers.ts createMockApi; src/mocks/browser.ts console facade",
+      "evidence": "tests/unit/api-msw.spec.ts individual scenario selection/reset and wait sequences; browser Query/Axios/MSW tests; individual NETWORK-012 failure/status test; browser list/error/retry or registration failure",
+      "status": "PASS"
+    },
+    {
+      "id": "NETWORK-013",
+      "description": "",
+      "implementation": "src/mocks/scenarios.ts NetworkScenarios; src/mocks/handlers.ts createMockApi; src/mocks/browser.ts console facade",
+      "evidence": "tests/unit/api-msw.spec.ts individual scenario selection/reset and wait sequences; browser Query/Axios/MSW tests; tests/e2e/submission-recovery.spec.ts NETWORK-013; tests/unit/api-msw.spec.ts native Axios post-commit timeout",
+      "status": "PASS"
+    },
+    {
+      "id": "NETWORK-014",
+      "description": "",
+      "implementation": "src/mocks/scenarios.ts NetworkScenarios; src/mocks/handlers.ts createMockApi; src/mocks/browser.ts console facade",
+      "evidence": "tests/unit/api-msw.spec.ts individual scenario selection/reset and wait sequences; browser Query/Axios/MSW tests; tests/e2e/submission-recovery.spec.ts NETWORK-014; public tests/e2e/production-flow.spec.ts recovery",
+      "status": "PASS"
+    },
+    {
+      "id": "PERSIST-001",
+      "description": "",
+      "implementation": "src/storage/options.ts; src/storage/lastResult.ts; src/storage/mockRecords.ts; src/storage/pendingSubmissions.ts",
+      "evidence": "tests/e2e/options.spec.ts; tests/e2e/match-rules.spec.ts; tests/e2e/api-msw.spec.ts; tests/e2e/submission-recovery.spec.ts; public refresh flows",
+      "status": "PASS"
+    },
+    {
+      "id": "PERSIST-002",
+      "description": "",
+      "implementation": "src/storage/options.ts; src/storage/lastResult.ts; src/storage/mockRecords.ts; src/storage/pendingSubmissions.ts",
+      "evidence": "tests/e2e/options.spec.ts; tests/e2e/match-rules.spec.ts; tests/e2e/api-msw.spec.ts; tests/e2e/submission-recovery.spec.ts; public refresh flows",
+      "status": "PASS"
+    },
+    {
+      "id": "PERSIST-003",
+      "description": "",
+      "implementation": "src/storage/options.ts; src/storage/lastResult.ts; src/storage/mockRecords.ts; src/storage/pendingSubmissions.ts",
+      "evidence": "tests/e2e/options.spec.ts; tests/e2e/match-rules.spec.ts; tests/e2e/api-msw.spec.ts; tests/e2e/submission-recovery.spec.ts; public refresh flows",
+      "status": "PASS"
+    },
+    {
+      "id": "PERSIST-004",
+      "description": "",
+      "implementation": "src/storage/options.ts; src/storage/lastResult.ts; src/storage/mockRecords.ts; src/storage/pendingSubmissions.ts",
+      "evidence": "tests/e2e/options.spec.ts; tests/e2e/match-rules.spec.ts; tests/e2e/api-msw.spec.ts; tests/e2e/submission-recovery.spec.ts; public refresh flows",
+      "status": "PASS"
+    },
+    {
+      "id": "RESPONSIVE-001",
+      "description": "",
+      "implementation": "src/styles.css; src/screens/TouchControls.tsx; src/game/rendering/ArenaRenderer.ts resize/watchDensity; README Controls and mobile",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding RESPONSIVE row; tests/e2e/touch-responsive.spec.ts; tests/e2e/pixi-foundation.spec.ts; public mobile flow",
+      "status": "PASS"
+    },
+    {
+      "id": "RESPONSIVE-002",
+      "description": "",
+      "implementation": "src/styles.css; src/screens/TouchControls.tsx; src/game/rendering/ArenaRenderer.ts resize/watchDensity; README Controls and mobile",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding RESPONSIVE row; tests/e2e/touch-responsive.spec.ts; tests/e2e/pixi-foundation.spec.ts; public mobile flow",
+      "status": "PASS"
+    },
+    {
+      "id": "RESPONSIVE-003",
+      "description": "",
+      "implementation": "src/styles.css; src/screens/TouchControls.tsx; src/game/rendering/ArenaRenderer.ts resize/watchDensity; README Controls and mobile",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding RESPONSIVE row; tests/e2e/touch-responsive.spec.ts; tests/e2e/pixi-foundation.spec.ts; public mobile flow",
+      "status": "PASS"
+    },
+    {
+      "id": "RESPONSIVE-004",
+      "description": "",
+      "implementation": "src/styles.css; src/screens/TouchControls.tsx; src/game/rendering/ArenaRenderer.ts resize/watchDensity; README Controls and mobile",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding RESPONSIVE row; tests/e2e/touch-responsive.spec.ts; tests/e2e/pixi-foundation.spec.ts; public mobile flow",
+      "status": "PASS"
+    },
+    {
+      "id": "RESPONSIVE-005",
+      "description": "",
+      "implementation": "src/styles.css; src/screens/TouchControls.tsx; src/game/rendering/ArenaRenderer.ts resize/watchDensity; README Controls and mobile",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding RESPONSIVE row; tests/e2e/touch-responsive.spec.ts; tests/e2e/pixi-foundation.spec.ts; public mobile flow",
+      "status": "PASS"
+    },
+    {
+      "id": "RESPONSIVE-006",
+      "description": "",
+      "implementation": "src/styles.css; src/screens/TouchControls.tsx; src/game/rendering/ArenaRenderer.ts resize/watchDensity; README Controls and mobile",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding RESPONSIVE row; tests/e2e/touch-responsive.spec.ts; tests/e2e/pixi-foundation.spec.ts; public mobile flow",
+      "status": "PASS"
+    },
+    {
+      "id": "RESPONSIVE-007",
+      "description": "",
+      "implementation": "src/styles.css; src/screens/TouchControls.tsx; src/game/rendering/ArenaRenderer.ts resize/watchDensity; README Controls and mobile",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding RESPONSIVE row; tests/e2e/touch-responsive.spec.ts; tests/e2e/pixi-foundation.spec.ts; public mobile flow",
+      "status": "PASS"
+    },
+    {
+      "id": "RESPONSIVE-008",
+      "description": "",
+      "implementation": "src/styles.css; src/screens/TouchControls.tsx; src/game/rendering/ArenaRenderer.ts resize/watchDensity; README Controls and mobile",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding RESPONSIVE row; tests/e2e/touch-responsive.spec.ts; tests/e2e/pixi-foundation.spec.ts; public mobile flow",
+      "status": "PASS"
+    },
+    {
+      "id": "A11Y-001",
+      "description": "",
+      "implementation": "src/screens; src/components/ui/NumberStepper.tsx; src/styles.css focus tokens; src/game/core/GameController.ts publish",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding A11Y row; docs/evidence/task-17-accessibility.json; navigation/options/pause/data/HUD commit tests",
+      "status": "PASS"
+    },
+    {
+      "id": "A11Y-002",
+      "description": "",
+      "implementation": "src/screens; src/components/ui/NumberStepper.tsx; src/styles.css focus tokens; src/game/core/GameController.ts publish",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding A11Y row; docs/evidence/task-17-accessibility.json; navigation/options/pause/data/HUD commit tests",
+      "status": "PASS"
+    },
+    {
+      "id": "A11Y-003",
+      "description": "",
+      "implementation": "src/screens; src/components/ui/NumberStepper.tsx; src/styles.css focus tokens; src/game/core/GameController.ts publish",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding A11Y row; docs/evidence/task-17-accessibility.json; navigation/options/pause/data/HUD commit tests",
+      "status": "PASS"
+    },
+    {
+      "id": "A11Y-004",
+      "description": "",
+      "implementation": "src/screens; src/components/ui/NumberStepper.tsx; src/styles.css focus tokens; src/game/core/GameController.ts publish",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding A11Y row; docs/evidence/task-17-accessibility.json; navigation/options/pause/data/HUD commit tests",
+      "status": "PASS"
+    },
+    {
+      "id": "A11Y-005",
+      "description": "",
+      "implementation": "src/screens; src/components/ui/NumberStepper.tsx; src/styles.css focus tokens; src/game/core/GameController.ts publish",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding A11Y row; docs/evidence/task-17-accessibility.json; navigation/options/pause/data/HUD commit tests",
+      "status": "PASS"
+    },
+    {
+      "id": "A11Y-006",
+      "description": "",
+      "implementation": "src/screens; src/components/ui/NumberStepper.tsx; src/styles.css focus tokens; src/game/core/GameController.ts publish",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding A11Y row; docs/evidence/task-17-accessibility.json; navigation/options/pause/data/HUD commit tests",
+      "status": "PASS"
+    },
+    {
+      "id": "A11Y-007",
+      "description": "",
+      "implementation": "src/screens; src/components/ui/NumberStepper.tsx; src/styles.css focus tokens; src/game/core/GameController.ts publish",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding A11Y row; docs/evidence/task-17-accessibility.json; navigation/options/pause/data/HUD commit tests",
+      "status": "PASS"
+    },
+    {
+      "id": "A11Y-008",
+      "description": "",
+      "implementation": "src/screens; src/components/ui/NumberStepper.tsx; src/styles.css focus tokens; src/game/core/GameController.ts publish",
+      "evidence": "docs/PERFORMANCE_ACCESSIBILITY.md corresponding A11Y row; docs/evidence/task-17-accessibility.json; navigation/options/pause/data/HUD commit tests",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-001",
+      "description": "",
+      "implementation": "`options.spec.ts`: validates settings and persists only valid saves after reload",
+      "evidence": "Covered: invalid limits/types, valid saves, refresh and discarded edits; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-002",
+      "description": "",
+      "implementation": "`pixi-foundation.spec.ts`: six asset failure/retry cases; leaving during loading",
+      "evidence": "Covered: progress, retry and late completion cleanup; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-003",
+      "description": "",
+      "implementation": "`simulation-lifecycle.spec.ts`: drives lifecycle; `player-input.spec.ts`",
+      "evidence": "Covered: ready → Start Match → real ticker/player; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-004",
+      "description": "",
+      "implementation": "`player-input.spec.ts`: real keyboard moves, turns and fires",
+      "evidence": "Covered: actual keys, rendered transforms, simultaneous inputs; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-005",
+      "description": "",
+      "implementation": "`player-input.spec.ts`: four arena edge keyboard pipeline cases",
+      "evidence": "Covered: blocked motion and turning away; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-006",
+      "description": "",
+      "implementation": "`player-input.spec.ts`: four island side approaches; visual-only transforms",
+      "evidence": "Covered: real movement and immutable logical geometry; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-007",
+      "description": "",
+      "implementation": "`weapons-projectiles.spec.ts`: front and both broadsides; rotated origins",
+      "evidence": "Covered: 1/3/3 shots and ship-relative trajectories; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-008",
+      "description": "",
+      "implementation": "`weapons-projectiles.spec.ts`, `enemies-spawning.spec.ts`, `combat-behavior.spec.ts`",
+      "evidence": "Independent repeat cooldowns; real player/enemy damage, health bars and impact/destruction feedback; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-009",
+      "description": "",
+      "implementation": "`enemies-spawning.spec.ts`: real-input seeded kill",
+      "evidence": "HUD/domain score is exactly 1 and remains 1 on later simulation steps after target removal; unit match-rules supplements exactly-once resolution; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-010",
+      "description": "",
+      "implementation": "`combat-behavior.spec.ts`: seeded pursuit/contact",
+      "evidence": "Real steering, decreasing distance, exactly configured contact damage, sprite removal, unchanged health on the next interval and no points; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-011",
+      "description": "",
+      "implementation": "`combat-behavior.spec.ts`, `enemies-spawning.spec.ts`",
+      "evidence": "Approaches into configured range, fires real enemy projectiles and reduces visible player health; can be damaged/destroyed by real fire; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-012",
+      "description": "",
+      "implementation": "`combat-behavior.spec.ts`: Options spawn cadence",
+      "evidence": "Before/after configured interval, no spawning while paused, next interval, clean seed-preserving restart; unit tests supplement safe spawning/distribution; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-013",
+      "description": "",
+      "implementation": "`match-rules.spec.ts`: timeout result persists",
+      "evidence": "Covered: real clock advancement, 60 seconds, frozen completed result; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-014",
+      "description": "",
+      "implementation": "`match-rules.spec.ts`: real enemy combat ends by player death",
+      "evidence": "Covered: genuine enemy damage, effective duration and immutable result; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-015",
+      "description": "",
+      "implementation": "`match-rules.spec.ts`, `weapons-projectiles.spec.ts`, `enemies-spawning.spec.ts`",
+      "evidence": "Covered: fresh health/score/time, entities/cooldowns/input and deterministic restart; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-016",
+      "description": "",
+      "implementation": "`simulation-lifecycle.spec.ts`, `weapons-projectiles.spec.ts`, `pause-feedback.spec.ts`",
+      "evidence": "Covered: suspended ticker/time/projectiles, explicit resume; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-017",
+      "description": "",
+      "implementation": "`simulation-lifecycle.spec.ts`, `player-input.spec.ts`, `touch-responsive.spec.ts`",
+      "evidence": "Covered: blur/hidden pause, rejected hidden resume, cleared held inputs; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-018",
+      "description": "",
+      "implementation": "`match-rules.spec.ts`, `submission-recovery.spec.ts`",
+      "evidence": "Covered: real result and full persisted record after refresh; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-019",
+      "description": "",
+      "implementation": "`submission-recovery.spec.ts`, `registration-refresh.spec.ts`",
+      "evidence": "Active/menu-abandoned/refresh-abandoned matches never create submission/result; fresh subsequent battle has full health, zero score/time; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-020",
+      "description": "",
+      "implementation": "`navigation.spec.ts`, `pixi-foundation.spec.ts`",
+      "evidence": "Covered: repeated menu/game transitions and resource cleanup; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-021",
+      "description": "",
+      "implementation": "`touch-responsive.spec.ts`, `player-input.spec.ts`",
+      "evidence": "All actions, genuine simultaneous Chromium touch, ownership/cancellation/cleanup and keyboard activation of native mobile Pause; touch-only file is selected only by mobile project; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-022",
+      "description": "",
+      "implementation": "`ranking-history.spec.ts`: Ranking server pages, states/retry/cache",
+      "evidence": "Covered: fields, configuration isolation, loading/empty/error/content and paging; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-023",
+      "description": "",
+      "implementation": "`ranking-history.spec.ts`: Match History server pages, states/retry/cache",
+      "evidence": "Covered: required fields, loading/empty/error/content and paging; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-024",
+      "description": "",
+      "implementation": "`submission-recovery.spec.ts`: completed match confirms once",
+      "evidence": "Covered: actual completion → Query/Axios/MSW → durable confirmation; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-025",
+      "description": "",
+      "implementation": "`registration-refresh.spec.ts`: real registration refreshes warmed tabs",
+      "evidence": "Both tabs loaded before gameplay; real timeout/registration; new Ranking row and newest History details show the exact completed UUID/duration; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-026",
+      "description": "",
+      "implementation": "`submission-recovery.spec.ts`: NETWORK-008/014 and independent pending battles",
+      "evidence": "Covered: genuine failed completion, reload, manual retry and independent removal; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-027",
+      "description": "",
+      "implementation": "`submission-recovery.spec.ts`: NETWORK-013",
+      "evidence": "Covered: committed server record, client pending, same-ID retry, one history/ranking record; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-028",
+      "description": "",
+      "implementation": "`ranking-history.spec.ts`: old page responses cannot replace requested page",
+      "evidence": "Covered: real MSW latency sequences and final visible current page; unit cancellation supplements; rerun in TASK-19 clean full suite",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-DETERMINISM-001",
+      "description": "",
+      "implementation": "src/game/core/random.ts; src/game/GameInstance.ts DEV seed guard; tests/e2e/helpers/game.ts; playwright.config.ts",
+      "evidence": "docs/TEST_COVERAGE.md Determinism; seeded real-input combat specs; clock/isolated contexts; production bundle seed-key absence",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-DETERMINISM-002",
+      "description": "",
+      "implementation": "src/game/core/random.ts; src/game/GameInstance.ts DEV seed guard; tests/e2e/helpers/game.ts; playwright.config.ts",
+      "evidence": "docs/TEST_COVERAGE.md Determinism; seeded real-input combat specs; clock/isolated contexts; production bundle seed-key absence",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-DETERMINISM-003",
+      "description": "",
+      "implementation": "src/game/core/random.ts; src/game/GameInstance.ts DEV seed guard; tests/e2e/helpers/game.ts; playwright.config.ts",
+      "evidence": "docs/TEST_COVERAGE.md Determinism; seeded real-input combat specs; clock/isolated contexts; production bundle seed-key absence",
+      "status": "PASS"
+    },
+    {
+      "id": "TEST-DETERMINISM-004",
+      "description": "",
+      "implementation": "src/game/core/random.ts; src/game/GameInstance.ts DEV seed guard; tests/e2e/helpers/game.ts; playwright.config.ts",
+      "evidence": "docs/TEST_COVERAGE.md Determinism; seeded real-input combat specs; clock/isolated contexts; production bundle seed-key absence",
+      "status": "PASS"
+    },
+    {
+      "id": "VISUAL-001",
+      "description": "",
+      "implementation": "tests/e2e/visual-regression.spec.ts; tests/e2e/visual-baselines/desktop-chromium; tests/e2e/visual-baselines/mobile-chromium",
+      "evidence": "six versioned PNGs; clean full suite screenshot comparisons; manually reviewed supplied art; no baseline updates",
+      "status": "PASS"
+    },
+    {
+      "id": "VISUAL-002",
+      "description": "",
+      "implementation": "tests/e2e/visual-regression.spec.ts; tests/e2e/visual-baselines/desktop-chromium; tests/e2e/visual-baselines/mobile-chromium",
+      "evidence": "six versioned PNGs; clean full suite screenshot comparisons; manually reviewed supplied art; no baseline updates",
+      "status": "PASS"
+    },
+    {
+      "id": "VISUAL-003",
+      "description": "",
+      "implementation": "tests/e2e/visual-regression.spec.ts; tests/e2e/visual-baselines/desktop-chromium; tests/e2e/visual-baselines/mobile-chromium",
+      "evidence": "six versioned PNGs; clean full suite screenshot comparisons; manually reviewed supplied art; no baseline updates",
+      "status": "PASS"
+    },
+    {
+      "id": "PERF-001",
+      "description": "",
+      "implementation": "scripts/profile-production.mjs; public/apiServiceWorker.js; docs/PERFORMANCE_ACCESSIBILITY.md",
+      "evidence": "corresponding PERF row; docs/evidence/task-17-production.json; docs/evidence/task-17-heap-delta.json; 180 s/10800 frames/15 cycles; reused measured evidence",
+      "status": "PASS"
+    },
+    {
+      "id": "PERF-002",
+      "description": "",
+      "implementation": "scripts/profile-production.mjs; public/apiServiceWorker.js; docs/PERFORMANCE_ACCESSIBILITY.md",
+      "evidence": "corresponding PERF row; docs/evidence/task-17-production.json; docs/evidence/task-17-heap-delta.json; 180 s/10800 frames/15 cycles; reused measured evidence",
+      "status": "PASS"
+    },
+    {
+      "id": "PERF-003",
+      "description": "",
+      "implementation": "scripts/profile-production.mjs; public/apiServiceWorker.js; docs/PERFORMANCE_ACCESSIBILITY.md",
+      "evidence": "corresponding PERF row; docs/evidence/task-17-production.json; docs/evidence/task-17-heap-delta.json; 180 s/10800 frames/15 cycles; reused measured evidence",
+      "status": "PASS"
+    },
+    {
+      "id": "PERF-004",
+      "description": "",
+      "implementation": "scripts/profile-production.mjs; public/apiServiceWorker.js; docs/PERFORMANCE_ACCESSIBILITY.md",
+      "evidence": "corresponding PERF row; docs/evidence/task-17-production.json; docs/evidence/task-17-heap-delta.json; 180 s/10800 frames/15 cycles; reused measured evidence",
+      "status": "PASS"
+    },
+    {
+      "id": "PERF-005",
+      "description": "",
+      "implementation": "scripts/profile-production.mjs; public/apiServiceWorker.js; docs/PERFORMANCE_ACCESSIBILITY.md",
+      "evidence": "corresponding PERF row; docs/evidence/task-17-production.json; docs/evidence/task-17-heap-delta.json; 180 s/10800 frames/15 cycles; reused measured evidence",
+      "status": "PASS"
+    },
+    {
+      "id": "PERF-006",
+      "description": "",
+      "implementation": "scripts/profile-production.mjs; public/apiServiceWorker.js; docs/PERFORMANCE_ACCESSIBILITY.md",
+      "evidence": "corresponding PERF row; docs/evidence/task-17-production.json; docs/evidence/task-17-heap-delta.json; 180 s/10800 frames/15 cycles; reused measured evidence",
+      "status": "PASS"
+    },
+    {
+      "id": "LIFECYCLE-001",
+      "description": "",
+      "implementation": "src/game/GameInstance.ts destroy; src/game/rendering/ArenaRenderer.ts releaseResources; src/game/input; src/game/feedback",
+      "evidence": "tests/e2e/pixi-foundation.spec.ts; tests/e2e/simulation-lifecycle.spec.ts; tests/e2e/pause-feedback.spec.ts; TASK-17 ownership/heap evidence",
+      "status": "PASS"
+    },
+    {
+      "id": "LIFECYCLE-002",
+      "description": "",
+      "implementation": "src/game/GameInstance.ts destroy; src/game/rendering/ArenaRenderer.ts releaseResources; src/game/input; src/game/feedback",
+      "evidence": "tests/e2e/pixi-foundation.spec.ts; tests/e2e/simulation-lifecycle.spec.ts; tests/e2e/pause-feedback.spec.ts; TASK-17 ownership/heap evidence",
+      "status": "PASS"
+    },
+    {
+      "id": "LIFECYCLE-003",
+      "description": "",
+      "implementation": "src/game/GameInstance.ts destroy; src/game/rendering/ArenaRenderer.ts releaseResources; src/game/input; src/game/feedback",
+      "evidence": "tests/e2e/pixi-foundation.spec.ts; tests/e2e/simulation-lifecycle.spec.ts; tests/e2e/pause-feedback.spec.ts; TASK-17 ownership/heap evidence",
+      "status": "PASS"
+    },
+    {
+      "id": "ERROR-001",
+      "description": "",
+      "implementation": "src/screens/CaptainsLog.tsx; src/screens/GameScreen.tsx; src/screens/PendingSubmissions.tsx; src/api/SubmissionRecovery.ts; src/api/matches.ts parsePage",
+      "evidence": "API/asset retry tests; submission-recovery tests; public production-flow.spec.ts; no unexpected runtime errors in required passing suites",
+      "status": "PASS"
+    },
+    {
+      "id": "ERROR-002",
+      "description": "",
+      "implementation": "src/screens/CaptainsLog.tsx; src/screens/GameScreen.tsx; src/screens/PendingSubmissions.tsx; src/api/SubmissionRecovery.ts; src/api/matches.ts parsePage",
+      "evidence": "API/asset retry tests; submission-recovery tests; public production-flow.spec.ts; no unexpected runtime errors in required passing suites",
+      "status": "PASS"
+    },
+    {
+      "id": "ERROR-003",
+      "description": "",
+      "implementation": "src/screens/CaptainsLog.tsx; src/screens/GameScreen.tsx; src/screens/PendingSubmissions.tsx; src/api/SubmissionRecovery.ts; src/api/matches.ts parsePage",
+      "evidence": "API/asset retry tests; submission-recovery tests; public production-flow.spec.ts; no unexpected runtime errors in required passing suites",
+      "status": "PASS"
+    },
+    {
+      "id": "ERROR-004",
+      "description": "",
+      "implementation": "src/screens/CaptainsLog.tsx; src/screens/GameScreen.tsx; src/screens/PendingSubmissions.tsx; src/api/SubmissionRecovery.ts; src/api/matches.ts parsePage",
+      "evidence": "API/asset retry tests; submission-recovery tests; public production-flow.spec.ts; no unexpected runtime errors in required passing suites",
+      "status": "PASS"
+    },
+    {
+      "id": "ERROR-005",
+      "description": "",
+      "implementation": "src/screens/CaptainsLog.tsx; src/screens/GameScreen.tsx; src/screens/PendingSubmissions.tsx; src/api/SubmissionRecovery.ts; src/api/matches.ts parsePage",
+      "evidence": "API/asset retry tests; submission-recovery tests; public production-flow.spec.ts; no unexpected runtime errors in required passing suites",
+      "status": "PASS"
+    },
+    {
+      "id": "QUALITY-001",
+      "description": "",
+      "implementation": "src/game/core; src/game/systems; src/game/config; src/game/rendering; src/game/input; src/api; src/screens; README.md; ARCHITECTURE.md",
+      "evidence": "source responsibility/balance review; strict typecheck/lint; no optional abstractions/dependencies introduced; original challenge text language retained",
+      "status": "PASS"
+    },
+    {
+      "id": "QUALITY-002",
+      "description": "",
+      "implementation": "src/game/core; src/game/systems; src/game/config; src/game/rendering; src/game/input; src/api; src/screens; README.md; ARCHITECTURE.md",
+      "evidence": "source responsibility/balance review; strict typecheck/lint; no optional abstractions/dependencies introduced; original challenge text language retained",
+      "status": "PASS"
+    },
+    {
+      "id": "QUALITY-003",
+      "description": "",
+      "implementation": "src/game/core; src/game/systems; src/game/config; src/game/rendering; src/game/input; src/api; src/screens; README.md; ARCHITECTURE.md",
+      "evidence": "source responsibility/balance review; strict typecheck/lint; no optional abstractions/dependencies introduced; original challenge text language retained",
+      "status": "PASS"
+    },
+    {
+      "id": "QUALITY-004",
+      "description": "",
+      "implementation": "src/game/core; src/game/systems; src/game/config; src/game/rendering; src/game/input; src/api; src/screens; README.md; ARCHITECTURE.md",
+      "evidence": "source responsibility/balance review; strict typecheck/lint; no optional abstractions/dependencies introduced; original challenge text language retained",
+      "status": "PASS"
+    },
+    {
+      "id": "QUALITY-005",
+      "description": "",
+      "implementation": "src/game/core; src/game/systems; src/game/config; src/game/rendering; src/game/input; src/api; src/screens; README.md; ARCHITECTURE.md",
+      "evidence": "source responsibility/balance review; strict typecheck/lint; no optional abstractions/dependencies introduced; original challenge text language retained",
+      "status": "PASS"
+    },
+    {
+      "id": "QUALITY-006",
+      "description": "",
+      "implementation": "src/game/core; src/game/systems; src/game/config; src/game/rendering; src/game/input; src/api; src/screens; README.md; ARCHITECTURE.md",
+      "evidence": "source responsibility/balance review; strict typecheck/lint; no optional abstractions/dependencies introduced; original challenge text language retained",
+      "status": "PASS"
+    },
+    {
+      "id": "DOC-001",
+      "description": "",
+      "implementation": "README.md; ARCHITECTURE.md",
+      "evidence": "source cross-check and clean documented commands; actual production flow; honest origin-local data/fixed-step/physical-device limits",
+      "status": "PASS"
+    },
+    {
+      "id": "DOC-002",
+      "description": "",
+      "implementation": "README.md; ARCHITECTURE.md",
+      "evidence": "source cross-check and clean documented commands; actual production flow; honest origin-local data/fixed-step/physical-device limits",
+      "status": "PASS"
+    },
+    {
+      "id": "DEPLOY-001",
+      "description": "",
+      "implementation": "vercel.json; package.json; public/apiServiceWorker.js; public/mockServiceWorker.js; docs/DEPLOYMENT.md",
+      "evidence": "TASK-19 590 production-input hashes and 26 public-build comparisons; public desktop/mobile smoke; clean archive/install/checks/build",
+      "status": "PASS"
+    },
+    {
+      "id": "DEPLOY-002",
+      "description": "",
+      "implementation": "vercel.json; package.json; public/apiServiceWorker.js; public/mockServiceWorker.js; docs/DEPLOYMENT.md",
+      "evidence": "TASK-19 590 production-input hashes and 26 public-build comparisons; public desktop/mobile smoke; clean archive/install/checks/build",
+      "status": "PASS"
+    },
+    {
+      "id": "DEPLOY-003",
+      "description": "",
+      "implementation": "vercel.json; package.json; public/apiServiceWorker.js; public/mockServiceWorker.js; docs/DEPLOYMENT.md",
+      "evidence": "TASK-19 590 production-input hashes and 26 public-build comparisons; public desktop/mobile smoke; clean archive/install/checks/build",
+      "status": "PASS"
+    },
+    {
+      "id": "DEPLOY-004",
+      "description": "",
+      "implementation": "vercel.json; package.json; public/apiServiceWorker.js; public/mockServiceWorker.js; docs/DEPLOYMENT.md",
+      "evidence": "TASK-19 590 production-input hashes and 26 public-build comparisons; public desktop/mobile smoke; clean archive/install/checks/build",
+      "status": "PASS"
+    },
+    {
+      "id": "DEPLOY-005",
+      "description": "",
+      "implementation": "vercel.json; package.json; public/apiServiceWorker.js; public/mockServiceWorker.js; docs/DEPLOYMENT.md",
+      "evidence": "TASK-19 590 production-input hashes and 26 public-build comparisons; public desktop/mobile smoke; clean archive/install/checks/build",
+      "status": "PASS"
+    }
+  ],
+  "challenge": [
+    {
+      "id": "CH-001",
+      "source": "docs/CHALLENGE.md Introduction",
+      "description": "Pre-implementation delivery estimate",
+      "mapped": "docs/ARCHITECTURE.md:352",
+      "evidence": "TASK-00 historical log; 80–120 focused hours",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-002",
+      "source": "docs/CHALLENGE.md §1",
+      "description": "Required stack actively used; strict TypeScript; browser-only single player",
+      "mapped": "TECH-001–007; PRODUCT-001–005",
+      "evidence": "package.json, tsconfig.json; local and public suites",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-003",
+      "source": "docs/CHALLENGE.md §2 Player",
+      "description": "Forward movement and rotation left/right",
+      "mapped": "GAME-PLAYER-001–003",
+      "evidence": "player-input.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-004",
+      "source": "docs/CHALLENGE.md §2 Player",
+      "description": "One front projectile and three parallel shots per left/right broadside",
+      "mapped": "GAME-WEAPON-001–003",
+      "evidence": "weapons-projectiles.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-005",
+      "source": "docs/CHALLENGE.md §2 Player",
+      "description": "Limited health; enemy projectile and Chaser impact damage",
+      "mapped": "GAME-PLAYER-006–008",
+      "evidence": "combat-behavior.spec.ts; match-rules.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-006",
+      "source": "docs/CHALLENGE.md §2 Player",
+      "description": "Arena bounds and island collision",
+      "mapped": "GAME-PLAYER-004–005",
+      "evidence": "player-input.spec.ts; arena-collision.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-007",
+      "source": "docs/CHALLENGE.md §2 Player",
+      "description": "Keyboard/touch controls; simultaneous move/fire; instructions",
+      "mapped": "INPUT-001–005; SCREEN-001/003",
+      "evidence": "touch-responsive.spec.ts; player-input.spec.ts; MainMenuScreen.tsx",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-008",
+      "source": "docs/CHALLENGE.md §2 Enemies",
+      "description": "Chaser pursuit, collision damage and explosion on impact",
+      "mapped": "GAME-ENEMY-001–004; FEEDBACK-003",
+      "evidence": "combat-behavior.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-009",
+      "source": "docs/CHALLENGE.md §2 Enemies",
+      "description": "Shooter approaches and attacks in range",
+      "mapped": "GAME-ENEMY-005–007",
+      "evidence": "combat-behavior.spec.ts; enemies-spawning.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-010",
+      "source": "docs/CHALLENGE.md §2 Enemies",
+      "description": "Both kinds move, rotate, take damage, respect islands and appear in standard matches",
+      "mapped": "GAME-ENEMY-001–008; GAME-ARENA-003",
+      "evidence": "updateEnemies.ts; enemies-spawning unit/browser tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-011",
+      "source": "docs/CHALLENGE.md §2 Enemies",
+      "description": "Periodic configurable spawn until end; clear points sufficiently far from player",
+      "mapped": "GAME-SPAWN-001–005",
+      "evidence": "spawnEnemies.ts; enemies-spawning.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-012",
+      "source": "docs/CHALLENGE.md §2 Arena",
+      "description": "Water and at least one island blocks ships/projectiles",
+      "mapped": "GAME-ARENA-001–004",
+      "evidence": "arena.ts; ArenaRenderer.ts; collision tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-013",
+      "source": "docs/CHALLENGE.md §2 Arena",
+      "description": "Projectile direction/speed/damage/lifetime; correct target team",
+      "mapped": "GAME-PROJECTILE-001–003",
+      "evidence": "updateProjectiles.ts; weapons-projectiles unit/browser tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-014",
+      "source": "docs/CHALLENGE.md §2 Arena",
+      "description": "One damage per projectile; remove on hit/obstacle/expiry/exit",
+      "mapped": "GAME-PROJECTILE-004–005; GAME-COLLISION-001",
+      "evidence": "resolveProjectile; projectile unit/browser tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-015",
+      "source": "docs/CHALLENGE.md §2 Arena",
+      "description": "Independent weapon cooldowns",
+      "mapped": "GAME-WEAPON-004–005",
+      "evidence": "fireWeapons.ts; weapons-projectiles.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-016",
+      "source": "docs/CHALLENGE.md §2 Arena",
+      "description": "Destroyed enemies cease damage/fire/collision",
+      "mapped": "GAME-COLLISION-002",
+      "evidence": "updateEnemies.ts; updateProjectiles.ts; enemies-spawning unit tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-017",
+      "source": "docs/CHALLENGE.md §2 Match",
+      "description": "60–180 active seconds; one point per player kill; no Chaser contact score",
+      "mapped": "CONFIG-002; GAME-SCORE-001–004",
+      "evidence": "match-rules unit/browser tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-018",
+      "source": "docs/CHALLENGE.md §2 Match",
+      "description": "Death/timeout ends all movement/attacks/damage/spawns/scoring; restart restores state",
+      "mapped": "MATCH-001–005",
+      "evidence": "GameController.ts; match-rules.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-019",
+      "source": "docs/CHALLENGE.md §2 Match",
+      "description": "Player/enemy health above ships; HUD score/time",
+      "mapped": "HUD-001–003",
+      "evidence": "HealthIndicator.ts; MatchHud.tsx; enemies-spawning.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-020",
+      "source": "docs/CHALLENGE.md §2 Pause",
+      "description": "Manual and focus/hidden pause; timers/cooldowns/simulation suspended",
+      "mapped": "PAUSE-001–003",
+      "evidence": "simulation-lifecycle.spec.ts; weapons-projectiles.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-021",
+      "source": "docs/CHALLENGE.md §2 Pause",
+      "description": "Explicit resume; no accumulated paused inputs",
+      "mapped": "PAUSE-004–005; INPUT-005",
+      "evidence": "player-input.spec.ts; touch-responsive.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-022",
+      "source": "docs/CHALLENGE.md §2 Feedback",
+      "description": "Firing, destruction explosion, deterioration, readable attack/impact/damage",
+      "mapped": "FEEDBACK-001–004",
+      "evidence": "VisualFeedback.ts; pause-feedback/combat tests; visual review",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-023",
+      "source": "docs/CHALLENGE.md §3 Screens",
+      "description": "Main Menu: Play/Options/instructions/Ranking/History",
+      "mapped": "SCREEN-001",
+      "evidence": "MainMenuScreen.tsx; navigation.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-024",
+      "source": "docs/CHALLENGE.md §3 Screens",
+      "description": "Options: required fields, validation, saving and refresh persistence",
+      "mapped": "SCREEN-002; PERSIST-001",
+      "evidence": "OptionsScreen.tsx; options.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-025",
+      "source": "docs/CHALLENGE.md §3 Screens",
+      "description": "Game: Pixi arena, HUD, controls and pause",
+      "mapped": "SCREEN-003",
+      "evidence": "GameScreen.tsx; lifecycle/touch tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-026",
+      "source": "docs/CHALLENGE.md §3 Screens",
+      "description": "Result: score/effective duration/reason/registration/Play Again/Main Menu",
+      "mapped": "SCREEN-004",
+      "evidence": "ResultScreen.tsx; production-flow.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-027",
+      "source": "docs/CHALLENGE.md §3 Screens",
+      "description": "Ranking: rank/player/score/pagination",
+      "mapped": "SCREEN-005; RANKING-001–006",
+      "evidence": "CaptainsLog.tsx; ranking-history.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-028",
+      "source": "docs/CHALLENGE.md §3 Screens",
+      "description": "History: player/date/score/duration/reason/pagination",
+      "mapped": "SCREEN-006; HISTORY-001–003",
+      "evidence": "CaptainsLog.tsx; ranking-history.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-029",
+      "source": "docs/CHALLENGE.md §3 Config",
+      "description": "All balance parameters centralized and typed; no algorithm edits for balance",
+      "mapped": "ARCH-005; CONFIG-001",
+      "evidence": "GameConfig.ts; focused geometry/weapon config",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-030",
+      "source": "docs/CHALLENGE.md §3 Config",
+      "description": "Expose duration/spawn; positive documented spawn limits; frozen per-match snapshot",
+      "mapped": "CONFIG-002–005",
+      "evidence": "OptionsScreen.tsx; GameConfig.ts; simulation.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-031",
+      "source": "docs/CHALLENGE.md §3 Persistence",
+      "description": "Refresh/leave abandons active match without registration; options and last result saved",
+      "mapped": "MATCH-006–008; PERSIST-001–002",
+      "evidence": "submission-recovery/registration-refresh/match-rules specs",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-032",
+      "source": "docs/CHALLENGE.md §3 Language",
+      "description": "English UI/code/documentation; art-coherent menus",
+      "mapped": "QUALITY-001; ASSET-001",
+      "evidence": "src and solution documents; original Portuguese challenge retained unchanged",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-033",
+      "source": "docs/CHALLENGE.md §4 Pixi",
+      "description": "Pixi arena/ships/projectiles/effects/health; React UI/dialogs",
+      "mapped": "TECH-002–003",
+      "evidence": "ArenaRenderer.ts; screens; visual/lifecycle tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-034",
+      "source": "docs/CHALLENGE.md §4 Architecture",
+      "description": "Separate simulation/render/input/UI; continuous truth outside React",
+      "mapped": "ARCH-001–004",
+      "evidence": "GameController.ts; GameInstance.ts; simulation-lifecycle.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-035",
+      "source": "docs/CHALLENGE.md §4 Time",
+      "description": "Frame-independent movement/damage/spawns; UI not every frame",
+      "mapped": "SIM-001–005; ARCH-003",
+      "evidence": "FixedStepClock.ts; simulation.spec.ts; React commit assertions",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-036",
+      "source": "docs/CHALLENGE.md §4 Assets",
+      "description": "Load/reuse textures; failure handled before combat",
+      "mapped": "ASSET-002–006",
+      "evidence": "foundationAssets.ts; pixi-foundation.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-037",
+      "source": "docs/CHALLENGE.md §4 Resize",
+      "description": "Canvas screen/DPR fit preserves proportions/input/bounds",
+      "mapped": "RESPONSIVE-005–008",
+      "evidence": "ArenaRenderer.ts; pixi-foundation/touch-responsive specs",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-038",
+      "source": "docs/CHALLENGE.md §4 Cleanup",
+      "description": "Release listeners/ticker/timers/entities/resources; StrictMode safe",
+      "mapped": "LIFECYCLE-001–003",
+      "evidence": "GameInstance/ArenaRenderer cleanup; lifecycle tests; TASK-17 evidence",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-039",
+      "source": "docs/CHALLENGE.md §4 Ownership",
+      "description": "Candidate implements movement/combat/collision/AI; decisions documented",
+      "mapped": "QUALITY-002–006; DOC-002",
+      "evidence": "src/game/systems; ARCHITECTURE.md; no physics engine",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-040",
+      "source": "docs/CHALLENGE.md §5 API",
+      "description": "Typed paginated ranking query and completed match registration/player history",
+      "mapped": "RANKING/HISTORY; DATA-001",
+      "evidence": "contracts.ts; matches.ts; handlers.ts; api-msw tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-041",
+      "source": "docs/CHALLENGE.md §5 Records",
+      "description": "Match/player/date/score/effective duration/reason/full configuration",
+      "mapped": "HISTORY-003",
+      "evidence": "contracts.ts; RecordDetails; record validation tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-042",
+      "source": "docs/CHALLENGE.md §5 Ranking",
+      "description": "Same full configuration, deterministic tie break, other-player fixtures",
+      "mapped": "RANKING-003–006",
+      "evidence": "database.ts; fixtures.ts; api-msw unit tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-043",
+      "source": "docs/CHALLENGE.md §5 Remote state",
+      "description": "Axios requests and Query queries/mutations/loading/empty/error/background/cache/retry/invalidation",
+      "mapped": "DATA-001–002; TECH-004–005",
+      "evidence": "queryClient.ts; SubmissionRecovery.ts; ranking-history tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-044",
+      "source": "docs/CHALLENGE.md §5 Freshness",
+      "description": "Refresh both lists on registration/return; delayed responses safe",
+      "mapped": "DATA-003–005",
+      "evidence": "registration-refresh.spec.ts; ranking-history out-of-order tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-045",
+      "source": "docs/CHALLENGE.md §5 Idempotency",
+      "description": "Exactly one History/Ranking record; repeat requests/clicks recover existing record",
+      "mapped": "SUBMIT-001–006",
+      "evidence": "database.register; submission-recovery unit/browser tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-046",
+      "source": "docs/CHALLENGE.md §5 Recovery",
+      "description": "Pending survives errors/refresh; manual retry; new matches available",
+      "mapped": "RECOVERY-001–005",
+      "evidence": "pendingSubmissions.ts; SubmissionRecovery.ts; recovery tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-047",
+      "source": "docs/CHALLENGE.md §5 Isolation",
+      "description": "API errors never block game/options/combat; integrations limited to ranking/history",
+      "mapped": "ERROR-001–004",
+      "evidence": "ranking-history.spec.ts; submission-recovery.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-048",
+      "source": "docs/CHALLENGE.md §6 MSW",
+      "description": "Network mocks share contracts/fixtures/handlers across dev/tests/demo; confirmed records consistent",
+      "mapped": "TECH-006; PERSIST-003",
+      "evidence": "browser.ts; handlers.ts; MockDatabase; browser/unit tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-049",
+      "source": "docs/CHALLENGE.md §6 Scenarios",
+      "description": "Success/empty/pages/slow/variable/out-of-order",
+      "mapped": "NETWORK-001–006",
+      "evidence": "individual scenarios unit tests and browser pagination/cancellation",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-050",
+      "source": "docs/CHALLENGE.md §6 Scenarios",
+      "description": "Timeout/connection/4xx/5xx/ranking-only/history-only",
+      "mapped": "NETWORK-007–012",
+      "evidence": "individual scenarios unit tests; API browser failure states",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-051",
+      "source": "docs/CHALLENGE.md §6 Scenarios",
+      "description": "Post-commit timeout idempotent recovery; unavailable completion then recovery",
+      "mapped": "NETWORK-013–014",
+      "evidence": "submission-recovery.spec.ts; production-flow.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-052",
+      "source": "docs/CHALLENGE.md §6 Controls",
+      "description": "Select/reset scenarios; deterministic latency/randomness; production mocks; persist confirmed/pending",
+      "mapped": "NETWORK-001–014; PERSIST-003–004",
+      "evidence": "NetworkScenarios; console facade; API/public suites",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-053",
+      "source": "docs/CHALLENGE.md §7 Art",
+      "description": "Use supplied assets; retain sources/licenses for derived/complementary resources",
+      "mapped": "ASSET-001",
+      "evidence": "assets retained; imports refer to supplied files; no added raster/icon dependency",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-054",
+      "source": "docs/CHALLENGE.md §7 Mobile",
+      "description": "Desktop/mobile usable touch; define orientation; no clipping; resize without rule changes",
+      "mapped": "RESPONSIVE-001–008",
+      "evidence": "README landscape; touch-responsive tests; TASK-17 audit",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-055",
+      "source": "docs/CHALLENGE.md §7 Loading",
+      "description": "Visible progress/loading status",
+      "mapped": "ASSET-003",
+      "evidence": "GameScreen.tsx; pixi-foundation.spec.ts",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-056",
+      "source": "docs/CHALLENGE.md §7 A11y",
+      "description": "Keyboard/focus/dialog/labels/contrast/accessible errors",
+      "mapped": "A11Y-001–006",
+      "evidence": "TASK-17 accessibility captures; navigation/options/pause tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-057",
+      "source": "docs/CHALLENGE.md §7 Semantic",
+      "description": "Semantic score/time/state; no every-frame announcements; capture keys only active context",
+      "mapped": "A11Y-007–008; INPUT-004",
+      "evidence": "MatchHud.tsx; KeyboardInput.ts; React commit/context tests",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-058",
+      "source": "docs/CHALLENGE.md §8 Tests 1–4",
+      "description": "Options/assets/start/movement/rotation/bounds/islands/weapons/damage/cooldown/score",
+      "mapped": "TEST-001–009",
+      "evidence": "individual TEST matrix below; complete required suite",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-059",
+      "source": "docs/CHALLENGE.md §8 Tests 5–9",
+      "description": "Enemy/spawn/end/restart/pause/focus/result/abandon/navigation/touch",
+      "mapped": "TEST-010–021",
+      "evidence": "individual TEST matrix below; complete required suite",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-060",
+      "source": "docs/CHALLENGE.md §8 Tests 10–12",
+      "description": "Lists/states/pages/registration/refresh/pending/ambiguous timeout/out-of-order",
+      "mapped": "TEST-022–028",
+      "evidence": "individual TEST matrix below; complete required suite",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-061",
+      "source": "docs/CHALLENGE.md §8 Browser",
+      "description": "Chromium desktop/mobile main flows; menu/game/result versioned visual baselines",
+      "mapped": "VISUAL-001–003; PRODUCT-005",
+      "evidence": "playwright.config.ts; six PNG baselines; complete suite",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-062",
+      "source": "docs/CHALLENGE.md §8 Determinism",
+      "description": "Seed/time control; real rules/inputs/collisions/rendering; isolated tests",
+      "mapped": "TEST-DETERMINISM-001–004",
+      "evidence": "helpers/game.ts; tests observed owners without combat state mutation",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-063",
+      "source": "docs/CHALLENGE.md §8 Reports",
+      "description": "HTML report and retained failure traces",
+      "mapped": "TECH-007; TEST requirements",
+      "evidence": "playwright.config.ts; generated TASK-19 HTML reports",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-064",
+      "source": "docs/CHALLENGE.md §9 Profile",
+      "description": "Optimized 60 FPS target; FPS/p95/entity count in 3-minute match",
+      "mapped": "PERF-001–003",
+      "evidence": "task-17-production.json; PERFORMANCE_ACCESSIBILITY.md",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-065",
+      "source": "docs/CHALLENGE.md §9 Lifecycle",
+      "description": "Memory after 5 cycles; investigate growth; hardware/browser/resolution/config/limits",
+      "mapped": "PERF-004–006",
+      "evidence": "task-17 heap delta/production JSON; documented 15-cycle investigation",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-066",
+      "source": "docs/CHALLENGE.md §10 Evaluation",
+      "description": "Complete reproducible behavior, clear responsibilities, no unhandled console errors",
+      "mapped": "QUALITY-002–006; ERROR-005",
+      "evidence": "source inspection; clean/public suites; TASK-17 evidence",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-067",
+      "source": "docs/CHALLENGE.md §11 Source",
+      "description": "Deliver source/lockfile/assets/mocks/fixtures/tests",
+      "mapped": "DEPLOY-005",
+      "evidence": "tracked tree; isolated git archive HEAD; npm ci",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-068",
+      "source": "docs/CHALLENGE.md §11 Deploy",
+      "description": "Public functional URL; published source matches; accessible root/refresh; production mocks",
+      "mapped": "DEPLOY-001–004",
+      "evidence": "590 source inputs/26 public build hashes; public desktop/mobile smoke",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-069",
+      "source": "docs/CHALLENGE.md §11 README",
+      "description": "Setup/env/controls/config/scenarios/reset/commands/failure reproduction",
+      "mapped": "DOC-001",
+      "evidence": "README.md followed for clean validation/public smoke",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-070",
+      "source": "docs/CHALLENGE.md §11 Architecture",
+      "description": "Integration/simulation/collision/resources/persistence/contracts/cache/recovery/balance/limits",
+      "mapped": "DOC-002",
+      "evidence": "ARCHITECTURE.md checked against implementation",
+      "status": "PASS"
+    },
+    {
+      "id": "CH-071",
+      "source": "docs/CHALLENGE.md §11 Evidence",
+      "description": "Test/profiling reports; clean checkout without private services",
+      "mapped": "PERF-001–006; DEPLOY-005",
+      "evidence": "versioned TASK-17 evidence; TASK-19 command logs/HTML reports",
+      "status": "PASS"
+    }
+  ],
+  "dod": [
+    {
+      "id": "DOD-001",
+      "description": "all mandatory gameplay mechanics work",
+      "status": "PASS",
+      "evidence": "GAME-PLAYER/GAME-WEAPON/GAME-ARENA"
+    },
+    {
+      "id": "DOD-002",
+      "description": "both enemy types operate correctly",
+      "status": "PASS",
+      "evidence": "GAME-ENEMY"
+    },
+    {
+      "id": "DOD-003",
+      "description": "player attacks and collisions behave correctly",
+      "status": "PASS",
+      "evidence": "GAME-WEAPON/GAME-COLLISION"
+    },
+    {
+      "id": "DOD-004",
+      "description": "pause and resume work correctly",
+      "status": "PASS",
+      "evidence": "PAUSE"
+    },
+    {
+      "id": "DOD-005",
+      "description": "gameplay configuration is centralized",
+      "status": "PASS",
+      "evidence": "CONFIG"
+    },
+    {
+      "id": "DOD-006",
+      "description": "desktop controls work",
+      "status": "PASS",
+      "evidence": "INPUT-001"
+    },
+    {
+      "id": "DOD-007",
+      "description": "touch controls work",
+      "status": "PASS",
+      "evidence": "INPUT-002/RESPONSIVE-003"
+    },
+    {
+      "id": "DOD-008",
+      "description": "required screens exist",
+      "status": "PASS",
+      "evidence": "SCREEN"
+    },
+    {
+      "id": "DOD-009",
+      "description": "Ranking works",
+      "status": "PASS",
+      "evidence": "RANKING"
+    },
+    {
+      "id": "DOD-010",
+      "description": "Match History works",
+      "status": "PASS",
+      "evidence": "HISTORY"
+    },
+    {
+      "id": "DOD-011",
+      "description": "match submission is idempotent",
+      "status": "PASS",
+      "evidence": "SUBMIT"
+    },
+    {
+      "id": "DOD-012",
+      "description": "failed submissions can recover",
+      "status": "PASS",
+      "evidence": "RECOVERY"
+    },
+    {
+      "id": "DOD-013",
+      "description": "MSW scenarios work",
+      "status": "PASS",
+      "evidence": "NETWORK"
+    },
+    {
+      "id": "DOD-014",
+      "description": "required Playwright tests pass",
+      "status": "PASS",
+      "evidence": "TEST-001–028"
+    },
+    {
+      "id": "DOD-015",
+      "description": "visual regression baselines exist",
+      "status": "PASS",
+      "evidence": "VISUAL"
+    },
+    {
+      "id": "DOD-016",
+      "description": "resource cleanup has been verified",
+      "status": "PASS",
+      "evidence": "LIFECYCLE"
+    },
+    {
+      "id": "DOD-017",
+      "description": "performance has been measured",
+      "status": "PASS",
+      "evidence": "PERF"
+    },
+    {
+      "id": "DOD-018",
+      "description": "accessibility requirements have been reviewed",
+      "status": "PASS",
+      "evidence": "A11Y"
+    },
+    {
+      "id": "DOD-019",
+      "description": "documentation is complete",
+      "status": "PASS",
+      "evidence": "DOC"
+    },
+    {
+      "id": "DOD-020",
+      "description": "production build succeeds",
+      "status": "PASS",
+      "evidence": "TECH/clean build"
+    },
+    {
+      "id": "DOD-021",
+      "description": "public deployment works",
+      "status": "PASS",
+      "evidence": "DEPLOY"
+    },
+    {
+      "id": "DOD-022",
+      "description": "expected application flows contain no unhandled console errors",
+      "status": "PASS",
+      "evidence": "ERROR-005"
+    }
+  ],
+  "counts": {
+    "master": 229,
+    "challenge": 71,
+    "dod": 22,
+    "PASS": 322,
+    "BLOCKER": 0,
+    "N/A": 0
+  }
+}

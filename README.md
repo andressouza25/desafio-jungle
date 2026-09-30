@@ -150,6 +150,8 @@ Five lifecycle cycles plus ten investigation cycles checked heap/resource owners
 
 ## Deployment
 
+The [TASK-19 final release audit](./docs/FINAL_AUDIT.md) is **READY**: all 229 MASTER_SPEC IDs, 71 original-challenge clauses and 22 Definition of Done checks pass. See the [requirement matrix](./docs/REQUIREMENT_TRACEABILITY.md) for implementation and evidence per requirement, clean-source/public validation results and documented execution limitations.
+
 Hosting platform: **Vercel**, selected for TASK-18. Configuration builds with npm ci / npm run build and serves dist. All screens use the root URL, so no screen-route rewrite is required. HTTPS is required for the production worker. No private backend or application secrets are needed.
 
 **Public URL: https://desafio-jungle.vercel.app**. Deployment `dpl_3ZKPAuHpeRoY2J4Ww6vvyskV5ihF` uses base commit `ac42d0149ca71d389297ed42b63c8b246240cc65` plus the TASK-18 API validation/runtime/hosting changes. No deployment commit was created. [Deployment evidence](./docs/DEPLOYMENT.md) records the exact source hash manifest and public build comparisons. Later README/evidence changes do not affect the deployed bundle.

@@ -1,0 +1,372 @@
+{
+  "auditDate": "2026-09-30",
+  "timezone": "America/Sao_Paulo",
+  "releaseStatus": "READY",
+  "sourceRevision": "2a88d0b603f6b5497a6d0c92e4fda2f17196d6db",
+  "task19Changes": "documentation/evidence only",
+  "counts": {
+    "master": 229,
+    "originalChallenge": 71,
+    "definitionOfDone": 22,
+    "PASS": 322,
+    "BLOCKER": 0,
+    "NA": 0
+  },
+  "environment": {
+    "node": "v22.22.0",
+    "npm": "10.9.4",
+    "platform": "win32",
+    "cleanSource": "git archive HEAD extracted to new temporary directory; no node_modules/dist/env/browser storage copied; same host npm/browser cache reused"
+  },
+  "commands": [
+    {
+      "command": "npm ci",
+      "result": "PASS",
+      "packages": 204
+    },
+    {
+      "command": "npx playwright install chromium",
+      "result": "PASS",
+      "exitCode": 0,
+      "output": "Tool returned no console output; no output file was created by Tee-Object",
+      "note": "Initial restricted attempt stalled and was interrupted; permitted network invocation succeeded with cached browser binaries"
+    },
+    {
+      "command": "npm run typecheck",
+      "result": "PASS; no diagnostics"
+    },
+    {
+      "command": "npm run lint",
+      "result": "PASS; no diagnostics"
+    },
+    {
+      "command": "npm run test:unit",
+      "result": "PASS",
+      "passed": 94
+    },
+    {
+      "command": "npm test -- --workers=2",
+      "result": "PASS",
+      "passed": 123,
+      "failed": 0,
+      "skipped": 0,
+      "retries": 0,
+      "exitCode": 0,
+      "duration": "11.1m",
+      "teardown": "All assertions completed; restricted Vite server teardown remained active. Verified audit-owned server stopped with permitted process access; HTML generated and runner exited 0."
+    },
+    {
+      "command": "npm run build",
+      "result": "PASS",
+      "advisory": "Existing >500kB chunk advisory"
+    },
+    {
+      "command": "npm run preview -- --host 127.0.0.1 --port 4173 --strictPort",
+      "result": "PASS; served clean build, stopped after checks"
+    },
+    {
+      "command": "E2E_BASE_URL=http://127.0.0.1:4173 npm test -- tests/e2e/api-msw.spec.ts tests/e2e/media-api-routing.spec.ts --workers=2 --output=preview-results",
+      "result": "PASS",
+      "passed": 4,
+      "exitCode": 0,
+      "duration": "5.7s"
+    },
+    {
+      "command": "E2E_BASE_URL=https://desafio-jungle.vercel.app npm test -- tests/e2e/production-flow.spec.ts tests/e2e/api-msw.spec.ts tests/e2e/media-api-routing.spec.ts tests/e2e/ranking-history.spec.ts --workers=2 --output=public-results",
+      "result": "PASS",
+      "passed": 20,
+      "exitCode": 0,
+      "duration": "1.3m"
+    },
+    {
+      "command": "git diff --check",
+      "result": "PASS; LF/CRLF advisory only"
+    }
+  ],
+  "excludedRuns": [
+    "Initial restricted browser install stalled/interrupted",
+    "Local/public suites initially shared test-results concurrently, causing ENOTEMPTY/recording interference; interrupted and excluded; repeated sequentially unchanged"
+  ],
+  "production": {
+    "url": "https://desafio-jungle.vercel.app",
+    "deploymentId": "dpl_3ZKPAuHpeRoY2J4Ww6vvyskV5ihF",
+    "historicalBaseCommit": "ac42d0149ca71d389297ed42b63c8b246240cc65",
+    "manifestSha256": "59bf96e749eef4f8fb0202c97682060efba4b936fb59fd9927f2d1c5fd6ed347",
+    "sourceComparison": {
+      "count": 590,
+      "mismatch": []
+    },
+    "publicBuildComparison": [
+      {
+        "path": "index.html",
+        "http": 200,
+        "localSha256": "fa102f512f6b3591fdc31f1495500e34f484611a58fa1ce8946047b845f52a04",
+        "publicSha256": "2ac1f0ff361d921be615f2f3f1108fc9c9e2436562db665ab1703e6ba6927290",
+        "match": true,
+        "comparison": "CR characters removed; identical normalized HTML"
+      },
+      {
+        "path": "apiServiceWorker.js",
+        "http": 200,
+        "localSha256": "afd630c3582b2978f082b7823994d7305a0830e738f62cc71df85a76b351d2c8",
+        "publicSha256": "ee24db19cd8a0c0ece6cae3f816e76154f068a40598f4096202f57d344d4314b",
+        "match": true
+      },
+      {
+        "path": "mockServiceWorker.js",
+        "http": 200,
+        "localSha256": "1acf3a4190a9a0bab9a5e543975a799ea5c92bddebb3a710599d01a56223ccc5",
+        "publicSha256": "da5f34398fcdec8c6b9098981cf41f398775cd997753ce95a994019190c11f8f",
+        "match": true
+      },
+      {
+        "path": "assets/BitmapFont-D03LedrQ.js",
+        "http": 200,
+        "localSha256": "d5d66aa642b3bbca261a5642b31a1b65c702d711cda0c5408bc4711f79a2e3c1",
+        "publicSha256": "d5d66aa642b3bbca261a5642b31a1b65c702d711cda0c5408bc4711f79a2e3c1",
+        "match": true
+      },
+      {
+        "path": "assets/BitmapFont-ilMAbpMP.js",
+        "http": 200,
+        "localSha256": "33cd96cc3c82f9d701378d4790a23d5668919285540b4a2f6674a497b4454616",
+        "publicSha256": "33cd96cc3c82f9d701378d4790a23d5668919285540b4a2f6674a497b4454616",
+        "match": true
+      },
+      {
+        "path": "assets/browserAll-Bk3pKVv1.js",
+        "http": 200,
+        "localSha256": "bc9200c93c591cffc9b198dd2c81c9e9758acd1e1184e09177f505c10dd945aa",
+        "publicSha256": "bc9200c93c591cffc9b198dd2c81c9e9758acd1e1184e09177f505c10dd945aa",
+        "match": true
+      },
+      {
+        "path": "assets/BufferResource-BgxOg2Wd.js",
+        "http": 200,
+        "localSha256": "aaaf2b8477aaad39b51228a5ad619c493b1cde6c72540bb5b10601a600ba474e",
+        "publicSha256": "aaaf2b8477aaad39b51228a5ad619c493b1cde6c72540bb5b10601a600ba474e",
+        "match": true
+      },
+      {
+        "path": "assets/Cache-B5xqrpal.js",
+        "http": 200,
+        "localSha256": "078a06bf0387ff15b74b597b23f11047f6fe770c55af7b7bea7031a5a3e4bf84",
+        "publicSha256": "078a06bf0387ff15b74b597b23f11047f6fe770c55af7b7bea7031a5a3e4bf84",
+        "match": true
+      },
+      {
+        "path": "assets/CanvasPool-D3Nl5vV-.js",
+        "http": 200,
+        "localSha256": "54a087864a94e661fbeab7651bf10353ea6832f778664e24d187c6269d1738fe",
+        "publicSha256": "54a087864a94e661fbeab7651bf10353ea6832f778664e24d187c6269d1738fe",
+        "match": true
+      },
+      {
+        "path": "assets/CanvasRenderer-B1RabaXI.js",
+        "http": 200,
+        "localSha256": "1b3ecec21d0a76150a127df36ebcb72a6d790f23264ace221a03254a78fedf78",
+        "publicSha256": "1b3ecec21d0a76150a127df36ebcb72a6d790f23264ace221a03254a78fedf78",
+        "match": true
+      },
+      {
+        "path": "assets/CanvasRenderer-IMxDqp4C.js",
+        "http": 200,
+        "localSha256": "274c11289054454bd8128629d6c90a0ab3d5924f2d5241b47a8f7d8f82d73353",
+        "publicSha256": "274c11289054454bd8128629d6c90a0ab3d5924f2d5241b47a8f7d8f82d73353",
+        "match": true
+      },
+      {
+        "path": "assets/canvasUtils-CDqbpGef.js",
+        "http": 200,
+        "localSha256": "5d5e7ae0cc98f9d320a236c9d29d29f1295921f6a4fced21bffe18f5f526d2d7",
+        "publicSha256": "5d5e7ae0cc98f9d320a236c9d29d29f1295921f6a4fced21bffe18f5f526d2d7",
+        "match": true
+      },
+      {
+        "path": "assets/Filter-1bfjrPnq.js",
+        "http": 200,
+        "localSha256": "6233cb49046e9de3b7dd4e8774576abf87a68d7e76a41bbdf8be5818f3f74dbf",
+        "publicSha256": "6233cb49046e9de3b7dd4e8774576abf87a68d7e76a41bbdf8be5818f3f74dbf",
+        "match": true
+      },
+      {
+        "path": "assets/GCManagedHash-C-1BOReu.js",
+        "http": 200,
+        "localSha256": "aec82f8099b16dc78ff08947b69663a1187f65dd22dbf5738c78c2b5b112773b",
+        "publicSha256": "aec82f8099b16dc78ff08947b69663a1187f65dd22dbf5738c78c2b5b112773b",
+        "match": true
+      },
+      {
+        "path": "assets/getTextureBatchBindGroup-BfJg7YTO.js",
+        "http": 200,
+        "localSha256": "2e6b47826b797e1f47717fdf50b2387feeaaf17e7cce3a6a4a3daa35afd1adb8",
+        "publicSha256": "2e6b47826b797e1f47717fdf50b2387feeaaf17e7cce3a6a4a3daa35afd1adb8",
+        "match": true
+      },
+      {
+        "path": "assets/GraphicsContext-C110Pk_4.js",
+        "http": 200,
+        "localSha256": "6c9a405f93e86f75fc4dccb1bae0da181c7c4b661a84e5ca2a245a445a689c2f",
+        "publicSha256": "6c9a405f93e86f75fc4dccb1bae0da181c7c4b661a84e5ca2a245a445a689c2f",
+        "match": true
+      },
+      {
+        "path": "assets/index-Ci2RKtKC.js",
+        "http": 200,
+        "localSha256": "64d6233423b66f5ff6fa35952dde20711bcb08a0fbc0adaf7240ae9626b4c0ef",
+        "publicSha256": "64d6233423b66f5ff6fa35952dde20711bcb08a0fbc0adaf7240ae9626b4c0ef",
+        "match": true
+      },
+      {
+        "path": "assets/index-DAg9n92X.css",
+        "http": 200,
+        "localSha256": "3c284c898289e6da7a36b3fd70ce85ed957a781061faee331f0c3d2da026d025",
+        "publicSha256": "3c284c898289e6da7a36b3fd70ce85ed957a781061faee331f0c3d2da026d025",
+        "match": true
+      },
+      {
+        "path": "assets/init-CY65h_EL.js",
+        "http": 200,
+        "localSha256": "a6eb1eaeebbe6814daafc2b04bc6e769d0eca336657b03d320ec4c9c108c1d7f",
+        "publicSha256": "a6eb1eaeebbe6814daafc2b04bc6e769d0eca336657b03d320ec4c9c108c1d7f",
+        "match": true
+      },
+      {
+        "path": "assets/init-oaFywnlA.js",
+        "http": 200,
+        "localSha256": "853d357d50b24bca33551adaf6a449654ff51f2eeeffeccb677aa53744886f9f",
+        "publicSha256": "853d357d50b24bca33551adaf6a449654ff51f2eeeffeccb677aa53744886f9f",
+        "match": true
+      },
+      {
+        "path": "assets/RenderTargetSystem-BixfN62s.js",
+        "http": 200,
+        "localSha256": "69090a30935b65ce45d077ea0a6d3f20533ef29f454a892469c194c6d0838463",
+        "publicSha256": "69090a30935b65ce45d077ea0a6d3f20533ef29f454a892469c194c6d0838463",
+        "match": true
+      },
+      {
+        "path": "assets/WebGLRenderer-BAunLFEq.js",
+        "http": 200,
+        "localSha256": "af7610efa969586b7953944edf7b770798afb2ed6b8d2977c3b0c06afde19a6b",
+        "publicSha256": "af7610efa969586b7953944edf7b770798afb2ed6b8d2977c3b0c06afde19a6b",
+        "match": true
+      },
+      {
+        "path": "assets/WebGLRenderer-C4Ap0A8O.js",
+        "http": 200,
+        "localSha256": "c1620a1c254ce0b1caed233a20d5a66b36413447f51ec3d8a5884a12ecf9f824",
+        "publicSha256": "c1620a1c254ce0b1caed233a20d5a66b36413447f51ec3d8a5884a12ecf9f824",
+        "match": true
+      },
+      {
+        "path": "assets/WebGPURenderer-B9RTkKd8.js",
+        "http": 200,
+        "localSha256": "2acba2d58ab7f643d6aa80ac1f28e3e546de33d438711afcb1d919f3b944c846",
+        "publicSha256": "2acba2d58ab7f643d6aa80ac1f28e3e546de33d438711afcb1d919f3b944c846",
+        "match": true
+      },
+      {
+        "path": "assets/WebGPURenderer-BAXJsWUJ.js",
+        "http": 200,
+        "localSha256": "ec7ccb812f58250daf843d11470b3f5f666647ac1d2dc185eaf8882558747a05",
+        "publicSha256": "ec7ccb812f58250daf843d11470b3f5f666647ac1d2dc185eaf8882558747a05",
+        "match": true
+      },
+      {
+        "path": "assets/webworkerAll-B7rozOFk.js",
+        "http": 200,
+        "localSha256": "b7cdcfb7b5bf7b0fe4b787d41ed138384625fa862b9665af985be21ed98ed0ef",
+        "publicSha256": "b7cdcfb7b5bf7b0fe4b787d41ed138384625fa862b9665af985be21ed98ed0ef",
+        "match": true
+      }
+    ],
+    "desktopSmoke": "PASS;1280x720 keyboard/wall-time battle",
+    "mobileSmoke": "PASS;393x727 portrait menus to740x360 landscape/native touch",
+    "dataFlow": "PASS; exact one confirmed record, empty pending queue, Ranking/History/refresh/pagination",
+    "failureRecovery": "PASS;NETWORK-014 pending registration -> recover/retry/confirm/refresh;NETWORK-012 History error -> recover/retry/reset",
+    "browserHealth": "No unexpected runtime/page/console errors; deliberate503 transport diagnostics narrowly permitted"
+  },
+  "sourceAudit": {
+    "trackedFiles": 683,
+    "textFiles": 154,
+    "testFiles": 30,
+    "secretPatternLocations": [],
+    "focusedSkippedCommentedTestLocations": [],
+    "applicationSuppressionTodoDebugLocations": [],
+    "trackedEnvironmentFiles": [],
+    "unexpectedDraft": [
+      "docs/Untitled"
+    ],
+    "generatedWorker": "public/mockServiceWorker.js is required generated source; other generated reports/builds ignored",
+    "retries": 0,
+    "forbidOnly": true,
+    "historyCredentialPatternFound": false,
+    "historyScope": "all reachable history diffs in application/scripts/tests/package/hosting/environment paths; high-confidence token/private-key patterns, no secret values emitted"
+  },
+  "productionTestSeedKeyPresent": false,
+  "priorMeasuredEvidence": {
+    "performance": "docs/evidence/task-17-production.json",
+    "heap": "docs/evidence/task-17-heap-delta.json",
+    "accessibility": "docs/evidence/task-17-accessibility.json",
+    "activeSeconds": 180,
+    "frames": 10800,
+    "fps": 60.00136669784469,
+    "p95InterFrameMs": 17.799999952316284,
+    "sampledEntities": "2–67",
+    "lifecycleCycles": 15,
+    "accessibilityCaptures": 28,
+    "resultKeyboardChecks": 4,
+    "rerun": false
+  },
+  "visualEvidence": "All six unchanged versioned baselines passed; supplied references and baselines inspected",
+  "logs": [
+    {
+      "path": "output/playwright/task-19/install.txt",
+      "sha256": "2ef39fe12a29d3a714f4fb79cd42770d0f195239fef1fe1a15ba785283ca0130"
+    },
+    {
+      "path": "output/playwright/task-19/typecheck.txt",
+      "sha256": "e8739b5abfcab424c36c76534fbc00adca367ebf33e2b2dfe2960d3443891311"
+    },
+    {
+      "path": "output/playwright/task-19/lint.txt",
+      "sha256": "aed515ae7f6015d017baa1d9189d803018e48765bb1011916af4d13c9c7a7602"
+    },
+    {
+      "path": "output/playwright/task-19/unit.txt",
+      "sha256": "301411af2eecf71e2b8608560e6664b7c4ada85afb1b48a40d8baf2d1b709b1a"
+    },
+    {
+      "path": "output/playwright/task-19/build.txt",
+      "sha256": "d73a4ebc015aa10677be9474678f7428324c6ad5731317b7574f5b1b239b060a"
+    },
+    {
+      "path": "output/playwright/task-19/e2e-final.txt",
+      "sha256": "26795c429427ce64b64a57828344d12f04776db6b19d8184564f80cadac5ddae"
+    },
+    {
+      "path": "output/playwright/task-19/public-final.txt",
+      "sha256": "37b2e8427f8b2a5002e430faa50827eab69d0f81731993641474ee953033b5a1"
+    },
+    {
+      "path": "output/playwright/task-19/preview-final.txt",
+      "sha256": "ba20f14e58ffee6996f83a26572cde9f64c1c83a108385000c0c6e6a34c07b98"
+    }
+  ],
+  "htmlReports": {
+    "clean": "output/playwright/task-19/clean-report/index.html",
+    "public": "output/playwright/task-19/public-report/index.html",
+    "preview": "output/playwright/task-19/preview-report/index.html"
+  },
+  "filesChanged": [
+    "README.md",
+    "docs/TASKS.md",
+    "docs/FINAL_AUDIT.md",
+    "docs/REQUIREMENT_TRACEABILITY.md",
+    "docs/evidence/task-19-traceability.json",
+    "docs/evidence/task-19-validation.json"
+  ],
+  "remainingBlockers": [],
+  "knownLimitations": "See FINAL_AUDIT.md; physical device/screen-reader/profile/storage/pathfinding/stall/chunk/historical draft/skill resource limits"
+}
