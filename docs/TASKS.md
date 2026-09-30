@@ -21,7 +21,7 @@ Implement one task at a time, in order. Before each task, follow `AGENTS.md`, re
 - [x] [TASK-14 — Ranking and Match History](./tasks/TASK-14-ranking-history.md)
 - [x] [TASK-15 — Match Submission and Recovery](./tasks/TASK-15-submission-recovery.md)
 - [x] [TASK-16 — E2E and Visual Tests](./tasks/TASK-16-e2e-visual-tests.md)
-- [ ] [TASK-17 — Performance and Accessibility](./tasks/TASK-17-performance-accessibility.md)
+- [x] [TASK-17 — Performance and Accessibility](./tasks/TASK-17-performance-accessibility.md)
 - [ ] [TASK-18 — Documentation and Deployment](./tasks/TASK-18-documentation-deployment.md)
 - [ ] [TASK-19 — Final Audit](./tasks/TASK-19-final-audit.md)
 

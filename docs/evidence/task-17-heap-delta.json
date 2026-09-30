@@ -1,0 +1,96 @@
+{
+  "top": [
+    {
+      "key": "code:system / InstructionStream",
+      "count": 633,
+      "size": 537536
+    },
+    {
+      "key": "code:system / TrustedByteArray",
+      "count": 1298,
+      "size": 109380
+    },
+    {
+      "key": "code:system / FeedbackVector",
+      "count": 532,
+      "size": 67716
+    },
+    {
+      "key": "code:system / Code",
+      "count": 633,
+      "size": 45576
+    },
+    {
+      "key": "native:system / WeakArrayList",
+      "count": 134,
+      "size": 27924
+    },
+    {
+      "key": "code:system / ProtectedFixedArray",
+      "count": 96,
+      "size": 24240
+    },
+    {
+      "key": "native:blink::NetworkResourcesData::ResourceData",
+      "count": 70,
+      "size": 20160
+    },
+    {
+      "key": "code:system / LoadHandler",
+      "count": 1112,
+      "size": 18064
+    },
+    {
+      "key": "native:DOMRectReadOnly",
+      "count": 300,
+      "size": 16800
+    },
+    {
+      "key": "object shape:system / Map",
+      "count": 327,
+      "size": 13160
+    },
+    {
+      "key": "object shape:system / DescriptorArray",
+      "count": 93,
+      "size": 11868
+    },
+    {
+      "key": "native:PerformanceResourceTiming",
+      "count": 70,
+      "size": 9520
+    },
+    {
+      "key": "native:LayoutShift",
+      "count": 60,
+      "size": 9120
+    },
+    {
+      "key": "native:LargestContentfulPaint",
+      "count": 60,
+      "size": 8160
+    },
+    {
+      "key": "code:system / AllocationSite",
+      "count": 253,
+      "size": 7068
+    }
+  ],
+  "streams": [
+    {
+      "key": "native:MessageEvent",
+      "count": 19,
+      "size": 5776
+    },
+    {
+      "key": "native:MessagePort",
+      "count": 19,
+      "size": 3040
+    },
+    {
+      "key": "native:ReadableStream",
+      "count": 0,
+      "size": 0
+    }
+  ]
+}

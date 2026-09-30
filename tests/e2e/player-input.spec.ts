@@ -303,10 +303,14 @@ test('resizing and visual-only island transforms cannot change world collision r
     const scale = await page.evaluate(() => window.__playerProbe.application?.stage.children[0]?.scale.x);
     const expected = await page.getByTestId('arena-viewport').evaluate((host) => Math.min(host.clientWidth / 1280, host.clientHeight / 720));
     expect(scale).toBeCloseTo(expected, 6);
-    await page.screenshot({ path: testInfo.outputPath(`solid-island-${viewport.width}.png`), fullPage: true });
     await page.getByRole('button', { name: 'Resume', exact: true }).click(); await forward(page, 300);
     expect((await player(page)).x).toBeCloseTo(stopped.x, 5);
-    await page.getByRole('button', { name: 'Pause', exact: true }).click();
+    // This keyboard collision flow spans desktop and portrait sizes. Keep
+    // pausing through the shared keyboard input; native touch hit testing has
+    // separate coverage in touch-responsive.spec.ts.
+    await page.keyboard.press('Escape');
+    await page.clock.runFor(32);
+    await expect(page.getByRole('dialog')).toBeVisible();
   }
   // Deliberately corrupt only the display object: input must still hit the domain obstacle.
   await page.evaluate(() => {
@@ -318,4 +322,7 @@ test('resizing and visual-only island transforms cannot change world collision r
   await page.getByRole('button', { name: 'Restart Match' }).click();
   await turnTo(page, Math.PI * 1.5); await forward(page, 2000);
   expect((await player(page)).x).toBeCloseTo(514, 5);
+  // Capture diagnostics after input assertions: Chromium mobile capture can
+  // alter viewport/pointer emulation while the test clock is paused.
+  await page.screenshot({ path: testInfo.outputPath('solid-island.png') });
 });

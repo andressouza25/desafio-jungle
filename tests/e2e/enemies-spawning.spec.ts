@@ -129,7 +129,10 @@ test('real combat, seeded enemies, pause and cleanup do not cause per-step React
   for (const kind of ['fire', 'impact', 'damage', 'destruction']) expect(feedback).toContain('feedback:' + kind);
   expect(feedback.some(label => label.startsWith('deterioration:'))).toBe(true);
   expect(kinds).toEqual(new Set(['chaser', 'shooter'])); expect((await read()).commits - commits).toBeGreaterThan(0); expect((await read()).commits - commits).toBeLessThan(40);
-  await page.screenshot({ path: testInfo.outputPath('enemy-combat.png'), fullPage: true });
+  // Full-page capture can reset Chromium's coarse-pointer emulation. Keep the
+  // diagnostic capture within the viewport so the following real touch click
+  // continues to exercise the same input/layout environment.
+  await page.screenshot({ path: testInfo.outputPath('enemy-combat.png') });
   await page.getByRole('button', { name: 'Pause', exact: true }).click();
   const paused = await read(); await page.clock.fastForward(60000); expect(await read()).toEqual(paused);
   await page.getByRole('button', { name: 'Resume', exact: true }).click(); await page.clock.runFor(100);

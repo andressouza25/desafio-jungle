@@ -484,3 +484,9 @@ The E2E audit exposed a native mobile Pause activation bug. `TouchInput` now han
 Visual assertions compare six manually reviewed baselines with fixed viewports/locale/timezone and paused seeded gameplay. No differing pixels are allowed under Playwright's default perceptual color threshold. Failure-only screenshots, videos and traces accompany the HTML report, with zero test retries. The coverage map and validation evidence live in `docs/TEST_COVERAGE.md`.
 
 Vite's development watcher excludes generated Playwright reports, test results and temporary diagnostics. This prevents trace HTML created by one worker from triggering a page reload in another worker. Application-source watching is unchanged.
+
+## 26. TASK-17 Measured Resources and Accessibility
+
+Production profiling and fifteen uniform lifecycle cycles are documented in [PERFORMANCE_ACCESSIBILITY.md](./PERFORMANCE_ACCESSIBILITY.md). The measured static-asset retention came from MSW response stream transfers, while game-owned resources were released. A small `apiServiceWorker.js` entry filters non-API fetch events before importing the unchanged generated MSW worker. REST mocks, Axios/Query ownership and gameplay are unchanged; local media/images use normal browser loading.
+
+External Playwright scripts observe the existing controller/application without adding a production debug interface or controlling simulation time. Frame intervals, entity samples, GC-separated lifecycle metrics and accessibility/contrast evidence are saved separately from regression reports. Contrast corrections use the existing Ranking text token and keep mobile HUD/navigation text inside the dark sprite interiors, with footer navigation on narrow landscape screens. HUD publication remains event/whole-second driven. No dependency, simulation optimization or architecture rewrite was introduced.

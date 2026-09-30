@@ -297,7 +297,7 @@ Performance evaluation includes:
 - memory behavior;
 - repeated game lifecycle testing.
 
-Profiling results will be documented when the implementation reaches the performance validation stage.
+Production measurements, lifecycle investigation, accessibility checks and reproduction steps are documented in [TASK-17 evidence](./docs/PERFORMANCE_ACCESSIBILITY.md).
 
 ---
 
@@ -412,7 +412,7 @@ Run `npm test -- --project=mobile-chromium tests/e2e/touch-responsive.spec.ts` f
 
 ## Mock REST API (TASK-13)
 
-MSW starts before React in development and production. No environment variables or private service are required. The worker script in `public/mockServiceWorker.js` is copied unchanged from the installed MSW package; update it when upgrading MSW.
+MSW starts before React in development and production. No environment variables or private service are required. `public/apiServiceWorker.js` limits interception to `/api/` before loading `public/mockServiceWorker.js`, copied unchanged from the installed MSW package. Local images and audio bypass MSW to avoid retaining transferred static-asset response streams. Update the generated worker when upgrading MSW; preserve the small API entry worker. See [the measured resource investigation](./docs/PERFORMANCE_ACCESSIBILITY.md#lifecycle-procedure-and-investigation).
 
 The API provides `GET /api/ranking` (complete configuration JSON, one-based `page`, `pageSize`), `GET /api/history` (`playerId`, `page`, `pageSize`) and `POST /api/matches` (completed match record). Page sizes are 1–100; the default is 10. Responses include items, total, totalPages, page and pageSize. Beyond the last page returns an empty items array. Empty results have zero totalPages. Ranking compares the entire GameConfig, orders score descending, then date ascending, then match ID ascending; positions are global across pages. History orders date descending, then match ID ascending. Fixtures contain 24 matches across six captains; use `captain-0` for a multi-page history with pageSize 2.
 

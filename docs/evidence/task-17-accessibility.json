@@ -1,0 +1,3352 @@
+{
+  "evidence": [
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "screen": "menu",
+      "contrast": [
+        {
+          "text": "Set sail. Take command.",
+          "ratio": 8.880222835448379,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Play",
+          "ratio": 6.234361223895409,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Options",
+          "ratio": 6.193318998801592,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Navigate the islands. Survive the battle.",
+          "ratio": 9.856187645418013,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "How to play",
+          "ratio": 9.978443115315487,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Ranking",
+          "ratio": 10.001416684593455,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match History",
+          "ratio": 10.001416684593455,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Play",
+            "width": 330,
+            "height": 76
+          },
+          {
+            "name": "Options",
+            "width": 330,
+            "height": 76
+          },
+          {
+            "name": "Ranking",
+            "width": 222,
+            "height": 61
+          },
+          {
+            "name": "Match History",
+            "width": 222,
+            "height": 61
+          }
+        ],
+        "headings": [
+          ""
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": false,
+        "touchPoints": 0
+      },
+      "accessibleTree": "- main:\n  - heading \"Pirate Battle\" [level=1]:\n    - img \"Pirate Battle\"\n  - paragraph: Set sail. Take command.\n  - navigation \"Main menu\":\n    - button \"Play\"\n    - button \"Options\"\n    - paragraph: Navigate the islands. Survive the battle.\n    - group: How to play\n    - button \"Ranking\"\n    - button \"Match History\""
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "screen": "options",
+      "contrast": [
+        {
+          "text": "Options",
+          "ratio": 8.374180315202697,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Game session time",
+          "ratio": 8.880222835448379,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "s",
+          "ratio": 9.015590037055816,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "60–180 seconds",
+          "ratio": 8.15123697731682,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Enter a whole number from 60 to 180 seconds.",
+          "ratio": 8.328866803225035,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Enemy spawn time",
+          "ratio": 9.19434123220468,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "s",
+          "ratio": 9.30436506384419,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "1–30 seconds",
+          "ratio": 8.631012931237715,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Check the highlighted settings before saving.",
+          "ratio": 9.676503169151085,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Save Changes",
+          "ratio": 4.922566083257168,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Main Menu",
+          "ratio": 10.011086818448998,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Decrease Game session time",
+            "width": 50,
+            "height": 50
+          },
+          {
+            "name": "Increase Game session time",
+            "width": 50,
+            "height": 50
+          },
+          {
+            "name": "Decrease Enemy spawn time",
+            "width": 50,
+            "height": 50
+          },
+          {
+            "name": "Increase Enemy spawn time",
+            "width": 50,
+            "height": 50
+          },
+          {
+            "name": "Save Changes",
+            "width": 330,
+            "height": 76
+          },
+          {
+            "name": "Main Menu",
+            "width": 330,
+            "height": 61
+          }
+        ],
+        "headings": [
+          "Options"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": false,
+        "touchPoints": 0
+      },
+      "accessibleTree": "- main:\n  - heading \"Options\" [level=1]\n  - text: Game session time\n  - button \"Decrease Game session time\" [disabled]\n  - textbox \"Game session time\" [invalid]: \"59\"\n  - button \"Increase Game session time\"\n  - paragraph: 60–180 seconds\n  - alert: Enter a whole number from 60 to 180 seconds.\n  - text: Enemy spawn time\n  - button \"Decrease Enemy spawn time\"\n  - textbox \"Enemy spawn time\": \"3\"\n  - button \"Increase Enemy spawn time\"\n  - paragraph: 1–30 seconds\n  - status: Check the highlighted settings before saving.\n  - button \"Save Changes\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "screen": "ranking",
+      "contrast": [
+        {
+          "text": "Captain’s log",
+          "ratio": 8.328480960180272,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Ranking",
+          "ratio": 5.678510236652255,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match History",
+          "ratio": 10.025992072602554,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "120",
+          "ratio": 8.866840756976448,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "second battles ·",
+          "ratio": 8.887745389268314,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "3",
+          "ratio": 9.002009699235842,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "second spawn interval",
+          "ratio": 8.866840756976448,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Gameplay configuration",
+          "ratio": 8.901190689648683,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "ratio": 9.002009699235842,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Rank",
+          "ratio": 9.69842189744434,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Captain",
+          "ratio": 9.534709820270384,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Points",
+          "ratio": 9.232811551593265,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Played",
+          "ratio": 9.036677415106679,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "01",
+          "ratio": 6.751236134714549,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Captain 1",
+          "ratio": 6.433175517106816,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "You",
+          "ratio": 6.339307051621247,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "captain-0",
+          "ratio": 6.541924057677678,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "20",
+          "ratio": 6.41748596228881,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Jan 01, 2026, 12:00 AM",
+          "ratio": 6.339307051621247,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "UTC",
+          "ratio": 6.439784733500071,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "02",
+          "ratio": 12.914359939576071,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Captain 2",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "captain-1",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "20",
+          "ratio": 7.5412776981575975,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Jan 01, 2026, 12:01 AM",
+          "ratio": 12.47253018881174,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "UTC",
+          "ratio": 12.605064682152761,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "03",
+          "ratio": 12.880467956582104,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Captain 3",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "captain-2",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "19",
+          "ratio": 7.5412776981575975,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Jan 01, 2026, 12:02 AM",
+          "ratio": 12.58612247781076,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "UTC",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "04",
+          "ratio": 12.898618236465612,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Captain 4",
+          "ratio": 12.861534433440562,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "captain-3",
+          "ratio": 12.880467956582104,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "19",
+          "ratio": 7.629778996413569,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Jan 01, 2026, 12:03 AM",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "UTC",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "05",
+          "ratio": null,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Captain 5",
+          "ratio": 12.880467956582104,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "18",
+          "ratio": null,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Ranking",
+            "width": 260,
+            "height": 62
+          },
+          {
+            "name": "Match History",
+            "width": 260,
+            "height": 62
+          },
+          {
+            "name": "Refresh",
+            "width": 88.03125,
+            "height": 44
+          },
+          {
+            "name": "Previous page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Next page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Main Menu",
+            "width": 330,
+            "height": 76
+          }
+        ],
+        "headings": [
+          "Ranking"
+        ],
+        "tables": 1,
+        "language": "en",
+        "coarsePointer": false,
+        "touchPoints": 0
+      },
+      "accessibleTree": "- main:\n  - paragraph: Captain’s log\n  - navigation \"Captain’s log\":\n    - button \"Ranking\"\n    - button \"Match History\"\n  - heading \"Ranking\" [level=1]\n  - paragraph: 120 second battles · 3 second spawn interval\n  - group: Gameplay configuration\n  - button \"Refresh\"\n  - table \"Ranking, ordered by the server for this gameplay configuration\":\n    - caption: Ranking, ordered by the server for this gameplay configuration\n    - rowgroup:\n      - row \"Rank Captain Points Played\":\n        - columnheader \"Rank\"\n        - columnheader \"Captain\"\n        - columnheader \"Points\"\n        - columnheader \"Played\"\n    - rowgroup:\n      - row \"01 Captain 1 You captain-0 20 Jan 01, 2026, 12:00 AM UTC\":\n        - cell \"01\"\n        - rowheader \"Captain 1 You captain-0\"\n        - cell \"20\"\n        - cell \"Jan 01, 2026, 12:00 AM UTC\":\n          - time: Jan 01, 2026, 12:00 AM UTC\n      - row \"02 Captain 2 captain-1 20 Jan 01, 2026, 12:01 AM UTC\":\n        - cell \"02\"\n        - rowheader \"Captain 2 captain-1\"\n        - cell \"20\"\n        - cell \"Jan 01, 2026, 12:01 AM UTC\":\n          - time: Jan 01, 2026, 12:01 AM UTC\n      - row \"03 Captain 3 captain-2 19 Jan 01, 2026, 12:02 AM UTC\":\n        - cell \"03\"\n        - rowheader \"Captain 3 captain-2\"\n        - cell \"19\"\n        - cell \"Jan 01, 2026, 12:02 AM UTC\":\n          - time: Jan 01, 2026, 12:02 AM UTC\n      - row \"04 Captain 4 captain-3 19 Jan 01, 2026, 12:03 AM UTC\":\n        - cell \"04\"\n        - rowheader \"Captain 4 captain-3\"\n        - cell \"19\"\n        - cell \"Jan 01, 2026, 12:03 AM UTC\":\n          - time: Jan 01, 2026, 12:03 AM UTC\n      - row \"05 Captain 5 captain-4 18 Jan 01, 2026, 12:04 AM UTC\":\n        - cell \"05\"\n        - rowheader \"Captain 5 captain-4\"\n        - cell \"18\"\n        - cell \"Jan 01, 2026, 12:04 AM UTC\":\n          - time: Jan 01, 2026, 12:04 AM UTC\n  - navigation \"Ranking pagination\":\n    - button \"Previous page\" [disabled]\n    - status: Page 1 of 5\n    - button \"Next page\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "screen": "match-history",
+      "contrast": [
+        {
+          "text": "Captain’s log",
+          "ratio": 8.341210522486483,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Ranking",
+          "ratio": 10.025992072602554,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match History",
+          "ratio": 4.883743114469655,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Captain 1 · Your recent battles",
+          "ratio": 8.634631592633939,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "ratio": 8.914468317524358,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Date",
+          "ratio": 9.606587051120703,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Points",
+          "ratio": 9.028998560555241,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Duration",
+          "ratio": 9.290574483838924,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Result",
+          "ratio": 9.69842189744434,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Jan 01, 2026, 12:18 AM",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "UTC",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match details",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Gameplay configuration",
+          "ratio": 12.768137229517128,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "11",
+          "ratio": 7.5412776981575975,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "120",
+          "ratio": 12.456801500854471,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "seconds",
+          "ratio": 12.47253018881174,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Time up",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Jan 01, 2026, 12:12 AM",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "UTC",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match details",
+          "ratio": 12.880467956582104,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Gameplay configuration",
+          "ratio": 10.1307974287213,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "14",
+          "ratio": 7.629778996413569,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "120",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "seconds",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Time up",
+          "ratio": 12.749532266861086,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Page 1 of 2",
+          "ratio": 10.000516947440387,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Main Menu",
+          "ratio": 5.969001799278872,
+          "target": 3,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Ranking",
+            "width": 260,
+            "height": 62
+          },
+          {
+            "name": "Match History",
+            "width": 260,
+            "height": 62
+          },
+          {
+            "name": "Refresh",
+            "width": 88.03125,
+            "height": 44
+          },
+          {
+            "name": "Previous page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Next page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Main Menu",
+            "width": 330,
+            "height": 76
+          }
+        ],
+        "headings": [
+          "Match History"
+        ],
+        "tables": 1,
+        "language": "en",
+        "coarsePointer": false,
+        "touchPoints": 0
+      },
+      "accessibleTree": "- main:\n  - paragraph: Captain’s log\n  - navigation \"Captain’s log\":\n    - button \"Ranking\"\n    - button \"Match History\"\n  - heading \"Match History\" [level=1]\n  - paragraph: Captain 1 · Your recent battles\n  - button \"Refresh\"\n  - table \"Your completed battles, most recent first\":\n    - caption: Your completed battles, most recent first\n    - rowgroup:\n      - row \"Date Points Duration Result\":\n        - columnheader \"Date\"\n        - columnheader \"Points\"\n        - columnheader \"Duration\"\n        - columnheader \"Result\"\n    - rowgroup:\n      - row \"Jan 01, 2026, 12:18 AM UTC 11 120 seconds Time up\":\n        - rowheader \"Jan 01, 2026, 12:18 AM UTC\":\n          - time: Jan 01, 2026, 12:18 AM UTC\n          - group: Match details\n        - cell \"11\"\n        - cell \"120 seconds\"\n        - cell \"Time up\"\n      - row \"Jan 01, 2026, 12:12 AM UTC 14 120 seconds Time up\":\n        - rowheader \"Jan 01, 2026, 12:12 AM UTC\":\n          - time: Jan 01, 2026, 12:12 AM UTC\n          - group: Match details\n        - cell \"14\"\n        - cell \"120 seconds\"\n        - cell \"Time up\"\n  - navigation \"Match History pagination\":\n    - button \"Previous page\" [disabled]\n    - status: Page 1 of 2\n    - button \"Next page\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "screen": "pause",
+      "contrast": [
+        {
+          "text": "Paused",
+          "ratio": 8.449439988051552,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Ready when you are. Gameplay has stopped.",
+          "ratio": 8.880222835448379,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Resume",
+          "ratio": 6.2131971347724395,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Main Menu",
+          "ratio": 10.001416684593455,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Main Menu",
+            "width": 180,
+            "height": 60
+          },
+          {
+            "name": "End Match",
+            "width": 78.15625,
+            "height": 44
+          },
+          {
+            "name": "Restart Match",
+            "width": 96.921875,
+            "height": 44
+          },
+          {
+            "name": "Resume",
+            "width": 330,
+            "height": 76
+          },
+          {
+            "name": "Main Menu",
+            "width": 222,
+            "height": 61
+          }
+        ],
+        "headings": [
+          "Game",
+          "Paused"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": false,
+        "touchPoints": 0
+      },
+      "accessibleTree": "- main:\n  - region \"Game\":\n    - heading \"Game\" [level=1]\n    - button \"Main Menu\"\n    - term: Health\n    - definition: 100 / 100\n    - term: Score\n    - definition: \"0\"\n    - term: Time remaining\n    - definition: 02:00\n    - group \"Gameplay keyboard controls\":\n      - img \"Water arena\"\n    - paragraph: \"W/↑: forward · A/← and D/→: turn · Space: front fire · Q/E: left/right broadside · Esc: pause. Hold an attack to repeat after its cooldown. Keyboard controls require arena focus. Tab returns to page controls.\"\n    - status: Match paused.\n    - button \"End Match\"\n    - button \"Restart Match\"\n    - dialog \"Paused\":\n      - heading \"Paused\" [level=2]\n      - paragraph: Ready when you are. Gameplay has stopped.\n      - button \"Resume\"\n      - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "screen": "game",
+      "contrast": [
+        {
+          "text": "Game",
+          "ratio": 10.11410849377262,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Main Menu",
+          "ratio": 10.025992072602554,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Health",
+          "ratio": 10.353001525353065,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "100",
+          "ratio": 10.347783005181949,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "/",
+          "ratio": 10.501351350175316,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "100",
+          "ratio": 10.501351350175316,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Score",
+          "ratio": 10.338359818469206,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "0",
+          "ratio": 10.635559694951427,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Time remaining",
+          "ratio": 10.338359818469206,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "02:00",
+          "ratio": 10.501351350175316,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "W/↑: forward · A/← and D/→: turn · Space: front fire · Q/E: left/right broadside · Esc: pause. Hold an attack to repeat after its cooldown. Keyboard controls require arena focus. Tab returns to page controls.",
+          "ratio": 10.11410849377262,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match running.",
+          "ratio": 10.11410849377262,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Pause",
+          "ratio": 10.11410849377262,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "End Match",
+          "ratio": 10.11410849377262,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Restart Match",
+          "ratio": 10.11410849377262,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Main Menu",
+            "width": 180,
+            "height": 60
+          },
+          {
+            "name": "Pause",
+            "width": 52.875,
+            "height": 44
+          },
+          {
+            "name": "End Match",
+            "width": 78.15625,
+            "height": 44
+          },
+          {
+            "name": "Restart Match",
+            "width": 96.921875,
+            "height": 44
+          }
+        ],
+        "headings": [
+          "Game"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": false,
+        "touchPoints": 0
+      },
+      "accessibleTree": "- main:\n  - region \"Game\":\n    - heading \"Game\" [level=1]\n    - button \"Main Menu\"\n    - term: Health\n    - definition: 100 / 100\n    - term: Score\n    - definition: \"0\"\n    - term: Time remaining\n    - definition: 01:59\n    - group \"Gameplay keyboard controls\":\n      - img \"Water arena\"\n    - paragraph: \"W/↑: forward · A/← and D/→: turn · Space: front fire · Q/E: left/right broadside · Esc: pause. Hold an attack to repeat after its cooldown. Keyboard controls require arena focus. Tab returns to page controls.\"\n    - status: Match running.\n    - button \"Pause\"\n    - button \"End Match\"\n    - button \"Restart Match\""
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "screen": "result",
+      "contrast": [
+        {
+          "text": "Battle Complete",
+          "ratio": 8.341210522486483,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "0",
+          "ratio": 5.385530947896514,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "points",
+          "ratio": 9.152388312655354,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Time played",
+          "ratio": 9.415935715546164,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "00:13",
+          "ratio": 9.138611084457814,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Reason",
+          "ratio": 9.138611084457814,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Ship destroyed",
+          "ratio": 9.394166700551954,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Result saved on this device.",
+          "ratio": 9.290574483838924,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Registration confirmed.",
+          "ratio": 9.556560838093281,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Play Again",
+          "ratio": 5.9233111520086155,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Main Menu",
+          "ratio": 10.011086818448998,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Play Again",
+            "width": 330,
+            "height": 76
+          },
+          {
+            "name": "Main Menu",
+            "width": 330,
+            "height": 61
+          }
+        ],
+        "headings": [
+          "Battle Complete"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": false,
+        "touchPoints": 0
+      },
+      "accessibleTree": "- main:\n  - heading \"Battle Complete\" [level=1]\n  - paragraph: 0 points\n  - term: Time played\n  - definition: 00:13\n  - term: Reason\n  - definition: Ship destroyed\n  - paragraph: Result saved on this device.\n  - status: Registration confirmed.\n  - button \"Play Again\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 1280,
+        "height": 720
+      },
+      "screen": "result-keyboard",
+      "checks": {
+        "playAgainFocusVisible": true,
+        "mainMenuTabOrder": true,
+        "enterReturnsToMenu": true
+      }
+    },
+    {
+      "viewport": {
+        "width": 393,
+        "height": 727
+      },
+      "screen": "menu",
+      "contrast": [
+        {
+          "text": "Set sail. Take command.",
+          "ratio": 8.767163394701864,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Play",
+          "ratio": 6.033097520706485,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Options",
+          "ratio": 5.964512869872132,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Navigate the islands. Survive the battle.",
+          "ratio": 9.430101253154787,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "How to play",
+          "ratio": 9.556560838093281,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Ranking",
+          "ratio": 10.140272020434441,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match History",
+          "ratio": 10.140272020434441,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Play",
+            "width": 313,
+            "height": 65
+          },
+          {
+            "name": "Options",
+            "width": 313,
+            "height": 65
+          },
+          {
+            "name": "Ranking",
+            "width": 260,
+            "height": 59
+          },
+          {
+            "name": "Match History",
+            "width": 260,
+            "height": 59
+          }
+        ],
+        "headings": [
+          ""
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - heading \"Pirate Battle\" [level=1]:\n    - img \"Pirate Battle\"\n  - paragraph: Set sail. Take command.\n  - navigation \"Main menu\":\n    - button \"Play\"\n    - button \"Options\"\n    - paragraph: Navigate the islands. Survive the battle.\n    - group: How to play\n    - button \"Ranking\"\n    - button \"Match History\""
+    },
+    {
+      "viewport": {
+        "width": 393,
+        "height": 727
+      },
+      "screen": "options",
+      "contrast": [
+        {
+          "text": "Options",
+          "ratio": 8.341210522486483,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Game session time",
+          "ratio": 8.853292476496074,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "s",
+          "ratio": 9.152388312655354,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "60–180 seconds",
+          "ratio": 8.048146902901223,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Enter a whole number from 60 to 180 seconds.",
+          "ratio": 8.296914485509504,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Enemy spawn time",
+          "ratio": 9.015590037055816,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "s",
+          "ratio": 9.311865495354292,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "1–30 seconds",
+          "ratio": 8.28678160973265,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Check the highlighted settings before saving.",
+          "ratio": 9.556560838093281,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Save Changes",
+          "ratio": 5.7489581396685105,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Main Menu",
+          "ratio": 10.011086818448998,
+          "target": 3,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Decrease Game session time",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "name": "Increase Game session time",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "name": "Decrease Enemy spawn time",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "name": "Increase Enemy spawn time",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "name": "Save Changes",
+            "width": 313,
+            "height": 65
+          },
+          {
+            "name": "Main Menu",
+            "width": 313,
+            "height": 65
+          }
+        ],
+        "headings": [
+          "Options"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - heading \"Options\" [level=1]\n  - text: Game session time\n  - button \"Decrease Game session time\" [disabled]\n  - textbox \"Game session time\" [invalid]: \"59\"\n  - button \"Increase Game session time\"\n  - paragraph: 60–180 seconds\n  - alert: Enter a whole number from 60 to 180 seconds.\n  - text: Enemy spawn time\n  - button \"Decrease Enemy spawn time\"\n  - textbox \"Enemy spawn time\": \"3\"\n  - button \"Increase Enemy spawn time\"\n  - paragraph: 1–30 seconds\n  - status: Check the highlighted settings before saving.\n  - button \"Save Changes\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 393,
+        "height": 727
+      },
+      "screen": "ranking",
+      "contrast": [
+        {
+          "text": "Captain’s log",
+          "ratio": 8.320521637368117,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Ranking",
+          "ratio": 6.214304385448295,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match History",
+          "ratio": 10.16495155504145,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "120",
+          "ratio": 9.002009699235842,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "second battles ·",
+          "ratio": 8.470298401093178,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "3",
+          "ratio": 8.853292476496074,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "second spawn interval",
+          "ratio": 8.470298401093178,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Gameplay configuration",
+          "ratio": 8.600951889631341,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "ratio": 8.719798872579196,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "01",
+          "ratio": 6.136972991036709,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Captain 1",
+          "ratio": 6.088905555971105,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "You",
+          "ratio": 6.234069291128587,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "captain-0",
+          "ratio": 6.16431588643754,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "20",
+          "ratio": 6.170581421890769,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Jan 01, 2026, 12:00 AM",
+          "ratio": 6.136972991036709,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "UTC",
+          "ratio": 6.261871820514873,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "02",
+          "ratio": 12.437502060935044,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Captain 2",
+          "ratio": 12.437502060935044,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "captain-1",
+          "ratio": 12.47253018881174,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "20",
+          "ratio": 7.5412776981575975,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Jan 01, 2026, 12:01 AM",
+          "ratio": 12.456801500854471,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "UTC",
+          "ratio": 12.456801500854471,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Ranking",
+            "width": 150.234375,
+            "height": 52
+          },
+          {
+            "name": "Match History",
+            "width": 150.234375,
+            "height": 52
+          },
+          {
+            "name": "Refresh",
+            "width": 88.03125,
+            "height": 44
+          },
+          {
+            "name": "Previous page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Next page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Main Menu",
+            "width": 313,
+            "height": 65
+          }
+        ],
+        "headings": [
+          "Ranking"
+        ],
+        "tables": 1,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - paragraph: Captain’s log\n  - navigation \"Captain’s log\":\n    - button \"Ranking\"\n    - button \"Match History\"\n  - heading \"Ranking\" [level=1]\n  - paragraph: 120 second battles · 3 second spawn interval\n  - group: Gameplay configuration\n  - button \"Refresh\"\n  - table \"Ranking, ordered by the server for this gameplay configuration\":\n    - caption: Ranking, ordered by the server for this gameplay configuration\n    - rowgroup:\n      - row \"Rank Captain Points Played\":\n        - columnheader \"Rank\"\n        - columnheader \"Captain\"\n        - columnheader \"Points\"\n        - columnheader \"Played\"\n    - rowgroup:\n      - row \"Rank 01 Captain Captain 1 You captain-0 Points 20 Played Jan 01, 2026, 12:00 AM UTC\":\n        - cell \"Rank 01\"\n        - rowheader \"Captain Captain 1 You captain-0\"\n        - cell \"Points 20\"\n        - cell \"Played Jan 01, 2026, 12:00 AM UTC\":\n          - text: Played\n          - time: Jan 01, 2026, 12:00 AM UTC\n      - row \"Rank 02 Captain Captain 2 captain-1 Points 20 Played Jan 01, 2026, 12:01 AM UTC\":\n        - cell \"Rank 02\"\n        - rowheader \"Captain Captain 2 captain-1\"\n        - cell \"Points 20\"\n        - cell \"Played Jan 01, 2026, 12:01 AM UTC\":\n          - text: Played\n          - time: Jan 01, 2026, 12:01 AM UTC\n      - row \"Rank 03 Captain Captain 3 captain-2 Points 19 Played Jan 01, 2026, 12:02 AM UTC\":\n        - cell \"Rank 03\"\n        - rowheader \"Captain Captain 3 captain-2\"\n        - cell \"Points 19\"\n        - cell \"Played Jan 01, 2026, 12:02 AM UTC\":\n          - text: Played\n          - time: Jan 01, 2026, 12:02 AM UTC\n      - row \"Rank 04 Captain Captain 4 captain-3 Points 19 Played Jan 01, 2026, 12:03 AM UTC\":\n        - cell \"Rank 04\"\n        - rowheader \"Captain Captain 4 captain-3\"\n        - cell \"Points 19\"\n        - cell \"Played Jan 01, 2026, 12:03 AM UTC\":\n          - text: Played\n          - time: Jan 01, 2026, 12:03 AM UTC\n      - row \"Rank 05 Captain Captain 5 captain-4 Points 18 Played Jan 01, 2026, 12:04 AM UTC\":\n        - cell \"Rank 05\"\n        - rowheader \"Captain Captain 5 captain-4\"\n        - cell \"Points 18\"\n        - cell \"Played Jan 01, 2026, 12:04 AM UTC\":\n          - text: Played\n          - time: Jan 01, 2026, 12:04 AM UTC\n  - navigation \"Ranking pagination\":\n    - button \"Previous page\" [disabled]\n    - status: Page 1 of 5\n    - button \"Next page\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 393,
+        "height": 727
+      },
+      "screen": "match-history",
+      "contrast": [
+        {
+          "text": "Captain’s log",
+          "ratio": 8.320521637368117,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Ranking",
+          "ratio": 10.16495155504145,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match History",
+          "ratio": 4.730475705530833,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Captain 1 · Your recent battles",
+          "ratio": 8.600951889631341,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "ratio": 8.980564744003892,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Jan 01, 2026, 12:18 AM",
+          "ratio": 12.307745409001036,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "UTC",
+          "ratio": 12.437502060935044,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match details",
+          "ratio": 12.437502060935044,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Gameplay configuration",
+          "ratio": 12.456801500854471,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "11",
+          "ratio": 7.5412776981575975,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "120",
+          "ratio": 12.47253018881174,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "seconds",
+          "ratio": 12.437502060935044,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Time up",
+          "ratio": 12.456801500854471,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Jan 01, 2026, 12:12 AM",
+          "ratio": 12.47253018881174,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "UTC",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match details",
+          "ratio": 12.58612247781076,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Gameplay configuration",
+          "ratio": 12.620810342664013,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "14",
+          "ratio": 7.629778996413569,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "120",
+          "ratio": 12.768137229517128,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "seconds",
+          "ratio": 12.733827975987422,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Time up",
+          "ratio": 12.768137229517128,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Ranking",
+            "width": 150.234375,
+            "height": 52
+          },
+          {
+            "name": "Match History",
+            "width": 150.234375,
+            "height": 52
+          },
+          {
+            "name": "Refresh",
+            "width": 88.03125,
+            "height": 44
+          },
+          {
+            "name": "Previous page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Next page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Main Menu",
+            "width": 313,
+            "height": 65
+          }
+        ],
+        "headings": [
+          "Match History"
+        ],
+        "tables": 1,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - paragraph: Captain’s log\n  - navigation \"Captain’s log\":\n    - button \"Ranking\"\n    - button \"Match History\"\n  - heading \"Match History\" [level=1]\n  - paragraph: Captain 1 · Your recent battles\n  - button \"Refresh\"\n  - table \"Your completed battles, most recent first\":\n    - caption: Your completed battles, most recent first\n    - rowgroup:\n      - row \"Date Points Duration Result\":\n        - columnheader \"Date\"\n        - columnheader \"Points\"\n        - columnheader \"Duration\"\n        - columnheader \"Result\"\n    - rowgroup:\n      - row \"Date Jan 01, 2026, 12:18 AM UTC Points 11 Duration 120 seconds Result Time up\":\n        - rowheader \"Date Jan 01, 2026, 12:18 AM UTC\":\n          - text: Date\n          - time: Jan 01, 2026, 12:18 AM UTC\n          - group: Match details\n        - cell \"Points 11\"\n        - cell \"Duration 120 seconds\"\n        - cell \"Result Time up\"\n      - row \"Date Jan 01, 2026, 12:12 AM UTC Points 14 Duration 120 seconds Result Time up\":\n        - rowheader \"Date Jan 01, 2026, 12:12 AM UTC\":\n          - text: Date\n          - time: Jan 01, 2026, 12:12 AM UTC\n          - group: Match details\n        - cell \"Points 14\"\n        - cell \"Duration 120 seconds\"\n        - cell \"Result Time up\"\n  - navigation \"Match History pagination\":\n    - button \"Previous page\" [disabled]\n    - status: Page 1 of 2\n    - button \"Next page\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 393,
+        "height": 727
+      },
+      "screen": "pause",
+      "contrast": [
+        {
+          "text": "Paused",
+          "ratio": 8.341210522486483,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Ready when you are. Gameplay has stopped.",
+          "ratio": 8.874133199150712,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Ready when you are. Gameplay has stopped.",
+          "ratio": 9.023033522503276,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Resume",
+          "ratio": 6.282631417197948,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Main Menu",
+          "ratio": 9.986584357391296,
+          "target": 3,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Main Menu",
+            "width": 140,
+            "height": 48
+          },
+          {
+            "name": "Rotate left",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Move forward",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Rotate right",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Pause",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Left broadside",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Front attack",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Right broadside",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "End Match",
+            "width": 65.375,
+            "height": 44
+          },
+          {
+            "name": "Restart Match",
+            "width": 82.703125,
+            "height": 44
+          },
+          {
+            "name": "Resume",
+            "width": 273,
+            "height": 65
+          },
+          {
+            "name": "Main Menu",
+            "width": 222,
+            "height": 65
+          }
+        ],
+        "headings": [
+          "Game",
+          "Paused"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - region \"Game\":\n    - heading \"Game\" [level=1]\n    - button \"Main Menu\"\n    - term: Health\n    - definition: 100 / 100\n    - term: Score\n    - definition: \"0\"\n    - term: Time remaining\n    - definition: 02:00\n    - group \"Gameplay keyboard controls\":\n      - img \"Water arena\"\n    - group \"Touch gameplay controls\":\n      - button \"Rotate left\" [disabled]\n      - button \"Move forward\" [disabled]\n      - button \"Rotate right\" [disabled]\n      - button \"Pause\" [disabled]\n      - button \"Left broadside\" [disabled]\n      - button \"Front attack\" [disabled]\n      - button \"Right broadside\" [disabled]\n    - paragraph: Rotate your device to landscape for gameplay.\n    - paragraph: \"W/↑: forward · A/← and D/→: turn · Space: front fire · Q/E: left/right broadside · Esc: pause. Hold an attack to repeat after its cooldown. Keyboard controls require arena focus. Tab returns to page controls.\"\n    - status: Match paused.\n    - button \"End Match\"\n    - button \"Restart Match\"\n    - dialog \"Paused\":\n      - heading \"Paused\" [level=2]\n      - paragraph: Ready when you are. Gameplay has stopped.\n      - button \"Resume\"\n      - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 393,
+        "height": 727
+      },
+      "screen": "game",
+      "contrast": [
+        {
+          "text": "Game",
+          "ratio": 10.11410849377262,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Main Menu",
+          "ratio": 10.025992072602554,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Health",
+          "ratio": 10.338359818469206,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "100",
+          "ratio": 10.338359818469206,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "/",
+          "ratio": 10.501351350175316,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "100",
+          "ratio": 10.501351350175316,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Score",
+          "ratio": 10.323495506932085,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "0",
+          "ratio": 10.540433884447681,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Time remaining",
+          "ratio": 10.338359818469206,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Time remaining",
+          "ratio": 10.501351350175316,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "02:00",
+          "ratio": 10.476338487004103,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Rotate your device to landscape for gameplay.",
+          "ratio": 10.11410849377262,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "End Match",
+          "ratio": 10.11410849377262,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Restart Match",
+          "ratio": 10.11410849377262,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Main Menu",
+            "width": 140,
+            "height": 48
+          },
+          {
+            "name": "Rotate left",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Move forward",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Rotate right",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Pause",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Left broadside",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Front attack",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Right broadside",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "End Match",
+            "width": 65.375,
+            "height": 44
+          },
+          {
+            "name": "Restart Match",
+            "width": 82.703125,
+            "height": 44
+          }
+        ],
+        "headings": [
+          "Game"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - region \"Game\":\n    - heading \"Game\" [level=1]\n    - button \"Main Menu\"\n    - term: Health\n    - definition: 100 / 100\n    - term: Score\n    - definition: \"0\"\n    - term: Time remaining\n    - definition: 02:00\n    - group \"Gameplay keyboard controls\":\n      - img \"Water arena\"\n    - group \"Touch gameplay controls\":\n      - button \"Rotate left\"\n      - button \"Move forward\"\n      - button \"Rotate right\"\n      - button \"Pause\"\n      - button \"Left broadside\"\n      - button \"Front attack\"\n      - button \"Right broadside\"\n    - paragraph: Rotate your device to landscape for gameplay.\n    - paragraph: \"W/↑: forward · A/← and D/→: turn · Space: front fire · Q/E: left/right broadside · Esc: pause. Hold an attack to repeat after its cooldown. Keyboard controls require arena focus. Tab returns to page controls.\"\n    - status: Match running.\n    - button \"End Match\"\n    - button \"Restart Match\""
+    },
+    {
+      "viewport": {
+        "width": 393,
+        "height": 727
+      },
+      "screen": "result",
+      "contrast": [
+        {
+          "text": "Battle Complete",
+          "ratio": 8.374180315202697,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Battle Complete",
+          "ratio": 8.600951889631341,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "0",
+          "ratio": 5.320798883190686,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "points",
+          "ratio": 9.028998560555241,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Time played",
+          "ratio": 9.437245118522231,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "00:13",
+          "ratio": 9.444079777281088,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Reason",
+          "ratio": 9.311865495354292,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Ship destroyed",
+          "ratio": 9.27660207119586,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Result saved on this device.",
+          "ratio": 9.290574483838924,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Registration confirmed.",
+          "ratio": 9.57091707113624,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Play Again",
+          "ratio": 5.964512869872132,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Main Menu",
+          "ratio": 10.011086818448998,
+          "target": 3,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Play Again",
+            "width": 313,
+            "height": 65
+          },
+          {
+            "name": "Main Menu",
+            "width": 313,
+            "height": 65
+          }
+        ],
+        "headings": [
+          "Battle Complete"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - heading \"Battle Complete\" [level=1]\n  - paragraph: 0 points\n  - term: Time played\n  - definition: 00:13\n  - term: Reason\n  - definition: Ship destroyed\n  - paragraph: Result saved on this device.\n  - status: Registration confirmed.\n  - button \"Play Again\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 393,
+        "height": 727
+      },
+      "screen": "result-keyboard",
+      "checks": {
+        "playAgainFocusVisible": true,
+        "mainMenuTabOrder": true,
+        "enterReturnsToMenu": true
+      }
+    },
+    {
+      "viewport": {
+        "width": 740,
+        "height": 360
+      },
+      "screen": "menu",
+      "contrast": [
+        {
+          "text": "Set sail. Take command.",
+          "ratio": 8.880222835448379,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Play",
+          "ratio": 6.234361223895409,
+          "target": 3,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Play",
+            "width": 330,
+            "height": 76
+          },
+          {
+            "name": "Options",
+            "width": 330,
+            "height": 76
+          },
+          {
+            "name": "Ranking",
+            "width": 222,
+            "height": 61
+          },
+          {
+            "name": "Match History",
+            "width": 222,
+            "height": 61
+          }
+        ],
+        "headings": [
+          ""
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - heading \"Pirate Battle\" [level=1]:\n    - img \"Pirate Battle\"\n  - paragraph: Set sail. Take command.\n  - navigation \"Main menu\":\n    - button \"Play\"\n    - button \"Options\"\n    - paragraph: Navigate the islands. Survive the battle.\n    - group: How to play\n    - button \"Ranking\"\n    - button \"Match History\""
+    },
+    {
+      "viewport": {
+        "width": 740,
+        "height": 360
+      },
+      "screen": "options",
+      "contrast": [
+        {
+          "text": "Options",
+          "ratio": 8.374180315202697,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Game session time",
+          "ratio": 8.753917782912234,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "s",
+          "ratio": 9.036677415106679,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "60–180 seconds",
+          "ratio": 8.01026663045212,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Enter a whole number from 60 to 180 seconds.",
+          "ratio": 8.328866803225035,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Enemy spawn time",
+          "ratio": 9.138611084457814,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Decrease Game session time",
+            "width": 50,
+            "height": 50
+          },
+          {
+            "name": "Increase Game session time",
+            "width": 50,
+            "height": 50
+          },
+          {
+            "name": "Decrease Enemy spawn time",
+            "width": 50,
+            "height": 50
+          },
+          {
+            "name": "Increase Enemy spawn time",
+            "width": 50,
+            "height": 50
+          },
+          {
+            "name": "Save Changes",
+            "width": 330,
+            "height": 76
+          },
+          {
+            "name": "Main Menu",
+            "width": 330,
+            "height": 61
+          }
+        ],
+        "headings": [
+          "Options"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - heading \"Options\" [level=1]\n  - text: Game session time\n  - button \"Decrease Game session time\" [disabled]\n  - textbox \"Game session time\" [invalid]: \"59\"\n  - button \"Increase Game session time\"\n  - paragraph: 60–180 seconds\n  - alert: Enter a whole number from 60 to 180 seconds.\n  - text: Enemy spawn time\n  - button \"Decrease Enemy spawn time\"\n  - textbox \"Enemy spawn time\": \"3\"\n  - button \"Increase Enemy spawn time\"\n  - paragraph: 1–30 seconds\n  - status: Check the highlighted settings before saving.\n  - button \"Save Changes\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 740,
+        "height": 360
+      },
+      "screen": "ranking",
+      "contrast": [
+        {
+          "text": "Captain’s log",
+          "ratio": 8.21371272866223,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Ranking",
+          "ratio": 6.400588804466259,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match History",
+          "ratio": 10.16495155504145,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "120",
+          "ratio": 8.621586459030592,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "second battles ·",
+          "ratio": 8.608383770252203,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "3",
+          "ratio": 8.733143135094286,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "second spawn interval",
+          "ratio": 8.470298401093178,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Gameplay configuration",
+          "ratio": 8.767163394701864,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "ratio": 8.753917782912234,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "01",
+          "ratio": null,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Ranking",
+            "width": 260,
+            "height": 52
+          },
+          {
+            "name": "Match History",
+            "width": 260,
+            "height": 52
+          },
+          {
+            "name": "Refresh",
+            "width": 88.03125,
+            "height": 44
+          },
+          {
+            "name": "Previous page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Next page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Main Menu",
+            "width": 330,
+            "height": 76
+          }
+        ],
+        "headings": [
+          "Ranking"
+        ],
+        "tables": 1,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - paragraph: Captain’s log\n  - navigation \"Captain’s log\":\n    - button \"Ranking\"\n    - button \"Match History\"\n  - heading \"Ranking\" [level=1]\n  - paragraph: 120 second battles · 3 second spawn interval\n  - group: Gameplay configuration\n  - button \"Refresh\"\n  - table \"Ranking, ordered by the server for this gameplay configuration\":\n    - caption: Ranking, ordered by the server for this gameplay configuration\n    - rowgroup:\n      - row \"Rank Captain Points Played\":\n        - columnheader \"Rank\"\n        - columnheader \"Captain\"\n        - columnheader \"Points\"\n        - columnheader \"Played\"\n    - rowgroup:\n      - row \"Rank 01 Captain Captain 1 You captain-0 Points 20 Played Jan 01, 2026, 12:00 AM UTC\":\n        - cell \"Rank 01\"\n        - rowheader \"Captain Captain 1 You captain-0\"\n        - cell \"Points 20\"\n        - cell \"Played Jan 01, 2026, 12:00 AM UTC\":\n          - text: Played\n          - time: Jan 01, 2026, 12:00 AM UTC\n      - row \"Rank 02 Captain Captain 2 captain-1 Points 20 Played Jan 01, 2026, 12:01 AM UTC\":\n        - cell \"Rank 02\"\n        - rowheader \"Captain Captain 2 captain-1\"\n        - cell \"Points 20\"\n        - cell \"Played Jan 01, 2026, 12:01 AM UTC\":\n          - text: Played\n          - time: Jan 01, 2026, 12:01 AM UTC\n      - row \"Rank 03 Captain Captain 3 captain-2 Points 19 Played Jan 01, 2026, 12:02 AM UTC\":\n        - cell \"Rank 03\"\n        - rowheader \"Captain Captain 3 captain-2\"\n        - cell \"Points 19\"\n        - cell \"Played Jan 01, 2026, 12:02 AM UTC\":\n          - text: Played\n          - time: Jan 01, 2026, 12:02 AM UTC\n      - row \"Rank 04 Captain Captain 4 captain-3 Points 19 Played Jan 01, 2026, 12:03 AM UTC\":\n        - cell \"Rank 04\"\n        - rowheader \"Captain Captain 4 captain-3\"\n        - cell \"Points 19\"\n        - cell \"Played Jan 01, 2026, 12:03 AM UTC\":\n          - text: Played\n          - time: Jan 01, 2026, 12:03 AM UTC\n      - row \"Rank 05 Captain Captain 5 captain-4 Points 18 Played Jan 01, 2026, 12:04 AM UTC\":\n        - cell \"Rank 05\"\n        - rowheader \"Captain Captain 5 captain-4\"\n        - cell \"Points 18\"\n        - cell \"Played Jan 01, 2026, 12:04 AM UTC\":\n          - text: Played\n          - time: Jan 01, 2026, 12:04 AM UTC\n  - navigation \"Ranking pagination\":\n    - button \"Previous page\" [disabled]\n    - status: Page 1 of 5\n    - button \"Next page\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 740,
+        "height": 360
+      },
+      "screen": "match-history",
+      "contrast": [
+        {
+          "text": "Captain’s log",
+          "ratio": 8.320521637368117,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Ranking",
+          "ratio": 10.16495155504145,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match History",
+          "ratio": 6.214304385448295,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Captain 1 · Your recent battles",
+          "ratio": 8.566856910251406,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "ratio": 8.988258333839875,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Jan 01, 2026, 12:18 AM",
+          "ratio": 12.437502060935044,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "UTC",
+          "ratio": 12.421510669542894,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match details",
+          "ratio": 12.323445035008271,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Ranking",
+            "width": 260,
+            "height": 52
+          },
+          {
+            "name": "Match History",
+            "width": 260,
+            "height": 52
+          },
+          {
+            "name": "Refresh",
+            "width": 88.03125,
+            "height": 44
+          },
+          {
+            "name": "Previous page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Next page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Main Menu",
+            "width": 330,
+            "height": 76
+          }
+        ],
+        "headings": [
+          "Match History"
+        ],
+        "tables": 1,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - paragraph: Captain’s log\n  - navigation \"Captain’s log\":\n    - button \"Ranking\"\n    - button \"Match History\"\n  - heading \"Match History\" [level=1]\n  - paragraph: Captain 1 · Your recent battles\n  - button \"Refresh\"\n  - table \"Your completed battles, most recent first\":\n    - caption: Your completed battles, most recent first\n    - rowgroup:\n      - row \"Date Points Duration Result\":\n        - columnheader \"Date\"\n        - columnheader \"Points\"\n        - columnheader \"Duration\"\n        - columnheader \"Result\"\n    - rowgroup:\n      - row \"Date Jan 01, 2026, 12:18 AM UTC Points 11 Duration 120 seconds Result Time up\":\n        - rowheader \"Date Jan 01, 2026, 12:18 AM UTC\":\n          - text: Date\n          - time: Jan 01, 2026, 12:18 AM UTC\n          - group: Match details\n        - cell \"Points 11\"\n        - cell \"Duration 120 seconds\"\n        - cell \"Result Time up\"\n      - row \"Date Jan 01, 2026, 12:12 AM UTC Points 14 Duration 120 seconds Result Time up\":\n        - rowheader \"Date Jan 01, 2026, 12:12 AM UTC\":\n          - text: Date\n          - time: Jan 01, 2026, 12:12 AM UTC\n          - group: Match details\n        - cell \"Points 14\"\n        - cell \"Duration 120 seconds\"\n        - cell \"Result Time up\"\n  - navigation \"Match History pagination\":\n    - button \"Previous page\" [disabled]\n    - status: Page 1 of 2\n    - button \"Next page\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 740,
+        "height": 360
+      },
+      "screen": "pause",
+      "contrast": [
+        {
+          "text": "Paused",
+          "ratio": 8.449439988051552,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Ready when you are. Gameplay has stopped.",
+          "ratio": 8.866840756976448,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Resume",
+          "ratio": 5.657411133899562,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Main Menu",
+          "ratio": 10.025992072602554,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Main Menu",
+            "width": 140,
+            "height": 48
+          },
+          {
+            "name": "Rotate left",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Move forward",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Rotate right",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Pause",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Left broadside",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Front attack",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Right broadside",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "End Match",
+            "width": 65.375,
+            "height": 44
+          },
+          {
+            "name": "Restart Match",
+            "width": 82.703125,
+            "height": 44
+          },
+          {
+            "name": "Resume",
+            "width": 270,
+            "height": 62
+          },
+          {
+            "name": "Main Menu",
+            "width": 222,
+            "height": 62
+          }
+        ],
+        "headings": [
+          "Game",
+          "Paused"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - region \"Game\":\n    - heading \"Game\" [level=1]\n    - button \"Main Menu\"\n    - term: Health\n    - definition: 100 / 100\n    - term: Score\n    - definition: \"0\"\n    - term: Time remaining\n    - definition: 02:00\n    - group \"Gameplay keyboard controls\":\n      - img \"Water arena\"\n    - group \"Touch gameplay controls\":\n      - button \"Rotate left\" [disabled]\n      - button \"Move forward\" [disabled]\n      - button \"Rotate right\" [disabled]\n      - button \"Pause\" [disabled]\n      - button \"Left broadside\" [disabled]\n      - button \"Front attack\" [disabled]\n      - button \"Right broadside\" [disabled]\n    - paragraph: \"W/↑: forward · A/← and D/→: turn · Space: front fire · Q/E: left/right broadside · Esc: pause. Hold an attack to repeat after its cooldown. Keyboard controls require arena focus. Tab returns to page controls.\"\n    - status: Match paused.\n    - button \"End Match\"\n    - button \"Restart Match\"\n    - dialog \"Paused\":\n      - heading \"Paused\" [level=2]\n      - paragraph: Ready when you are. Gameplay has stopped.\n      - button \"Resume\"\n      - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 740,
+        "height": 360
+      },
+      "screen": "game",
+      "contrast": [
+        {
+          "text": "Main Menu",
+          "ratio": 10.025992072602554,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Health",
+          "ratio": 10.338359818469206,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "100",
+          "ratio": 10.338359818469206,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "/",
+          "ratio": 10.501351350175316,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "100",
+          "ratio": 10.501351350175316,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Score",
+          "ratio": 10.362717390415137,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "0",
+          "ratio": 10.515915149378474,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Time remaining",
+          "ratio": 10.338359818469206,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "02:00",
+          "ratio": 10.501351350175316,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "End Match",
+          "ratio": 10.11410849377262,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Restart Match",
+          "ratio": 10.11410849377262,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Main Menu",
+            "width": 140,
+            "height": 48
+          },
+          {
+            "name": "Rotate left",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Move forward",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Rotate right",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Pause",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Left broadside",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Front attack",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Right broadside",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "End Match",
+            "width": 65.375,
+            "height": 44
+          },
+          {
+            "name": "Restart Match",
+            "width": 82.703125,
+            "height": 44
+          }
+        ],
+        "headings": [
+          "Game"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - region \"Game\":\n    - heading \"Game\" [level=1]\n    - button \"Main Menu\"\n    - term: Health\n    - definition: 100 / 100\n    - term: Score\n    - definition: \"0\"\n    - term: Time remaining\n    - definition: 02:00\n    - group \"Gameplay keyboard controls\":\n      - img \"Water arena\"\n    - group \"Touch gameplay controls\":\n      - button \"Rotate left\"\n      - button \"Move forward\"\n      - button \"Rotate right\"\n      - button \"Pause\"\n      - button \"Left broadside\"\n      - button \"Front attack\"\n      - button \"Right broadside\"\n    - paragraph: \"W/↑: forward · A/← and D/→: turn · Space: front fire · Q/E: left/right broadside · Esc: pause. Hold an attack to repeat after its cooldown. Keyboard controls require arena focus. Tab returns to page controls.\"\n    - status: Match running.\n    - button \"End Match\"\n    - button \"Restart Match\""
+    },
+    {
+      "viewport": {
+        "width": 740,
+        "height": 360
+      },
+      "screen": "result",
+      "contrast": [
+        {
+          "text": "Battle Complete",
+          "ratio": 8.341210522486483,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "0",
+          "ratio": 5.232672546736589,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "points",
+          "ratio": 8.887745389268314,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Time played",
+          "ratio": 9.371941035266008,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "00:13",
+          "ratio": 9.268835726523175,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Reason",
+          "ratio": 9.159742589221063,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Ship destroyed",
+          "ratio": 9.311865495354292,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Play Again",
+            "width": 330,
+            "height": 76
+          },
+          {
+            "name": "Main Menu",
+            "width": 330,
+            "height": 61
+          }
+        ],
+        "headings": [
+          "Battle Complete"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - heading \"Battle Complete\" [level=1]\n  - paragraph: 0 points\n  - term: Time played\n  - definition: 00:13\n  - term: Reason\n  - definition: Ship destroyed\n  - paragraph: Result saved on this device.\n  - status: Registration confirmed.\n  - button \"Play Again\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 740,
+        "height": 360
+      },
+      "screen": "result-keyboard",
+      "checks": {
+        "playAgainFocusVisible": true,
+        "mainMenuTabOrder": true,
+        "enterReturnsToMenu": true
+      }
+    },
+    {
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "screen": "menu",
+      "contrast": [
+        {
+          "text": "Set sail. Take command.",
+          "ratio": 8.866840756976448,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Play",
+          "ratio": 6.3079750756770245,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Options",
+          "ratio": 6.840060018824069,
+          "target": 3,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Play",
+            "width": 330,
+            "height": 65
+          },
+          {
+            "name": "Options",
+            "width": 330,
+            "height": 65
+          },
+          {
+            "name": "Ranking",
+            "width": 260,
+            "height": 59
+          },
+          {
+            "name": "Match History",
+            "width": 260,
+            "height": 59
+          }
+        ],
+        "headings": [
+          ""
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - heading \"Pirate Battle\" [level=1]:\n    - img \"Pirate Battle\"\n  - paragraph: Set sail. Take command.\n  - navigation \"Main menu\":\n    - button \"Play\"\n    - button \"Options\"\n    - paragraph: Navigate the islands. Survive the battle.\n    - group: How to play\n    - button \"Ranking\"\n    - button \"Match History\""
+    },
+    {
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "screen": "options",
+      "contrast": [
+        {
+          "text": "Options",
+          "ratio": 8.361537361335017,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Game session time",
+          "ratio": 8.613934607514805,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "s",
+          "ratio": 8.901190689648683,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "60–180 seconds",
+          "ratio": 8.041507643033535,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Enter a whole number from 60 to 180 seconds.",
+          "ratio": 8.296914485509504,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Enemy spawn time",
+          "ratio": 9.036677415106679,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "s",
+          "ratio": 9.27660207119586,
+          "target": 3,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Decrease Game session time",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "name": "Increase Game session time",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "name": "Decrease Enemy spawn time",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "name": "Increase Enemy spawn time",
+            "width": 46,
+            "height": 46
+          },
+          {
+            "name": "Save Changes",
+            "width": 330,
+            "height": 65
+          },
+          {
+            "name": "Main Menu",
+            "width": 330,
+            "height": 65
+          }
+        ],
+        "headings": [
+          "Options"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - heading \"Options\" [level=1]\n  - text: Game session time\n  - button \"Decrease Game session time\" [disabled]\n  - textbox \"Game session time\" [invalid]: \"59\"\n  - button \"Increase Game session time\"\n  - paragraph: 60–180 seconds\n  - alert: Enter a whole number from 60 to 180 seconds.\n  - text: Enemy spawn time\n  - button \"Decrease Enemy spawn time\"\n  - textbox \"Enemy spawn time\": \"3\"\n  - button \"Increase Enemy spawn time\"\n  - paragraph: 1–30 seconds\n  - status: Check the highlighted settings before saving.\n  - button \"Save Changes\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "screen": "ranking",
+      "contrast": [
+        {
+          "text": "Captain’s log",
+          "ratio": 8.299473878980796,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Ranking",
+          "ratio": 6.214304385448295,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match History",
+          "ratio": 10.16495155504145,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "120",
+          "ratio": 8.621586459030592,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "second battles ·",
+          "ratio": 8.470298401093178,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "3",
+          "ratio": 8.733143135094286,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "second spawn interval",
+          "ratio": 8.470298401093178,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Gameplay configuration",
+          "ratio": 8.733143135094286,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "ratio": 8.719798872579196,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Ranking",
+            "width": 234.234375,
+            "height": 52
+          },
+          {
+            "name": "Match History",
+            "width": 234.234375,
+            "height": 52
+          },
+          {
+            "name": "Refresh",
+            "width": 88.03125,
+            "height": 44
+          },
+          {
+            "name": "Previous page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Next page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Main Menu",
+            "width": 330,
+            "height": 65
+          }
+        ],
+        "headings": [
+          "Ranking"
+        ],
+        "tables": 1,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - paragraph: Captain’s log\n  - navigation \"Captain’s log\":\n    - button \"Ranking\"\n    - button \"Match History\"\n  - heading \"Ranking\" [level=1]\n  - paragraph: 120 second battles · 3 second spawn interval\n  - group: Gameplay configuration\n  - button \"Refresh\"\n  - table \"Ranking, ordered by the server for this gameplay configuration\":\n    - caption: Ranking, ordered by the server for this gameplay configuration\n    - rowgroup:\n      - row \"Rank Captain Points Played\":\n        - columnheader \"Rank\"\n        - columnheader \"Captain\"\n        - columnheader \"Points\"\n        - columnheader \"Played\"\n    - rowgroup:\n      - row \"Rank 01 Captain Captain 1 You captain-0 Points 20 Played Jan 01, 2026, 12:00 AM UTC\":\n        - cell \"Rank 01\"\n        - rowheader \"Captain Captain 1 You captain-0\"\n        - cell \"Points 20\"\n        - cell \"Played Jan 01, 2026, 12:00 AM UTC\":\n          - text: Played\n          - time: Jan 01, 2026, 12:00 AM UTC\n      - row \"Rank 02 Captain Captain 2 captain-1 Points 20 Played Jan 01, 2026, 12:01 AM UTC\":\n        - cell \"Rank 02\"\n        - rowheader \"Captain Captain 2 captain-1\"\n        - cell \"Points 20\"\n        - cell \"Played Jan 01, 2026, 12:01 AM UTC\":\n          - text: Played\n          - time: Jan 01, 2026, 12:01 AM UTC\n      - row \"Rank 03 Captain Captain 3 captain-2 Points 19 Played Jan 01, 2026, 12:02 AM UTC\":\n        - cell \"Rank 03\"\n        - rowheader \"Captain Captain 3 captain-2\"\n        - cell \"Points 19\"\n        - cell \"Played Jan 01, 2026, 12:02 AM UTC\":\n          - text: Played\n          - time: Jan 01, 2026, 12:02 AM UTC\n      - row \"Rank 04 Captain Captain 4 captain-3 Points 19 Played Jan 01, 2026, 12:03 AM UTC\":\n        - cell \"Rank 04\"\n        - rowheader \"Captain Captain 4 captain-3\"\n        - cell \"Points 19\"\n        - cell \"Played Jan 01, 2026, 12:03 AM UTC\":\n          - text: Played\n          - time: Jan 01, 2026, 12:03 AM UTC\n      - row \"Rank 05 Captain Captain 5 captain-4 Points 18 Played Jan 01, 2026, 12:04 AM UTC\":\n        - cell \"Rank 05\"\n        - rowheader \"Captain Captain 5 captain-4\"\n        - cell \"Points 18\"\n        - cell \"Played Jan 01, 2026, 12:04 AM UTC\":\n          - text: Played\n          - time: Jan 01, 2026, 12:04 AM UTC\n  - navigation \"Ranking pagination\":\n    - button \"Previous page\" [disabled]\n    - status: Page 1 of 5\n    - button \"Next page\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "screen": "match-history",
+      "contrast": [
+        {
+          "text": "Captain’s log",
+          "ratio": 8.320521637368117,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Ranking",
+          "ratio": 10.16495155504145,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Match History",
+          "ratio": 6.124491527729965,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Captain 1 · Your recent battles",
+          "ratio": 8.600951889631341,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Refresh",
+          "ratio": 8.980564744003892,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Jan 01, 2026, 12:18 AM",
+          "ratio": 12.307745409001036,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "UTC",
+          "ratio": 12.437502060935044,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Ranking",
+            "width": 234.234375,
+            "height": 52
+          },
+          {
+            "name": "Match History",
+            "width": 234.234375,
+            "height": 52
+          },
+          {
+            "name": "Refresh",
+            "width": 88.03125,
+            "height": 44
+          },
+          {
+            "name": "Previous page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Next page",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Main Menu",
+            "width": 330,
+            "height": 65
+          }
+        ],
+        "headings": [
+          "Match History"
+        ],
+        "tables": 1,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - paragraph: Captain’s log\n  - navigation \"Captain’s log\":\n    - button \"Ranking\"\n    - button \"Match History\"\n  - heading \"Match History\" [level=1]\n  - paragraph: Captain 1 · Your recent battles\n  - button \"Refresh\"\n  - table \"Your completed battles, most recent first\":\n    - caption: Your completed battles, most recent first\n    - rowgroup:\n      - row \"Date Points Duration Result\":\n        - columnheader \"Date\"\n        - columnheader \"Points\"\n        - columnheader \"Duration\"\n        - columnheader \"Result\"\n    - rowgroup:\n      - row \"Date Jan 01, 2026, 12:18 AM UTC Points 11 Duration 120 seconds Result Time up\":\n        - rowheader \"Date Jan 01, 2026, 12:18 AM UTC\":\n          - text: Date\n          - time: Jan 01, 2026, 12:18 AM UTC\n          - group: Match details\n        - cell \"Points 11\"\n        - cell \"Duration 120 seconds\"\n        - cell \"Result Time up\"\n      - row \"Date Jan 01, 2026, 12:12 AM UTC Points 14 Duration 120 seconds Result Time up\":\n        - rowheader \"Date Jan 01, 2026, 12:12 AM UTC\":\n          - text: Date\n          - time: Jan 01, 2026, 12:12 AM UTC\n          - group: Match details\n        - cell \"Points 14\"\n        - cell \"Duration 120 seconds\"\n        - cell \"Result Time up\"\n  - navigation \"Match History pagination\":\n    - button \"Previous page\" [disabled]\n    - status: Page 1 of 2\n    - button \"Next page\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "screen": "pause",
+      "contrast": [
+        {
+          "text": "Paused",
+          "ratio": 8.449439988051552,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "Ready when you are. Gameplay has stopped.",
+          "ratio": 8.866840756976448,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Resume",
+          "ratio": 5.616621900482368,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Main Menu",
+          "ratio": 10.025992072602554,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Main Menu",
+            "width": 140,
+            "height": 48
+          },
+          {
+            "name": "Rotate left",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Move forward",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Rotate right",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Pause",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Left broadside",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Front attack",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Right broadside",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "End Match",
+            "width": 65.375,
+            "height": 44
+          },
+          {
+            "name": "Restart Match",
+            "width": 82.703125,
+            "height": 44
+          },
+          {
+            "name": "Resume",
+            "width": 225,
+            "height": 62
+          },
+          {
+            "name": "Main Menu",
+            "width": 222,
+            "height": 62
+          }
+        ],
+        "headings": [
+          "Game",
+          "Paused"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - region \"Game\":\n    - heading \"Game\" [level=1]\n    - button \"Main Menu\"\n    - term: Health\n    - definition: 100 / 100\n    - term: Score\n    - definition: \"0\"\n    - term: Time remaining\n    - definition: 02:00\n    - group \"Gameplay keyboard controls\":\n      - img \"Water arena\"\n    - group \"Touch gameplay controls\":\n      - button \"Rotate left\" [disabled]\n      - button \"Move forward\" [disabled]\n      - button \"Rotate right\" [disabled]\n      - button \"Pause\" [disabled]\n      - button \"Left broadside\" [disabled]\n      - button \"Front attack\" [disabled]\n      - button \"Right broadside\" [disabled]\n    - paragraph: \"W/↑: forward · A/← and D/→: turn · Space: front fire · Q/E: left/right broadside · Esc: pause. Hold an attack to repeat after its cooldown. Keyboard controls require arena focus. Tab returns to page controls.\"\n    - status: Match paused.\n    - button \"End Match\"\n    - button \"Restart Match\"\n    - dialog \"Paused\":\n      - heading \"Paused\" [level=2]\n      - paragraph: Ready when you are. Gameplay has stopped.\n      - button \"Resume\"\n      - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "screen": "game",
+      "contrast": [
+        {
+          "text": "Main Menu",
+          "ratio": 10.025992072602554,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Health",
+          "ratio": 10.353001525353065,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "100",
+          "ratio": 10.338359818469206,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "/",
+          "ratio": 10.486558284538154,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "100",
+          "ratio": 10.476338487004103,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Score",
+          "ratio": 10.353001525353065,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "0",
+          "ratio": 10.338359818469206,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Time remaining",
+          "ratio": 10.338359818469206,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "02:00",
+          "ratio": 10.476338487004103,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "End Match",
+          "ratio": 10.11410849377262,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Restart Match",
+          "ratio": 10.11410849377262,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Main Menu",
+            "width": 140,
+            "height": 48
+          },
+          {
+            "name": "Rotate left",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Move forward",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Rotate right",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Pause",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Left broadside",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Front attack",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "Right broadside",
+            "width": 48,
+            "height": 48
+          },
+          {
+            "name": "End Match",
+            "width": 65.375,
+            "height": 44
+          },
+          {
+            "name": "Restart Match",
+            "width": 82.703125,
+            "height": 44
+          }
+        ],
+        "headings": [
+          "Game"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - region \"Game\":\n    - heading \"Game\" [level=1]\n    - button \"Main Menu\"\n    - term: Health\n    - definition: 100 / 100\n    - term: Score\n    - definition: \"0\"\n    - term: Time remaining\n    - definition: 02:00\n    - group \"Gameplay keyboard controls\":\n      - img \"Water arena\"\n    - group \"Touch gameplay controls\":\n      - button \"Rotate left\"\n      - button \"Move forward\"\n      - button \"Rotate right\"\n      - button \"Pause\"\n      - button \"Left broadside\"\n      - button \"Front attack\"\n      - button \"Right broadside\"\n    - paragraph: \"W/↑: forward · A/← and D/→: turn · Space: front fire · Q/E: left/right broadside · Esc: pause. Hold an attack to repeat after its cooldown. Keyboard controls require arena focus. Tab returns to page controls.\"\n    - status: Match running.\n    - button \"End Match\"\n    - button \"Restart Match\""
+    },
+    {
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "screen": "result",
+      "contrast": [
+        {
+          "text": "Battle Complete",
+          "ratio": 8.107812928065972,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "0",
+          "ratio": 5.3127806893336595,
+          "target": 3,
+          "disabled": false
+        },
+        {
+          "text": "points",
+          "ratio": 8.988258333839875,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Time played",
+          "ratio": 9.394166700551954,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "00:13",
+          "ratio": 9.17358365439129,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Reason",
+          "ratio": 9.17358365439129,
+          "target": 4.5,
+          "disabled": false
+        },
+        {
+          "text": "Ship destroyed",
+          "ratio": 9.311865495354292,
+          "target": 4.5,
+          "disabled": false
+        }
+      ],
+      "semantics": {
+        "overflow": false,
+        "buttons": [
+          {
+            "name": "Play Again",
+            "width": 330,
+            "height": 65
+          },
+          {
+            "name": "Main Menu",
+            "width": 330,
+            "height": 65
+          }
+        ],
+        "headings": [
+          "Battle Complete"
+        ],
+        "tables": 0,
+        "language": "en",
+        "coarsePointer": true,
+        "touchPoints": 1
+      },
+      "accessibleTree": "- main:\n  - heading \"Battle Complete\" [level=1]\n  - paragraph: 0 points\n  - term: Time played\n  - definition: 00:13\n  - term: Reason\n  - definition: Ship destroyed\n  - paragraph: Result saved on this device.\n  - status: Registration confirmed.\n  - button \"Play Again\"\n  - button \"Main Menu\""
+    },
+    {
+      "viewport": {
+        "width": 568,
+        "height": 320
+      },
+      "screen": "result-keyboard",
+      "checks": {
+        "playAgainFocusVisible": true,
+        "mainMenuTabOrder": true,
+        "enterReturnsToMenu": true
+      }
+    }
+  ],
+  "errors": []
+}

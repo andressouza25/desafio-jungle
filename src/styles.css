@@ -378,9 +378,9 @@ main:focus { outline: none; }
 @media (pointer: coarse) {
   .game-screen { padding: max(4px, env(safe-area-inset-top)) max(8px, env(safe-area-inset-right)) max(4px, env(safe-area-inset-bottom)) max(8px, env(safe-area-inset-left)); }
   .game-screen__header h1 { font-size: 18px; }
-  .game-screen__header .art-button { min-height: 44px; width: 140px; }
+  .game-screen__header .art-button { min-height: 44px; width: 140px; padding-inline: 8px; border-width: 16px; border-image-width: 16px; }
   .match-hud { margin: 4px 0; gap: 4px; flex-wrap: nowrap; }
-  .match-hud > div { padding: 4px 8px; gap: 4px; }
+  .match-hud > div { padding: 4px 16px; gap: 4px; }
   .match-hud dt { font-size: 11px; }
   .match-hud dd { font-size: 15px; white-space: nowrap; }
   .touch-controls { display: flex; align-items: center; justify-content: space-between; gap: 8px; flex: 0 0 auto; padding: 4px 0; }
@@ -417,6 +417,11 @@ main:focus { outline: none; }
   .pause-dialog__actions { grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; align-items: center; }
   .pause-dialog .art-button { min-height: 52px; padding-inline: 8px; font-size: 18px; }
 }
+@media (pointer: coarse) and (orientation: landscape) and (max-width: 650px) {
+  .match-hud { grid-column: 1 / -1; }
+  .game-screen__header { grid-row: 4; }
+  .game-screen__footer { grid-column: 1; }
+}
 
 /* Captain's log keeps the supplied wide wood panel and navy data rows. */
 .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; border: 0; }
@@ -437,6 +442,7 @@ main:focus { outline: none; }
 .log-table tbody th { font-weight: 700; }
 .log-table tbody small { display: block; margin-top: 4px; font-size: 12px; font-weight: 400; }
 .log-score { color: var(--gold); font-weight: 800; }
+.log-table tbody tr[data-local='true'] .log-score { color: var(--parchment); }
 .log-you { font-size: 12px; padding: 2px 4px; border: 1px solid var(--gold); margin-left: 4px; }
 .log-table time { font-size: 14px; }
 .log-details { text-align: left; font-size: 13px; font-weight: 400; }

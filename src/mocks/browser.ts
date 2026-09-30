@@ -18,7 +18,7 @@ export const mockNetwork = {
 };
 declare global { interface Window { pirateBattleNetwork: typeof mockNetwork } }
 export async function startMockApi() {
-  await worker.start({ serviceWorker: { url: `${import.meta.env.BASE_URL}mockServiceWorker.js` }, onUnhandledFrame: 'bypass', quiet: true });
+  await worker.start({ serviceWorker: { url: `${import.meta.env.BASE_URL}apiServiceWorker.js` }, onUnhandledFrame: 'bypass', quiet: true });
   window.pirateBattleNetwork = mockNetwork;
 }
 
