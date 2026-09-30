@@ -1,3 +1,6 @@
+import { VisualFeedback } from '../feedback/VisualFeedback';
+import { loadEffectTextures } from '../feedback/effectAssets';
+import type { FeedbackEvent } from '../core/FeedbackEvent';
 import type { GameConfig } from '../config/GameConfig';
 import { HealthIndicator, loadHealthTextures } from './HealthIndicator';
 import type { HealthTextures } from './HealthIndicator';
@@ -15,6 +18,7 @@ export type ArenaLoadState =
   | { kind: 'error'; message: string };
 
 export class ArenaRenderer {
+  private feedback: VisualFeedback | null = null;
   private readonly abort = new AbortController();
   private application: Application | null = null;
   private world: Container | null = null;
@@ -50,6 +54,8 @@ export class ArenaRenderer {
 
       this.healthTextures = await loadHealthTextures();
       if (this.destroyed) return;
+      const effectTextures = await loadEffectTextures();
+      if (this.destroyed) return;
       phase = 'renderer';
       this.onState({ kind: 'loading', phase, progress: 1 });
       application = new Application();
@@ -78,6 +84,7 @@ export class ArenaRenderer {
       this.enemyTextures = { chaser: textures.chaser, shooter: textures.shooter };
       if (this.onElapsed) application.ticker.add(this.onTick, this, UPDATE_PRIORITY.HIGH);
       this.world = new Container();
+      this.feedback = new VisualFeedback(effectTextures);
       const water = new TilingSprite({ texture: textures.water, ...LOGICAL_ARENA });
       water.tileScale.set(2);
       water.eventMode = 'none';
@@ -220,6 +227,13 @@ export class ArenaRenderer {
     if (!this.application.ticker.started) this.application.render();
   }
 
+  reactFeedback(event: FeedbackEvent) { this.feedback?.react(event); }
+  clearFeedback() { this.feedback?.clear(); }
+  syncFeedback(time: number, ships: readonly { id: number; x: number; y: number; ratio: number }[]) {
+    this.feedback?.sync(time, ships);
+    if (this.world && this.feedback) this.world.addChild(this.feedback);
+  }
+
   private watchDensity() {
     this.densityQuery?.removeEventListener('change', this.onDensityChange);
     this.densityQuery = window.matchMedia(`(resolution: ${window.devicePixelRatio || 1}dppx)`);
@@ -260,6 +274,8 @@ export class ArenaRenderer {
     for (const indicator of this.health.values()) indicator.destroy();
     this.health.clear();
     this.healthTextures = null;
+    this.feedback?.destroy();
+    this.feedback = null;
     this.healthLayer.destroy({ children: true });
     this.application?.destroy({ removeView: true }, { children: true, texture: false, textureSource: false });
     this.projectiles.clear();

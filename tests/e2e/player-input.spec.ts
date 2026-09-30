@@ -74,7 +74,7 @@ async function player(page: Page) {
     const ship = world?.children.find((child) => child.label === 'player');
     if (!world || !ship) throw new Error('Expected the rendered player.');
     return { x: ship.x, y: ship.y, rotation: ((ship.rotation - Math.PI) % (Math.PI * 2) + Math.PI * 2) % (Math.PI * 2),
-      visible: ship.visible, entities: world.children.filter((child) => child.label !== 'health-layer' && !child.label.startsWith('projectile:') && !child.label.startsWith('enemy:')).length };
+      visible: ship.visible, entities: world.children.filter((child) => child.label !== 'health-layer' && child.label !== 'feedback' && !child.label.startsWith('projectile:') && !child.label.startsWith('enemy:')).length };
   });
 }
 
@@ -187,7 +187,7 @@ test('keyboard context preserves page controls and listeners are removed through
   for (let cycle = 0; cycle < 5; cycle += 1) {
     expect(await keyboardListeners(page)).toBe(0);
     await enter(page);
-    expect(await keyboardListeners(page)).toBe(3);
+    expect(await keyboardListeners(page)).toBe(5);
     expect(await page.getByTestId('arena-viewport').evaluate((host) => {
       return ['keydown', 'keyup'].map((type) => {
         const event = new KeyboardEvent(type, { code: 'KeyQ', ctrlKey: true, bubbles: true, cancelable: true });
@@ -314,6 +314,7 @@ test('resizing and visual-only island transforms cannot change world collision r
     if (!island) throw new Error('Missing island.');
     island.position.set(9000, 9000); island.scale.set(0.01);
   });
+  await page.getByRole('dialog').getByRole('button', { name: 'Resume' }).click();
   await page.getByRole('button', { name: 'Restart Match' }).click();
   await turnTo(page, Math.PI * 1.5); await forward(page, 2000);
   expect((await player(page)).x).toBeCloseTo(514, 5);

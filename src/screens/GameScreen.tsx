@@ -1,3 +1,4 @@
+import { PauseDialog } from './PauseDialog';
 import { useEffect, useRef, useState } from 'react';
 import type { GameSession } from '../game/GameSession';
 import { GameInstance } from '../game/GameInstance';
@@ -88,12 +89,16 @@ export function GameScreen({ onLeave, onViewResult, autoStart = false }: GameScr
         </p>
         {lifecycle === 'ready' && <button type="button" onClick={() => sessionRef.current?.start()}>Start Match</button>}
         {lifecycle === 'running' && <button type="button" onClick={() => sessionRef.current?.pause()}>Pause</button>}
-        {lifecycle === 'paused' && <button type="button" onClick={() => sessionRef.current?.resume()}>Resume</button>}
+
         {(lifecycle === 'running' || lifecycle === 'paused') && <button type="button" onClick={() => sessionRef.current?.end()}>End Match</button>}
         {(lifecycle === 'running' || lifecycle === 'paused' || lifecycle === 'ended') && (
           <button type="button" onClick={() => sessionRef.current?.restart()}>Restart Match</button>
         )}
       </footer>
+      {lifecycle === 'paused' && <PauseDialog onResume={() => {
+        sessionRef.current?.resume();
+        return sessionRef.current?.getSnapshot().state === 'running';
+      }} onLeave={leaveGame} />}
     </section>
   );
 }

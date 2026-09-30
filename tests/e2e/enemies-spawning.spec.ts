@@ -4,7 +4,7 @@ import type { GameController } from '../../src/game/core/GameController';
 
 declare global {
   interface Window {
-    __enemyProbe: { app: Application | null; commits: number; controller: GameController | null; observed: Container[] };
+    __enemyProbe: { app: Application | null; commits: number; controller: GameController | null; observed: Container[]; feedback?: Set<string> };
   }
 }
 test('real combat, seeded enemies, pause and cleanup do not cause per-step React commits', async ({ page }, testInfo) => {
@@ -13,9 +13,18 @@ test('real combat, seeded enemies, pause and cleanup do not cause per-step React
   page.on('console', message => { if (message.type() === 'error') errors.push(message.text()); });
   page.on('pageerror', error => errors.push(error.message));
   await page.addInitScript(() => {
-    const probe: Window['__enemyProbe'] = { app: null, commits: 0, controller: null, observed: [] };
+    const probe: Window['__enemyProbe'] = { app: null, commits: 0, controller: null, observed: [], feedback: new Set() };
     window.__enemyProbe = probe;
-    Reflect.set(window, '__PIXI_APP_INIT__', (app: Application) => { probe.app = app; });
+    Reflect.set(window, '__PIXI_APP_INIT__', (app: Application) => {
+      probe.app = app;
+      app.ticker.add(() => {
+        const layer = app.stage.children[0]?.children.find(child => child.label === 'feedback');
+        for (const effect of layer?.children ?? []) {
+          probe.feedback?.add(effect.label);
+          if (!probe.observed.includes(effect)) probe.observed.push(effect);
+        }
+      });
+    });
     // Read the existing session through the standard React devtools hook; never mutate it.
     function inspect(value: unknown, depth = 0): void {
       if (!value || typeof value !== 'object' || depth > 50) return;
@@ -112,6 +121,9 @@ test('real combat, seeded enemies, pause and cleanup do not cause per-step React
   }
   await page.keyboard.up('Space');
   expect({ damaged, destroyed, enemyShot, playerDamaged }, JSON.stringify({ first, final: await read() })).toEqual({ damaged: true, destroyed: true, enemyShot: true, playerDamaged: true });
+  const feedback = await page.evaluate(() => [...(window.__enemyProbe.feedback ?? [])]);
+  for (const kind of ['fire', 'impact', 'damage', 'destruction']) expect(feedback).toContain('feedback:' + kind);
+  expect(feedback.some(label => label.startsWith('deterioration:'))).toBe(true);
   expect(kinds).toEqual(new Set(['chaser', 'shooter'])); expect((await read()).commits - commits).toBeGreaterThan(0); expect((await read()).commits - commits).toBeLessThan(40);
   await page.screenshot({ path: testInfo.outputPath('enemy-combat.png'), fullPage: true });
   await page.getByRole('button', { name: 'Pause', exact: true }).click();

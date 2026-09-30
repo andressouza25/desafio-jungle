@@ -352,3 +352,19 @@ main:focus { outline: none; }
   .match-hud dd { font-size: 15px; white-space: nowrap; }
   .menu-panel--result { padding: 24px 8px; }
 }
+
+.pause-dialog {
+  width: min(620px, calc(100vw - 32px));
+  max-height: calc(100dvh - 32px);
+  overflow: auto;
+  border: 28px solid transparent;
+  border-image: url('../assets/png/default/ui/menu/panel_menu.png') 36 fill / 28px / 0 stretch;
+  padding: 32px 16px;
+  color: var(--parchment);
+  background: transparent;
+  text-align: center;
+}
+.pause-dialog::backdrop { background: rgba(14, 39, 53, .55); }
+.pause-dialog h2 { margin: 0 0 24px; font-size: 32px; }
+.pause-dialog__actions { display: grid; justify-items: center; gap: 16px; margin-top: 24px; }
+.pause-dialog .art-button { max-width: 100%; }

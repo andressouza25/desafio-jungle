@@ -1,3 +1,4 @@
+import type { FeedbackEvent } from './FeedbackEvent';
 import type { EnemyState } from '../entities/Enemy';
 import { updateEnemies } from '../systems/updateEnemies';
 import { spawnEnemies } from '../systems/spawnEnemies';
@@ -26,6 +27,15 @@ interface ControllerOptions {
 }
 
 export class GameController implements GameSession {
+  private readonly feedbackListeners = new Set<(event: FeedbackEvent) => void>();
+  subscribeFeedback(listener: (event: FeedbackEvent) => void) {
+    if (!this.destroyed) this.feedbackListeners.add(listener);
+    return () => { this.feedbackListeners.delete(listener); };
+  }
+  private feedback(kind: FeedbackEvent['kind'], point: { x: number; y: number }) {
+    const event = Object.freeze({ kind, x: point.x, y: point.y, time: this.clock.elapsedSeconds });
+    for (const listener of this.feedbackListeners) listener(event);
+  }
   readonly input = new InputState();
   private player: PlayerState | null = null;
   private projectiles: ProjectileState[] = [];
@@ -128,18 +138,35 @@ export class GameController implements GameSession {
     this.clock.advance(elapsedMs, (deltaSeconds) => {
       if (this.state !== 'running') return false;
       if (this.player && this.config) {
+        const previousHealth = this.player.health;
+        const previousEnemyHealth = new Map(this.enemies.map((enemy) => [enemy.id, enemy.health]));
+        const previousProjectiles = [...this.projectiles];
         movePlayer(this.player, this.input, this.config, deltaSeconds);
         this.projectiles = updateProjectiles(this.projectiles, deltaSeconds, ARENA_LAYOUT, this.enemies, this.player);
         const enemyShots = updateEnemies(this.enemies, this.player, this.config, deltaSeconds, this.clock.elapsedSeconds, this.weapons, ARENA_LAYOUT);
         this.score += this.enemies.filter((enemy) => enemy.destroyed && enemy.destructionSource === 'player-attack').length;
+        for (const projectile of previousProjectiles) {
+          if (projectile.resolution === 'target' || projectile.resolution === 'island') this.feedback('impact', projectile);
+        }
+        for (const enemy of this.enemies) {
+          if (enemy.destroyed) this.feedback('destruction', enemy);
+          else if (enemy.health < (previousEnemyHealth.get(enemy.id) ?? enemy.health)) this.feedback('damage', enemy);
+        }
+        if (this.player.health < previousHealth) this.feedback(this.player.health === 0 ? 'destruction' : 'damage', this.player);
+
         this.enemies = this.enemies.filter((enemy) => !enemy.destroyed);
         // Death wins when both conditions resolve in the same fixed step.
         if (this.player.health === 0) { this.end('player-death'); return false; }
         if (this.clock.elapsedSeconds + 1e-9 >= this.config.session.durationSeconds) { this.end('timeout'); return false; }
         if (this.randomSource && this.player.health > 0) this.enemies.push(...spawnEnemies(this.spawn, this.clock.elapsedSeconds, this.player, this.config, this.randomSource, ARENA_LAYOUT));
         this.projectiles.push(...enemyShots);
+        for (const shot of enemyShots) this.feedback('fire', shot);
         // Fire at this step's end from the resolved player transform. New shots move next step.
-        if (this.player.health > 0) this.projectiles.push(...fireWeapons(this.player, this.input, this.config, this.weapons, this.clock.elapsedSeconds));
+        if (this.player.health > 0) {
+          const shots = fireWeapons(this.player, this.input, this.config, this.weapons, this.clock.elapsedSeconds);
+          this.projectiles.push(...shots);
+          for (const shot of shots) this.feedback('fire', shot);
+        }
       }
     });
     const after = this.getSnapshot();
@@ -198,5 +225,6 @@ export class GameController implements GameSession {
     this.clearEnemies();
     this.publish();
     this.listeners.clear();
+    this.feedbackListeners.clear();
   }
 }
