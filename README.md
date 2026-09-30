@@ -409,3 +409,26 @@ On touch devices, hold the forward/turn buttons and any cannon buttons together.
 The gameplay frame respects browser safe-area insets (`viewport-fit=cover`). Browser gestures are suppressed only on action buttons; normal page interaction remains available elsewhere. The renderer fits the complete logical arena, with letterboxing when necessary, and follows viewport/DPR changes. Touch buttons select actions rather than aim at world positions, so they never convert raw device coordinates into gameplay coordinates.
 
 Run `npm test -- --project=mobile-chromium tests/e2e/touch-responsive.spec.ts` for mobile pointer ownership, real Chromium multi-touch, cancellation, lifecycle, viewport, orientation and DPR checks.
+
+## Mock REST API (TASK-13)
+
+MSW starts before React in development and production. No environment variables or private service are required. The worker script in `public/mockServiceWorker.js` is copied unchanged from the installed MSW package; update it when upgrading MSW.
+
+The API provides `GET /api/ranking` (complete configuration JSON, one-based `page`, `pageSize`), `GET /api/history` (`playerId`, `page`, `pageSize`) and `POST /api/matches` (completed match record). Page sizes are 1–100; the default is 10. Responses include items, total, totalPages, page and pageSize. Beyond the last page returns an empty items array. Empty results have zero totalPages. Ranking compares the entire GameConfig, orders score descending, then date ascending, then match ID ascending; positions are global across pages. History orders date descending, then match ID ascending. Fixtures contain 24 matches across six captains; use `captain-0` for a multi-page history with pageSize 2.
+
+Use the browser console after the menu appears:
+
+```js
+window.pirateBattleNetwork.scenarios // All NETWORK-001–014 descriptions
+window.pirateBattleNetwork.select('NETWORK-005', [100, 600, 250])
+window.pirateBattleNetwork.recover() // Success again; retain confirmed records
+window.pirateBattleNetwork.reset() // Reset handlers, scenario sequence, records and query cache
+```
+
+`select` accepts an optional repeating latency sequence in milliseconds. Default slow latency is 1000ms; variable latency repeats 100/600/250ms; out-of-order latency alternates 800/100ms (issue overlapping requests). Other requests have zero added latency. Axios times out at 2000ms; timeout scenarios delay 3000ms. NETWORK-013 commits before delaying the submission response. NETWORK-014 returns 503 until `recover()`, after which the same match ID can be retried. NETWORK-011 fails only Ranking, NETWORK-012 only History. NETWORK-002 removes fixtures from queries while retaining any confirmed records; reset first to reproduce completely empty lists. NETWORK-003 exposes all 24 deterministic fixtures with pagination, as does normal success.
+
+Console probes `ranking(request)`, `history(request)` and `submit(record)` follow TanStack Query → typed API function → shared Axios → HTTP → MSW. They are for infrastructure demonstration until the feature screens arrive. Scenario selection affects subsequent HTTP requests; queries retry transient failures up to twice. Configuration/page/player contexts have separate query keys. `reset()` clears cached state too. Confirmed records use `pirate-battle:mock-records:v1`; Options and last result are unaffected.
+
+Run `npm run test:unit -- tests/unit/api-msw.spec.ts` for contracts, all 14 scenarios, ordering, cancellation, out-of-order completion, idempotency and persistence isolation. Delays are injected in unit tests; only the native Axios timeout integration checks wait for real adapter deadlines. Run `npm test -- tests/e2e/api-msw.spec.ts` for browser interception and refresh persistence in desktop/mobile Chromium. To check the production worker, run `npm run build`, serve `npm run preview -- --host 127.0.0.1 --port 4173`, and set `E2E_BASE_URL=http://127.0.0.1:4173` before running that test. On PowerShell use `$env:E2E_BASE_URL='http://127.0.0.1:4173'`.
+
+Ranking/History screens, gameplay submission wiring and pending recovery remain assigned to TASK-14/15.
