@@ -4,7 +4,9 @@
 
 This document defines the architectural boundaries of Pirate Battle.
 
-It complements `MASTER_SPEC.md` and should evolve as the implementation grows.
+It complements [MASTER_SPEC.md](../MASTER_SPEC.md). Sections 2–10 record the initial architectural guidance; sections 11 onward preserve the incremental implementation history. Statements about missing features in those historical entries describe the task at that time, not the current application.
+
+For the current implemented architecture, API contracts, balance and limitations, read the root [ARCHITECTURE.md](../ARCHITECTURE.md).
 
 Do not duplicate challenge requirements or implementation details here.
 
@@ -131,6 +133,8 @@ SpawnSystem
 The game controller coordinates systems but should not contain all gameplay logic.
 
 Entities primarily contain state and identity.
+
+The core coordinates focused systems rather than containing every gameplay rule. Shared mutable match state belongs to the simulation, not globally imported system state. Collision detection and gameplay consequences should remain separable where practical.
 
 ---
 
@@ -269,8 +273,13 @@ Rules:
 - Gameplay logic must not depend on DOM state.
 - Rendering must not contain game rules.
 - MSW must not depend on React.
+- API contracts must remain independent of visual components and be shared with mocks where practical.
+- Required API requests must cross the HTTP boundary; do not call MSW handlers directly.
+- TanStack Query server state must not be copied into application state without a concrete reason.
 - Avoid circular dependencies.
 - Do not add architectural layers without a concrete responsibility.
+
+Testing must control time, randomness and network latency while exercising real input and gameplay systems. Test shortcuts must not bypass the rules under test.
 
 ---
 
