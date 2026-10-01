@@ -10,6 +10,19 @@ React owns application UI; PixiJS renders the arena, ships, projectiles, health 
 
 Read [ARCHITECTURE.md](./ARCHITECTURE.md) for the implemented boundaries, simulation, collisions, ownership, persistence, cache, recovery and tradeoffs. [MASTER_SPEC.md](./MASTER_SPEC.md), [DESIGN_SYSTEM.md](./DESIGN_SYSTEM.md) and [AGENTS.md](./AGENTS.md) contain requirements and development guidance; [docs/TASKS.md](./docs/TASKS.md) records the incremental roadmap.
 
+## Development approach
+
+This project was developed using a specification-driven workflow. I first decomposed the challenge requirements into explicit technical and product specifications, then implemented and validated the solution incrementally.
+
+The repository intentionally keeps the main planning artifacts used during development:
+
+- [`MASTER_SPEC.md`](./MASTER_SPEC.md) — requirement decomposition and acceptance criteria derived from the original challenge.
+- [`DESIGN_SYSTEM.md`](./DESIGN_SYSTEM.md) — visual, responsive and interaction decisions based on the supplied references and assets.
+- [`AGENTS.md`](./AGENTS.md) — implementation guidelines and architectural constraints used to keep development consistent.
+- [`docs/TASKS.md`](./docs/TASKS.md) — incremental implementation and validation plan.
+
+These files are intentionally included to make the reasoning, implementation process and requirement traceability behind the final solution transparent.
+
 ## Setup and runtime
 
 Use **Node.js 22.x, at least 22.12.0**, as declared in package.json. Validation uses **Node 22.22.0 and npm 10.9.4 on Windows**; Vercel builds use Node 22.x. Dependencies are pinned by package-lock.json. Browser operation requires JavaScript, service workers (HTTPS or localhost) and browser storage for refresh durability. No environment variables, credentials or private backend are required to run the game.
@@ -37,15 +50,15 @@ Open http://127.0.0.1:4173. Preview serves the generated dist directory and is a
 
 Start/resume focuses the arena. Gameplay keys are captured only while running with arena focus. **Tab** returns to page controls. Blur/hidden tabs and leaving gameplay focus pause; resume requires explicit action. Held input is cleared on pause/end/restart/leave: release and press again after resume. Opposing turns cancel. Movement, rotation and attacks can be held together; attacks repeat at their independent cooldowns. Physical letter bindings use KeyboardEvent.code (QWERTY positions).
 
-| Action | Keyboard | Touch |
-| --- | --- | --- |
-| Forward | W / ↑ | Forward |
-| Turn left | A / ← | Turn left |
-| Turn right | D / → | Turn right |
-| Front cannon | Space | Front fire |
-| Left broadside (three parallel shots) | Q | Left broadside |
-| Right broadside (three parallel shots) | E | Right broadside |
-| Pause | Escape | Pause |
+| Action                                 | Keyboard | Touch           |
+| -------------------------------------- | -------- | --------------- |
+| Forward                                | W / ↑    | Forward         |
+| Turn left                              | A / ←    | Turn left       |
+| Turn right                             | D / →    | Turn right      |
+| Front cannon                           | Space    | Front fire      |
+| Left broadside (three parallel shots)  | Q        | Left broadside  |
+| Right broadside (three parallel shots) | E        | Right broadside |
+| Pause                                  | Escape   | Pause           |
 
 **Landscape is the supported mobile combat orientation.** Portrait supports menus and displays a rotate-device message. Hold multiple 48×48 CSS-pixel action buttons simultaneously; releasing/cancelling one finger clears its ownership. Buttons sit below the arena and HUD above it, respecting safe-area insets. Resize/DPR changes uniformly fit the complete 1280×720 logical world, using letterboxing without changing collision or input rules. Menus can scroll vertically.
 
@@ -68,30 +81,30 @@ Timeout/death creates a UUID and saves/queues the record before submission. Resu
 These console controls exist after the UI loads in both development and production:
 
 ```js
-window.pirateBattleNetwork.scenarios
-window.pirateBattleNetwork.select('NETWORK-005', [100, 600, 250])
-window.pirateBattleNetwork.recover() // success; retain confirmed records
-window.pirateBattleNetwork.reset() // reset scenario/sequence, confirmed records and query cache
+window.pirateBattleNetwork.scenarios;
+window.pirateBattleNetwork.select("NETWORK-005", [100, 600, 250]);
+window.pirateBattleNetwork.recover(); // success; retain confirmed records
+window.pirateBattleNetwork.reset(); // reset scenario/sequence, confirmed records and query cache
 ```
 
 Selection affects subsequent requests, not already running ones. Scenarios are in-memory and return to success on refresh; confirmed records/pending submissions persist. Reset leaves Options, last Result and pending submissions intact. For a completely fresh demonstration, clear this site's storage in browser developer tools and reload (this also removes saved preferences/results).
 
-| ID | Behavior |
-| --- | --- |
-| NETWORK-001 | Success |
+| ID          | Behavior                                                                          |
+| ----------- | --------------------------------------------------------------------------------- |
+| NETWORK-001 | Success                                                                           |
 | NETWORK-002 | Empty fixture lists; confirmed records remain (reset first for fully empty lists) |
-| NETWORK-003 | Multiple pages of 24 fixtures |
-| NETWORK-004 | 1000 ms slow responses |
-| NETWORK-005 | Repeating 100/600/250 ms latency |
-| NETWORK-006 | Alternating 800/100 ms for overlapping requests |
-| NETWORK-007 | Timeout (3000 ms response, Axios timeout 2000 ms) |
-| NETWORK-008 | Connection failure |
-| NETWORK-009 | HTTP 400 |
-| NETWORK-010 | HTTP 503 |
-| NETWORK-011 | Ranking-only failure |
-| NETWORK-012 | History-only failure |
-| NETWORK-013 | Commit match, then timeout response |
-| NETWORK-014 | HTTP 503 until recovery |
+| NETWORK-003 | Multiple pages of 24 fixtures                                                     |
+| NETWORK-004 | 1000 ms slow responses                                                            |
+| NETWORK-005 | Repeating 100/600/250 ms latency                                                  |
+| NETWORK-006 | Alternating 800/100 ms for overlapping requests                                   |
+| NETWORK-007 | Timeout (3000 ms response, Axios timeout 2000 ms)                                 |
+| NETWORK-008 | Connection failure                                                                |
+| NETWORK-009 | HTTP 400                                                                          |
+| NETWORK-010 | HTTP 503                                                                          |
+| NETWORK-011 | Ranking-only failure                                                              |
+| NETWORK-012 | History-only failure                                                              |
+| NETWORK-013 | Commit match, then timeout response                                               |
+| NETWORK-014 | HTTP 503 until recovery                                                           |
 
 The optional latency array repeats deterministically. Transient query failures retry twice; 4xx does not retry. Query keys isolate configuration/player/page and cancellation protects against obsolete responses.
 
